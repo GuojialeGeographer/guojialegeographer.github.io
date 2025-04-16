@@ -1,15 +1,15 @@
 document.write("<table width=\"650\" border=\"0\" height=\"200\">");
 document.write("<tbody>");
 document.write("<tr>");
-document.write("<td> <img src=\"Images/xinyu24.png\" alt=\"Xinyu Chen\"");
+document.write("<td> <img src=\"Images/guojiale1.jpg\" alt=\"Jiale Guo\"");
 // document.write("width=\"200\" height=\"250\"> <\/td>");
 document.write("width=\"180\" height=\"225\"> <\/td>");
 document.write("<td>");
-document.write("<h1>Xinyu Chen</h1>");
+document.write("<h1>Jiale Guo</h1>");
 document.write("<br>");
-document.write("Ph.D., <a href=\"https:\/\/www.umontreal.ca\/en\">University of Montreal<\/a>, Canada");
+document.write("M.S., <a href=\"https://www.polimi.it/en/\">Politecnico di Milano</a>, Italy");
 document.write("<br>");
-document.write("Postdoctoral Associate at <a href=\"https:\/\/www.mit.edu\/\">MIT<\/a>, USA");
+document.write("B.A., ChuZhou University, China");
 document.write("<br>");
 
 // document.write("<a href=\"https:\/\/www.umontreal.ca\/en\">University of Montreal<\/a></b>");
@@ -18,7 +18,7 @@ document.write("<br>");
 document.write("<br>");
 // document.write("Contact info:<br>");
 // document.write(" Montreal, Quebec, Canada. <br>");
-document.write("E-mail: chenxy346@gmail.com <br>");
+document.write("E-mail: jiale.guo@foxmail.com <br>");
 document.write("<br>");
 document.write("&nbsp;");
 document.write("<a href=\"https:\/\/scholar.google.com\/citations?user=mCrW04wAAAAJ&hl\"><img src=\"Images\/scholar.png\" alt=\"Google Scholar\" width=\"25\" border=\"0\" height=\"25\"> <\/a> &nbsp;");
