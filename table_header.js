@@ -1,0 +1,31 @@
+document.write("<table width=\"650\" border=\"0\" height=\"200\">");
+document.write("<tbody>");
+document.write("<tr>");
+document.write("<td> <img src=\"Images/xinyu24.png\" alt=\"Xinyu Chen\"");
+// document.write("width=\"200\" height=\"250\"> <\/td>");
+document.write("width=\"180\" height=\"225\"> <\/td>");
+document.write("<td>");
+document.write("<h1>Xinyu Chen</h1>");
+document.write("<br>");
+document.write("Ph.D., <a href=\"https:\/\/www.umontreal.ca\/en\">University of Montreal<\/a>, Canada");
+document.write("<br>");
+document.write("Postdoctoral Associate at <a href=\"https:\/\/www.mit.edu\/\">MIT<\/a>, USA");
+document.write("<br>");
+
+// document.write("<a href=\"https:\/\/www.umontreal.ca\/en\">University of Montreal<\/a></b>");
+
+// document.write("<br>");
+document.write("<br>");
+// document.write("Contact info:<br>");
+// document.write(" Montreal, Quebec, Canada. <br>");
+document.write("E-mail: chenxy346@gmail.com <br>");
+document.write("<br>");
+document.write("&nbsp;");
+document.write("<a href=\"https:\/\/scholar.google.com\/citations?user=mCrW04wAAAAJ&hl\"><img src=\"Images\/scholar.png\" alt=\"Google Scholar\" width=\"25\" border=\"0\" height=\"25\"> <\/a> &nbsp;");
+document.write("<a href=\"https:\/\/github.com\/xinychen\"><img src=\"Images\/GitHub-Mark-120px-plus.png\" alt=\"GitHub\" width=\"25\" border=\"0\" height=\"25\"> <\/a> &nbsp;");
+document.write("<a href=\"https:\/\/www.linkedin.com\/in\/xinyu-chen-567827309\"> <img src=\"Images\/linkedin.png\" alt=\"LinkedIn\"  border=\"0\" height=\"25\"><\/a> &nbsp");
+// document.write("<a href=\"https:\/\/twitter.com\/chenxy346\/\"> <img src=\"Images\/twitter.png\" alt=\"Twitter\"  border=\"0\" height=\"25\"><\/a><br>");
+document.write("<\/td>");
+document.write("<\/tr>");
+document.write("<\/tbody>");
+document.write("<\/table>");
