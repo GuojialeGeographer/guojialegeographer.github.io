@@ -82,13 +82,13 @@
                 <div class="row my-3">
                     <div class="col-6">
                         <div class="text-muted">
-                            <i>Last updated: October 2024</i>
+                            <i>Last updated: April 2025</i>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="text-right text-muted">
-                            <span id="busuanzi_container_site_pv">
-                                <span id="busuanzi_value_site_pv"></span> views since October 2024
+                            <span id="busuanzi_container_site_pv" style="display: none;">
+                                <span id="busuanzi_value_site_pv"></span> views since April 2025
                             </span>
                         </div>
                     </div>
@@ -104,5 +104,18 @@
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script>
+        // 显示不蒜子计数器，但只在成功加载后
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var bszContainers = document.querySelectorAll('#busuanzi_container_site_pv');
+                if (document.getElementById('busuanzi_value_site_pv').innerText !== '') {
+                    bszContainers.forEach(function(container) {
+                        container.style.display = 'inline';
+                    });
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
