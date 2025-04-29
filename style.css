@@ -1,3 +1,147 @@
+/* Global Styles */
+:root {
+  --primary-color: #336699;
+  --secondary-color: #f8f9fa;
+  --text-color: #333;
+  --light-text: #666;
+  --highlight: #f39c12;
+  --border-color: #e2e2e2;
+}
+
+body {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #204d74;
+  text-decoration: none;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+/* Navbar */
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+}
+
+/* Cards and components */
+.card {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.text-profile-position {
+  color: var(--light-text);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.text-profile-bio {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.text-profile-bio p {
+  margin-bottom: 1rem;
+}
+
+h6 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+/* Media sections */
+.media {
+  margin-bottom: 1rem;
+}
+
+.media-body {
+  line-height: 1.4;
+}
+
+/* Small list styles */
+.list.small {
+  font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+  padding: 1rem 0;
+  font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .figure {
+    float: none !important;
+    margin: 0 auto 1rem auto !important;
+    text-align: center;
+  }
+}
+
+/* Additional utility classes */
+.rounded-sm {
+  border-radius: 0.2rem;
+}
+
+.email-text:after {
+  content: ".edu";
+  display: none;
+}
+
+.lazy {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Border colors */
+.border-gray {
+  border-color: #dee2e6 !important;
+}
+
+/* Abstract links section */
+.abstract-links a {
+  margin-right: 0.5rem;
+}
+
+/* Image thumbnails */
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Adjust for small mobile view */
+@media (max-width: 576px) {
+  .card-body {
+    padding: 1.25rem;
+  }
+}
+
 *{margin:0; padding:0;}
 
 
