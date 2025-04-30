@@ -50,8 +50,8 @@
 
         // Visitor data with actual counts
         const visitorData = [
-            { country: "Italy", count: 1, lat: 41.8719, lng: 12.5674, code: "IT" },
-            { country: "United States", count: 1, lat: 37.0902, lng: -95.7129, code: "US" }
+            { country: "Italy", count: 1, lat: 45.4642, lng: 9.1900, code: "IT" },
+            { country: "United States", count: 1, lat: 40.7128, lng: -74.0060, code: "US" }
         ];
 
         // Add markers for each country
@@ -66,7 +66,7 @@
             
             // Add marker
             L.marker([visitor.lat, visitor.lng], {icon: flagIcon}).addTo(map)
-                .bindPopup(`<b>${visitor.country}</b><br>Visitors: ${visitor.count}`);
+                .bindPopup(`<b>${visitor.country}</b><br>${visitor.lat === 45.4642 ? 'Milan' : 'New York'}<br>Visitors: ${visitor.count}`);
         });
     </script>
 </body>
