@@ -6,6 +6,21 @@
   --light-text: #666;
   --highlight: #f39c12;
   --border-color: #e2e2e2;
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --primary-color: #64a0e0;
+  --secondary-color: #1a1a1a;
+  --text-color: #ffffff;
+  --light-text: #c0c0c0;
+  --highlight: #f7b64c;
+  --border-color: #555555;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -13,6 +28,8 @@ body {
   font-size: 16px;
   color: var(--text-color);
   line-height: 1.6;
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -515,4 +532,90 @@ g_clear{clear: both;
 .awards-list li .d-flex div:last-child {
   min-width: 80px;
   text-align: right;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--highlight);
+}
+
+.theme-toggle i {
+  pointer-events: none;
+}
+
+/* Dark mode adaptations */
+[data-theme="dark"] .card {
+  background-color: var(--card-bg) !important;
+  box-shadow: 0 0.125rem 0.25rem var(--shadow-color) !important;
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: var(--bg-color) !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+[data-theme="dark"] .navbar-light {
+  background-color: var(--card-bg) !important;
+}
+
+[data-theme="dark"] .navbar-light .navbar-brand,
+[data-theme="dark"] .navbar-light .nav-link {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .navbar-light .nav-link:hover {
+  color: var(--highlight) !important;
+}
+
+[data-theme="dark"] .text-muted {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .border-gray,
+[data-theme="dark"] .border-bottom {
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem var(--shadow-color) !important;
+}
+
+/* 增强深色模式下的文字对比度 */
+[data-theme="dark"] h6 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .text-profile-position {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] a {
+  color: #80b7f0;
+}
+
+[data-theme="dark"] a:hover {
+  color: #b0d0ff;
+}
+
+/* 调整深色模式下的页脚文字颜色 */
+[data-theme="dark"] .footer .text-muted {
+  color: #c0c0c0 !important;
 }
