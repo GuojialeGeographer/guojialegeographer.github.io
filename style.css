@@ -469,3 +469,50 @@ g_left{	float: left;
 }
 g_clear{clear: both;
 }
+
+/* Awards list with better bullets */
+.awards-list {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+}
+
+.awards-list li {
+  margin-bottom: 0.5rem;
+}
+
+.awards-list li::marker {
+  color: #000;
+  font-size: 1rem;
+}
+
+/* Adjust spacing for sections */
+.section-container {
+  margin-bottom: 1.5rem;
+}
+
+/* Logo image styling */
+.org-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 0.75rem;
+}
+
+/* 防止Honors & Awards项目换行 */
+.awards-list li .d-flex {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.awards-list li .d-flex div:first-child {
+  max-width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.awards-list li .d-flex div:last-child {
+  min-width: 80px;
+  text-align: right;
+}
