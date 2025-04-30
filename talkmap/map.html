@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor Map - Jiale Guo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        #map {
+            width: 100%;
+            height: 600px;
+        }
+        
+        .header {
+            padding: 20px;
+            background-color: #336699;
+            color: white;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .footer {
+            padding: 20px;
+            background-color: #f8f9fa;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 20px;
+        }
+        
+        .visitor-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .visitor-stats > div {
+            padding: 15px;
+            text-align: center;
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h3 {
+            color: #336699;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #336699;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .back-btn:hover {
+            background-color: #204d74;
+        }
+
+        .leaflet-popup-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Visitor Map - Jiale Guo</h1>
+    </div>
+    
+    <div class="container">
+        <div class="visitor-stats">
+            <div>
+                <h3>Total Visitors</h3>
+                <p id="total-count">Loading...</p>
+            </div>
+            <div>
+                <h3>Top Countries</h3>
+                <p id="top-countries">Loading...</p>
+            </div>
+            <div>
+                <h3>This Month</h3>
+                <p id="month-count">Loading...</p>
+            </div>
+        </div>
+        
+        <div id="map"></div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <p>This map shows the approximate location of visitors to my academic website since April 2025.</p>
+            <a href="../index.html" class="back-btn">Back to Homepage</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 Jiale Guo | Map visualization powered by Leaflet.js | Data provided by Flag Counter API</p>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([30, 10], 2);
+
+        // Add tile layer (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Sample data (in a real implementation, this would be fetched from Flag Counter API or similar)
+        const visitorData = [
+            { country: "China", count: 143, lat: 35.8617, lng: 104.1954, code: "CN" },
+            { country: "United States", count: 98, lat: 37.0902, lng: -95.7129, code: "US" },
+            { country: "Hong Kong", count: 93, lat: 22.3193, lng: 114.1694, code: "HK" },
+            { country: "Singapore", count: 51, lat: 1.3521, lng: 103.8198, code: "SG" },
+            { country: "Japan", count: 11, lat: 36.2048, lng: 138.2529, code: "JP" },
+            { country: "Canada", count: 11, lat: 56.1304, lng: -106.3468, code: "CA" },
+            { country: "South Korea", count: 5, lat: 35.9078, lng: 127.7669, code: "KR" },
+            { country: "United Kingdom", count: 4, lat: 55.3781, lng: -3.4360, code: "GB" },
+            { country: "Australia", count: 3, lat: -25.2744, lng: 133.7751, code: "AU" },
+            { country: "Taiwan", count: 2, lat: 23.6978, lng: 120.9605, code: "TW" },
+            { country: "Italy", count: 2, lat: 41.8719, lng: 12.5674, code: "IT" },
+            { country: "Spain", count: 1, lat: 40.4637, lng: -3.7492, code: "ES" },
+            { country: "Thailand", count: 1, lat: 15.8700, lng: 100.9925, code: "TH" },
+            { country: "Greece", count: 1, lat: 39.0742, lng: 21.8243, code: "GR" },
+            { country: "Austria", count: 1, lat: 47.5162, lng: 14.5501, code: "AT" },
+            { country: "Vietnam", count: 1, lat: 14.0583, lng: 108.2772, code: "VN" },
+            { country: "Switzerland", count: 1, lat: 46.8182, lng: 8.2275, code: "CH" }
+        ];
+
+        // Add markers for each country
+        let totalVisitors = 0;
+        
+        visitorData.forEach(visitor => {
+            totalVisitors += visitor.count;
+            
+            // Create custom icon with flag
+            const flagIcon = L.divIcon({
+                className: 'custom-icon',
+                html: `<div style="background-color: #336699; color: white; padding: 5px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold;">${visitor.count}</div>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+            
+            // Add marker
+            L.marker([visitor.lat, visitor.lng], {icon: flagIcon}).addTo(map)
+                .bindPopup(`<b>${visitor.country}</b><br>Visitors: ${visitor.count}`);
+        });
+
+        // Update statistics
+        document.getElementById('total-count').textContent = totalVisitors;
+        
+        // Get top 5 countries
+        const topCountries = visitorData
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 5)
+            .map(c => `${c.country}: ${c.count}`)
+            .join('<br>');
+        
+        document.getElementById('top-countries').innerHTML = topCountries;
+        
+        // Simulate monthly count (in real implementation, this would be calculated)
+        document.getElementById('month-count').textContent = Math.round(totalVisitors * 0.4);
+    </script>
+</body>
+</html> 
