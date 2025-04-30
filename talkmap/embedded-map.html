@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body, html {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        #map {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+        }
+        
+        .map-container {
+            padding: 0;
+        }
+        
+        .leaflet-popup-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([30, 0], 2);
+
+        // Add tile layer (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Visitor data with actual counts
+        const visitorData = [
+            { country: "Italy", count: 1, lat: 41.8719, lng: 12.5674, code: "IT" },
+            { country: "United States", count: 1, lat: 37.0902, lng: -95.7129, code: "US" }
+        ];
+
+        // Add markers for each country
+        visitorData.forEach(visitor => {
+            // Create custom icon with flag
+            const flagIcon = L.divIcon({
+                className: 'custom-icon',
+                html: `<div style="background-color: #336699; color: white; padding: 5px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold;">${visitor.count}</div>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+            
+            // Add marker
+            L.marker([visitor.lat, visitor.lng], {icon: flagIcon}).addTo(map)
+                .bindPopup(`<b>${visitor.country}</b><br>Visitors: ${visitor.count}`);
+        });
+    </script>
+</body>
+</html> 
