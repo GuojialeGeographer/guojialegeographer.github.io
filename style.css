@@ -581,6 +581,15 @@ g_clear{clear: both;
   color: #ffffff !important;
 }
 
+[data-theme="dark"] .navbar-light .navbar-toggler {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme="dark"] .navbar-light .navbar-toggler-icon {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 [data-theme="dark"] .navbar-light .nav-link:hover {
   color: var(--highlight) !important;
 }
@@ -600,19 +609,23 @@ g_clear{clear: both;
 
 /* 增强深色模式下的文字对比度 */
 [data-theme="dark"] h6 {
-  color: #ffffff;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] p {
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .text-profile-position {
-  color: #d0d0d0;
+  color: #d0d0d0 !important;
 }
 
 [data-theme="dark"] a {
-  color: #80b7f0;
+  color: #80b7f0 !important;
 }
 
 [data-theme="dark"] a:hover {
-  color: #b0d0ff;
+  color: #b0d0ff !important;
 }
 
 /* 调整深色模式下的页脚文字颜色 */
@@ -622,42 +635,58 @@ g_clear{clear: both;
 
 /* 改善深色模式下的文字对比度 */
 [data-theme="dark"] .awards-list li {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .awards-list li::marker {
-  color: #80b7f0;
+  color: #80b7f0 !important;
 }
 
 [data-theme="dark"] .awards-list li .d-flex div:first-child {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .awards-list li .d-flex div:last-child {
-  color: #d0d0d0;
+  color: #d0d0d0 !important;
 }
 
 [data-theme="dark"] .media-body {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .small {
-  color: #d0d0d0;
+  color: #d0d0d0 !important;
 }
 
 [data-theme="dark"] strong {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .no-break {
-  color: #d0d0d0;
+  color: #d0d0d0 !important;
 }
 
 [data-theme="dark"] em {
-  color: #d0d0d0;
+  color: #d0d0d0 !important;
 }
 
 [data-theme="dark"] .img-thumbnail {
-  background-color: #333333;
-  border-color: #555555;
+  background-color: #333333 !important;
+  border-color: #555555 !important;
+}
+
+[data-theme="dark"] .navbar {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .navbar-brand strong {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+[data-theme="dark"] .fa-map {
+  color: #ffffff !important;
 }
