@@ -4,10 +4,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample visitor data (in production, this would be loaded from a database or API)
+    // Sample visitor data with accurate coordinates for country centers
     const visitorData = [
         { country: "United States", lat: 37.0902, lng: -95.7129, visits: 45 },
-        { country: "China", lat: 35.8617, lng: 104.1954, visits: 38 },
+        { country: "China - Beijing", lat: 39.9042, lng: 116.4074, visits: 20 },
+        { country: "China - Shanghai", lat: 31.2304, lng: 121.4737, visits: 18 },
+        { country: "China - Guangzhou", lat: 23.1291, lng: 113.2644, visits: 12 },
+        { country: "China - Wuhan", lat: 30.5928, lng: 114.3055, visits: 8 },
         { country: "Italy", lat: 41.8719, lng: 12.5674, visits: 29 },
         { country: "Germany", lat: 51.1657, lng: 10.4515, visits: 22 },
         { country: "United Kingdom", lat: 55.3781, lng: -3.4360, visits: 19 },
@@ -23,12 +26,31 @@ document.addEventListener('DOMContentLoaded', function() {
         { country: "South Korea", lat: 35.9078, lng: 127.7669, visits: 4 }
     ];
 
-    // Function to convert lat/lng to x/y coordinates on the map image
+    // Improved function to convert lat/lng to x/y coordinates on the map image
+    // This uses a more accurate projection for the specific world map image
     function latLngToPixel(lat, lng, mapWidth, mapHeight) {
-        // Simple equirectangular projection
-        const x = (lng + 180) * (mapWidth / 360);
-        const y = (90 - lat) * (mapHeight / 180);
-        return { x, y };
+        // Handle edge cases for longitude
+        const adjustedLng = lng > 180 ? lng - 360 : (lng < -180 ? lng + 360 : lng);
+        
+        // Convert longitude from -180...+180 to 0...1
+        // Add a small offset correction for this specific map image
+        const lngFactor = 1.005; // Slight adjustment factor for longitude
+        const x = ((adjustedLng * lngFactor) + 180) / 360 * mapWidth;
+        
+        // Convert latitude from -90...+90 to 0...1 using Mercator-like projection
+        // This formula provides better positioning especially near poles
+        const latRad = lat * Math.PI / 180;
+        // Limit the latitude range to avoid extreme distortion at poles
+        const limitedLat = Math.max(Math.min(latRad, Math.PI/2.1), -Math.PI/2.1);
+        
+        // Apply Mercator formula with correction factors for this specific map
+        const latFactor = 0.98; // Slight adjustment factor for latitude
+        const y = (0.5 - Math.log(Math.tan(Math.PI/4 + limitedLat/2)) / (2 * Math.PI)) * mapHeight * latFactor;
+        
+        return { 
+            x: Math.round(x), 
+            y: Math.round(y)
+        };
     }
 
     // Create visitor markers on the map
@@ -58,9 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 marker.style.width = `${size}px`;
                 marker.style.height = `${size}px`;
                 
-                // Position the marker
-                marker.style.left = `${position.x}px`;
-                marker.style.top = `${position.y}px`;
+                // Position the marker - center it on the point
+                marker.style.left = `${position.x - size/2}px`;
+                marker.style.top = `${position.y - size/2}px`;
                 
                 // Add to map container
                 mapContainer.appendChild(marker);
