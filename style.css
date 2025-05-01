@@ -420,8 +420,9 @@ margin: 0px 0;
 color: #666;
 }
 
+/* Sidebar list items */
 #sidebar ul li {
-
+  margin-bottom: 5px;
 }
 
 #sidebar ul {
@@ -547,6 +548,34 @@ g_clear{clear: both;
   color: var(--text-color);
   font-size: 1.2rem;
   transition: color 0.3s ease;
+}
+
+/* Visitor Map Markers */
+.visitor-marker {
+  width: 10px;
+  height: 10px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(255, 59, 48, 0.7);
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  position: absolute;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 59, 48, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+  }
 }
 
 .theme-toggle:hover {
@@ -689,4 +718,9 @@ g_clear{clear: both;
 
 [data-theme="dark"] .fa-map {
   color: #ffffff !important;
+}
+
+[data-theme="dark"] .visitor-marker {
+  border-color: #333333;
+  box-shadow: 0 0 10px rgba(255, 59, 48, 0.9);
 }

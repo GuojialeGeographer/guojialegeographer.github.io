@@ -286,7 +286,7 @@
                                         </li>
                                     </ul>
                                 </div>
-
+                                
                                 <div class="mx-2 my-3 section-container">
                                     <h6>Work Experience</h6>
                                     <ul class="list-unstyled mb-1">
@@ -324,7 +324,7 @@
                                                     <div>Internship</div>
                                                     <div class="text-right no-break"><em>05.2019 - 12.2019</em></div>
                                                 </div>
-                                            </div>
+                                </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -360,39 +360,49 @@
         </div>
 
         <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row mt-4">
-                    <div class="col-12 mb-3">
-                        <h6 class="border-bottom pb-2">Visitors Count Since April 2025</h6>
-                        <div class="text-center mb-3">
-                            <a href="talkmap/map.html" class="btn btn-sm btn-primary">
-                                <i class="fas fa-globe"></i> View Full Visitor Statistics
-                            </a>
-                            <p class="small text-muted mt-2">Real-time visitor tracking from around the world</p>
+        <footer class="mt-5 mb-3">
+            <div class="card border-0 shadow-sm bg-white">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h5>Visitor Statistics</h5>
+                            <p class="small text-muted">Real-time visitor tracking from around the world</p>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mt-3">
-                                <!-- 国家/地区访问统计 -->
-                                <div class="text-center">
-                                    <a href="https://info.flagcounter.com/RXMK" target="_blank">
-                                        <img src="https://s11.flagcounter.com/count2/RXMK/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0">
-                                    </a>
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <!-- Country/Region Visit Statistics -->
+                            <div class="text-center">
+                                <h6>Visitors by Country</h6>
+                                <a href="https://info.flagcounter.com/RXMK" target="_blank">
+                                    <img src="https://s11.flagcounter.com/count2/RXMK/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_1/percent_1/" alt="Flag Counter" border="0">
+                                </a>
                             </div>
-                            <div class="col-md-6 mt-3">
-                                <!-- 直接嵌入交互式地图 -->
-                                <div class="text-center">
-                                    <a href="talkmap/map.html" target="_blank">
-                                        <img src="https://flagcounter.com/map/RXMK/FFFFFF/000000/CCCCCC/" width="100%" height="auto" alt="Flag Counter World Map" style="border-radius: 5px; max-width: 100%;">
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <!-- Interactive World Map (Local Version) -->
+                            <div class="text-center">
+                                <h6>Global Visitor Map</h6>
+                                <a href="talkmap/map.html" target="_blank">
+                                    <div id="homepage-map" style="position: relative; max-width: 100%;">
+                                        <img src="talkmap/images/world_map.jpg" width="100%" height="auto" alt="World Map" style="border-radius: 5px; max-width: 100%;">
+                                        <!-- Visitor markers will be added by JavaScript -->
+                                    </div>
+                                </a>
+                                <p class="small text-muted mt-1">Click to view detailed visitor statistics</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="text-muted text-center">
-                            <i>Last updated: April 2025</i>
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <a href="talkmap/map.html" class="btn btn-sm btn-outline-primary">View Detailed Visitor Map</a>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="text-muted text-center">
+                                <i>Last updated: May 2025</i>
+                            </div>
                         </div>
                     </div>
                 </div>

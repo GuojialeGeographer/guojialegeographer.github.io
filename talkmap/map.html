@@ -77,6 +77,43 @@
             border: 1px solid #555555;
         }
         
+        .stat-card {
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 10px;
+            text-align: center;
+        }
+        
+        [data-theme="dark"] .stat-card {
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            border: 1px solid #555555;
+        }
+        
+        .stat-card h4 {
+            color: #336699;
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+        
+        [data-theme="dark"] .stat-card h4 {
+            color: #80b7f0;
+        }
+        
+        .country-list {
+            list-style-position: inside;
+            padding-left: 0;
+            text-align: left;
+            margin: 10px 0 0 0;
+        }
+        
+        .country-list li {
+            margin-bottom: 3px;
+            font-size: 0.9rem;
+        }
+        
         h3 {
             color: #336699;
         }
@@ -131,6 +168,60 @@
             max-width: 800px;
             margin: 0 auto;
             display: block;
+            position: relative;
+        }
+        
+        .flag-map img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .nasa-credit {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            font-size: 0.7rem;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        [data-theme="dark"] .nasa-credit {
+            color: #ccc;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .visitor-marker {
+            width: 12px;
+            height: 12px;
+            background-color: #ff3b30;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 59, 48, 0.7);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(255, 59, 48, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+            }
+        }
+        
+        [data-theme="dark"] .visitor-marker {
+            border-color: #333;
+            box-shadow: 0 0 10px rgba(255, 59, 48, 0.9);
         }
         
         .flag-counter {
@@ -157,11 +248,19 @@
             <h3 class="text-center">Global Visitor Distribution</h3>
             <p class="text-center">This map shows real-time visitors to my academic website from around the world</p>
             
-            <!-- FlagCounter World Map - this will automatically track and display visitors -->
+            <!-- World Map with visitor tracking using local NASA image -->
             <div class="flag-map">
-                <a href="https://flagcounter.com/map/RXMK" target="_blank">
-                    <img src="https://flagcounter.com/map/RXMK/FFFFFF/000000/CCCCCC/" width="100%" height="auto" alt="Flag Counter World Map">
-                </a>
+                <div id="map-container" style="position: relative;">
+                    <img src="images/world_map.jpg" width="100%" height="auto" alt="World Map" style="border-radius: 5px;">
+                    <div class="nasa-credit">Image: NASA</div>
+                    <!-- Visitor markers will be dynamically added here by JavaScript -->
+                </div>
+                <p class="text-center mt-2"><small>The markers on the map represent visitor locations based on IP tracking.</small></p>
+            </div>
+            
+            <!-- Visitor Statistics Section -->
+            <div id="visitor-stats" class="visitor-stats mt-4">
+                <!-- Statistics will be populated by JavaScript -->
             </div>
         </div>
         
@@ -170,6 +269,7 @@
             <a href="https://info.flagcounter.com/RXMK" target="_blank">
                 <img src="https://s11.flagcounter.com/count2/RXMK/bg_FFFFFF/txt_000000/border_CCCCCC/columns_5/maxflags_50/viewers_0/labels_1/pageviews_1/flags_1/percent_1/" alt="Flag Counter" border="0">
             </a>
+            <p class="text-center mt-3">Each flag represents a unique visitor from that country</p>
         </div>
         
         <div style="text-align: center; margin-top: 30px;">
@@ -188,5 +288,8 @@
             document.documentElement.setAttribute('data-theme', currentTheme);
         });
     </script>
+    
+    <!-- Visitor Map Script -->
+    <script src="visitor-map.js"></script>
 </body>
 </html> 
