@@ -498,7 +498,7 @@ g_clear{clear: both;
 }
 
 .awards-list li::marker {
-  color: #000;
+  color: var(--text-color);
   font-size: 1rem;
 }
 
@@ -618,4 +618,46 @@ g_clear{clear: both;
 /* 调整深色模式下的页脚文字颜色 */
 [data-theme="dark"] .footer .text-muted {
   color: #c0c0c0 !important;
+}
+
+/* 改善深色模式下的文字对比度 */
+[data-theme="dark"] .awards-list li {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .awards-list li::marker {
+  color: #80b7f0;
+}
+
+[data-theme="dark"] .awards-list li .d-flex div:first-child {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .awards-list li .d-flex div:last-child {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .media-body {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .small {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] strong {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .no-break {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] em {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .img-thumbnail {
+  background-color: #333333;
+  border-color: #555555;
 }
