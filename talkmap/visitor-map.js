@@ -6,8 +6,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 国家代码到经纬度的映射表
     const countryCoordinates = {
-        'IT': { country: "Italy", lat: 41.8719, lng: 12.5674 },
-        'US': { country: "United States", lat: 37.0902, lng: -95.7129 },
+        'IT': { country: "Italy", lat: 42.5, lng: 12.5 },  // 调整意大利坐标
+        'US': { country: "United States", lat: 39.5, lng: -98.35 }, // 调整美国坐标
         'CN': { country: "China", lat: 35.8617, lng: 104.1954 },
         'DE': { country: "Germany", lat: 51.1657, lng: 10.4515 },
         'GB': { country: "United Kingdom", lat: 55.3781, lng: -3.4360 },
@@ -118,23 +118,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Improved function to convert lat/lng to x/y coordinates on the map image
     // This uses a more accurate projection for the specific world map image
     function latLngToPixel(lat, lng, mapWidth, mapHeight) {
-        // Handle edge cases for longitude
-        const adjustedLng = lng > 180 ? lng - 360 : (lng < -180 ? lng + 360 : lng);
+        // 经纬度到像素的转换常常需要根据具体地图图像进行调整
+        // 下面的公式已经过调整以适应NASA地图图像
         
-        // Convert longitude from -180...+180 to 0...1
-        // Add a small offset correction for this specific map image
-        const lngFactor = 1.005; // Slight adjustment factor for longitude
-        const x = ((adjustedLng * lngFactor) + 180) / 360 * mapWidth;
+        // 调整经度范围
+        let adjustedLng = lng;
+        if (adjustedLng > 180) adjustedLng -= 360;
+        if (adjustedLng < -180) adjustedLng += 360;
         
-        // Convert latitude from -90...+90 to 0...1 using Mercator-like projection
-        // This formula provides better positioning especially near poles
-        const latRad = lat * Math.PI / 180;
-        // Limit the latitude range to avoid extreme distortion at poles
-        const limitedLat = Math.max(Math.min(latRad, Math.PI/2.1), -Math.PI/2.1);
+        // 经度转换 - 线性映射
+        // 地图左侧为经度-180°，右侧为经度+180°
+        // 调整后的公式更准确地映射到像素坐标
+        const xFactor = 0.996; // 校正系数
+        const xOffset = 0;    // 横向偏移校正
+        const x = ((adjustedLng + 180) / 360) * mapWidth * xFactor + xOffset;
         
-        // Apply Mercator formula with correction factors for this specific map
-        const latFactor = 0.98; // Slight adjustment factor for latitude
-        const y = (0.5 - Math.log(Math.tan(Math.PI/4 + limitedLat/2)) / (2 * Math.PI)) * mapHeight * latFactor;
+        // 纬度转换 - 使用修正的Mercator投影
+        // 地图顶部为纬度+90°，底部为纬度-90°
+        // 对于等距投影地图，需要线性映射
+        const yFactor = 1.02; // 校正系数
+        const yOffset = -mapHeight * 0.01; // 垂直偏移校正
+        
+        // 使用简单线性映射而非Mercator，因为NASA图像更接近于等距投影
+        const y = ((90 - lat) / 180) * mapHeight * yFactor + yOffset;
         
         return { 
             x: Math.round(x), 
