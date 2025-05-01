@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" data-lang="en">
 <!-- Inspired by Zongrong(Jasper) Li's Homepage Template -->
 <head>
     <meta charset="utf-8">
@@ -14,11 +14,104 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+        
+        /* 增强字体渲染 */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 提高小字体的清晰度和对比度 */
+        .small, small, .text-muted {
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.75);
+        }
+        
+        /* 增强标题文字 */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: rgba(0, 0, 0, 0.9);
+        }
+        
+        /* 暗黑模式下的文本颜色增强 */
+        html[data-theme="dark"] .small, 
+        html[data-theme="dark"] small, 
+        html[data-theme="dark"] .text-muted {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        html[data-theme="dark"] h1,
+        html[data-theme="dark"] h2,
+        html[data-theme="dark"] h3,
+        html[data-theme="dark"] h4,
+        html[data-theme="dark"] h5,
+        html[data-theme="dark"] h6 {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* 改善新闻项目的可读性 */
+        .media-body {
+            line-height: 1.6;
+        }
+        
+        .media-body div {
+            color: rgba(0, 0, 0, 0.85);
+        }
+        
+        html[data-theme="dark"] .media-body div {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
         <div class="container">
-            <a class="navbar-brand"><strong>News</strong></a>
+            <a class="navbar-brand"><strong>
+                <span lang="en">News</span>
+                <span lang="zh">新闻</span>
+            </strong></a>
             <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-map"></i> Menu
             </button>
@@ -26,16 +119,34 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">
+                            <span lang="en">Home</span>
+                            <span lang="zh">首页</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="publications.html">Publications</a>
+                        <a class="nav-link" href="publications.html">
+                            <span lang="en">Publications</span>
+                            <span lang="zh">发表文章</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
+                        <a class="nav-link" href="projects.html">
+                            <span lang="en">Projects</span>
+                            <span lang="zh">项目</span>
+                        </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="news.html">News</a>
+                        <a class="nav-link" href="news.html">
+                            <span lang="en">News</span>
+                            <span lang="zh">新闻</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -44,14 +155,33 @@
 
     <div class="container" style="margin-top: 70px;">
         <div class="my-3 bg-white shadow-sm rounded-sm">
-            <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> News</h6>
+            <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> 
+                <span lang="en">News</span>
+                <span lang="zh">新闻</span>
+            </h6>
             <div class="px-3 pb-1">
                 <div class="media py-1">
                     <div class="mr-3 text-muted my-1">2024</div>
                     <div class="media-body">
                         <div class="my-1 d-flex">
-                            <div>Started my Master's degree at Politecnico di Milano.</div>
+                            <div>
+                                <span lang="en">Started my Master's degree at Politecnico di Milano.</span>
+                                <span lang="zh">开始在米兰理工大学攻读硕士学位。</span>
+                            </div>
                             <div class="ml-auto mt-auto text-muted no-break"><i>Sep 01</i></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="media py-1">
+                    <div class="mr-3 text-muted my-1">2022</div>
+                    <div class="media-body">
+                        <div class="my-1 d-flex">
+                            <div>
+                                <span lang="en">My <a href="Projects/30DayMapChallenge/gallery.html" target="_blank">Chinese Ink Painting Series</a> received 132 likes and ranked 5th in the Day 30 - Remix category of the 30DayMapChallenge.</span>
+                                <span lang="zh">我的<a href="Projects/30DayMapChallenge/gallery.html" target="_blank">水墨丹青系列</a>作品在30DayMapChallenge的Day 30 - Remix类别中获得了132个赞，排名第5位。</span>
+                            </div>
+                            <div class="ml-auto mt-auto text-muted no-break"><i>Nov 30</i></div>
                         </div>
                     </div>
                 </div>
@@ -60,17 +190,26 @@
                     <div class="mr-3 text-muted my-1">2021</div>
                     <div class="media-body">
                         <div class="my-1 d-flex">
-                            <div>Graduated from Chuzhou University with a Bachelor's degree in Geography.</div>
+                            <div>
+                                <span lang="en">Graduated from Chuzhou University with a Bachelor's degree in Geography.</span>
+                                <span lang="zh">从滁州学院地理科学专业本科毕业。</span>
+                            </div>
                             <div class="ml-auto mt-auto text-muted no-break"><i>Jun 15</i></div>
                         </div>
                         
                         <div class="my-1 d-flex">
-                            <div>Received the Excellent Graduation Thesis Award (Top 3%).</div>
+                            <div>
+                                <span lang="en">Received the Excellent Graduation Thesis Award (Top 3%).</span>
+                                <span lang="zh">获得滁州学院优秀毕业论文奖（前3%）。</span>
+                            </div>
                             <div class="ml-auto mt-auto text-muted no-break"><i>Jun 10</i></div>
                         </div>
                         
                         <div class="my-1 d-flex">
-                            <div>Received the Excellent Graduates of Anhui Province Award (Top 2%).</div>
+                            <div>
+                                <span lang="en">Received the Excellent Graduates of Anhui Province Award (Top 2%).</span>
+                                <span lang="zh">获得安徽省优秀毕业生称号（前2%）。</span>
+                            </div>
                             <div class="ml-auto mt-auto text-muted no-break"><i>Jun 05</i></div>
                         </div>
                     </div>
@@ -80,7 +219,10 @@
                     <div class="mr-3 text-muted my-1">2020</div>
                     <div class="media-body">
                         <div class="my-1 d-flex">
-                            <div>Received the National Encouragement Scholarship, Anhui Province (Top 3%).</div>
+                            <div>
+                                <span lang="en">Received the National Encouragement Scholarship, Anhui Province (Top 3%).</span>
+                                <span lang="zh">获得国家励志奖学金，安徽省（前3%）。</span>
+                            </div>
                             <div class="ml-auto mt-auto text-muted no-break"><i>Nov 10</i></div>
                         </div>
                     </div>
@@ -90,7 +232,10 @@
                     <div class="mr-3 text-muted my-1">2019</div>
                     <div class="media-body">
                         <div class="my-1 d-flex">
-                            <div>Won Third Prize in the China University Geography Science Exhibition Competition.</div>
+                            <div>
+                                <span lang="en">Won Third Prize in the China University Geography Science Exhibition Competition.</span>
+                                <span lang="zh">在中国大学生地理科学展示竞赛中获得三等奖。</span>
+                            </div>
                             <div class="ml-auto mt-auto text-muted no-break"><i>Dec 15</i></div>
                         </div>
                     </div>
@@ -137,6 +282,22 @@
                     });
                 }
             }, 1000);
+            
+            // 语言切换功能
+            const langToggle = document.getElementById('lang-toggle');
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 切换语言按钮点击事件
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
         });
     </script>
 </body>

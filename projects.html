@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" data-lang="en">
 <!-- Inspired by Zongrong(Jasper) Li's Homepage Template -->
 <head>
     <meta charset="utf-8">
@@ -14,11 +14,111 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+        
+        /* 增强字体渲染 */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 提高小字体的清晰度和对比度 */
+        .small, small, .text-muted {
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.75);
+        }
+        
+        /* 增强标题文字 */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: rgba(0, 0, 0, 0.9);
+        }
+        
+        /* 暗黑模式下的文本颜色增强 */
+        html[data-theme="dark"] .small, 
+        html[data-theme="dark"] small, 
+        html[data-theme="dark"] .text-muted {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        html[data-theme="dark"] h1,
+        html[data-theme="dark"] h2,
+        html[data-theme="dark"] h3,
+        html[data-theme="dark"] h4,
+        html[data-theme="dark"] h5,
+        html[data-theme="dark"] h6 {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* 项目描述增强 */
+        p {
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.85);
+        }
+        
+        html[data-theme="dark"] p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* 增强项目卡片可读性 */
+        .row.no-gutters {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+        
+        html[data-theme="dark"] .row.no-gutters {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
         <div class="container">
-            <a class="navbar-brand"><strong>Projects</strong></a>
+            <a class="navbar-brand"><strong>
+                <span lang="en">Projects</span>
+                <span lang="zh">项目</span>
+            </strong></a>
             <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-map"></i> Menu
             </button>
@@ -26,16 +126,34 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">
+                            <span lang="en">Home</span>
+                            <span lang="zh">首页</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="publications.html">Publications</a>
+                        <a class="nav-link" href="publications.html">
+                            <span lang="en">Publications</span>
+                            <span lang="zh">发表文章</span>
+                        </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="projects.html">Projects</a>
+                        <a class="nav-link" href="projects.html">
+                            <span lang="en">Projects</span>
+                            <span lang="zh">项目</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">News</a>
+                        <a class="nav-link" href="news.html">
+                            <span lang="en">News</span>
+                            <span lang="zh">新闻</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -47,16 +165,25 @@
             <div class="col">
                 <div class="card border-0 shadow-sm bg-white">
                     <div class="card-body p-4">
-                        <h5 class="mb-3">Projects</h5>
+                        <h5 class="mb-3">
+                            <span lang="en">Projects</span>
+                            <span lang="zh">项目</span>
+                        </h5>
                         
                         <div class="row no-gutters border-bottom border-gray mb-4 pb-4">
                             <div class="col-md-4 mb-3 mb-md-0">
                                 <img src="Images/project-qinghai.jpg" alt="Qinghai Lake Project" class="img-fluid rounded" onerror="this.src='Images/placeholder.jpg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
-                                <h5>Runoff simulation and prediction in the Qinghai Lake basin based on the SWAT model</h5>
+                                <h5>
+                                    <span lang="en">Runoff simulation and prediction in the Qinghai Lake basin based on the SWAT model</span>
+                                    <span lang="zh">基于SWAT模型的青海湖流域径流模拟与预测</span>
+                                </h5>
                                 <p class="text-muted small">Timeline: 10.2021 - 06.2022</p>
-                                <p>Research project at Chinese Academy of Sciences focusing on simulating and predicting multi-year variation rules of water resources in the Qinghai Lake Basin using the SWAT model. The work involved leveraging remote sensing for data analysis and interpretation.</p>
+                                <p>
+                                    <span lang="en">Research project at Chinese Academy of Sciences focusing on simulating and predicting multi-year variation rules of water resources in the Qinghai Lake Basin using the SWAT model. The work involved leveraging remote sensing for data analysis and interpretation.</span>
+                                    <span lang="zh">在中国科学院进行的研究项目，重点使用SWAT模型模拟和预测青海湖流域水资源的多年变化规律。该工作利用遥感技术进行数据分析和解释。</span>
+                                </p>
                             </div>
                         </div>
                         
@@ -65,7 +192,10 @@
                                 <img src="Images/project-drought.jpg" alt="Drought Analysis Project" class="img-fluid rounded" onerror="this.src='Images/placeholder.jpg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
-                                <h5>Spatial-temporal Evolution and Trend Analysis of Drought Disasters in the Jianghuai Watershed Region</h5>
+                                <h5>
+                                    <span lang="en">Spatial-temporal Evolution and Trend Analysis of Drought Disasters in the Jianghuai Watershed Region</span>
+                                    <span lang="zh">长江淮河流域干旱灾害时空演变及趋势分析</span>
+                                </h5>
                                 <p class="text-muted small">Timeline: 01.2021 - 05.2021</p>
                                 <p>Undergraduate thesis research focused on computing the Standardized Precipitation Evapotranspiration Index (SPEI) as an indicator for drought evaluation. The project explored spatial-temporal change characteristics and future trends of meteorological drought using various analysis methods including EOF, M-K test, Wavelet Analysis, and Spatial Analysis.</p>
                             </div>
@@ -76,7 +206,10 @@
                                 <img src="Images/project-pm25.jpg" alt="PM2.5 Analysis Project" class="img-fluid rounded" onerror="this.src='Images/placeholder.jpg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
-                                <h5>Spatial-temporal pattern mining of PM2.5 pollution in China and analysis of its driving mechanisms</h5>
+                                <h5>
+                                    <span lang="en">Spatial-temporal pattern mining of PM2.5 pollution in China and analysis of its driving mechanisms</span>
+                                    <span lang="zh">中国PM2.5污染时空模式挖掘及驱动机制分析</span>
+                                </h5>
                                 <p class="text-muted small">Timeline: 01.2020 - 06.2021</p>
                                 <p>Research conducted at the Geoinformation Lab of Chuzhou University, utilizing 3D GIS technology and the space-time cube model. The project employed spatial-temporal hotspot data analysis methods to examine the evolution trends and distribution patterns of PM2.5 in China, and analyzed impacts of natural and socio-economic factors using Geodetector and Geographically Weighted Regression models.</p>
                             </div>
@@ -87,9 +220,41 @@
                                 <img src="Images/project-trees.jpg" alt="Tree Species Classification" class="img-fluid rounded" onerror="this.src='Images/placeholder.jpg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
-                                <h5>On the Remote Sensing Classification of Tree Species Based on Multi-scale Feature Transfer Learning</h5>
+                                <h5>
+                                    <span lang="en">On the Remote Sensing Classification of Tree Species Based on Multi-scale Feature Transfer Learning</span>
+                                    <span lang="zh">基于多尺度特征迁移学习的遥感树种分类研究</span>
+                                </h5>
                                 <p class="text-muted small">Timeline: 06.2018 - 12.2019</p>
                                 <p>Research conducted at the Remote Sensing and Big Data Analysis Lab of Chuzhou University. The project utilized QuickBird high-resolution remote sensing imagery to develop a tree species classification model with high accuracy. The methodology combined multi-scale segmentation algorithms and transfer learning to achieve precision identification and classification of forest tree species.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row no-gutters border-bottom border-gray mb-4 pb-4">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <img src="Projects/30DayMapChallenge/images/水墨丹青系列/落霞与孤鹜齐飞，秋水共长天一色.jpg" alt="30DayMapChallenge" class="img-fluid rounded" onerror="this.src='Images/projects/placeholder.jpg'">
+                            </div>
+                            <div class="col-md-8 pl-md-4">
+                                <h5>
+                                    <span lang="en">30DayMapChallenge Featured Map Creation - Chinese Ink Painting Series</span>
+                                    <span lang="zh">30DayMapChallenge精选地图创作 - 水墨丹青系列</span>
+                                </h5>
+                                <p class="text-muted small">Timeline: 11.2022</p>
+                                <p>
+                                    <span lang="en">My "Chinese Ink Painting Series" stood out in the global 30DayMapChallenge competition, receiving 132 likes and ranking 5th in the Day 30 - Remix category. This series integrates traditional Chinese ink painting styles with modern cartographic techniques, focusing on China's Five Great Mountains to showcase the perfect blend of Chinese culture and geographic information science.</span>
+                                    <span lang="zh">我的"水墨丹青系列"作品在全球30DayMapChallenge比赛中脱颖而出，Day 30 - Remix主题下获得了132个赞，名列第5位。这一系列作品融合了中国传统水墨画风格与现代地图制图技术，以中国五岳为主题，展现了中华文化与地理信息科学的完美结合。</span>
+                                </p>
+                                <div>
+                                    <a href="Projects/30DayMapChallenge/gallery.html" target="_blank" class="btn btn-sm btn-outline-info">
+                                        <i class="fas fa-images"></i> 
+                                        <span lang="en">View Gallery</span>
+                                        <span lang="zh">查看画廊</span>
+                                    </a>
+                                    <a href="https://30daymapchallenge.com/2022/day30_Remix/" target="_blank" class="btn btn-sm btn-outline-primary ml-2">
+                                        <i class="fas fa-trophy"></i> 
+                                        <span lang="en">Competition Results</span>
+                                        <span lang="zh">比赛成果</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         
@@ -157,6 +322,22 @@
                     });
                 }
             }, 1000);
+            
+            // 语言切换功能
+            const langToggle = document.getElementById('lang-toggle');
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 切换语言按钮点击事件
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
         });
     </script>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-lang="en">
 <!-- Inspired by Zongrong(Jasper) Li's Homepage Template -->
 <head>
     <meta charset="utf-8">
@@ -37,6 +37,82 @@
         .visitor-marker {
             animation: pulse 2s infinite;
         }
+        
+        /* 增强字体渲染 */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 提高小字体的清晰度和对比度 */
+        .small, small, .text-muted {
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.75);
+        }
+        
+        /* 增强标题文字 */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: rgba(0, 0, 0, 0.9);
+        }
+        
+        /* 暗黑模式下的文本颜色增强 */
+        html[data-theme="dark"] .small, 
+        html[data-theme="dark"] small, 
+        html[data-theme="dark"] .text-muted {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        html[data-theme="dark"] h1,
+        html[data-theme="dark"] h2,
+        html[data-theme="dark"] h3,
+        html[data-theme="dark"] h4,
+        html[data-theme="dark"] h5,
+        html[data-theme="dark"] h6 {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -50,20 +126,38 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">
+                            <span lang="en">Home</span>
+                            <span lang="zh">首页</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="publications.html">Publications</a>
+                        <a class="nav-link" href="publications.html">
+                            <span lang="en">Publications</span>
+                            <span lang="zh">发表文章</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
+                        <a class="nav-link" href="projects.html">
+                            <span lang="en">Projects</span>
+                            <span lang="zh">项目</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">News</a>
+                        <a class="nav-link" href="news.html">
+                            <span lang="en">News</span>
+                            <span lang="zh">新闻</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
                             <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
                         </button>
                     </li>
                 </ul>
@@ -81,7 +175,7 @@
                                 <!-- Profile image floated right on larger screens -->
                                 <div class="figure float-right ml-4 mb-4 d-none d-md-block">
                                     <img 
-                                        src="Images/guojiale2.jpeg" 
+                                        src="Images/personal/guojiale2.jpeg" 
                                         class="figure-img img-fluid img-thumbnail" 
                                         style="height: 160px; object-fit: cover; border-radius: 5px;"
                                         data-toggle="tooltip" 
@@ -103,8 +197,8 @@
                                     </div>
                                     
                                     <div class="d-md-none">
-                                        <a target="_blank" href="Images/guojiale2.jpeg">
-                                            <img src="Images/guojiale2.jpeg" class="rounded-circle" style="height: 48px;" alt="Portrait">
+                                        <a target="_blank" href="Images/personal/guojiale2.jpeg">
+                                            <img src="Images/personal/guojiale2.jpeg" class="rounded-circle" style="height: 48px;" alt="Portrait">
                                         </a>
                                     </div>
                                 </div>
@@ -175,7 +269,7 @@
                                     <h6>Education</h6>
                                     <ul class="list-unstyled mb-1">
                                         <li class="media mb-3">
-                                            <img src="Images/polimi.png" alt="Politecnico di Milano" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
+                                            <img src="Images/institutions/polimi.png" alt="Politecnico di Milano" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
                                             <div class="media-body">
                                                 <div class="d-flex justify-content-between w-100">
                                                     <div><strong>Politecnico di Milano</strong></div>
@@ -189,7 +283,7 @@
                                         </li>
                                         
                                         <li class="media mb-3">
-                                            <img src="Images/chuzhou university.png" alt="Chuzhou University" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
+                                            <img src="Images/institutions/chuzhou university.png" alt="Chuzhou University" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
                                             <div class="media-body">
                                                 <div class="d-flex justify-content-between w-100">
                                                     <div><strong>Chuzhou University</strong></div>
@@ -216,20 +310,6 @@
                                         
                                         <li>
                                             <div class="d-flex justify-content-between">
-                                                <div>GIS Skills Competition, Anhui Province, Second Prize</div>
-                                                <div><em>2019-2020</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>China University Geography Science Exhibition Competition, Third Prize</div>
-                                                <div><em>2019</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
                                                 <div>Excellent Graduation Thesis of Chuzhou University (Top 3%)</div>
                                                 <div><em>2021</em></div>
                                             </div>
@@ -246,6 +326,20 @@
                                             <div class="d-flex justify-content-between">
                                                 <div>National Encouragement Scholarship, Anhui Province (Top 3%)</div>
                                                 <div><em>2020</em></div>
+                                            </div>
+                                        </li>
+                                        
+                                        <li>
+                                            <div class="d-flex justify-content-between">
+                                                <div>GIS Skills Competition, Anhui Province, Second Prize</div>
+                                                <div><em>2019-2020</em></div>
+                                            </div>
+                                        </li>
+                                        
+                                        <li>
+                                            <div class="d-flex justify-content-between">
+                                                <div>China University Geography Science Exhibition Competition, Third Prize</div>
+                                                <div><em>2019</em></div>
                                             </div>
                                         </li>
                                         
@@ -279,7 +373,7 @@
                                     <h6>Research Experience</h6>
                                     <ul class="list-unstyled mb-1">
                                         <li class="media mb-3">
-                                            <img src="Images/CAS.png" alt="Chinese Academy of Sciences" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
+                                            <img src="Images/institutions/CAS.png" alt="Chinese Academy of Sciences" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
                                             <div class="media-body">
                                                 <div class="d-flex justify-content-between w-100">
                                                     <div><strong>Chinese Academy of Sciences</strong></div>
@@ -292,7 +386,7 @@
                                             </div>
                                         </li>
                                         <li class="media mb-3">
-                                            <img src="Images/chuzhou university.png" alt="Chuzhou University" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
+                                            <img src="Images/institutions/chuzhou university.png" alt="Chuzhou University" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
                                             <div class="media-body">
                                                 <div class="d-flex justify-content-between w-100">
                                                     <div><strong>Chuzhou University</strong></div>
@@ -348,7 +442,7 @@
                                                     <div>Internship</div>
                                                     <div class="text-right no-break"><em>05.2019 - 12.2019</em></div>
                                                 </div>
-                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -374,6 +468,19 @@
                         <div class="my-1 d-flex">
                             <div>Launched my updated academic website with a new modern design.</div>
                             <div class="ml-auto mt-auto text-muted no-break"><i>Oct 10</i></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="media py-1">
+                    <div class="mr-3 text-muted my-1">2022</div>
+                    <div class="media-body">
+                        <div class="my-1 d-flex">
+                            <div>
+                                <span lang="en">My <a href="Projects/30DayMapChallenge/gallery.html" target="_blank">Chinese Ink Painting Series</a> received recognition in the 30DayMapChallenge competition.</span>
+                                <span lang="zh">我的<a href="Projects/30DayMapChallenge/gallery.html" target="_blank">水墨丹青系列</a>作品在30DayMapChallenge比赛中获得广泛关注。</span>
+                            </div>
+                            <div class="ml-auto mt-auto text-muted no-break"><i>Nov 30</i></div>
                         </div>
                     </div>
                 </div>
@@ -477,6 +584,22 @@
                     themeIcon.classList.add('fa-sun');
                 }
             }
+            
+            // 语言切换功能
+            const langToggle = document.getElementById('lang-toggle');
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 切换语言按钮点击事件
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
         });
     </script>
     
