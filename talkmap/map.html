@@ -5,19 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
     <style>
         body {
             padding: 0;
             margin: 0;
             font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
         }
         
-        #map {
-            width: 100%;
-            height: 600px;
+        [data-theme="dark"] body {
+            background-color: #121212;
+            color: #ffffff;
         }
         
         .header {
@@ -25,6 +24,11 @@
             background-color: #336699;
             color: white;
             text-align: center;
+        }
+        
+        [data-theme="dark"] .header {
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #555555;
         }
         
         .container {
@@ -40,6 +44,12 @@
             font-size: 0.9em;
             color: #666;
             margin-top: 20px;
+        }
+        
+        [data-theme="dark"] .footer {
+            background-color: #1e1e1e;
+            color: #c0c0c0;
+            border-top: 1px solid #555555;
         }
         
         .visitor-stats {
@@ -61,8 +71,32 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
+        [data-theme="dark"] .visitor-stats > div {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            border: 1px solid #555555;
+        }
+        
         h3 {
             color: #336699;
+        }
+        
+        [data-theme="dark"] h3 {
+            color: #80b7f0;
+        }
+        
+        .map-container {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        [data-theme="dark"] .map-container {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            border: 1px solid #555555;
         }
         
         .back-btn {
@@ -78,10 +112,38 @@
         .back-btn:hover {
             background-color: #204d74;
         }
+        
+        [data-theme="dark"] .back-btn {
+            background-color: #1e1e1e;
+            border: 1px solid #555555;
+        }
+        
+        [data-theme="dark"] .back-btn:hover {
+            background-color: #333333;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .flag-map {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .flag-counter {
+            margin: 30px auto;
+            display: block;
+            text-align: center;
+        }
 
-        .leaflet-popup-content {
-            font-size: 14px;
-            line-height: 1.5;
+        @media (max-width: 768px) {
+            .visitor-stats > div {
+                min-width: 100%;
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -91,84 +153,40 @@
     </div>
     
     <div class="container">
-        <div class="visitor-stats">
-            <div>
-                <h3>Total Visitors</h3>
-                <p id="total-count">Loading...</p>
-            </div>
-            <div>
-                <h3>Top Countries</h3>
-                <p id="top-countries">Loading...</p>
-            </div>
-            <div>
-                <h3>This Month</h3>
-                <p id="month-count">Loading...</p>
+        <div class="map-container">
+            <h3 class="text-center">Global Visitor Distribution</h3>
+            <p class="text-center">This map shows real-time visitors to my academic website from around the world</p>
+            
+            <!-- FlagCounter World Map - this will automatically track and display visitors -->
+            <div class="flag-map">
+                <a href="https://flagcounter.com/map/RXMK" target="_blank">
+                    <img src="https://flagcounter.com/map/RXMK/" width="100%" height="auto" alt="Flag Counter World Map">
+                </a>
             </div>
         </div>
         
-        <div id="map"></div>
+        <div class="flag-counter">
+            <h3 class="text-center">Visitor Statistics by Country</h3>
+            <a href="https://info.flagcounter.com/RXMK" target="_blank">
+                <img src="https://s11.flagcounter.com/count2/RXMK/bg_FFFFFF/txt_000000/border_CCCCCC/columns_5/maxflags_50/viewers_0/labels_1/pageviews_1/flags_1/percent_1/" alt="Flag Counter" border="0">
+            </a>
+        </div>
         
         <div style="text-align: center; margin-top: 30px;">
-            <p>This map shows the approximate location of visitors to my academic website since April 2025.</p>
             <a href="../index.html" class="back-btn">Back to Homepage</a>
         </div>
     </div>
     
     <div class="footer">
-        <p>© 2025 Jiale Guo | Map visualization powered by Leaflet.js | Data provided by Flag Counter API</p>
+        <p>© 2025 Jiale Guo | Map visualization and tracking powered by FlagCounter</p>
     </div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
     <script>
-        // Initialize the map
-        var map = L.map('map').setView([30, 10], 2);
-
-        // Add tile layer (OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Sample data (in a real implementation, this would be fetched from Flag Counter API or similar)
-        const visitorData = [
-            { country: "Italy", count: 1, lat: 45.4642, lng: 9.1900, code: "IT" },
-            { country: "United States", count: 1, lat: 40.7128, lng: -74.0060, code: "US" }
-        ];
-
-        // Add markers for each country
-        let totalVisitors = 0;
-        
-        visitorData.forEach(visitor => {
-            totalVisitors += visitor.count;
-            
-            // Create custom icon with flag
-            const flagIcon = L.divIcon({
-                className: 'custom-icon',
-                html: `<div style="background-color: #336699; color: white; padding: 5px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold;">${visitor.count}</div>`,
-                iconSize: [30, 30],
-                iconAnchor: [15, 15]
-            });
-            
-            // Add marker
-            L.marker([visitor.lat, visitor.lng], {icon: flagIcon}).addTo(map)
-                .bindPopup(`<b>${visitor.country}</b><br>${visitor.lat === 45.4642 ? 'Milan' : 'New York'}<br>Visitors: ${visitor.count}`);
+        // Check for theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
         });
-
-        // Update statistics
-        document.getElementById('total-count').textContent = totalVisitors;
-        
-        // Get top 5 countries
-        const topCountries = visitorData
-            .sort((a, b) => b.count - a.count)
-            .slice(0, 5)
-            .map(c => `${c.country}: ${c.count}`)
-            .join('<br>');
-        
-        document.getElementById('top-countries').innerHTML = topCountries;
-        
-        // Simulate monthly count (in real implementation, this would be calculated)
-        document.getElementById('month-count').textContent = Math.round(totalVisitors * 0.4);
     </script>
 </body>
 </html> 
