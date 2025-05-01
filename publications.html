@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" data-lang="en">
 <!-- Inspired by Zongrong(Jasper) Li's Homepage Template -->
 <head>
     <meta charset="utf-8">
@@ -14,11 +14,91 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+        
+        /* 增强字体渲染 */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 提高小字体的清晰度和对比度 */
+        .small, small, .text-muted {
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.75);
+        }
+        
+        /* 增强标题文字 */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: rgba(0, 0, 0, 0.9);
+        }
+        
+        /* 暗黑模式下的文本颜色增强 */
+        html[data-theme="dark"] .small, 
+        html[data-theme="dark"] small, 
+        html[data-theme="dark"] .text-muted {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        html[data-theme="dark"] h1,
+        html[data-theme="dark"] h2,
+        html[data-theme="dark"] h3,
+        html[data-theme="dark"] h4,
+        html[data-theme="dark"] h5,
+        html[data-theme="dark"] h6 {
+            color: rgba(255, 255, 255, 0.95);
+        }
+    </style>
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
         <div class="container">
-            <a class="navbar-brand"><strong>Publications</strong></a>
+            <a class="navbar-brand"><strong>
+                <span lang="en">Publications</span>
+                <span lang="zh">发表文章</span>
+            </strong></a>
             <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-map"></i> Menu
             </button>
@@ -26,16 +106,39 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">
+                            <span lang="en">Home</span>
+                            <span lang="zh">首页</span>
+                        </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="publications.html">Publications</a>
+                        <a class="nav-link" href="publications.html">
+                            <span lang="en">Publications</span>
+                            <span lang="zh">发表文章</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
+                        <a class="nav-link" href="projects.html">
+                            <span lang="en">Projects</span>
+                            <span lang="zh">项目</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">News</a>
+                        <a class="nav-link" href="news.html">
+                            <span lang="en">News</span>
+                            <span lang="zh">新闻</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -47,11 +150,17 @@
             <div class="col">
                 <div class="card border-0 shadow-sm bg-white">
                     <div class="card-body p-4">
-                        <h5 class="mb-3">Publications</h5>
+                        <h5 class="mb-3">
+                            <span lang="en">Publications</span>
+                            <span lang="zh">发表文章</span>
+                        </h5>
                         
                         <div class="row no-gutters border-bottom border-gray mb-3 pb-3">
                             <div class="col p-3">
-                                <h5 class="mt-0 mb-1 font-weight-normal">Study on characteristics of temporal and spatial evolution of rural settlements in typical land consolidation counties--Taking Dingyuan County of Anhui Province as an example</h5>
+                                <h5 class="mt-0 mb-1 font-weight-normal">
+                                    <span lang="en">Study on characteristics of temporal and spatial evolution of rural settlements in typical land consolidation counties--Taking Dingyuan County of Anhui Province as an example</span>
+                                    <span lang="zh">典型土地整理县农村聚落时空演变特征研究——以安徽省定远县为例</span>
+                                </h5>
                                 <p class="mt-0 mb-0 small">
                                     Li, J., Li, R., Zhang, M., <strong>Guo, J.</strong>, Shi, L., & Guo, A.
                                 </p>
@@ -64,20 +173,27 @@
                         
                         <div class="row no-gutters border-bottom border-gray mb-3 pb-3">
                             <div class="col p-3">
-                                <h5 class="mt-0 mb-1 font-weight-normal">On the Remote Sensing Classification of Tree Species Based on Multi-scale Feature Transfer Learning</h5>
+                                <h5 class="mt-0 mb-1 font-weight-normal">
+                                    <span lang="en">On the Remote Sensing Classification of Tree Species Based on Multi-scale Feature Transfer Learning</span>
+                                    <span lang="zh">基于多尺度特征迁移学习的树种遥感分类研究</span>
+                                </h5>
                                 <p class="mt-0 mb-0 small">
                                     Wang, N., Min, J., <strong>Guo, J.</strong>, & He, N.
                                 </p>
                                 <p class="mt-0 mb-0 small"><i>Journal of Ezhou University</i> (02), 93-97, 2021</p>
-                                <p class="small pb-0 mb-0 lh-125 text-muted">
-                                    DOI: 10.16732/j.cnki.jeu.2021.02.031
+                                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                                    DOI: 10.16732/j.cnki.jeu.2021.02.031 
+                                    <a target="_blank" href="papers/基于多尺度特征迁移学习的树种遥感分类研究.pdf">[PDF]</a>
                                 </p>
                             </div>
                         </div>
                         
                         <div class="row no-gutters border-bottom border-gray mb-3 pb-3">
                             <div class="col p-3">
-                                <h5 class="mt-0 mb-1 font-weight-normal">Analysis of spatial pattern and effect of the farm pond system in Jianghuai water-shed area</h5>
+                                <h5 class="mt-0 mb-1 font-weight-normal">
+                                    <span lang="en">Analysis of spatial pattern and effect of the farm pond system in Jianghuai water-shed area</span>
+                                    <span lang="zh">江淮分水岭区塘坝系统空间格局及其效应分析</span>
+                                </h5>
                                 <p class="mt-0 mb-0 small">
                                     Cao, X., Zhou, L., Dai, S., <strong>Guo, J.</strong>, & Ju, X.
                                 </p>
@@ -140,8 +256,8 @@
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script>
-        // 显示不蒜子计数器，但只在成功加载后
         document.addEventListener('DOMContentLoaded', function() {
+            // 显示不蒜子计数器，但只在成功加载后
             setTimeout(function() {
                 var bszContainers = document.querySelectorAll('#busuanzi_container_site_pv');
                 if (document.getElementById('busuanzi_value_site_pv').innerText !== '') {
@@ -150,6 +266,55 @@
                     });
                 }
             }, 1000);
+            
+            // 语言切换功能
+            const langToggle = document.getElementById('lang-toggle');
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 切换语言按钮点击事件
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
+            
+            // 主题切换功能
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // 检查保存的主题偏好或使用默认值
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // 更新按钮图标基于当前主题
+            updateThemeIcon(currentTheme);
+            
+            // 切换主题点击事件
+            themeToggle.addEventListener('click', function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateThemeIcon(newTheme);
+            });
+            
+            // 更新图标函数
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            }
         });
     </script>
 </body>
