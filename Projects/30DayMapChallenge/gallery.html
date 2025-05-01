@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" data-theme="light" data-lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>水墨丹青系列 - 30DayMapChallenge</title>
+    <title>Chinese Ink Painting Series - 30DayMapChallenge</title>
     
-    <!-- 引入Bootstrap样式 -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -80,6 +80,95 @@
             font-weight: 500;
             color: rgba(0, 0, 0, 0.75);
         }
+        
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: #336699;
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .lang-toggle:hover {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], 
+        html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], 
+        html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+        
+        /* 暗黑模式支持 */
+        [data-theme="dark"] {
+            --text-color: #ffffff;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --header-bg: #1a1a1a;
+            --border-color: #333;
+        }
+        
+        [data-theme="dark"] body {
+            background-color: var(--bg-color);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        [data-theme="dark"] .header-bg {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        [data-theme="dark"] h1, 
+        [data-theme="dark"] h2, 
+        [data-theme="dark"] h3, 
+        [data-theme="dark"] h4, 
+        [data-theme="dark"] h5, 
+        [data-theme="dark"] h6 {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        [data-theme="dark"] .map-title {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        [data-theme="dark"] .map-description {
+            color: rgba(255, 255, 255, 0.75);
+        }
+        
+        [data-theme="dark"] .lead {
+            color: rgba(255, 255, 255, 0.75);
+        }
+        
+        [data-theme="dark"] .gallery-item img {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
@@ -87,8 +176,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h1>水墨丹青系列</h1>
-                    <p class="lead">30DayMapChallenge 2022获奖作品集</p>
+                    <h1>
+                        <span lang="en">Chinese Ink Painting Series</span>
+                        <span lang="zh">水墨丹青系列</span>
+                    </h1>
+                    <p class="lead">
+                        <span lang="en">Award-winning collection from 30DayMapChallenge 2022</span>
+                        <span lang="zh">30DayMapChallenge 2022获奖作品集</span>
+                    </p>
+                    <button id="lang-toggle" class="lang-toggle btn btn-sm btn-outline-primary mt-2">
+                        <span lang="en">中文</span>
+                        <span lang="zh">English</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -98,98 +197,191 @@
         <div class="row back-link">
             <div class="col-md-12">
                 <a href="../../index.html" class="btn btn-outline-secondary">
-                    <i class="fas fa-arrow-left"></i> 返回首页
+                    <i class="fas fa-arrow-left"></i> 
+                    <span lang="en">Back to Home</span>
+                    <span lang="zh">返回首页</span>
                 </a>
                 <a href="../../projects.html" class="btn btn-outline-primary ml-2">
-                    <i class="fas fa-project-diagram"></i> 查看所有项目
+                    <i class="fas fa-project-diagram"></i> 
+                    <span lang="en">View All Projects</span>
+                    <span lang="zh">查看所有项目</span>
                 </a>
             </div>
         </div>
         
         <div class="row">
             <div class="col-md-12">
-                <p>这一系列作品融合了中国传统水墨画风格与现代地图制图技术，以中国五岳为主题，展现了中华文化与地理信息科学的完美结合。该作品在2022年30DayMapChallenge的Day 30 - Remix类别中获得132个赞，排名第5位。</p>
+                <p lang="en">This series of works combines traditional Chinese ink painting styles with modern cartographic techniques, focusing on China's Five Great Mountains to showcase the perfect blend of Chinese culture and geographic information science. The work received 132 likes and ranked 5th in the Day 30 - Remix category of the 2022 30DayMapChallenge.</p>
+                <p lang="zh">这一系列作品融合了中国传统水墨画风格与现代地图制图技术，以中国五岳为主题，展现了中华文化与地理信息科学的完美结合。该作品在2022年30DayMapChallenge的Day 30 - Remix类别中获得132个赞，排名第5位。</p>
             </div>
         </div>
 
         <div class="row">
             <!-- 泰山 -->
             <div class="col-md-6 gallery-item">
-                <img src="images/水墨丹青系列/泰山—会当凌绝顶，一览众山小.jpg" alt="泰山" class="img-fluid">
-                <h4 class="map-title">泰山 — 会当凌绝顶，一览众山小</h4>
-                <p class="map-description">以杜甫《望岳》中的著名诗句为灵感，展现泰山雄伟壮观的气势。</p>
+                <img src="images/水墨丹青系列/泰山—会当凌绝顶，一览众山小.jpg" alt="Mount Tai" class="img-fluid">
+                <h4 class="map-title">
+                    <span lang="en">Mount Tai — Standing atop, all mountains look small</span>
+                    <span lang="zh">泰山 — 会当凌绝顶，一览众山小</span>
+                </h4>
+                <p class="map-description">
+                    <span lang="en">Inspired by Du Fu's famous poem "Gazing at Mount Tai," showcasing the majestic grandeur of Mount Tai.</span>
+                    <span lang="zh">以杜甫《望岳》中的著名诗句为灵感，展现泰山雄伟壮观的气势。</span>
+                </p>
             </div>
             
             <!-- 华山 -->
             <div class="col-md-6 gallery-item">
-                <img src="images/水墨丹青系列/华山—谁将倚天剑，削出倚天峰.jpg" alt="华山" class="img-fluid">
-                <h4 class="map-title">华山 — 谁将倚天剑，削出倚天峰</h4>
-                <p class="map-description">展现华山险峻如剑的特色地貌，气势磅礴。</p>
+                <img src="images/水墨丹青系列/华山—谁将倚天剑，削出倚天峰.jpg" alt="Mount Hua" class="img-fluid">
+                <h4 class="map-title">
+                    <span lang="en">Mount Hua — Who carved this heavenly sword into a peak</span>
+                    <span lang="zh">华山 — 谁将倚天剑，削出倚天峰</span>
+                </h4>
+                <p class="map-description">
+                    <span lang="en">Showcasing the steep, sword-like terrain features of Mount Hua with its imposing landscape.</span>
+                    <span lang="zh">展现华山险峻如剑的特色地貌，气势磅礴。</span>
+                </p>
             </div>
             
             <!-- 嵩山 -->
             <div class="col-md-6 gallery-item">
-                <img src="images/水墨丹青系列/嵩山—将进酒，杯莫停.jpg" alt="嵩山" class="img-fluid">
-                <h4 class="map-title">嵩山 — 将进酒，杯莫停</h4>
-                <p class="map-description">以李白豪迈诗句表现嵩山的文化底蕴，融合武术与自然之美。</p>
+                <img src="images/水墨丹青系列/嵩山—将进酒，杯莫停.jpg" alt="Mount Song" class="img-fluid">
+                <h4 class="map-title">
+                    <span lang="en">Mount Song — Bring the wine, let cups never rest</span>
+                    <span lang="zh">嵩山 — 将进酒，杯莫停</span>
+                </h4>
+                <p class="map-description">
+                    <span lang="en">Using Li Bai's bold poetry to express the cultural heritage of Mount Song, blending martial arts and natural beauty.</span>
+                    <span lang="zh">以李白豪迈诗句表现嵩山的文化底蕴，融合武术与自然之美。</span>
+                </p>
             </div>
             
             <!-- 衡山 -->
             <div class="col-md-6 gallery-item">
-                <img src="images/水墨丹青系列/衡山—衡山晓雾.png" alt="衡山" class="img-fluid">
-                <h4 class="map-title">衡山 — 衡山晓雾</h4>
-                <p class="map-description">捕捉衡山晨雾缭绕的秀丽景观，展现南岳的灵秀之美。</p>
+                <img src="images/水墨丹青系列/衡山—衡山晓雾.png" alt="Mount Heng" class="img-fluid">
+                <h4 class="map-title">
+                    <span lang="en">Mount Heng — Morning Mist</span>
+                    <span lang="zh">衡山 — 衡山晓雾</span>
+                </h4>
+                <p class="map-description">
+                    <span lang="en">Capturing the enchanting morning mist surrounding Mount Heng, displaying the elegant beauty of the Southern Sacred Mountain.</span>
+                    <span lang="zh">捕捉衡山晨雾缭绕的秀丽景观，展现南岳的灵秀之美。</span>
+                </p>
             </div>
             
             <!-- 恒山 -->
             <div class="col-md-6 gallery-item">
-                <img src="images/水墨丹青系列/恒山—天地有五岳，恒岳居其北.jpg" alt="恒山" class="img-fluid">
-                <h4 class="map-title">恒山 — 天地有五岳，恒岳居其北</h4>
-                <p class="map-description">展现恒山作为北岳的雄浑与巍峨，高耸入云的壮观气势。</p>
+                <img src="images/水墨丹青系列/恒山—天地有五岳，恒岳居其北.jpg" alt="Mount Heng (Northern)" class="img-fluid">
+                <h4 class="map-title">
+                    <span lang="en">Mount Heng — Of the Five Mountains, Heng stands in the North</span>
+                    <span lang="zh">恒山 — 天地有五岳，恒岳居其北</span>
+                </h4>
+                <p class="map-description">
+                    <span lang="en">Showcasing the grandeur and magnificence of Mount Heng as the Northern Sacred Mountain, with its towering peaks reaching into the clouds.</span>
+                    <span lang="zh">展现恒山作为北岳的雄浑与巍峨，高耸入云的壮观气势。</span>
+                </p>
             </div>
             
             <!-- 黄山 -->
             <div class="col-md-6 gallery-item">
-                <img src="images/水墨丹青系列/黄山—五岳归来不看山，黄山归来不看岳.jpg" alt="黄山" class="img-fluid">
-                <h4 class="map-title">黄山 — 五岳归来不看山，黄山归来不看岳</h4>
-                <p class="map-description">展现黄山奇松、怪石、云海的神奇景观，独特的自然魅力。</p>
+                <img src="images/水墨丹青系列/黄山—五岳归来不看山，黄山归来不看岳.jpg" alt="Mount Huang" class="img-fluid">
+                <h4 class="map-title">
+                    <span lang="en">Mount Huang — After seeing the Five Mountains, no mountain compares; after seeing Mount Huang, no other peak matters</span>
+                    <span lang="zh">黄山 — 五岳归来不看山，黄山归来不看岳</span>
+                </h4>
+                <p class="map-description">
+                    <span lang="en">Showcasing the unique natural charm of Mount Huang with its famous pines, peculiar rocks, and sea of clouds.</span>
+                    <span lang="zh">展现黄山奇松、怪石、云海的神奇景观，独特的自然魅力。</span>
+                </p>
             </div>
             
             <!-- 落霞与孤鹜齐飞 -->
             <div class="col-md-12 gallery-item">
-                <img src="images/水墨丹青系列/落霞与孤鹜齐飞，秋水共长天一色.jpg" alt="落霞与孤鹜齐飞" class="img-fluid">
-                <h4 class="map-title">落霞与孤鹜齐飞，秋水共长天一色</h4>
-                <p class="map-description">以王勃《滕王阁序》中的名句为灵感，描绘一幅中国山水的全景图，展现"落霞与孤鹜齐飞，秋水共长天一色"的壮美景象。</p>
+                <img src="images/水墨丹青系列/落霞与孤鹜齐飞，秋水共长天一色.jpg" alt="Sunset Glow and Flying Birds" class="img-fluid">
+                <h4 class="map-title">
+                    <span lang="en">Sunset glow and flying birds vanish together, autumn waters merge with the sky in a single hue</span>
+                    <span lang="zh">落霞与孤鹜齐飞，秋水共长天一色</span>
+                </h4>
+                <p class="map-description">
+                    <span lang="en">Inspired by the famous line from Wang Bo's "Preface to the Pavilion of King Teng," depicting a panoramic view of China's landscape that captures the magnificent scene where "the sunset glow and flying birds vanish together, and the autumn waters merge with the sky in a single hue."</span>
+                    <span lang="zh">以王勃《滕王阁序》中的名句为灵感，描绘一幅中国山水的全景图，展现"落霞与孤鹜齐飞，秋水共长天一色"的壮美景象。</span>
+                </p>
             </div>
         </div>
         
         <div class="row mt-4 mb-5">
             <div class="col-md-12">
-                <h3>创作技术</h3>
+                <h3>
+                    <span lang="en">Creative Techniques</span>
+                    <span lang="zh">创作技术</span>
+                </h3>
                 <ul>
-                    <li>数据处理：ArcGIS Pro、QGIS处理DEM数据</li>
-                    <li>视觉设计：Adobe Illustrator、Photoshop结合中国传统水墨画技法</li>
-                    <li>数据来源：中国国家基础地理信息中心、OpenStreetMap</li>
+                    <li>
+                        <span lang="en">Data Processing: ArcGIS Pro and QGIS for DEM data processing</span>
+                        <span lang="zh">数据处理：ArcGIS Pro、QGIS处理DEM数据</span>
+                    </li>
+                    <li>
+                        <span lang="en">Visual Design: Adobe Illustrator, Photoshop combined with traditional Chinese ink painting techniques</span>
+                        <span lang="zh">视觉设计：Adobe Illustrator、Photoshop结合中国传统水墨画技法</span>
+                    </li>
+                    <li>
+                        <span lang="en">Data Sources: National Geomatics Center of China, OpenStreetMap</span>
+                        <span lang="zh">数据来源：中国国家基础地理信息中心、OpenStreetMap</span>
+                    </li>
                 </ul>
                 
-                <h3>创作理念</h3>
-                <p>水墨丹青系列作品旨在通过现代地图技术与传统艺术表现手法的融合，展示中国自然地理的壮美景观，同时传递中华文化的深厚底蕴。作品力求在准确表达地理信息的基础上，注入诗意与美学，使科学与艺术相得益彰。</p>
+                <h3>
+                    <span lang="en">Creative Concept</span>
+                    <span lang="zh">创作理念</span>
+                </h3>
+                <p lang="en">The Chinese Ink Painting Series aims to showcase the magnificent landscapes of China through the fusion of modern mapping technology and traditional artistic expression. By accurately representing geographic information while infusing it with poetic aesthetics, these works achieve a harmonious balance between science and art.</p>
+                <p lang="zh">水墨丹青系列作品旨在通过现代地图技术与传统艺术表现手法的融合，展示中国自然地理的壮美景观，同时传递中华文化的深厚底蕴。作品力求在准确表达地理信息的基础上，注入诗意与美学，使科学与艺术相得益彰。</p>
                 
-                <h3>比赛成果</h3>
-                <p>作品在30DayMapChallenge社区中获得广泛关注，不仅体现了地理信息技术的应用创新，也促进了中国传统文化在国际地图制图领域的传播。在Day 30 - Remix类别中获得132个赞，排名第5位。</p>
+                <h3>
+                    <span lang="en">Competition Results</span>
+                    <span lang="zh">比赛成果</span>
+                </h3>
+                <p lang="en">The works received widespread attention in the 30DayMapChallenge community, demonstrating innovative applications of geospatial information technology while promoting Chinese traditional culture in the international cartographic field. The series received 132 likes in the Day 30 - Remix category, ranking 5th.</p>
+                <p lang="zh">作品在30DayMapChallenge社区中获得广泛关注，不仅体现了地理信息技术的应用创新，也促进了中国传统文化在国际地图制图领域的传播。在Day 30 - Remix类别中获得132个赞，排名第5位。</p>
                 
                 <div class="text-center mt-4">
                     <a href="https://30daymapchallenge.com/2022/day30_Remix/" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-trophy"></i> 查看比赛页面
+                        <i class="fas fa-trophy"></i> 
+                        <span lang="en">View Competition Page</span>
+                        <span lang="zh">查看比赛页面</span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 引入JavaScript -->
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const langToggle = document.getElementById('lang-toggle');
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 切换语言按钮点击事件
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
+            
+            // 检查是否存在主题偏好并应用
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        });
+    </script>
 </body>
 </html> 
