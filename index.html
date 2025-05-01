@@ -394,7 +394,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 mt-3">
+                        <div class="col-12 mt-3">
                             <!-- Country/Region Visit Statistics -->
                             <div class="text-center">
                                 <h6>Visitors by Country</h6>
@@ -403,12 +403,14 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-6 mt-3">
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mt-4">
                             <!-- Interactive World Map (Local Version) -->
                             <div class="text-center">
                                 <h6>Global Visitor Map</h6>
                                 <a href="talkmap/map.html" target="_blank">
-                                    <div id="homepage-map" style="position: relative; max-width: 100%;">
+                                    <div id="homepage-map" style="position: relative; margin: 0 auto; max-width: 800px;">
                                         <img src="talkmap/images/world_map.jpg" width="100%" height="auto" alt="World Map" style="border-radius: 5px; max-width: 100%;">
                                         <!-- Visitor markers will be added by JavaScript -->
                                     </div>
@@ -484,11 +486,11 @@
             // Only the top visited countries for homepage map preview
             const topVisitorData = [
                 { country: "United States", lat: 37.0902, lng: -95.7129, visits: 45 },
-                { country: "China - Beijing", lat: 39.9042, lng: 116.4074, visits: 20 },
-                { country: "China - Shanghai", lat: 31.2304, lng: 121.4737, visits: 18 },
+                { country: "China", lat: 35.8617, lng: 104.1954, visits: 58 },
                 { country: "Italy", lat: 41.8719, lng: 12.5674, visits: 29 },
                 { country: "Germany", lat: 51.1657, lng: 10.4515, visits: 22 },
-                { country: "United Kingdom", lat: 55.3781, lng: -3.4360, visits: 19 }
+                { country: "United Kingdom", lat: 55.3781, lng: -3.4360, visits: 19 },
+                { country: "France", lat: 46.2276, lng: 2.2137, visits: 17 }
             ];
             
             // Improved function to convert lat/lng to x/y coordinates
@@ -535,16 +537,18 @@
                             marker.className = 'visitor-marker';
                             marker.title = `${visitor.country}: ${visitor.visits} visits`;
                             
-                            // Smaller markers for homepage
-                            const size = 8;  
+                            // Markers for homepage - slightly larger for better visibility
+                            const size = 10;  
                             marker.style.width = `${size}px`;
                             marker.style.height = `${size}px`;
                             marker.style.position = 'absolute';
                             marker.style.borderRadius = '50%';
                             marker.style.backgroundColor = '#ff3b30';
-                            marker.style.border = '1px solid #fff';
+                            marker.style.border = '2px solid #fff';
+                            marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
                             marker.style.left = `${position.x - size/2}px`;
                             marker.style.top = `${position.y - size/2}px`;
+                            marker.style.zIndex = '100';
                             
                             // Add to map container
                             homepageMap.appendChild(marker);

@@ -4,13 +4,10 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample visitor data with accurate coordinates for country centers
+    // Visitor data with accurate coordinates for country centers
     const visitorData = [
         { country: "United States", lat: 37.0902, lng: -95.7129, visits: 45 },
-        { country: "China - Beijing", lat: 39.9042, lng: 116.4074, visits: 20 },
-        { country: "China - Shanghai", lat: 31.2304, lng: 121.4737, visits: 18 },
-        { country: "China - Guangzhou", lat: 23.1291, lng: 113.2644, visits: 12 },
-        { country: "China - Wuhan", lat: 30.5928, lng: 114.3055, visits: 8 },
+        { country: "China", lat: 35.8617, lng: 104.1954, visits: 58 },
         { country: "Italy", lat: 41.8719, lng: 12.5674, visits: 29 },
         { country: "Germany", lat: 51.1657, lng: 10.4515, visits: 22 },
         { country: "United Kingdom", lat: 55.3781, lng: -3.4360, visits: 19 },
