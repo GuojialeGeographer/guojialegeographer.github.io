@@ -668,13 +668,15 @@
                 'ES': { country: "Spain", lat: 40.4637, lng: -3.7492 },
                 'NL': { country: "Netherlands", lat: 52.1326, lng: 5.2913 },
                 'RU': { country: "Russia", lat: 61.5240, lng: 105.3188 },
-                'KR': { country: "South Korea", lat: 35.9078, lng: 127.7669 }
+                'KR': { country: "South Korea", lat: 35.9078, lng: 127.7669 },
+                'PH': { country: "Philippines", lat: 12.8797, lng: 121.7740 }
             };
 
             // 默认访问者数据，当无法从Flag Counter获取时使用
             let defaultVisitorData = [
-                { country: "Italy", lat: 41.8719, lng: 12.5674, visits: 7 },
-                { country: "United States", lat: 37.0902, lng: -95.7129, visits: 4 }
+                { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 16 },
+                { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 4 },
+                { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 }
             ];
             
             // 尝试从页面上解析实际的Flag Counter数据
@@ -691,26 +693,26 @@
                     
                     // 直接使用已知的实际访问数据
                     // 这些数据来自于页面上显示的Flag Counter
-                    // 意大利和美国的访问次数
-                    const italyVisits = 7;  // 从Flag Counter显示中获取
-                    const usVisits = 4;     // 从Flag Counter显示中获取
-                    
-                    // 添加已知的访问数据
                     visitorData.push({
                         country: "Italy",
                         lat: countryCoordinates['IT'].lat,
                         lng: countryCoordinates['IT'].lng,
-                        visits: italyVisits
+                        visits: 16
                     });
                     
                     visitorData.push({
                         country: "United States",
                         lat: countryCoordinates['US'].lat,
                         lng: countryCoordinates['US'].lng,
-                        visits: usVisits
+                        visits: 4
                     });
                     
-                    // 如果Flag Counter中出现新的国家，这里也需要添加
+                    visitorData.push({
+                        country: "Philippines",
+                        lat: countryCoordinates['PH'].lat,
+                        lng: countryCoordinates['PH'].lng,
+                        visits: 1
+                    });
                     
                 } catch (error) {
                     console.error("Error extracting visitor data:", error);

@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'ES': { country: "Spain", lat: 40.4637, lng: -3.7492 },
         'NL': { country: "Netherlands", lat: 52.1326, lng: 5.2913 },
         'RU': { country: "Russia", lat: 61.5240, lng: 105.3188 },
-        'KR': { country: "South Korea", lat: 35.9078, lng: 127.7669 }
+        'KR': { country: "South Korea", lat: 35.9078, lng: 127.7669 },
+        'PH': { country: "Philippines", lat: 12.8797, lng: 121.7740 }
         // 可根据需要添加更多国家
     };
 
@@ -28,8 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function extractVisitorDataFromFlagCounter() {
         // 默认访问数据，如果无法从Flag Counter获取数据时使用
         let defaultVisitorData = [
-            { country: "Italy", lat: 41.8719, lng: 12.5674, visits: 7 },
-            { country: "United States", lat: 37.0902, lng: -95.7129, visits: 4 }
+            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 16 },
+            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 4 },
+            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 }
         ];
         
         // 尝试从页面中查找Flag Counter图像
@@ -79,24 +81,29 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 如果上面的方法没有找到任何数据，尝试直接从图像URL解析
             if (visitorData.length === 0) {
-                // 在Flag Counter图像中找到为意大利和美国设置正确的访问次数
-                // 这是一个临时解决方案，使用已知的两个国家数据
-                const italyVisits = 7;  // 从图片中看到
-                const usVisits = 4;     // 从图片中看到
+                // 最新的Flag Counter数据
+                // 这是一个临时解决方案，使用最新的访问数据
                 
                 // 添加已知的访问数据
                 visitorData.push({
                     country: "Italy",
                     lat: countryCoordinates['IT'].lat,
                     lng: countryCoordinates['IT'].lng,
-                    visits: italyVisits
+                    visits: 16
                 });
                 
                 visitorData.push({
                     country: "United States",
                     lat: countryCoordinates['US'].lat,
                     lng: countryCoordinates['US'].lng,
-                    visits: usVisits
+                    visits: 4
+                });
+                
+                visitorData.push({
+                    country: "Philippines",
+                    lat: countryCoordinates['PH'].lat,
+                    lng: countryCoordinates['PH'].lng,
+                    visits: 1
                 });
             }
         } catch (error) {
