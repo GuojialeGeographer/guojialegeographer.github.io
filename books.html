@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Jiale Guo - News</title>
+    <title>Jiale Guo - Books</title>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
@@ -90,18 +90,41 @@
         html[data-theme="dark"] h6 {
             color: rgba(255, 255, 255, 0.95);
         }
-        
-        /* 改善新闻项目的可读性 */
-        .media-body {
-            line-height: 1.6;
+
+        /* 书籍卡片样式 */
+        .book-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
         }
-        
-        .media-body div {
-            color: rgba(0, 0, 0, 0.85);
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
-        html[data-theme="dark"] .media-body div {
-            color: rgba(255, 255, 255, 0.9);
+
+        .book-cover {
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .book-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .book-icons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .book-icons a i {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -109,8 +132,8 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
         <div class="container">
             <a class="navbar-brand"><strong>
-                <span lang="en">News</span>
-                <span lang="zh">新闻</span>
+                <span lang="en">Books</span>
+                <span lang="zh">书籍</span>
             </strong></a>
             <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-map"></i> Menu
@@ -136,17 +159,22 @@
                             <span lang="zh">项目</span>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="news.html">
                             <span lang="en">News</span>
                             <span lang="zh">新闻</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="books.html">
                             <span lang="en">Books</span>
                             <span lang="zh">书籍</span>
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
                     </li>
                     <li class="nav-item">
                         <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
@@ -160,89 +188,41 @@
     </nav>
 
     <div class="container" style="margin-top: 70px;">
-        <div class="my-3 bg-white shadow-sm rounded-sm">
-            <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> 
-                <span lang="en">News</span>
-                <span lang="zh">新闻</span>
-            </h6>
-            <div class="px-3 pb-1">
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2024</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Started my Master's degree at Politecnico di Milano.</span>
-                                <span lang="zh">开始在米兰理工大学攻读硕士学位。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break"><i>Sep 01</i></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2022</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">My <a href="Projects/30DayMapChallenge/gallery.html" target="_blank">Chinese Ink Painting Series</a> received 132 likes and ranked 5th in the Day 30 - Remix category of the 30DayMapChallenge.</span>
-                                <span lang="zh">我的<a href="Projects/30DayMapChallenge/gallery.html" target="_blank">水墨丹青系列</a>作品在30DayMapChallenge的Day 30 - Remix类别中获得了132个赞，排名第5位。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break"><i>Nov 30</i></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2021</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Graduated from Chuzhou University with a Bachelor's degree in Geography.</span>
-                                <span lang="zh">从滁州学院地理科学专业本科毕业。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break"><i>Jun 15</i></div>
-                        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card border-0 shadow-sm bg-white">
+                    <div class="card-body p-4">
+                        <h5 class="mb-4">
+                            <span lang="en">Books & Study Notes</span>
+                            <span lang="zh">书籍与学习笔记</span>
+                        </h5>
                         
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Received the Excellent Graduation Thesis Award (Top 3%).</span>
-                                <span lang="zh">获得滁州学院优秀毕业论文奖（前3%）。</span>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card book-card h-100">
+                                    <img src="Images/books/shud_cover.jpg" alt="SHUD 模拟系统训练营学习笔记" class="card-img-top book-cover" onerror="this.src='Images/placeholder.svg'">
+                                    <div class="card-body">
+                                        <h5 class="card-title">SHUD 模拟系统训练营学习笔记</h5>
+                                        <p class="card-text">
+                                            <span lang="en">Comprehensive notes from the SHUD (Simulator for Hydrological Unstructured Domains) training camp. These notes cover the theoretical foundations, implementation details, and practical applications of the SHUD model for hydrological simulation.</span>
+                                            <span lang="zh">SHUD（非结构域水文模拟器）训练营的详细学习笔记。这些笔记涵盖了SHUD模型的理论基础、实现细节和水文模拟的实际应用。</span>
+                                        </p>
+                                        <div class="book-icons mt-3">
+                                            <a href="books/SHUD 模拟系统训练营学习笔记.pdf" target="_blank" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-file-pdf"></i> PDF
+                                            </a>
+                                            <a href="books/SHUD 模拟系统训练营学习笔记.md" target="_blank" class="btn btn-sm btn-outline-secondary">
+                                                <i class="fab fa-markdown"></i> Markdown
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">May 2025</small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ml-auto mt-auto text-muted no-break"><i>Jun 10</i></div>
-                        </div>
-                        
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Received the Excellent Graduates of Anhui Province Award (Top 2%).</span>
-                                <span lang="zh">获得安徽省优秀毕业生称号（前2%）。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break"><i>Jun 05</i></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2020</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Received the National Encouragement Scholarship, Anhui Province (Top 3%).</span>
-                                <span lang="zh">获得国家励志奖学金，安徽省（前3%）。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break"><i>Nov 10</i></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2019</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Won Third Prize in the China University Geography Science Exhibition Competition.</span>
-                                <span lang="zh">在中国大学生地理科学展示竞赛中获得三等奖。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break"><i>Dec 15</i></div>
+                            
+                            <!-- 可以在这里添加更多书籍/笔记卡片 -->
                         </div>
                     </div>
                 </div>
@@ -255,7 +235,7 @@
                 <div class="row my-3">
                     <div class="col-6">
                         <div class="text-muted">
-                            <i>Last updated: May 2024</i>
+                            <i>Last updated: May 2025</i>
                         </div>
                     </div>
                     <div class="col-6">
@@ -272,8 +252,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 语言切换功能
@@ -291,7 +269,40 @@
                 document.documentElement.setAttribute('data-lang', newLang);
                 localStorage.setItem('lang', newLang);
             });
+            
+            // 主题切换功能
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // 检查保存的主题偏好或使用默认值
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // 更新按钮图标基于当前主题
+            updateThemeIcon(currentTheme);
+            
+            // 切换主题点击事件
+            themeToggle.addEventListener('click', function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateThemeIcon(newTheme);
+            });
+            
+            // 更新图标函数
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            }
         });
     </script>
 </body>
-</html>
+</html> 

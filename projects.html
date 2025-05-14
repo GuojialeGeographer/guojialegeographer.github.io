@@ -150,6 +150,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="books.html">
+                            <span lang="en">Books</span>
+                            <span lang="zh">书籍</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
                             <span lang="en">中文</span>
                             <span lang="zh">English</span>
@@ -172,7 +178,7 @@
                         
                         <div class="row no-gutters border-bottom border-gray mb-4 pb-4">
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <img src="Images/project-qinghai.jpg" alt="Qinghai Lake Project" class="img-fluid rounded" onerror="this.src='Images/projects/placeholder.jpg'">
+                                <img src="Images/project-qinghai.jpg" alt="Qinghai Lake Project" class="img-fluid rounded" onerror="this.src='Images/placeholder.svg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
                                 <h5>
@@ -189,7 +195,7 @@
                         
                         <div class="row no-gutters border-bottom border-gray mb-4 pb-4">
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <img src="Images/project-drought.jpg" alt="Drought Analysis Project" class="img-fluid rounded" onerror="this.src='Images/projects/placeholder.jpg'">
+                                <img src="Images/project-drought.jpg" alt="Drought Analysis Project" class="img-fluid rounded" onerror="this.src='Images/placeholder.svg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
                                 <h5>
@@ -203,7 +209,7 @@
                         
                         <div class="row no-gutters border-bottom border-gray mb-4 pb-4">
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <img src="Images/project-pm25.jpg" alt="PM2.5 Analysis Project" class="img-fluid rounded" onerror="this.src='Images/projects/placeholder.jpg'">
+                                <img src="Images/project-pm25.jpg" alt="PM2.5 Analysis Project" class="img-fluid rounded" onerror="this.src='Images/placeholder.svg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
                                 <h5>
@@ -217,7 +223,7 @@
                         
                         <div class="row no-gutters border-bottom border-gray mb-4 pb-4">
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <img src="Images/project-trees.jpg" alt="Tree Species Classification" class="img-fluid rounded" onerror="this.src='Images/projects/placeholder.jpg'">
+                                <img src="Images/project-trees.jpg" alt="Tree Species Classification" class="img-fluid rounded" onerror="this.src='Images/placeholder.svg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
                                 <h5>
@@ -231,7 +237,7 @@
                         
                         <div class="row no-gutters border-bottom border-gray mb-4 pb-4">
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <img src="Projects/30DayMapChallenge/images/水墨丹青系列/落霞与孤鹜齐飞，秋水共长天一色.jpg" alt="30DayMapChallenge" class="img-fluid rounded" onerror="this.src='Images/projects/placeholder.jpg'">
+                                <img src="Projects/30DayMapChallenge/images/水墨丹青系列/落霞与孤鹜齐飞，秋水共长天一色.jpg" alt="30DayMapChallenge" class="img-fluid rounded" onerror="this.src='Images/placeholder.svg'">
                             </div>
                             <div class="col-md-8 pl-md-4">
                                 <h5>
@@ -289,14 +295,12 @@
                 <div class="row my-3">
                     <div class="col-6">
                         <div class="text-muted">
-                            <i>Last updated: April 2025</i>
+                            <i>Last updated: May 2024</i>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="text-right text-muted">
-                            <span id="busuanzi_container_site_pv" style="display: none;">
-                                <span id="busuanzi_value_site_pv"></span> views since April 2025
-                            </span>
+                            <!-- 访问量计数器已移除 -->
                         </div>
                     </div>
                 </div>
@@ -310,19 +314,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script>
-        // 显示不蒜子计数器，但只在成功加载后
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var bszContainers = document.querySelectorAll('#busuanzi_container_site_pv');
-                if (document.getElementById('busuanzi_value_site_pv').innerText !== '') {
-                    bszContainers.forEach(function(container) {
-                        container.style.display = 'inline';
-                    });
-                }
-            }, 1000);
-            
             // 语言切换功能
             const langToggle = document.getElementById('lang-toggle');
             
