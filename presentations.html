@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<!-- Inspired by Zongrong(Jasper) Li's Homepage Template -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Jiale Guo - Presentations</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+        
+        /* 增强字体渲染 */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 提高小字体的清晰度和对比度 */
+        .small, small, .text-muted {
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.75);
+        }
+        
+        /* 增强标题文字 */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: rgba(0, 0, 0, 0.9);
+        }
+        
+        /* 暗黑模式下的文本颜色增强 */
+        html[data-theme="dark"] .small, 
+        html[data-theme="dark"] small, 
+        html[data-theme="dark"] .text-muted {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        html[data-theme="dark"] h1,
+        html[data-theme="dark"] h2,
+        html[data-theme="dark"] h3,
+        html[data-theme="dark"] h4,
+        html[data-theme="dark"] h5,
+        html[data-theme="dark"] h6 {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* 演示文稿卡片样式 */
+        .presentation-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .presentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .presentation-cover {
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .presentation-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            background-color: #f8f9fa;
+            color: #495057;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dee2e6;
+        }
+
+        .tag:hover {
+            background-color: #e9ecef;
+        }
+
+        .tag.active {
+            background-color: #007bff;
+            color: #ffffff;
+            border-color: #007bff;
+        }
+
+        /* 标签筛选区域 */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .filter-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 标签按钮样式 */
+        .tag-btn {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            background-color: #f8f9fa;
+            color: #495057;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dee2e6;
+        }
+
+        .tag-btn:hover {
+            background-color: #e9ecef;
+        }
+
+        .tag-btn.active {
+            background-color: #007bff;
+            color: #ffffff;
+            border-color: #007bff;
+        }
+
+        /* 暗黑模式下的标签样式 */
+        html[data-theme="dark"] .tag, 
+        html[data-theme="dark"] .tag-btn {
+            background-color: #343a40;
+            color: #f8f9fa;
+            border-color: #495057;
+        }
+
+        html[data-theme="dark"] .tag:hover,
+        html[data-theme="dark"] .tag-btn:hover {
+            background-color: #495057;
+        }
+
+        html[data-theme="dark"] .tag.active,
+        html[data-theme="dark"] .tag-btn.active {
+            background-color: #0069d9;
+            color: #ffffff;
+            border-color: #0062cc;
+        }
+
+        html[data-theme="dark"] .filter-container {
+            background-color: #343a40;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand"><strong>
+                <span lang="en">Presentations</span>
+                <span lang="zh">演示文稿</span>
+            </strong></a>
+            <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-map"></i> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span lang="en">Home</span>
+                            <span lang="zh">首页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="publications.html">
+                            <span lang="en">Publications</span>
+                            <span lang="zh">发表文章</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">
+                            <span lang="en">Projects</span>
+                            <span lang="zh">项目</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">
+                            <span lang="en">News</span>
+                            <span lang="zh">新闻</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="books.html">
+                            <span lang="en">Books</span>
+                            <span lang="zh">书籍</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="presentations.html">
+                            <span lang="en">Presentations</span>
+                            <span lang="zh">演示文稿</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col">
+                <div class="card border-0 shadow-sm bg-white">
+                    <div class="card-body p-4">
+                        <h5 class="mb-4">
+                            <span lang="en">Presentations</span>
+                            <span lang="zh">演示文稿</span>
+                        </h5>
+                        
+                        <!-- 标签筛选区域 -->
+                        <div class="filter-container">
+                            <div class="filter-title">
+                                <span lang="en">Filter by tags:</span>
+                                <span lang="zh">按标签筛选：</span>
+                            </div>
+                            <div id="tag-filters">
+                                <div class="tag-filter mb-4">
+                                    <div class="d-flex flex-wrap">
+                                        <button class="tag-btn active mr-2 mb-2" data-tag="all">
+                                            <span lang="en">All</span>
+                                            <span lang="zh">全部</span>
+                                        </button>
+                                        <button class="tag-btn mr-2 mb-2" data-tag="course">
+                                            <span lang="en">Course</span>
+                                            <span lang="zh">课程</span>
+                                        </button>
+                                        <button class="tag-btn mr-2 mb-2" data-tag="conference">
+                                            <span lang="en">Conference</span>
+                                            <span lang="zh">会议</span>
+                                        </button>
+                                        <button class="tag-btn mr-2 mb-2" data-tag="workshop">
+                                            <span lang="en">Workshop</span>
+                                            <span lang="zh">工作坊</span>
+                                        </button>
+                                        <button class="tag-btn mr-2 mb-2" data-tag="seminar">
+                                            <span lang="en">Seminar</span>
+                                            <span lang="zh">研讨会</span>
+                                        </button>
+                                        <button class="tag-btn mr-2 mb-2" data-tag="project">
+                                            <span lang="en">Project</span>
+                                            <span lang="zh">项目</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row" id="presentations-container">
+                            <!-- 课程演示文稿 -->
+                            <div class="col-md-6 col-lg-4 presentation-item" data-tags="course">
+                                <div class="card presentation-card">
+                                    <img src="Images/presentations/gis_course_cover.png" class="presentation-cover" alt="GIS全球坐标系统演进">
+                                    <div class="card-body">
+                                        <div class="presentation-tags">
+                                            <span class="tag">
+                                                <span lang="en">Course</span>
+                                                <span lang="zh">课程</span>
+                                            </span>
+                                        </div>
+                                        <h5 class="card-title">
+                                            <span lang="en">Global Coordinate Systems Evolution</span>
+                                            <span lang="zh">全球坐标系统演进</span>
+                                        </h5>
+                                        <p class="card-text small text-muted">
+                                            <span lang="en">2022-05-29</span>
+                                            <span lang="zh">2022年5月29日</span>
+                                        </p>
+                                        <div class="d-flex mt-3">
+                                            <a href="Presentations/Courses/202505292-GIS_Pre/jiale.guo-CN.pptx" class="btn btn-sm btn-outline-primary mr-2" download>
+                                                <i class="fas fa-download"></i> 
+                                                <span lang="en">Download (CN)</span>
+                                                <span lang="zh">下载 (中文)</span>
+                                            </a>
+                                            <a href="Presentations/Courses/202505292-GIS_Pre/jiale.guo-EN.pptx" class="btn btn-sm btn-outline-primary mr-2" download>
+                                                <i class="fas fa-download"></i> 
+                                                <span lang="en">Download (EN)</span>
+                                                <span lang="zh">下载 (英文)</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 052422 GIS课程 -->
+                            <div class="col-md-6 col-lg-4 presentation-item" data-tags="course">
+                                <div class="card presentation-card">
+                                    <img src="Images/presentations/presentation_placeholder1.jpg" class="presentation-cover" alt="GIS课程">
+                                    <div class="card-body">
+                                        <div class="presentation-tags">
+                                            <span class="tag">
+                                                <span lang="en">Course</span>
+                                                <span lang="zh">课程</span>
+                                            </span>
+                                        </div>
+                                        <h5 class="card-title">
+                                            <span lang="en">052422 - GEOGRAPHIC INFORMATION SYSTEMS</span>
+                                            <span lang="zh">052422 - 地理信息系统</span>
+                                        </h5>
+                                        <p class="card-text small text-muted">
+                                            <span lang="en">Fall 2023</span>
+                                            <span lang="zh">2023年秋季</span>
+                                        </p>
+                                        <div class="d-flex mt-3">
+                                            <a href="#" class="btn btn-sm btn-outline-primary mr-2">
+                                                <i class="fas fa-download"></i> 
+                                                <span lang="en">Download</span>
+                                                <span lang="zh">下载</span>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-outline-secondary">
+                                                <i class="fas fa-external-link-alt"></i> 
+                                                <span lang="en">View</span>
+                                                <span lang="zh">查看</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container py-5">
+        <div class="row">
+            <div class="col text-center text-muted">
+                <p>&copy; 2024 Jiale Guo</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPnEqKkBo3RlhLU7tEwMOeOUI5qQCGhIyr5dQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    
+    <script>
+        // 主题切换
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            
+            // 更新主题图标
+            const themeIcon = this.querySelector('i');
+            if (newTheme === 'dark') {
+                themeIcon.className = 'fas fa-moon';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+            }
+        });
+        
+        // 语言切换
+        document.getElementById('lang-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('data-lang');
+            const newLang = currentLang === 'en' ? 'zh' : 'en';
+            html.setAttribute('data-lang', newLang);
+        });
+        
+        // 初始化工具提示
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        
+        // 标签筛选功能
+        $(document).ready(function() {
+            // 点击标签过滤项目
+            $('.tag-btn').on('click', function() {
+                const selectedTag = $(this).data('tag');
+                
+                // 更新激活的标签样式
+                $('.tag-btn').removeClass('active');
+                $(this).addClass('active');
+                
+                // 显示/隐藏相应的项目
+                if (selectedTag === 'all') {
+                    $('.presentation-item').show();
+                } else {
+                    $('.presentation-item').hide();
+                    $(`.presentation-item[data-tags~="${selectedTag}"]`).show();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

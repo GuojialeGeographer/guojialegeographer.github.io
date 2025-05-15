@@ -1,0 +1,121 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram id="coordinate_system_diagram" name="Key Driving Factors in Coordinate System Evolution">
+    <mxGraphModel dx="2066" dy="1177" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="center_circle" value="&lt;font&gt;Key Driving Factors in Coordinate System Evolution&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="482" y="313.87" width="158" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_box" value="Technological Advancement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="350" y="254" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="political_box" value="Political &amp; Strategic Needs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="620" y="254" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_box" value="Economic &amp; Social Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="621" y="475" width="149" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="geoscience_box" value="Earth Science Knowledge &amp; Natural Disaster Response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="441" y="540" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cooperation_box" value="International Cooperation &amp; Standardization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="339" y="475" width="161" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_1" value="From Traditional Geodesy to Space Technology&#xa;(GNSS, VLBI, SLR, InSAR)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="200" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_2" value="Computing Technology &amp; Earth Model Refinement" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="264" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_3" value="Continuously Increasing Precision Requirements" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="320" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="political_1" value="National Sovereignty &amp; Territory Mapping&#xa;(Resource Inventory)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="801" y="200" width="219" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="political_2" value="Defense &amp; Military Applications" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="801" y="260" width="219" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="political_3" value="International Cooperation &amp; Geopolitics&#xa;(Cold War Era Systems, Regional Integration)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="801" y="320" width="219" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_1" value="Large-scale Infrastructure Construction&#xa;(Transportation, Energy, Water)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="800" y="388.07" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_2" value="Resource Exploration &amp; Sustainable Development" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="800" y="434" width="180" height="37.87" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_3" value="Urbanization &amp; Refined Management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="800" y="479" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_4" value="Land Rights &amp; Cadastral Management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="799" y="527" width="181" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_5" value="Globalization &amp; International Trade Data Interoperability" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="799.5" y="573" width="180.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="geoscience_1" value="Deepening Knowledge of Earth&#39;s Shape,&#xa;Size, Gravity Field, and Plate Tectonics" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="330" y="620" width="221" height="39.5" as="geometry" />
+        </mxCell>
+        <mxCell id="geoscience_2" value="Monitoring Crustal Deformation from&#xa;Earthquakes, Volcanoes, Land Subsidence" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="568.5" y="620" width="231.5" height="39.75" as="geometry" />
+        </mxCell>
+        <mxCell id="cooperation_1" value="Establishment of Global/Regional Reference Frames&#xa;(e.g., ITRF, ETRS89)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="99" y="447" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cooperation_2" value="Data Sharing &amp; Interoperability Requirements&#xa;(e.g., EU INSPIRE Directive)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize:14;" parent="1" vertex="1">
+          <mxGeometry x="99" y="510" width="210" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="center_to_tech" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="tech_adv_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="638.573593128807" y="317.00359312880704" as="sourcePoint" />
+            <mxPoint x="316" y="199.43" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_political" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="political_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_economic" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="economic_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_geoscience" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="geoscience_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_cooperation" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="cooperation_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note_box" value="Note: The evolution of coordinate systems is a complex process driven by multiple factors that influence and reinforce each other" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2" parent="1" vertex="1">
+          <mxGeometry x="359.63" y="670" width="400.25" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-9" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="771" y="200" width="20" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-10" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="771" y="387" width="20" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-11" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="330" y="200" width="20" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-12" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="320" y="440" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-14" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=-90;" parent="1" vertex="1">
+          <mxGeometry x="549.75" y="431.25" width="20" height="337.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

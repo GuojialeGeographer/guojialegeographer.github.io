@@ -1,0 +1,133 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram name="China&#39;s Coordinate System Evolution" id="coordinate_evolution_china">
+    <mxGraphModel dx="1425" dy="812" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-18" value="zz" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="537.5" y="363" width="240" height="111.35" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-16" value="zz z z" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="335" y="361.65" width="190" height="135.35" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-10" value="" style="rounded=1;whiteSpace=wrap;html=1;labelBorderColor=#6B15FF;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="100" y="363" width="230" height="101.1" as="geometry" />
+        </mxCell>
+        <mxCell id="timeline" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="120" y="200" width="640" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node1" value="1949" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="205" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="node2" value="1954" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="240" y="205" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="node3" value="1980" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="360" y="205" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="node4" value="1985" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="450" y="205" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="node5" value="2000" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="555" y="205" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="node6" value="Present" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="690" y="205" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="phase1" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;Early PRC Period - Soviet Era&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="120" y="250" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="phase2" value="Independent Development Period" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="350" y="250" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="phase3" value="Internationalization &amp;amp; High Precision Era" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="555" y="250" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="phase1" target="phase2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="phase2" target="phase3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BJ54" value="Beijing 1954 Coordinate System (BJ54)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="120" y="290" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="HH56" value="Yellow Sea Datum of 1956" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="142.5" y="330" width="145" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="XAS80" value="Xi&#39;an 1980 Coordinate System (XIAN80)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="340" y="290" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ELEV85" value="National Elevation Datum 1985" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="342.5" y="330" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="CGCS2000" value="China Geodetic Coordinate System 2000 (CGCS2000)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="557.5" y="289.65" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FUTURE" value="High-precision Dynamic Spatiotemporal Reference Frame" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="557.5" y="323.65" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="drive_title" value="Key Driving Factors" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;rotation=90;direction=east;flipH=1;flipV=1;horizontal=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="365.55" width="39.37" height="80.5" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-1" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="220" as="sourcePoint" />
+            <mxPoint x="240" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="node2" target="node3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="190" y="230" as="sourcePoint" />
+            <mxPoint x="270" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-3" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="node3" target="node4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="230" as="sourcePoint" />
+            <mxPoint x="370" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-7" value="Political Factors: Sino-Soviet Friendship, Soviet Model" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="110" y="368" width="210" height="28.9" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-8" value="Economic Construction: Urgent &#39;Post-War Recovery&#39; Needs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="110" y="400.9" width="210" height="27.1" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-9" value="Technical Constraints: Limitations of Available Technology" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="110" y="431" width="210" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-11" value="Political Factors: Changing Sino-Soviet Relations, Independent Approach" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="344" y="365.55" width="170" height="38.45" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-12" value="Technological Advancement: Development of Surveying Technologies" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="344" y="407.65" width="170" height="42.35" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-14" value="Economic Development: Increasing Demand for Basic Surveying" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="344" y="455.15" width="170" height="36.35" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-19" value="Technology Progress: GNSS Technology Popularization" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="545" y="368.90000000000003" width="225" height="23.45" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-20" value="Economic Globalization: WTO Entry, International Standards Alignment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="545" y="398" width="225" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-21" value="Information Age: Growing Need for High-Precision Location Services" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="545" y="439" width="225" height="27.35" as="geometry" />
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-24" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="515" y="219.41" as="sourcePoint" />
+            <mxPoint x="555" y="219.41" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6EhktCFd9dNtSnqdlOEh-25" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="630" y="219.41" as="sourcePoint" />
+            <mxPoint x="670" y="219.41" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
