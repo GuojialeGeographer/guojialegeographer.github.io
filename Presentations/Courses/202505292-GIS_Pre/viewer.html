@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Viewer - Jiale Guo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Lato', 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 56px;
+        }
+
+        .presentation-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .presentation-frame {
+            width: 100%;
+            height: calc(100vh - 200px);
+            min-height: 500px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .loading-message {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .back-button {
+            margin-right: auto;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .presentation-info {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 暗黑模式 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #212529;
+                color: #f8f9fa;
+            }
+
+            .presentation-container {
+                background-color: #343a40;
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .controls {
+                border-top: 1px solid #495057;
+            }
+
+            .presentation-info {
+                border-bottom: 1px solid #495057;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/"><strong>Jiale Guo</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/presentations.html">Back to Presentations</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="presentation-container">
+            <div class="presentation-info">
+                <h4 id="presentation-title">Loading Presentation...</h4>
+                <p id="presentation-description" class="text-muted">Please wait while we load your presentation</p>
+            </div>
+
+            <div id="loading" class="loading-message">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mt-3">Loading presentation, please wait...</p>
+                <p class="small text-muted">Note: If the presentation doesn't load within a few seconds, you may need to download it to view.</p>
+                <div id="download-fallback" style="display: none;">
+                    <p>Unable to display the presentation online. Please download to view:</p>
+                    <a id="download-link" class="btn btn-primary" href="#" download>
+                        <i class="fas fa-download"></i> Download Presentation
+                    </a>
+                </div>
+            </div>
+
+            <div id="viewer" style="display: none;">
+                <!-- 这里将显示演示文稿，目前使用iframe作为占位符 -->
+                <iframe id="presentation-frame" class="presentation-frame" src="about:blank"></iframe>
+                
+                <div class="controls">
+                    <a href="/presentations.html" class="btn btn-outline-secondary back-button">
+                        <i class="fas fa-arrow-left"></i> Back to All Presentations
+                    </a>
+                    <div class="nav-buttons">
+                        <button id="prev-slide" class="btn btn-outline-primary">
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <button id="next-slide" class="btn btn-outline-primary">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 从URL获取文件名
+            const urlParams = new URLSearchParams(window.location.search);
+            const fileName = urlParams.get('file');
+            
+            if (!fileName) {
+                showError("No presentation file specified");
+                return;
+            }
+
+            // 设置文件下载链接作为备用选项
+            $('#download-link').attr('href', fileName);
+            
+            // 获取文件名并设置标题（不包括扩展名）
+            const fileNameWithoutExt = fileName.split('.').slice(0, -1).join('.');
+            const isChineseVersion = fileName.includes('-CN');
+            const language = isChineseVersion ? "Chinese" : "English";
+            
+            // 设置标题和描述
+            $('#presentation-title').text(fileNameWithoutExt.replace('.guo-CN', '').replace('.guo-EN', ''));
+            $('#presentation-description').text(`Viewing in ${language} | ${new Date().toLocaleDateString()}`);
+
+            // 尝试使用 Google Docs Viewer 嵌入 PPTX
+            setTimeout(function() {
+                const viewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(window.location.origin + '/' + fileName)}`;
+                $('#presentation-frame').attr('src', viewerUrl);
+                $('#loading').hide();
+                $('#viewer').show();
+                
+                // 如果加载失败，显示下载选项
+                $('#presentation-frame').on('error', function() {
+                    showError("Failed to load presentation viewer");
+                });
+            }, 1500);
+
+            // 处理按钮
+            $('#prev-slide').click(function() {
+                // 此功能需要通过iframe与内嵌查看器通信
+                // 由于同源策略限制，这需要更复杂的实现
+                // 这里仅作为演示
+                alert("Previous slide function not implemented in this version");
+            });
+
+            $('#next-slide').click(function() {
+                alert("Next slide function not implemented in this version");
+            });
+
+            // 5秒后，如果还在加载，显示下载选项
+            setTimeout(function() {
+                if ($('#loading').is(':visible')) {
+                    $('#download-fallback').show();
+                }
+            }, 5000);
+        });
+
+        function showError(message) {
+            $('#loading .spinner-border').hide();
+            $('#loading p').first().text(message);
+            $('#download-fallback').show();
+        }
+    </script>
+</body>
+</html> 
