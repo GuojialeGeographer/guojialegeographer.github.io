@@ -166,7 +166,12 @@
 
             // 尝试使用 Google Docs Viewer 嵌入 PPTX
             setTimeout(function() {
-                const viewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(window.location.origin + '/' + fileName)}`;
+                // 构建正确的文件URL，不添加额外的斜杠，直接使用相对于当前页面的文件名
+                const fullPath = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1) + fileName;
+                const viewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fullPath)}`;
+                
+                console.log("Loading from URL: " + fullPath);
+                
                 $('#presentation-frame').attr('src', viewerUrl);
                 $('#loading').hide();
                 $('#viewer').show();
@@ -192,15 +197,26 @@
             // 5秒后，如果还在加载，显示下载选项
             setTimeout(function() {
                 if ($('#loading').is(':visible')) {
+                    $('#loading p').first().text("加载时间过长，可能无法在线查看此演示文稿。");
                     $('#download-fallback').show();
                 }
             }, 5000);
+            
+            // 20秒后，如果仍在加载，显示更明确的错误消息
+            setTimeout(function() {
+                if ($('#loading').is(':visible')) {
+                    showError("无法在线加载演示文稿，请下载后查看。");
+                }
+            }, 20000);
         });
 
         function showError(message) {
             $('#loading .spinner-border').hide();
             $('#loading p').first().text(message);
             $('#download-fallback').show();
+            
+            // 记录错误到控制台以便调试
+            console.error("Presentation viewer error: " + message);
         }
     </script>
 </body>
