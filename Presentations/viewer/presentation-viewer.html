@@ -191,8 +191,10 @@
         .markdown-body img {
             max-width: 100%;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin: 1em 0;
+            margin: 1em auto;
             border-radius: 4px;
+            display: block;
+            height: auto;
         }
 
         .markdown-body blockquote {
@@ -304,6 +306,12 @@
 
         html[data-theme="dark"] .slide-section {
             border-bottom-color: #495057;
+        }
+
+        /* 演示文稿特定图片样式 */
+        .slide-section img {
+            max-height: 500px;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -453,6 +461,22 @@
                     // 处理[TOC]标记
                     data = data.replace(/\[TOC\]/gi, ''); // 移除[TOC]标记，我们会自己生成目录
                     
+                    // 修正图片路径问题
+                    // 获取文件路径的目录部分
+                    let fileDir = '';
+                    if (filePath.includes('/')) {
+                        fileDir = filePath.substring(0, filePath.lastIndexOf('/') + 1);
+                    }
+                    
+                    // 替换图片相对路径为完整路径
+                    data = data.replace(/!\[(.*?)\]\((.*?)\)/g, function(match, alt, path) {
+                        // 如果路径不是以http或/开头，认为是相对路径，需要修正
+                        if (!path.startsWith('http') && !path.startsWith('/')) {
+                            return '![' + alt + '](' + fileDir + path + ')';
+                        }
+                        return match;
+                    });
+                    
                     // 处理演示文稿内容，添加幻灯片分隔标记
                     data = enhancePresentationContent(data);
                     
@@ -468,6 +492,9 @@
                     
                     // 设置阅读进度条
                     setupReadingProgress();
+                    
+                    // 添加调试功能
+                    showDebugInfo();
                 },
                 error: function() {
                     $('#content-loading').html('<div class="alert alert-danger">' +
@@ -725,6 +752,45 @@
                 $('#content-loading p').first().text(message);
                 console.error("Presentation viewer error: " + message);
             }
+            
+            // 添加调试功能
+            function showDebugInfo() {
+                // 添加调试按钮
+                const debugBtn = $('<button>')
+                    .addClass('btn btn-sm btn-outline-secondary ml-2')
+                    .html('<i class="fas fa-bug"></i>')
+                    .attr('title', '显示调试信息')
+                    .click(function() {
+                        // 收集图片加载状态
+                        const images = $('#markdown-content img');
+                        let loadedCount = 0;
+                        let errorCount = 0;
+                        
+                        images.each(function() {
+                            if (this.complete) {
+                                loadedCount++;
+                                if (this.naturalWidth === 0) {
+                                    errorCount++;
+                                }
+                            }
+                        });
+                        
+                        // 显示调试信息
+                        alert(`图片总数: ${images.length}\n已加载: ${loadedCount}\n加载失败: ${errorCount}\n\n文件路径: ${filePath}`);
+                        
+                        // 在控制台输出所有图片URL
+                        console.log('所有图片URL:');
+                        images.each(function(index) {
+                            console.log(`图片 #${index+1}: ${this.src} - 加载状态: ${this.complete ? (this.naturalWidth > 0 ? '成功' : '失败') : '加载中'}`);
+                        });
+                    });
+                
+                // 添加到工具栏
+                $('.presentation-toolbar').append(debugBtn);
+            }
+            
+            // 在内容加载后启用调试功能
+            setTimeout(showDebugInfo, 2000);
         });
     </script>
 </body>
