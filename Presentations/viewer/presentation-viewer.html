@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Viewer - Jiale Guo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.2.0/github-markdown.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 56px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #fff;
+            border-right: 1px solid #e9ecef;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        .toc-item {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .toc-item:hover {
+            background-color: #f8f9fa;
+            border-left-color: #dee2e6;
+        }
+
+        .toc-item.active {
+            background-color: #f1f8ff;
+            border-left-color: #007bff;
+            font-weight: 500;
+        }
+
+        .toc-h1 { padding-left: 15px; font-weight: 600; }
+        .toc-h2 { padding-left: 30px; }
+        .toc-h3 { padding-left: 45px; }
+        .toc-h4 { padding-left: 60px; font-size: 0.85rem; }
+        .toc-h5 { padding-left: 75px; font-size: 0.8rem; }
+        .toc-h6 { padding-left: 90px; font-size: 0.75rem; }
+
+        .presentation-header {
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            background-color: #fff;
+        }
+
+        .presentation-title {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1030;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Markdown content styling */
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+
+        /* 工具栏 */
+        .presentation-toolbar {
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .presentation-toolbar .btn {
+            margin-left: 10px;
+        }
+
+        /* 增强阅读体验 */
+        .markdown-body {
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .markdown-body h1, 
+        .markdown-body h2, 
+        .markdown-body h3,
+        .markdown-body h4,
+        .markdown-body h5,
+        .markdown-body h6 {
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+            border-bottom: none;
+        }
+
+        .markdown-body h1 {
+            font-size: 2em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        .markdown-body img {
+            max-width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 1em 0;
+            border-radius: 4px;
+        }
+
+        .markdown-body blockquote {
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+
+        /* 响应式设计优化 */
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                top: 56px;
+                bottom: 0;
+                z-index: 1020;
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .sidebar-toggle {
+                display: flex;
+            }
+        }
+
+        /* 暗黑模式 */
+        html[data-theme="dark"] body {
+            background-color: #212529;
+            color: #f8f9fa;
+        }
+
+        html[data-theme="dark"] .sidebar, 
+        html[data-theme="dark"] .main-content, 
+        html[data-theme="dark"] .presentation-header,
+        html[data-theme="dark"] .presentation-toolbar,
+        html[data-theme="dark"] .navbar {
+            background-color: #343a40;
+            color: #f8f9fa;
+            border-color: #495057;
+        }
+
+        html[data-theme="dark"] .navbar,
+        html[data-theme="dark"] .navbar-light .navbar-brand,
+        html[data-theme="dark"] .navbar-light .navbar-nav .nav-link {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+        html[data-theme="dark"] .toc-item:hover {
+            background-color: #2c3136;
+            border-left-color: #495057;
+        }
+
+        html[data-theme="dark"] .toc-item.active {
+            background-color: #3f474e;
+            border-left-color: #007bff;
+        }
+
+        html[data-theme="dark"] .markdown-body {
+            color-scheme: dark;
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+        html[data-theme="dark"] .markdown-body blockquote {
+            background-color: #2c3136;
+        }
+
+        html[data-theme="dark"] .text-muted {
+            color: #adb5bd !important;
+        }
+        
+        /* 进度指示器 */
+        .reading-progress {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: #007bff;
+            z-index: 1040;
+            transition: width 0.1s ease;
+        }
+
+        /* 演示文稿特定样式 */
+        .slide-indicator {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        html[data-theme="dark"] .slide-indicator {
+            background: #2c3136;
+        }
+
+        .slide-section {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #dee2e6;
+        }
+
+        html[data-theme="dark"] .slide-section {
+            border-bottom-color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <span lang="en"><strong>Jiale Guo</strong></span>
+                <span lang="zh"><strong>郭家乐</strong></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/presentations.html">
+                            <span lang="en">Back to Presentations</span>
+                            <span lang="zh">返回演示文稿列表</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <div class="presentation-header">
+        <h4 class="presentation-title" id="presentation-title">
+            <span lang="en">Loading Presentation...</span>
+            <span lang="zh">加载中...</span>
+        </h4>
+        <p class="text-muted mb-0" id="presentation-description">
+            <span lang="en">Please wait while we load your presentation</span>
+            <span lang="zh">请稍候，正在加载演示文稿内容</span>
+        </p>
+    </div>
+
+    <div class="presentation-toolbar">
+        <button class="btn btn-sm btn-outline-secondary" id="font-decrease">
+            <i class="fas fa-font"></i> -
+        </button>
+        <button class="btn btn-sm btn-outline-secondary" id="font-increase">
+            <i class="fas fa-font"></i> +
+        </button>
+        <a class="btn btn-sm btn-outline-primary" id="download-ppt" target="_blank">
+            <span lang="en"><i class="fas fa-file-powerpoint"></i> Download PPT</span>
+            <span lang="zh"><i class="fas fa-file-powerpoint"></i> 下载PPT</span>
+        </a>
+    </div>
+
+    <div class="content-container">
+        <div class="sidebar" id="sidebar">
+            <div id="toc">
+                <!-- 目录会动态加载到这里 -->
+                <div class="text-center mt-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p class="mt-2">
+                        <span lang="en">Loading table of contents...</span>
+                        <span lang="zh">加载目录中...</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <div id="content-loading" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mt-3">
+                    <span lang="en">Loading content, please wait...</span>
+                    <span lang="zh">加载内容，请稍候...</span>
+                </p>
+            </div>
+
+            <div id="markdown-content" class="markdown-body" style="display:none">
+                <!-- 内容会动态加载到这里 -->
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 从URL获取文件路径和PPT文件路径
+            const urlParams = new URLSearchParams(window.location.search);
+            const filePath = urlParams.get('file') || '';
+            const pptFile = urlParams.get('ppt') || '';
+            
+            if (!filePath) {
+                showError("No presentation file specified");
+                return;
+            }
+
+            // 解析文件路径以获取标题
+            const pathParts = filePath.split('/');
+            const fileName = pathParts[pathParts.length - 1];
+            const presentationTitle = fileName.split('.')[0];
+            
+            // 设置页面标题和PPT下载链接
+            $('#presentation-title').find('[lang="en"], [lang="zh"]').text(presentationTitle);
+            $('#presentation-description').find('[lang="en"]').text('Interactive presentation viewer | ' + new Date().toLocaleDateString());
+            $('#presentation-description').find('[lang="zh"]').text('互动演示文稿查看器 | ' + new Date().toLocaleDateString());
+            
+            if (pptFile) {
+                $('#download-ppt').attr('href', pptFile);
+            } else {
+                $('#download-ppt').hide();
+            }
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 检查保存的主题偏好或使用默认值
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+            
+            // 加载Markdown内容
+            $.ajax({
+                url: filePath,
+                dataType: 'text',
+                success: function(data) {
+                    // 处理[TOC]标记
+                    data = data.replace(/\[TOC\]/gi, ''); // 移除[TOC]标记，我们会自己生成目录
+                    
+                    // 处理演示文稿内容，添加幻灯片分隔标记
+                    data = enhancePresentationContent(data);
+                    
+                    // 显示Markdown内容
+                    $('#content-loading').hide();
+                    $('#markdown-content').html(marked.parse(data)).show();
+                    
+                    // 生成目录
+                    generateTOC();
+                    
+                    // 处理内部链接
+                    setupInternalLinks();
+                    
+                    // 设置阅读进度条
+                    setupReadingProgress();
+                },
+                error: function() {
+                    $('#content-loading').html('<div class="alert alert-danger">' +
+                        '<span lang="en">Failed to load content. The file may not exist or you may not have permission to access it.</span>' +
+                        '<span lang="zh">无法加载内容。文件可能不存在或您没有访问权限。</span>' +
+                        '</div>');
+                }
+            });
+            
+            // 增强演示文稿内容的显示
+            function enhancePresentationContent(content) {
+                // 使用正则表达式查找并替换分隔符"---"，添加幻灯片分隔标记
+                let slideCount = 0;
+                const enhancedContent = content.replace(/^---\s*$/gm, function() {
+                    slideCount++;
+                    return `</div>\n<div class="slide-indicator">幻灯片 ${slideCount}</div>\n<div class="slide-section">`;
+                });
+                
+                // 在开始添加第一个幻灯片标记，在结尾添加关闭标签
+                return `<div class="slide-indicator">幻灯片 1</div>\n<div class="slide-section">${enhancedContent}</div>`;
+            }
+            
+            // 切换侧边栏显示
+            $('#sidebar-toggle').click(function() {
+                $('#sidebar').toggleClass('show');
+            });
+            
+            // 切换语言按钮点击事件
+            $('#lang-toggle').click(function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
+            
+            // 切换主题点击事件
+            $('#theme-toggle').click(function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateThemeIcon(newTheme);
+            });
+            
+            // 字体大小调整
+            let currentFontSize = parseFloat($('.markdown-body').css('font-size')) || 16;
+            
+            $('#font-increase').click(function() {
+                if (currentFontSize < 24) {
+                    currentFontSize *= 1.1;
+                    $('.markdown-body').css('font-size', currentFontSize + 'px');
+                }
+            });
+            
+            $('#font-decrease').click(function() {
+                if (currentFontSize > 12) {
+                    currentFontSize *= 0.9;
+                    $('.markdown-body').css('font-size', currentFontSize + 'px');
+                }
+            });
+            
+            // 生成目录
+            function generateTOC() {
+                const toc = $('#toc');
+                toc.empty();
+                
+                // 获取所有标题
+                const headings = $('#markdown-content h1, #markdown-content h2, #markdown-content h3, #markdown-content h4, #markdown-content h5, #markdown-content h6');
+                
+                // 如果没有找到标题，显示提示信息
+                if (headings.length === 0) {
+                    toc.html('<div class="p-3 text-muted">' +
+                        '<span lang="en">No table of contents available for this document.</span>' +
+                        '<span lang="zh">本文档没有可用的目录。</span>' +
+                        '</div>');
+                    return;
+                }
+                
+                // 添加幻灯片导航
+                const slides = $('.slide-indicator');
+                if (slides.length > 0) {
+                    const slideNav = $('<div class="toc-item toc-h1">').text('幻灯片导航').css('margin-bottom', '10px');
+                    toc.append(slideNav);
+                    
+                    slides.each(function(index) {
+                        const $slide = $(this);
+                        const slideTitle = $slide.text();
+                        
+                        // 创建目录项
+                        const tocItem = $('<div>')
+                            .addClass('toc-item')
+                            .addClass('toc-h2')
+                            .attr('data-slide', index)
+                            .text(slideTitle)
+                            .click(function() {
+                                // 滚动到相应的幻灯片
+                                $('#main-content').animate({
+                                    scrollTop: $slide.offset().top - $('#main-content').offset().top + $('#main-content').scrollTop() - 80
+                                }, 500);
+                                
+                                // 设置激活状态
+                                $('.toc-item').removeClass('active');
+                                $(this).addClass('active');
+                                
+                                // 在移动设备上自动隐藏侧边栏
+                                if ($(window).width() < 768) {
+                                    $('#sidebar').removeClass('show');
+                                }
+                            });
+                        
+                        toc.append(tocItem);
+                    });
+                    
+                    // 添加分隔线
+                    toc.append($('<hr>').css({'margin': '15px 20px', 'border-color': '#eee'}));
+                }
+                
+                // 添加详细目录项
+                const tocTitle = $('<div class="toc-item toc-h1">').text('详细目录').css('margin-bottom', '10px');
+                toc.append(tocTitle);
+                
+                // 创建目录
+                headings.each(function(index) {
+                    const $heading = $(this);
+                    const text = $heading.text();
+                    const level = parseInt($heading.prop('tagName').charAt(1));
+                    
+                    // 为标题添加ID以便导航（确保ID是URL安全的）
+                    const id = 'heading-' + index;
+                    $heading.attr('id', id);
+                    
+                    // 创建目录项
+                    const tocItem = $('<div>')
+                        .addClass('toc-item')
+                        .addClass('toc-h' + level)
+                        .attr('data-target', '#' + id)
+                        .text(text)
+                        .click(function() {
+                            // 滚动到相应的标题
+                            $('#main-content').animate({
+                                scrollTop: $heading.offset().top - $('#main-content').offset().top + $('#main-content').scrollTop() - 80
+                            }, 500);
+                            
+                            // 设置激活状态
+                            $('.toc-item').removeClass('active');
+                            $(this).addClass('active');
+                            
+                            // 在移动设备上自动隐藏侧边栏
+                            if ($(window).width() < 768) {
+                                $('#sidebar').removeClass('show');
+                            }
+                        });
+                    
+                    toc.append(tocItem);
+                });
+            }
+            
+            // 处理内部链接，使其在内容区域内滚动
+            function setupInternalLinks() {
+                $('#markdown-content a[href^="#"]').click(function(e) {
+                    e.preventDefault();
+                    const target = $(this).attr('href');
+                    const $target = $(target);
+                    
+                    if ($target.length) {
+                        $('#main-content').animate({
+                            scrollTop: $target.offset().top - $('#main-content').offset().top + $('#main-content').scrollTop() - 80
+                        }, 500);
+                        
+                        // 激活相应的目录项
+                        $('.toc-item').removeClass('active');
+                        $('.toc-item[data-target="' + target + '"]').addClass('active');
+                    }
+                });
+            }
+            
+            // 设置阅读进度条
+            function setupReadingProgress() {
+                $('#main-content').scroll(function() {
+                    const scrollPosition = $('#main-content').scrollTop();
+                    const contentHeight = $('#markdown-content').height();
+                    const viewportHeight = $('#main-content').height();
+                    const maxScroll = contentHeight - viewportHeight;
+                    
+                    if (maxScroll > 0) {
+                        const progress = (scrollPosition / maxScroll) * 100;
+                        $('#reading-progress').css('width', progress + '%');
+                    }
+                    
+                    // 更新目录激活状态
+                    updateActiveTocItem(scrollPosition);
+                });
+            }
+            
+            // 更新活动目录项
+            function updateActiveTocItem(scrollPosition) {
+                // 先检查幻灯片指示器
+                const slides = $('.slide-indicator');
+                let currentSlide = null;
+                
+                slides.each(function() {
+                    const $slide = $(this);
+                    const slidePosition = $slide.offset().top - $('#main-content').offset().top + scrollPosition;
+                    
+                    if (slidePosition - 100 <= scrollPosition) {
+                        currentSlide = $slide;
+                    }
+                });
+                
+                if (currentSlide) {
+                    const slideIndex = slides.index(currentSlide);
+                    $('.toc-item').removeClass('active');
+                    $('.toc-item[data-slide="' + slideIndex + '"]').addClass('active');
+                    return;
+                }
+                
+                // 然后检查标题
+                const headings = $('#markdown-content h1, #markdown-content h2, #markdown-content h3, #markdown-content h4, #markdown-content h5, #markdown-content h6');
+                let currentHeading = null;
+                
+                headings.each(function() {
+                    const $heading = $(this);
+                    const headingPosition = $heading.offset().top - $('#main-content').offset().top + scrollPosition;
+                    
+                    if (headingPosition - 100 <= scrollPosition) {
+                        currentHeading = $heading;
+                    }
+                });
+                
+                if (currentHeading) {
+                    const headingId = currentHeading.attr('id');
+                    $('.toc-item').removeClass('active');
+                    $('.toc-item[data-target="#' + headingId + '"]').addClass('active');
+                }
+            }
+            
+            // 更新主题图标
+            function updateThemeIcon(theme) {
+                const themeIcon = $('#theme-toggle').find('i');
+                if (theme === 'dark') {
+                    themeIcon.removeClass('fa-sun');
+                    themeIcon.addClass('fa-moon');
+                } else {
+                    themeIcon.removeClass('fa-moon');
+                    themeIcon.addClass('fa-sun');
+                }
+            }
+            
+            // 显示错误消息
+            function showError(message) {
+                $('#content-loading .spinner-border').hide();
+                $('#content-loading p').first().text(message);
+                console.error("Presentation viewer error: " + message);
+            }
+        });
+    </script>
+</body>
+</html> 
