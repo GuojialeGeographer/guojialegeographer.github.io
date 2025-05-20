@@ -120,7 +120,7 @@
         <div class="container">
             <a class="navbar-brand"><strong>
                 <span lang="en">Geospatial Data Science</span>
-                <span lang="zh">地理信息科学</span>
+                <span lang="zh">地理空间数据科学</span>
             </strong></a>
             <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-map"></i> Menu
@@ -796,32 +796,51 @@
     import { countryCoordinates, countryNameAlias } from './talkmap/country-coordinates.js';
     import { getCountryLatLng } from './talkmap/auto-country-coords.js';
 
-    // 默认访问者数据，当无法从Flag Counter获取时使用
-    async function getDefaultVisitorData() {
-        return [
-            await getCountryLatLng("Italy"),
-            await getCountryLatLng("United States"),
-            await getCountryLatLng("Philippines")
-        ];
-    }
-
     async function extractVisitorDataFromFlagCounter() {
+        // 1. 解析Flag Counter图片旁的国家列表
+        const img = document.querySelector('img[src*="flagcounter.com"]');
         let visitorData = [];
-        try {
-            const flagCounterImg = document.querySelector('img[src*="flagcounter.com"]');
-            if (!flagCounterImg) {
-                console.log("Flag Counter image not found, using default data");
-                return await getDefaultVisitorData();
+        if (img) {
+            // 尝试查找同级或父级的国家列表（如有ol/li结构）
+            let countryList = [];
+            // 兼容Flag Counter新版和旧版
+            let parent = img.closest('.text-center') || img.parentElement;
+            if (parent) {
+                // 查找所有带国旗和数字的元素
+                const text = parent.innerText;
+                // 匹配如"IT 21"格式
+                const matches = [...text.matchAll(/([A-Z]{2,})\s+(\d+)/g)];
+                for (const m of matches) {
+                    // 用国别代码查英文名
+                    let code = m[1];
+                    let visits = parseInt(m[2]);
+                    let countryName = countryCoordinates[code]?.country || code;
+                    // 若本地表无国名，直接用代码查经纬度
+                    countryList.push({ country: countryName, code, visits });
+                }
             }
-            // 这里应有实际解析逻辑，暂用静态数据
-            visitorData.push(await getCountryLatLng("Italy"));
-            visitorData.push(await getCountryLatLng("United States"));
-            visitorData.push(await getCountryLatLng("Philippines"));
-        } catch (error) {
-            console.error("Error extracting visitor data:", error);
-        }
-        if (visitorData.length === 0) {
-            return await getDefaultVisitorData();
+            // 若没解析到，降级为静态数据
+            if (countryList.length === 0) {
+                countryList = [
+                    { country: "Italy", visits: 16 },
+                    { country: "United States", visits: 4 },
+                    { country: "Philippines", visits: 1 }
+                ];
+            }
+            // 自动补全经纬度
+            for (const item of countryList) {
+                const geo = await getCountryLatLng(item.country);
+                if (geo) {
+                    visitorData.push({ ...geo, visits: item.visits });
+                }
+            }
+        } else {
+            // 没有Flag Counter图片，降级为静态数据
+            visitorData = [
+                await getCountryLatLng("Italy"),
+                await getCountryLatLng("United States"),
+                await getCountryLatLng("Philippines")
+            ];
         }
         return visitorData;
     }
