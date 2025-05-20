@@ -119,8 +119,8 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
         <div class="container">
             <a class="navbar-brand"><strong>
-                <span lang="en">Geospatial Data Science</span>
-                <span lang="zh">郭家乐，地理信息工程 意大利米兰理工大学</span>
+                <span lang="en">Jiale Guo, Geospatial Data Science, Politecnico di Milano</span>
+                <span lang="zh">郭家乐，地理信息工程，意大利米兰理工大学</span>
             </strong></a>
             <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-map"></i> Menu
@@ -231,7 +231,7 @@
                                       <span lang="zh">目前，我正在意大利<a href="https://www.polimi.it/en" target="_blank">米兰理工大学</a>攻读地理信息工程硕士学位，预计2026年毕业。在此之前，我在中国<a href="https://www.chzu.edu.cn/" target="_blank">滁州学院</a>获得了地理学学士学位，期间我使用3D GIS技术进行了PM2.5污染时空模式挖掘研究。</span>
                                     </p>
                                     <p>
-                                      <span lang="en">My research focuses on integrating GIScience with data-driven approaches to address geospatial challenges in the era of AI and big data. I examine human-environment interactions through spatial analytics, developing computational methods that bridge theoretical knowledge with practical applications for urban planning and sustainable development. My professional experience includes environmental modeling at the <a href="https://www.cas.cn/" target="_blank">Chinese Academy of Sciences</a>, where I applied the SWAT model to study land use impacts on the Qinghai Lake watershed.</span>
+                                      <span lang="en">My research focuses on integrating GIScience with data-driven approaches to address geospatial challenges in the era of AI and big data. I examine human-environment interactions through spatial analytics, developing computational methods that bridge theoretical knowledge with practical applications for urban planning and sustainable development. My professional experience includes environmental modeling at the <a href="https://english.cas.cn/" target="_blank">Chinese Academy of Sciences</a>, where I applied the SWAT model to study land use impacts on the Qinghai Lake watershed.</span>
                                       <span lang="zh">我的研究融合地理信息科学与数据驱动方法，应对人工智能和大数据时代的地理空间挑战。通过空间分析技术，我研究人类与环境的交互关系，开发创新计算方法将理论知识与实际应用相结合，为城市规划和可持续发展提供决策支持。我曾在<a href="https://www.cas.cn/" target="_blank">中国科学院</a>运用SWAT模型研究土地利用对青海湖流域的影响，积累了环境建模的专业经验。</span>
                                     </p>
                                     <p>
@@ -475,8 +475,8 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between w-100 small">
                                                     <div>
-                                                        <span lang="en">Research Assistant - <a href="http://www.shud.xyz" target="_blank">SHUD-lab</a></span>
-                                                        <span lang="zh">研究助理 - <a href="http://www.shud.xyz" target="_blank">SHUD实验室</a></span>
+                                                        <span lang="en">Research Assistant - <a href="https://www.shud.xyz/en/" target="_blank">SHUD Lab</a></span>
+                                                        <span lang="zh">研究助理 - <a href="https://www.shud.xyz/zh/" target="_blank">SHUD实验室</a></span>
                                                     </div>
                                                     <div class="text-right no-break"><em>10.2021 - 06.2022</em></div>
                                                 </div>
@@ -785,156 +785,83 @@
     </script>
     
     <!-- Homepage Map Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 国家代码到经纬度的映射表
-            const countryCoordinates = {
-                'IT': { country: "Italy", lat: 42.5, lng: 12.5 },  // 调整意大利坐标
-                'US': { country: "United States", lat: 39.5, lng: -98.35 }, // 调整美国坐标
-                'CN': { country: "China", lat: 35.8617, lng: 104.1954 },
-                'DE': { country: "Germany", lat: 51.1657, lng: 10.4515 },
-                'GB': { country: "United Kingdom", lat: 55.3781, lng: -3.4360 },
-                'FR': { country: "France", lat: 46.2276, lng: 2.2137 },
-                'IN': { country: "India", lat: 20.5937, lng: 78.9629 },
-                'JP': { country: "Japan", lat: 36.2048, lng: 138.2529 },
-                'CA': { country: "Canada", lat: 56.1304, lng: -106.3468 },
-                'AU': { country: "Australia", lat: -25.2744, lng: 133.7751 },
-                'BR': { country: "Brazil", lat: -14.2350, lng: -51.9253 },
-                'ES': { country: "Spain", lat: 40.4637, lng: -3.7492 },
-                'NL': { country: "Netherlands", lat: 52.1326, lng: 5.2913 },
-                'RU': { country: "Russia", lat: 61.5240, lng: 105.3188 },
-                'KR': { country: "South Korea", lat: 35.9078, lng: 127.7669 },
-                'PH': { country: "Philippines", lat: 12.8797, lng: 121.7740 }
-            };
+    <script type="module">
+    import { countryCoordinates, countryNameAlias } from './talkmap/country-coordinates.js';
+    import { getCountryLatLng } from './talkmap/auto-country-coords.js';
 
-            // 默认访问者数据，当无法从Flag Counter获取时使用
-            let defaultVisitorData = [
-                { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 16 },
-                { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 4 },
-                { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 }
-            ];
-            
-            // 尝试从页面上解析实际的Flag Counter数据
-            function extractVisitorDataFromFlagCounter() {
-                let visitorData = [];
-                
-                try {
-                    // 寻找Flag Counter图像
-                    const flagCounterImg = document.querySelector('img[src*="flagcounter.com"]');
-                    if (!flagCounterImg) {
-                        console.log("Flag Counter image not found, using default data");
-                        return defaultVisitorData;
-                    }
-                    
-                    // 直接使用已知的实际访问数据
-                    // 这些数据来自于页面上显示的Flag Counter
-                    visitorData.push({
-                        country: "Italy",
-                        lat: countryCoordinates['IT'].lat,
-                        lng: countryCoordinates['IT'].lng,
-                        visits: 16
-                    });
-                    
-                    visitorData.push({
-                        country: "United States",
-                        lat: countryCoordinates['US'].lat,
-                        lng: countryCoordinates['US'].lng,
-                        visits: 4
-                    });
-                    
-                    visitorData.push({
-                        country: "Philippines",
-                        lat: countryCoordinates['PH'].lat,
-                        lng: countryCoordinates['PH'].lng,
-                        visits: 1
-                    });
-                    
-                } catch (error) {
-                    console.error("Error extracting visitor data:", error);
-                }
-                
-                // 如果无法获取数据，返回默认数据
-                if (visitorData.length === 0) {
-                    return defaultVisitorData;
-                }
-                
-                return visitorData;
+    // 默认访问者数据，当无法从Flag Counter获取时使用
+    async function getDefaultVisitorData() {
+        return [
+            await getCountryLatLng("Italy"),
+            await getCountryLatLng("United States"),
+            await getCountryLatLng("Philippines")
+        ];
+    }
+
+    async function extractVisitorDataFromFlagCounter() {
+        let visitorData = [];
+        try {
+            const flagCounterImg = document.querySelector('img[src*="flagcounter.com"]');
+            if (!flagCounterImg) {
+                console.log("Flag Counter image not found, using default data");
+                return await getDefaultVisitorData();
             }
-            
-            // 获取访问数据
-            const topVisitorData = extractVisitorDataFromFlagCounter();
-            
-            // Improved function to convert lat/lng to x/y coordinates
-            function latLngToPixel(lat, lng, mapWidth, mapHeight) {
-                // 经纬度到像素的转换常常需要根据具体地图图像进行调整
-                // 下面的公式已经过调整以适应NASA地图图像
-                
-                // 调整经度范围
-                let adjustedLng = lng;
-                if (adjustedLng > 180) adjustedLng -= 360;
-                if (adjustedLng < -180) adjustedLng += 360;
-                
-                // 经度转换 - 线性映射
-                // 地图左侧为经度-180°，右侧为经度+180°
-                // 调整后的公式更准确地映射到像素坐标
-                const xFactor = 0.996; // 校正系数
-                const xOffset = 0;    // 横向偏移校正
-                const x = ((adjustedLng + 180) / 360) * mapWidth * xFactor + xOffset;
-                
-                // 纬度转换 - 使用修正的Mercator投影
-                // 地图顶部为纬度+90°，底部为纬度-90°
-                // 对于等距投影地图，需要线性映射
-                const yFactor = 1.02; // 校正系数
-                const yOffset = -mapHeight * 0.01; // 垂直偏移校正
-                
-                // 使用简单线性映射而非Mercator，因为NASA图像更接近于等距投影
-                const y = ((90 - lat) / 180) * mapHeight * yFactor + yOffset;
-                
-                return { 
-                    x: Math.round(x), 
-                    y: Math.round(y)
-                };
-            }
-            
-            // Add markers to homepage map
-            const homepageMap = document.getElementById('homepage-map');
-            if (homepageMap) {
-                const mapImage = homepageMap.querySelector('img');
-                if (mapImage) {
-                    // Wait for the image to load
-                    mapImage.onload = function() {
-                        const mapWidth = mapImage.clientWidth;
-                        const mapHeight = mapImage.clientHeight;
-                        
-                        // Create markers for each top visitor
-                        topVisitorData.forEach(visitor => {
-                            const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
-                            
-                            // Create marker element
-                            const marker = document.createElement('div');
-                            marker.className = 'visitor-marker';
-                            marker.title = `${visitor.country}: ${visitor.visits} visits`;
-                            
-                            // Markers for homepage - slightly larger for better visibility
-                            const size = 10;  
-                            marker.style.width = `${size}px`;
-                            marker.style.height = `${size}px`;
-                            marker.style.position = 'absolute';
-                            marker.style.borderRadius = '50%';
-                            marker.style.backgroundColor = '#ff3b30';
-                            marker.style.border = '2px solid #fff';
-                            marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
-                            marker.style.left = `${position.x - size/2}px`;
-                            marker.style.top = `${position.y - size/2}px`;
-                            marker.style.zIndex = '100';
-                            
-                            // Add to map container
-                            homepageMap.appendChild(marker);
-                        });
-                    };
+            // 这里应有实际解析逻辑，暂用静态数据
+            visitorData.push(await getCountryLatLng("Italy"));
+            visitorData.push(await getCountryLatLng("United States"));
+            visitorData.push(await getCountryLatLng("Philippines"));
+        } catch (error) {
+            console.error("Error extracting visitor data:", error);
+        }
+        if (visitorData.length === 0) {
+            return await getDefaultVisitorData();
+        }
+        return visitorData;
+    }
+
+    function latLngToPixel(lat, lng, mapWidth, mapHeight) {
+        let adjustedLng = lng;
+        if (adjustedLng > 180) adjustedLng -= 360;
+        if (adjustedLng < -180) adjustedLng += 360;
+        const xFactor = 0.996;
+        const xOffset = 0;
+        const x = ((adjustedLng + 180) / 360) * mapWidth * xFactor + xOffset;
+        const yFactor = 1.02;
+        const yOffset = -mapHeight * 0.01;
+        const y = ((90 - lat) / 180) * mapHeight * yFactor + yOffset;
+        return { x: Math.round(x), y: Math.round(y) };
+    }
+
+    const homepageMap = document.getElementById('homepage-map');
+    if (homepageMap) {
+        const mapImage = homepageMap.querySelector('img');
+        if (mapImage) {
+            mapImage.onload = async function() {
+                const mapWidth = mapImage.clientWidth;
+                const mapHeight = mapImage.clientHeight;
+                const topVisitorData = await extractVisitorDataFromFlagCounter();
+                for (const visitor of topVisitorData) {
+                    if (!visitor) continue;
+                    const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
+                    const marker = document.createElement('div');
+                    marker.className = 'visitor-marker';
+                    marker.title = `${visitor.country}`;
+                    const size = 10;
+                    marker.style.width = `${size}px`;
+                    marker.style.height = `${size}px`;
+                    marker.style.position = 'absolute';
+                    marker.style.borderRadius = '50%';
+                    marker.style.backgroundColor = '#ff3b30';
+                    marker.style.border = '2px solid #fff';
+                    marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
+                    marker.style.left = `${position.x - size/2}px`;
+                    marker.style.top = `${position.y - size/2}px`;
+                    marker.style.zIndex = '100';
+                    homepageMap.appendChild(marker);
                 }
-            }
-        });
+            };
+        }
+    }
     </script>
 </body>
 </html>

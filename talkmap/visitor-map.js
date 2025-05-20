@@ -3,35 +3,16 @@
  * This script handles the visualization of visitor locations on a world map
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 国家代码到经纬度的映射表
-    const countryCoordinates = {
-        'IT': { country: "Italy", lat: 42.5, lng: 12.5 },  // 调整意大利坐标
-        'US': { country: "United States", lat: 39.5, lng: -98.35 }, // 调整美国坐标
-        'CN': { country: "China", lat: 35.8617, lng: 104.1954 },
-        'DE': { country: "Germany", lat: 51.1657, lng: 10.4515 },
-        'GB': { country: "United Kingdom", lat: 55.3781, lng: -3.4360 },
-        'FR': { country: "France", lat: 46.2276, lng: 2.2137 },
-        'IN': { country: "India", lat: 20.5937, lng: 78.9629 },
-        'JP': { country: "Japan", lat: 36.2048, lng: 138.2529 },
-        'CA': { country: "Canada", lat: 56.1304, lng: -106.3468 },
-        'AU': { country: "Australia", lat: -25.2744, lng: 133.7751 },
-        'BR': { country: "Brazil", lat: -14.2350, lng: -51.9253 },
-        'ES': { country: "Spain", lat: 40.4637, lng: -3.7492 },
-        'NL': { country: "Netherlands", lat: 52.1326, lng: 5.2913 },
-        'RU': { country: "Russia", lat: 61.5240, lng: 105.3188 },
-        'KR': { country: "South Korea", lat: 35.9078, lng: 127.7669 },
-        'PH': { country: "Philippines", lat: 12.8797, lng: 121.7740 }
-        // 可根据需要添加更多国家
-    };
+import { countryCoordinates, countryNameAlias } from './country-coordinates.js';
+import { getCountryLatLng } from './auto-country-coords.js';
 
+document.addEventListener('DOMContentLoaded', function() {
     // 从Flag Counter获取访问数据
-    function extractVisitorDataFromFlagCounter() {
-        // 默认访问数据，如果无法从Flag Counter获取数据时使用
+    async function extractVisitorDataFromFlagCounter() {
         let defaultVisitorData = [
-            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 16 },
-            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 4 },
-            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 }
+            await getCountryLatLng("Italy"),
+            await getCountryLatLng("United States"),
+            await getCountryLatLng("Philippines")
         ];
         
         // 尝试从页面中查找Flag Counter图像
@@ -63,16 +44,21 @@ document.addEventListener('DOMContentLoaded', function() {
                             const visits = parseInt(match[2]);
                             
                             // 查找国家坐标
+                            let found = false;
                             for (const code in countryCoordinates) {
-                                if (countryCoordinates[code].country === countryName) {
+                                if (countryCoordinates[code].country === countryName || (countryNameAlias[countryName] && countryNameAlias[countryName] === code)) {
                                     visitorData.push({
                                         country: countryName,
                                         lat: countryCoordinates[code].lat,
                                         lng: countryCoordinates[code].lng,
                                         visits: visits
                                     });
+                                    found = true;
                                     break;
                                 }
+                            }
+                            if (!found) {
+                                console.warn(`未找到国家坐标: ${countryName}，请在country-coordinates.js中补充。`);
                             }
                         }
                     }
@@ -156,47 +142,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Create visitor markers on the map
-    function createVisitorMarkers() {
+    async function createVisitorMarkers() {
         const mapContainer = document.getElementById('map-container');
         if (!mapContainer) return;
-
         const mapImage = mapContainer.querySelector('img');
         if (!mapImage) return;
-
-        // Wait for the image to load to get its dimensions
-        mapImage.onload = function() {
+        mapImage.onload = async function() {
             const mapWidth = mapImage.clientWidth;
             const mapHeight = mapImage.clientHeight;
-            
-            // Create a marker for each visitor
-            visitorData.forEach(visitor => {
+            const visitorData = await extractVisitorDataFromFlagCounter();
+            for (const visitor of visitorData) {
+                if (!visitor) continue;
                 const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
-                
-                // Create marker element
                 const marker = document.createElement('div');
                 marker.className = 'visitor-marker';
                 marker.title = `${visitor.country}: ${visitor.visits} visits`;
-                
-                // Size the marker based on visit count (min 8px, max 16px)
                 const size = Math.max(8, Math.min(16, 8 + (visitor.visits / 10)));
                 marker.style.width = `${size}px`;
                 marker.style.height = `${size}px`;
-                
-                // Position the marker - center it on the point
                 marker.style.left = `${position.x - size/2}px`;
                 marker.style.top = `${position.y - size/2}px`;
-                
-                // Add to map container
                 mapContainer.appendChild(marker);
-            });
-            
-            // Update visitor stats
-            updateVisitorStats();
+            }
+            updateVisitorStats(visitorData);
         };
     }
 
     // Update visitor statistics display
-    function updateVisitorStats() {
+    function updateVisitorStats(visitorData) {
         const statsContainer = document.getElementById('visitor-stats');
         if (!statsContainer) return;
         
