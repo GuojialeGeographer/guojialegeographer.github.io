@@ -203,14 +203,68 @@
         html[data-theme="dark"] .filter-container {
             background-color: #343a40;
         }
+        
+        /* 空状态暗黑模式样式 */
+        html[data-theme="dark"] #empty-state .bg-light {
+            background-color: #343a40 !important;
+        }
+        
+        html[data-theme="dark"] #empty-state .text-muted {
+            color: #adb5bd !important;
+        }
+
+        /* 图片展示相关样式 */
+        .card-img-top {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+        
+        /* 图片放大查看 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            padding: 20px;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoom 0.3s ease;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        @keyframes zoom {
+            from {transform: scale(0.1)}
+            to {transform: scale(1)}
+        }
     </style>
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
         <div class="container">
             <a class="navbar-brand"><strong>
-                <span lang="en">Presentations</span>
-                <span lang="zh">郭家乐，地理信息工程 意大利米兰理工大学</span>
+                <span lang="en">Geospatial Data Science</span>
+                <span lang="zh">地理空间数据科学</span>
             </strong></a>
             <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-map"></i> Menu
@@ -319,10 +373,10 @@
                         </div>
                         
                         <div class="row" id="presentations-container">
-                            <!-- 课程演示文稿 -->
-                            <div class="col-md-6 col-lg-4 presentation-item" data-tags="course">
+                            <!-- 全球坐标系统演进 -->
+                            <div class="col-md-10 col-lg-8 mx-auto presentation-item" data-tags="course">
                                 <div class="card presentation-card">
-                                    <img src="Images/presentations/gis_course_cover.png" class="presentation-cover" alt="GIS全球坐标系统演进">
+                                    <img src="Presentations/Courses/20250529-GIS_Pre/PPT截图中文版/1.png" class="presentation-cover" alt="全球坐标系统演进">
                                     <div class="card-body">
                                         <div class="presentation-tags">
                                             <span class="tag">
@@ -332,56 +386,201 @@
                                         </div>
                                         <h5 class="card-title">
                                             <span lang="en">Global Coordinate Systems Evolution</span>
-                                            <span lang="zh">全球坐标系统演进</span>
+                                            <span lang="zh">全球坐标系统演进：驱动因素与国家案例研究</span>
                                         </h5>
                                         <p class="card-text small text-muted">
-                                            <span lang="en">2022-05-29</span>
-                                            <span lang="zh">2022年5月29日</span>
+                                            <span lang="en">2025-05-29</span>
+                                            <span lang="zh">2025年5月29日</span>
                                         </p>
                                         <div class="d-flex mt-3">
-                                            <a href="Presentations/viewer/presentation-viewer.html?file=pdf/全球坐标系统演进：驱动因素与国家案例研究.md" class="btn btn-sm btn-outline-primary mr-2" target="_blank">
-                                                <i class="fas fa-play-circle"></i>
+                                            <a href="Presentations/viewer/presentation-viewer.html?file=全球坐标系统演进：驱动因素与国家案例研究.md&dir=../Courses/20250529-GIS_Pre" class="btn btn-sm btn-outline-primary mr-2" target="_blank">
+                                                <i class="fas fa-book-reader"></i>
                                                 <span lang="en">View Online</span>
                                                 <span lang="zh">在线查看</span>
                                             </a>
-                                            <a href="Presentations/Courses/202505292-GIS_Pre/jiale.guo-CN.pptx" class="btn btn-sm btn-outline-secondary" download="全球坐标系统演进.pptx">
+                                            <a href="Presentations/Courses/20250529-GIS_Pre/jiale.guo-CN.pptx" class="btn btn-sm btn-outline-secondary mr-2" download="全球坐标系统演进.pptx">
                                                 <i class="fas fa-download"></i>
-                                                <span lang="en">Download PPT</span>
-                                                <span lang="zh">下载PPT</span>
+                                                <span lang="en">CN PPT</span>
+                                                <span lang="zh">中文PPT</span>
+                                            </a>
+                                            <a href="Presentations/Courses/20250529-GIS_Pre/jiale.guo-EN.pptx" class="btn btn-sm btn-outline-secondary" download="Global Coordinate Systems Evolution.pptx">
+                                                <i class="fas fa-download"></i>
+                                                <span lang="en">EN PPT</span>
+                                                <span lang="zh">英文PPT</span>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- 052422 GIS课程 -->
-                            <div class="col-md-6 col-lg-4 presentation-item" data-tags="course">
-                                <div class="card presentation-card">
-                                    <img src="Images/presentations/presentation_placeholder1.jpg" class="presentation-cover" alt="GIS课程">
-                                    <div class="card-body">
-                                        <div class="presentation-tags">
-                                            <span class="tag">
-                                                <span lang="en">Course</span>
-                                                <span lang="zh">课程</span>
-                                            </span>
+                        </div>
+                        
+                        <!-- 思维导图展示 -->
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <h4 class="mb-4">
+                                    <span lang="en">Mind Maps & Slides</span>
+                                    <span lang="zh">思维导图与课件截图</span>
+                                </h4>
+                                
+                                <!-- 中文思维导图 -->
+                                <div class="mb-5">
+                                    <h5 class="mb-3">
+                                        <span lang="en">Chinese Mind Maps</span>
+                                        <span lang="zh">中文思维导图</span>
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/中文思维导图/1.坐标系演进的主要驱动因素.drawio.png" class="card-img-top" alt="坐标系演进的主要驱动因素">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">坐标系演进的主要驱动因素</h6>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <h5 class="card-title">
-                                            <span lang="en">052422 - GEOGRAPHIC INFORMATION SYSTEMS</span>
-                                            <span lang="zh">052422 - 地理信息系统</span>
-                                        </h5>
-                                        <p class="card-text small text-muted">
-                                            <span lang="en">Fall 2023</span>
-                                            <span lang="zh">2023年秋季</span>
-                                        </p>
-                                        <div class="d-flex mt-3">
-                                            <a href="#" class="btn btn-sm btn-outline-primary">
-                                                <i class="fas fa-eye"></i> 
-                                                <span lang="en">View</span>
-                                                <span lang="zh">查看</span>
-                                            </a>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/中文思维导图/2.Case1:中国的坐标演进之路.drawio.png" class="card-img-top" alt="中国的坐标演进之路">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">中国的坐标演进之路</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/中文思维导图/3.case2:美国的坐标演进之路.drawio.png" class="card-img-top" alt="美国的坐标演进之路">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">美国的坐标演进之路</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/中文思维导图/4.Case3:欧洲的坐标演变-新.drawio.png" class="card-img-top" alt="欧洲的坐标演变">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">欧洲的坐标演变</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/中文思维导图/5.Case4:日本的坐标演变.drawio.png" class="card-img-top" alt="日本的坐标演变">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">日本的坐标演变</h6>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <!-- 英文思维导图 -->
+                                <div class="mb-5">
+                                    <h5 class="mb-3">
+                                        <span lang="en">English Mind Maps</span>
+                                        <span lang="zh">英文思维导图</span>
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/英文思维导图/1.1Circle_Radiation_Framework_English.drawio.png" class="card-img-top" alt="Circle Radiation Framework">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Circle Radiation Framework</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/英文思维导图/2.1Case1:China_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="China Coordinate System Evolution">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">China Coordinate System Evolution</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/英文思维导图/3.1Case2:USA_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="USA Coordinate System Evolution">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">USA Coordinate System Evolution</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/英文思维导图/4.1Case3:Europe_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="Europe Coordinate System Evolution">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Europe Coordinate System Evolution</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/英文思维导图/5.1Case4:Japan_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="Japan Coordinate System Evolution">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Japan Coordinate System Evolution</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- PPT截图 -->
+                                <div class="mb-5">
+                                    <h5 class="mb-3">
+                                        <span lang="en">Presentation Slides</span>
+                                        <span lang="zh">演示文稿截图</span>
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/PPT截图中文版/1.png" class="card-img-top" alt="PPT截图1">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/PPT截图中文版/2总览.png" class="card-img-top" alt="PPT截图2">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/PPT截图中文版/3.gis.png" class="card-img-top" alt="PPT截图3">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/PPT截图中文版/4.gis.png" class="card-img-top" alt="PPT截图4">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/PPT截图中文版/5.gis.png" class="card-img-top" alt="PPT截图5">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <img src="Presentations/Courses/20250529-GIS_Pre/PPT截图中文版/6.gis.png" class="card-img-top" alt="PPT截图6">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 空状态提示 -->
+                        <div id="empty-state" class="col-12 text-center py-5" style="display: none;">
+                            <div class="p-4 rounded bg-light">
+                                <i class="fas fa-search-minus fa-3x text-muted mb-3"></i>
+                                <h5>
+                                    <span lang="en">No presentations found</span>
+                                    <span lang="zh">未找到相关演示文稿</span>
+                                </h5>
+                                <p class="text-muted">
+                                    <span lang="en">Try selecting a different tag or view all presentations</span>
+                                    <span lang="zh">请尝试选择其他标签或查看所有演示文稿</span>
+                                </p>
+                                <button class="btn btn-outline-primary btn-sm reset-filters">
+                                    <i class="fas fa-sync-alt"></i>
+                                    <span lang="en">Reset Filters</span>
+                                    <span lang="zh">重置筛选</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -397,6 +596,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- 图片放大模态框 -->
+    <div id="imageModal" class="image-modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
@@ -418,6 +623,9 @@
             } else {
                 themeIcon.className = 'fas fa-sun';
             }
+            
+            // 保存到本地存储
+            localStorage.setItem('theme', newTheme);
         });
         
         // 语言切换
@@ -426,7 +634,28 @@
             const currentLang = html.getAttribute('data-lang');
             const newLang = currentLang === 'en' ? 'zh' : 'en';
             html.setAttribute('data-lang', newLang);
+            
+            // 保存到本地存储
+            localStorage.setItem('lang', newLang);
         });
+        
+        // 初始化主题（从localStorage读取设置）
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const themeIcon = document.querySelector('#theme-toggle i');
+            if (savedTheme === 'dark') {
+                themeIcon.className = 'fas fa-moon';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+            }
+        }
+        
+        // 初始化语言（从localStorage读取设置）
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang) {
+            document.documentElement.setAttribute('data-lang', savedLang);
+        }
         
         // 初始化工具提示
         $(function () {
@@ -446,11 +675,48 @@
                 // 显示/隐藏相应的项目
                 if (selectedTag === 'all') {
                     $('.presentation-item').show();
+                    $('#empty-state').hide(); // 隐藏空状态提示
                 } else {
+                    const matchingItems = $(`.presentation-item[data-tags~="${selectedTag}"]`);
                     $('.presentation-item').hide();
-                    $(`.presentation-item[data-tags~="${selectedTag}"]`).show();
+                    matchingItems.show();
+                    
+                    // 如果没有匹配的项目，显示空状态提示
+                    if (matchingItems.length === 0) {
+                        $('#empty-state').show();
+                    } else {
+                        $('#empty-state').hide();
+                    }
                 }
             });
+            
+            // 重置筛选按钮
+            $('.reset-filters').on('click', function() {
+                $('.tag-btn[data-tag="all"]').click();
+            });
+            
+            // 图片放大功能
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementsByClassName('modal-close')[0];
+            
+            // 为所有图片添加点击事件
+            $('.card-img-top').on('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+            
+            // 关闭模态框
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+            
+            // 点击模态框外部关闭
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         });
     </script>
 </body>
