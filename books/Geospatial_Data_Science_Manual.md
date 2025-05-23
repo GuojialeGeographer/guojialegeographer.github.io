@@ -18,6 +18,35 @@ This section covers the fundamental concepts, theories, and tools in geospatial 
 
 本部分涵盖地理空间数据科学的基本概念、理论和工具，包括GIS原理、空间统计和地理空间分析的基本编程技能。
 
+#### GIS Fundamentals and Knowledge Framework
+#### GIS基础与知识框架
+
+The foundation of geospatial data science is built on Geographic Information Systems (GIS). Here I've included my comprehensive notes from the GIS course at Politecnico di Milano (2024-2025), which covers core theories, methodologies, and applications of GIS.
+
+地理空间数据科学的基础建立在地理信息系统（GIS）上。这里我收录了我在米兰理工大学（2024-2025学年）GIS课程的全面笔记，涵盖了GIS的核心理论、方法和应用。
+
+[GIS Learning Notes and Knowledge Framework (GIS学习笔记与知识框架)](book-viewer.html?file=GIS%29学习笔记与知识框架.md)
+
+These notes include:
+- Core GIS theories and methods
+- Earth surface positioning, coordinate systems, and map projections
+- Spatial data models, structures, and acquisition
+- Spatial data exploration and field analysis
+- Geospatial artificial intelligence
+- Geospatial Web and OGC standards
+- Digital Twin Earth, Metaverse, and future perspectives
+- Citizen science and smart communities
+
+这些笔记包括：
+- GIS核心理论与方法
+- 地球表面定位、坐标系统与地图投影
+- 空间数据模型、结构与获取
+- 空间数据探索与场分析
+- 地理空间人工智能
+- 地理空间Web与OGC标准
+- 数字孪生地球、元宇宙与未来展望
+- 公民科学与智慧社区
+
 ### Part II: Advanced Techniques and Methodologies 
 ### 第二部分：高级技术与方法论
 
