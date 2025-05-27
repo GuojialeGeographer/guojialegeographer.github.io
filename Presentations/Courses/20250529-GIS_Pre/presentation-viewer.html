@@ -324,7 +324,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/"><strong>Jiale Guo</strong></a>
+            <a class="navbar-brand" href="/"><strong>Geospatial Data Science</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -417,6 +417,14 @@
                 return;
             }
 
+            // Set download links
+            const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            const cnPptUrl = `${basePath}${baseDir}/${file.replace('.md', '-CN.pptx')}`;
+            const enPptUrl = `${basePath}${baseDir}/${file.replace('.md', '-EN.pptx')}`;
+            
+            $('#download-cn').attr('href', cnPptUrl);
+            $('#download-en').attr('href', enPptUrl);
+            
             // 尝试从查询参数中获取语言设置
             const urlLang = urlParams.get('lang');
             if (urlLang === 'zh' || urlLang === 'en') {
@@ -426,7 +434,7 @@
             
             // 加载Markdown文件
             $.ajax({
-                url: `${baseDir}/${file}`,
+                url: `${baseDir}/${encodeURIComponent(file)}`,
                 dataType: 'text',
                 success: function(data) {
                     $('#loading').hide();
@@ -464,6 +472,8 @@
                     updateDebugInfo({
                         file,
                         baseDir,
+                        cnPptUrl,
+                        enPptUrl,
                         basePath
                     });
                 },
