@@ -3,16 +3,52 @@
  * This script handles the visualization of visitor locations on a world map
  */
 
-import { countryCoordinates, countryNameAlias } from './country-coordinates.js';
-import { getCountryLatLng } from './auto-country-coords.js';
+// 国家坐标数据
+const countryCoordinates = {
+    'IT': { country: 'Italy', lat: 41.87194, lng: 12.56738 },
+    'US': { country: 'United States', lat: 37.09024, lng: -95.71289 },
+    'CN': { country: 'China', lat: 35.86166, lng: 104.19539 },
+    'JP': { country: 'Japan', lat: 36.20482, lng: 138.25292 },
+    'PH': { country: 'Philippines', lat: 12.87972, lng: 121.77401 },
+    'IE': { country: 'Ireland', lat: 53.41291, lng: -8.24389 },
+    'GB': { country: 'United Kingdom', lat: 55.37805, lng: -3.43597 },
+    'DE': { country: 'Germany', lat: 51.16569, lng: 10.45152 },
+    'FR': { country: 'France', lat: 46.22763, lng: 2.21374 },
+    'ES': { country: 'Spain', lat: 40.46366, lng: -3.74922 },
+    'CA': { country: 'Canada', lat: 56.13036, lng: -106.34677 },
+    'AU': { country: 'Australia', lat: -25.27439, lng: 133.77513 },
+    'BR': { country: 'Brazil', lat: -14.23500, lng: -51.92528 },
+    'IN': { country: 'India', lat: 20.59368, lng: 78.96288 },
+    'RU': { country: 'Russia', lat: 61.52401, lng: 105.31875 }
+};
+
+// 国家名称别名，用于处理不同表示形式
+const countryNameAlias = {
+    'USA': 'US',
+    'United States of America': 'US',
+    'UK': 'GB',
+    'Great Britain': 'GB',
+    'England': 'GB',
+    'People\'s Republic of China': 'CN',
+    'Republic of China': 'TW',
+    'Taiwan': 'TW',
+    'Hong Kong': 'HK',
+    'South Korea': 'KR',
+    'Republic of Korea': 'KR',
+    'North Korea': 'KP',
+    'Democratic People\'s Republic of Korea': 'KP'
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     // 从Flag Counter获取访问数据
     async function extractVisitorDataFromFlagCounter() {
         let defaultVisitorData = [
-            await getCountryLatLng("Italy"),
-            await getCountryLatLng("United States"),
-            await getCountryLatLng("Philippines")
+            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 26 },
+            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 5 },
+            { country: "China", lat: countryCoordinates['CN'].lat, lng: countryCoordinates['CN'].lng, visits: 2 },
+            { country: "Japan", lat: countryCoordinates['JP'].lat, lng: countryCoordinates['JP'].lng, visits: 1 },
+            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 },
+            { country: "Ireland", lat: countryCoordinates['IE'].lat, lng: countryCoordinates['IE'].lng, visits: 1 }
         ];
         
         // 尝试从页面中查找Flag Counter图像
@@ -22,117 +58,36 @@ document.addEventListener('DOMContentLoaded', function() {
             return defaultVisitorData;
         }
         
-        // 获取访问者数据
-        let visitorData = [];
-        
+        // 从Flag Counter图像中提取国家信息
         try {
-            // 检查页面上是否有Flag Counter统计表
-            const statsDivs = document.querySelectorAll('.flag-counter');
+            // 解析Flag Counter图像URL中的国家代码和访问量
+            const flagCounterImg = flagCounterImgs[0];
+            const imgSrc = flagCounterImg.getAttribute('src');
             
-            // 如果没有找到.flag-counter，也尝试检查其他地方
-            if (statsDivs.length > 0) {
-                // 查找旁边的ol.country-list元素，这通常包含国家列表
-                const countryLists = document.querySelectorAll('.country-list');
-                for (const list of countryLists) {
-                    const items = list.querySelectorAll('li');
-                    for (const item of items) {
-                        const text = item.textContent.trim();
-                        // 尝试匹配格式如 "Country Name (XX)"
-                        const match = text.match(/([^(]+)\s*\((\d+)\)/);
-                        if (match) {
-                            const countryName = match[1].trim();
-                            const visits = parseInt(match[2]);
-                            
-                            // 查找国家坐标
-                            let found = false;
-                            for (const code in countryCoordinates) {
-                                if (countryCoordinates[code].country === countryName || (countryNameAlias[countryName] && countryNameAlias[countryName] === code)) {
-                                    visitorData.push({
-                                        country: countryName,
-                                        lat: countryCoordinates[code].lat,
-                                        lng: countryCoordinates[code].lng,
-                                        visits: visits
-                                    });
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if (!found) {
-                                console.warn(`未找到国家坐标: ${countryName}，请在country-coordinates.js中补充。`);
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // 如果上面的方法没有找到任何数据，尝试直接从图像URL解析
-            if (visitorData.length === 0) {
-                // 最新的Flag Counter数据
-                // 这是一个临时解决方案，使用最新的访问数据
-                
-                // 添加已知的访问数据
-                visitorData.push({
-                    country: "Italy",
-                    lat: countryCoordinates['IT'].lat,
-                    lng: countryCoordinates['IT'].lng,
-                    visits: 16
-                });
-                
-                visitorData.push({
-                    country: "United States",
-                    lat: countryCoordinates['US'].lat,
-                    lng: countryCoordinates['US'].lng,
-                    visits: 4
-                });
-                
-                visitorData.push({
-                    country: "Philippines",
-                    lat: countryCoordinates['PH'].lat,
-                    lng: countryCoordinates['PH'].lng,
-                    visits: 1
-                });
-            }
+            // 直接使用默认数据，因为我们无法直接从图像URL解析出国家信息
+            // 这些数据是从Flag Counter图像上看到的
+            return defaultVisitorData;
         } catch (error) {
             console.error("Error extracting visitor data from Flag Counter:", error);
-        }
-        
-        // 如果无法从Flag Counter获取数据，使用默认数据
-        if (visitorData.length === 0) {
-            console.log("Could not extract visitor data, using default data");
             return defaultVisitorData;
         }
-        
-        return visitorData;
     }
 
-    // 获取访问数据
-    const visitorData = extractVisitorDataFromFlagCounter();
-
-    // Improved function to convert lat/lng to x/y coordinates on the map image
-    // This uses a more accurate projection for the specific world map image
+    // 经纬度转换为地图上的像素坐标
     function latLngToPixel(lat, lng, mapWidth, mapHeight) {
-        // 经纬度到像素的转换常常需要根据具体地图图像进行调整
-        // 下面的公式已经过调整以适应NASA地图图像
-        
         // 调整经度范围
         let adjustedLng = lng;
         if (adjustedLng > 180) adjustedLng -= 360;
         if (adjustedLng < -180) adjustedLng += 360;
         
         // 经度转换 - 线性映射
-        // 地图左侧为经度-180°，右侧为经度+180°
-        // 调整后的公式更准确地映射到像素坐标
         const xFactor = 0.996; // 校正系数
         const xOffset = 0;    // 横向偏移校正
         const x = ((adjustedLng + 180) / 360) * mapWidth * xFactor + xOffset;
         
-        // 纬度转换 - 使用修正的Mercator投影
-        // 地图顶部为纬度+90°，底部为纬度-90°
-        // 对于等距投影地图，需要线性映射
+        // 纬度转换 - 使用线性映射
         const yFactor = 1.02; // 校正系数
         const yOffset = -mapHeight * 0.01; // 垂直偏移校正
-        
-        // 使用简单线性映射而非Mercator，因为NASA图像更接近于等距投影
         const y = ((90 - lat) / 180) * mapHeight * yFactor + yOffset;
         
         return { 
@@ -141,45 +96,69 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // Create visitor markers on the map
+    // 在地图上创建访客标记
     async function createVisitorMarkers() {
         const mapContainer = document.getElementById('map-container');
         if (!mapContainer) return;
+        
         const mapImage = mapContainer.querySelector('img');
         if (!mapImage) return;
-        mapImage.onload = async function() {
+        
+        // 获取访客数据
+        const visitorData = await extractVisitorDataFromFlagCounter();
+        
+        // 等待地图图像加载完成
+        if (mapImage.complete) {
+            addMarkers();
+        } else {
+            mapImage.onload = addMarkers;
+        }
+        
+        function addMarkers() {
             const mapWidth = mapImage.clientWidth;
             const mapHeight = mapImage.clientHeight;
-            const visitorData = await extractVisitorDataFromFlagCounter();
+            
+            // 清除现有标记
+            const existingMarkers = mapContainer.querySelectorAll('.visitor-marker');
+            existingMarkers.forEach(marker => marker.remove());
+            
+            // 添加新标记
             for (const visitor of visitorData) {
                 if (!visitor) continue;
+                
                 const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
                 const marker = document.createElement('div');
                 marker.className = 'visitor-marker';
                 marker.title = `${visitor.country}: ${visitor.visits} visits`;
-                const size = Math.max(8, Math.min(16, 8 + (visitor.visits / 10)));
+                
+                // 根据访问量调整标记大小
+                const size = Math.max(8, Math.min(16, 8 + (visitor.visits / 5)));
                 marker.style.width = `${size}px`;
                 marker.style.height = `${size}px`;
+                marker.style.position = 'absolute';
                 marker.style.left = `${position.x - size/2}px`;
                 marker.style.top = `${position.y - size/2}px`;
+                
                 mapContainer.appendChild(marker);
             }
+            
+            // 更新统计信息
             updateVisitorStats(visitorData);
-        };
+        }
     }
 
-    // Update visitor statistics display
+    // 更新访客统计信息显示
     function updateVisitorStats(visitorData) {
         const statsContainer = document.getElementById('visitor-stats');
         if (!statsContainer) return;
         
-        // Calculate total visits
-        const totalVisits = visitorData.reduce((sum, visitor) => sum + visitor.visits, 0);
+        // 计算总访问量
+        const totalVisits = visitorData.reduce((sum, visitor) => sum + (visitor.visits || 0), 0);
         
-        // Sort countries by visit count
-        const sortedData = [...visitorData].sort((a, b) => b.visits - a.visits);
+        // 按访问量排序国家
+        const sortedData = [...visitorData].sort((a, b) => (b.visits || 0) - (a.visits || 0));
         
-        // Create HTML for stats
+        // 创建统计HTML
         let statsHTML = `
             <div class="stat-card">
                 <h4>${totalVisits}</h4>
@@ -191,20 +170,20 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        // Add top countries
+        // 添加排名前5的国家
         statsHTML += `
             <div class="stat-card">
                 <h4>Top Countries</h4>
                 <ol class="country-list">
-                    ${sortedData.slice(0, 5).map(v => `<li>${v.country} (${v.visits})</li>`).join('')}
+                    ${sortedData.slice(0, 5).map(v => `<li>${v.country} (${v.visits || 0})</li>`).join('')}
                 </ol>
             </div>
         `;
         
-        // Update the container
+        // 更新容器
         statsContainer.innerHTML = statsHTML;
     }
 
-    // Initialize the map
+    // 初始化访客地图
     createVisitorMarkers();
 });
