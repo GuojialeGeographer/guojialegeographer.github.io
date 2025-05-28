@@ -3527,3 +3527,14 @@ SHUD 作为一个物理过程清晰的水文模型，为与其他领域模型的
 *   **如果您对数据处理要求不高，且 GHDC 平台恰好提供了您所需时段和质量的气象数据，Workflow 1 是最简单快捷的。**
 *   **鉴于您已经自行下载并处理了 ERA5 数据，Workflow 2 是您目前最应该遵循的路径。** 关键在于如何将您处理好的 ERA5 `.csv` 数据和对应的 `.tsd.forc.txt` 文件与 AutoSHUD 的流程有效衔接起来。**选项 B (手动替换 AutoSHUD 生成的气象文件)** 可能是初始阶段最直接且错误风险较低的方式，因为它避免了修改 AutoSHUD 内部脚本的复杂性。
 
+
+---
+
+## 版权声明 / Copyright Notice
+
+本文档采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）进行许可。
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+
+© 2025 Jiale Guo. All Rights Reserved.
+

@@ -3388,3 +3388,13 @@ QGIS同样提供了强大的栅格数据处理与分析功能。
 *   D. 课程PPT及讲座材料链接索引
 
 ---
+---
+
+## 版权声明 / Copyright Notice
+
+本文档采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）进行许可。
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+
+© 2025 Jiale Guo. All Rights Reserved.
+

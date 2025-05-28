@@ -100,3 +100,13 @@ This book represents not just knowledge, but a journey of continuous learning an
 *Note: This book is a work in progress. Content will be regularly updated as new knowledge is acquired and new projects are completed.*
 
 *注：本书是一个正在进行中的工作。随着新知识的获取和新项目的完成，内容将定期更新。* 
+---
+
+## 版权声明 / Copyright Notice
+
+本文档采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）进行许可。
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+
+© 2025 Jiale Guo. All Rights Reserved.
+

@@ -196,3 +196,14 @@ With its physical basis and distributed features, the SHUD model system has show
     *   **Vegetation-water relations:** Simulates evapotranspiration, soil moisture dynamics, and vegetation impacts on water cycle.
     *   **Wetland hydrology:** Simulates connectivity, water level fluctuations, and water exchange in wetlands.
 *   **Environmental hydrology and water quality modeling (via coupling):** SHUD can be coupled with pollutant transport, hydrochemistry, and other models to simulate non-point source pollution, nutrient cycling, eutrophication, etc.
+
+---
+
+## 版权声明 / Copyright Notice
+
+本文档采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）进行许可。
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+
+© 2025 Jiale Guo. All Rights Reserved.
+
