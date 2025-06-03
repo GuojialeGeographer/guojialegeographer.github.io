@@ -790,58 +790,28 @@
     </script>
     
     <!-- Homepage Map Script -->
-    <script type="module">
-    import { countryCoordinates, countryNameAlias } from './talkmap/country-coordinates.js';
-    import { getCountryLatLng } from './talkmap/auto-country-coords.js';
+    <script>
+    // 硬编码的国家坐标数据
+    const countryCoordinates = {
+        'IT': { country: "Italy", lat: 42.5, lng: 12.5 },
+        'US': { country: "United States", lat: 39.5, lng: -98.35 },
+        'CN': { country: "China", lat: 35.8617, lng: 104.1954 },
+        'JP': { country: "Japan", lat: 36.2048, lng: 138.2529 },
+        'PH': { country: "Philippines", lat: 12.8797, lng: 121.7740 },
+        'IE': { country: "Ireland", lat: 53.1424, lng: -7.6921 },
+        'TR': { country: "Turkey", lat: 38.9637, lng: 35.2433 }
+    };
 
-    async function extractVisitorDataFromFlagCounter() {
-        // 1. 解析Flag Counter图片旁的国家列表
-        const img = document.querySelector('img[src*="flagcounter.com"]');
-        let visitorData = [];
-        if (img) {
-            // 尝试查找同级或父级的国家列表（如有ol/li结构）
-            let countryList = [];
-            // 兼容Flag Counter新版和旧版
-            let parent = img.closest('.text-center') || img.parentElement;
-            if (parent) {
-                // 查找所有带国旗和数字的元素
-                const text = parent.innerText;
-                // 匹配如"IT 21"格式
-                const matches = [...text.matchAll(/([A-Z]{2,})\s+(\d+)/g)];
-                for (const m of matches) {
-                    // 用国别代码查英文名
-                    let code = m[1];
-                    let visits = parseInt(m[2]);
-                    let countryName = countryCoordinates[code]?.country || code;
-                    // 若本地表无国名，直接用代码查经纬度
-                    countryList.push({ country: countryName, code, visits });
-                }
-            }
-            // 若没解析到，降级为静态数据
-            if (countryList.length === 0) {
-                countryList = [
-                    { country: "Italy", visits: 16 },
-                    { country: "United States", visits: 4 },
-                    { country: "Philippines", visits: 1 }
-                ];
-            }
-            // 自动补全经纬度
-            for (const item of countryList) {
-                const geo = await getCountryLatLng(item.country);
-                if (geo) {
-                    visitorData.push({ ...geo, visits: item.visits });
-                }
-            }
-        } else {
-            // 没有Flag Counter图片，降级为静态数据
-            visitorData = [
-                await getCountryLatLng("Italy"),
-                await getCountryLatLng("United States"),
-                await getCountryLatLng("Philippines")
-            ];
-        }
-        return visitorData;
-    }
+    // 强制显示访客数据
+    const visitorData = [
+        { country: "Italy", code: "IT", visits: 36, lat: 42.5, lng: 12.5 },
+        { country: "United States", code: "US", visits: 5, lat: 39.5, lng: -98.35 },
+        { country: "China", code: "CN", visits: 2, lat: 35.8617, lng: 104.1954 },
+        { country: "Japan", code: "JP", visits: 1, lat: 36.2048, lng: 138.2529 },
+        { country: "Philippines", code: "PH", visits: 1, lat: 12.8797, lng: 121.7740 },
+        { country: "Ireland", code: "IE", visits: 1, lat: 53.1424, lng: -7.6921 },
+        { country: "Turkey", code: "TR", visits: 1, lat: 38.9637, lng: 35.2433 }
+    ];
 
     function latLngToPixel(lat, lng, mapWidth, mapHeight) {
         let adjustedLng = lng;
@@ -856,36 +826,54 @@
         return { x: Math.round(x), y: Math.round(y) };
     }
 
-    const homepageMap = document.getElementById('homepage-map');
-    if (homepageMap) {
-        const mapImage = homepageMap.querySelector('img');
-        if (mapImage) {
-            mapImage.onload = async function() {
-                const mapWidth = mapImage.clientWidth;
-                const mapHeight = mapImage.clientHeight;
-                const topVisitorData = await extractVisitorDataFromFlagCounter();
-                for (const visitor of topVisitorData) {
-                    if (!visitor) continue;
-                    const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
-                    const marker = document.createElement('div');
-                    marker.className = 'visitor-marker';
-                    marker.title = `${visitor.country}`;
-                    const size = 10;
-                    marker.style.width = `${size}px`;
-                    marker.style.height = `${size}px`;
-                    marker.style.position = 'absolute';
-                    marker.style.borderRadius = '50%';
-                    marker.style.backgroundColor = '#ff3b30';
-                    marker.style.border = '2px solid #fff';
-                    marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
-                    marker.style.left = `${position.x - size/2}px`;
-                    marker.style.top = `${position.y - size/2}px`;
-                    marker.style.zIndex = '100';
-                    homepageMap.appendChild(marker);
+    // 等待DOM加载完成
+    document.addEventListener('DOMContentLoaded', function() {
+        const homepageMap = document.getElementById('homepage-map');
+        if (homepageMap) {
+            const mapImage = homepageMap.querySelector('img');
+            if (mapImage) {
+                // 如果图片已经加载完成
+                if (mapImage.complete) {
+                    addMarkersToMap();
+                } else {
+                    // 如果图片尚未加载完成，等待加载
+                    mapImage.onload = addMarkersToMap;
                 }
-            };
+
+                function addMarkersToMap() {
+                    // 清除现有标记
+                    const existingMarkers = homepageMap.querySelectorAll('.visitor-marker');
+                    existingMarkers.forEach(marker => marker.remove());
+
+                    const mapWidth = mapImage.clientWidth;
+                    const mapHeight = mapImage.clientHeight;
+
+                    // 添加访客标记
+                    for (const visitor of visitorData) {
+                        const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
+                        const marker = document.createElement('div');
+                        marker.className = 'visitor-marker';
+                        marker.title = `${visitor.country}: ${visitor.visits} visits`;
+                        
+                        // 根据访问量调整标记大小
+                        const size = Math.max(8, Math.min(20, 8 + visitor.visits / 3));
+                        marker.style.width = `${size}px`;
+                        marker.style.height = `${size}px`;
+                        marker.style.position = 'absolute';
+                        marker.style.borderRadius = '50%';
+                        marker.style.backgroundColor = '#ff3b30';
+                        marker.style.border = '2px solid #fff';
+                        marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
+                        marker.style.left = `${position.x - size/2}px`;
+                        marker.style.top = `${position.y - size/2}px`;
+                        marker.style.zIndex = '100';
+                        marker.style.animation = 'pulse 2s infinite';
+                        homepageMap.appendChild(marker);
+                    }
+                }
+            }
         }
-    }
+    });
     </script>
 </body>
 </html>
