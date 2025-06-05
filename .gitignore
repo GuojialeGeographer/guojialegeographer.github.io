@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Optional: Ignore all files in Presentations/Courses/20250529-GIS_Pre/Figure-Chinese/
+# if they are not meant to be tracked. You can uncomment the line below if needed.
+# Presentations/Courses/20250529-GIS_Pre/Figure-Chinese/*
+
+# Optional: If the deleted .md and .pdf files in books/ and root directory 
+# are meant to be ignored if they reappear, you can add patterns like:
+# books/**/*.md
+# books/**/*.pdf
+# *.tex
+# *.pdf
