@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Jiale Guo - Project: Drought Analysis in Jianghuai Watershed</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Language toggle button style */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        [lang="zh"] { display: none; }
+        html[data-lang="zh"] [lang="en"] { display: none; }
+        html[data-lang="zh"] [lang="zh"] { display: block; }
+        span[lang="zh"], a[lang="zh"] { display: none; }
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] { display: none; }
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] { display: inline; }
+        body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .small, small, .text-muted { font-weight: 400; color: rgba(0, 0, 0, 0.75); }
+        h1, h2, h3, h4, h5, h6 { font-weight: 700; letter-spacing: -0.01em; color: rgba(0, 0, 0, 0.9); }
+        html[data-theme="dark"] .small, html[data-theme="dark"] small, html[data-theme="dark"] .text-muted { color: rgba(255, 255, 255, 0.85); }
+        html[data-theme="dark"] h1, html[data-theme="dark"] h2, html[data-theme="dark"] h3, html[data-theme="dark"] h4, html[data-theme="dark"] h5, html[data-theme="dark"] h6 { color: rgba(255, 255, 255, 0.95); }
+        p { line-height: 1.6; color: rgba(0, 0, 0, 0.85); }
+        html[data-theme="dark"] p { color: rgba(255, 255, 255, 0.9); }
+        .project-image { max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: .25rem; box-shadow: 0 1px 3px rgba(0,0,0,.1);}
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand"><strong>Geospatial Data Science</strong></a>
+            <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-map"></i> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html"><span lang="en">Home</span><span lang="zh">首页</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../publications.html"><span lang="en">Publications</span><span lang="zh">发表文章</span></a></li>
+                    <li class="nav-item active"><a class="nav-link" href="../projects.html"><span lang="en">Projects</span><span lang="zh">项目</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../news.html"><span lang="en">News</span><span lang="zh">新闻</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../books.html"><span lang="en">Books</span><span lang="zh">书籍</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html"><span lang="en">Contact</span><span lang="zh">联系我</span></a></li>
+                    <li class="nav-item"><button id="lang-toggle" class="nav-link lang-toggle"><i class="fas fa-language"></i> <span lang="en">中文</span><span lang="zh">English</span></button></li>
+                    <li class="nav-item"><button id="theme-toggle" class="nav-link lang-toggle"><i class="fas fa-adjust"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card card-body shadow-sm mb-4">
+                    <h2 class="mb-3">
+                        <span lang="en">Analysis of the Spatial and Temporal Evolution of Drought Disasters and their Trends in the Jianghuai Watershed</span>
+                        <span lang="zh">江淮分水岭地区干旱灾害时空演变及其趋势分析</span>
+                    </h2>
+                    <p class="text-muted small">
+                        <span lang="en">Timeline: 01.2021 - 05.2021</span>
+                        <span lang="zh">时间：2021年1月 - 2021年5月</span>
+                    </p>
+                    <hr>
+
+                    <a href="../projects.html" class="btn btn-outline-secondary mb-4">
+                        <i class="fas fa-arrow-left"></i> 
+                        <span lang="en">Back to Projects List</span>
+                        <span lang="zh">返回项目列表</span>
+                    </a>
+
+                    <section id="introduction">
+                        <h3><span lang="en">1. Introduction and Background</span><span lang="zh">1. 绪论与背景</span></h3>
+                        <p><span lang="en">Drought is a common global disaster caused by an imbalance in water supply and demand, leading to relative water loss. It is one of the major disasters causing severe economic losses worldwide. Due to its high frequency, long duration, wide impact area, and large affected regions, drought has become a significant constraint on economic development and social progress in China and globally. In recent years, global climate change has led to frequent drought events. The identification and characterization of droughts in arid regions still face severe challenges due to the diversity of its definition, spatio-temporal specificity, complex physical processes, and incomplete unstructured data. This study, based on spatio-temporal analysis methods in Geographic Information Systems (GIS) and global SPEI raster data combined with ground-measured monthly temperature and precipitation data from 1958-2018, derives multi-scale SPEI for the Jianghuai Watershed. Using methods like wavelet analysis, EOF, and M-K tests, this research deeply explores the spatio-temporal evolution of meteorological drought and its future trends in the Jianghuai Watershed, providing scientific reference for agricultural production, disaster prevention, and drought mitigation in the region, which holds significant practical importance.</span><span lang="zh">干旱是目前全球普遍发生的一种灾害，是由于水分供求或水分的收支不平衡而造成水量相对亏损的一种现象，同时干旱灾害也是造成世界上严重经济损失的重大灾害之一。由于干旱具有发生率高、持续期长、影响区域覆盖面广、受灾地区面积较大等特征，已经成为制约我国乃至世界经济发展与社会进步的重要灾害之一。近年来，由于全球气候变暖所引起的全球气候和环境都在发生变化，世界上干旱灾害事件频发；由于受其自身定义的多样性、时空的变化特殊性、复杂的物理过程和不完整的非结构化等因素的影响，干燥地区的自然灾害识别与表征依旧面临着严峻的挑战。本文以地理信息系统（GIS)中的时空分析方法为研究基础，基于全球SPEI栅格数据，结合1958-2018年地面气象站点实测逐月气温和降水数据，得到江淮分水岭地区多尺度SPEI指数，基于该干旱指数，采用小波分析、EOF、M-K检验等方法进行深度探究，从而对江淮分水岭区内气象干旱时空演变及其未来趋势开展研究，为该地区农业生产生活、防灾防旱等提供科学的参考科学，具有非常重要的现实意义。</span></p>
+                    </section>
+
+                    <section id="research-objectives" class="mt-4">
+                        <h3><span lang="en">2. Research Objectives</span><span lang="zh">2. 研究目标</span></h3>
+                        <p><span lang="en">The main objectives of this study are: (1) To analyze the temporal evolution characteristics of drought in the Jianghuai Watershed from 1958 to 2018 using multi-scale SPEI, including trend analysis, abrupt change detection, and periodicity. (2) To investigate the spatial evolution patterns of drought across the Jianghuai Watershed using EOF analysis for both interannual and seasonal scales. (3) To assess the persistence of drought trends in the region using R/S analysis. (4) To explore the response of drought in the Jianghuai Watershed to ENSO (El Niño–Southern Oscillation) indices using cross-wavelet and wavelet coherence analysis.</span><span lang="zh">本研究的主要目标包括：(1) 利用多尺度SPEI分析1958-2018年江淮分水岭地区干旱的时间演变特征，包括趋势分析、突变检测和周期性分析。(2) 利用EOF分析方法研究江淮分水岭地区年际和季节尺度干旱的空间演变格局。(3) 利用R/S分析评估该地区干旱趋势的持续性。(4) 利用交叉小波和小波相干分析，探究江淮分水岭地区干旱对ENSO（厄尔尼诺-南方涛动）指数的响应。</span></p>
+                    </section>
+
+                    <section id="methodology" class="mt-4">
+                        <h3><span lang="en">3. Methodology</span><span lang="zh">3. 研究方法</span></h3>
+                        <p><span lang="en">This study employed several methods: (1) Calculation of the Standardized Precipitation Evapotranspiration Index (SPEI) at multiple time scales (1, 3, 12, 24 months) using temperature and precipitation data. (2) Quantitative drought characterization based on SPEI values. (3) Mann-Kendall (M-K) non-parametric test for trend and abrupt change detection. (4) Wavelet analysis (Continuous Wavelet Transform, Cross Wavelet Transform, Wavelet Coherence) to identify periodicities and correlations. (5) Empirical Orthogonal Function (EOF) decomposition for spatial pattern analysis. (6) R/S analysis for assessing future trend persistence. The overall technical workflow is illustrated below.</span><span lang="zh">本研究采用了多种方法：(1) 利用气温和降水数据计算多时间尺度（1、3、12、24个月）的标准化降水蒸散指数（SPEI）。(2) 基于SPEI值进行干旱定量表征。(3) 采用Mann-Kendall (M-K)非参数检验法进行趋势和突变检测。(4) 采用小波分析（连续小波变换、交叉小波变换、小波相干）识别周期性及相关性。(5) 采用经验正交函数（EOF）分解进行空间格局分析。(6) 采用R/S分析评估未来趋势的持续性。详细的技术流程如下图所示。</span></p>
+                        <img src="../Projects/Undergraduate_Thesis/media/image1.jpg" alt="Study Area Map of Jianghuai Watershed" class="img-fluid project-image">
+                        <p class="text-center text-muted small"><span lang="en">Figure 1: Study area of the Jianghuai Watershed.</span><span lang="zh">图1：江淮分水岭地区研究区划图。</span></p>
+                    </section>
+
+                    <section id="results" class="mt-4">
+                        <h3><span lang="en">4. Main Findings and Results</span><span lang="zh">4. 主要发现与结果</span></h3>
+                        
+                        <h4><span lang="en">4.1 Temporal Evolution of Drought</span><span lang="zh">4.1 干旱的时间演变特征</span></h4>
+                        <p><span lang="en">The study analyzed SPEI at various time scales (1, 3, 12, 24 months). Shorter scales (SPEI-1, SPEI-3) reflect short-term meteorological and agricultural drought, while longer scales (SPEI-12, SPEI-24) reflect hydrological drought. The interannual SPEI (SPEI-12) showed a decreasing trend (0.0032/a), indicating an intensification of drought. Seasonal SPEI showed decreasing trends in spring and autumn, and slight increasing trends in summer and winter.</span><span lang="zh">研究分析了不同时间尺度（1、3、12、24个月）的SPEI。较短尺度（SPEI-1, SPEI-3）反映短期气象和农业干旱，而较长尺度（SPEI-12, SPEI-24）反映水文干旱。年际SPEI (SPEI-12) 呈下降趋势 (0.0032/a)，表明干旱加剧。季节SPEI在春季和秋季呈下降趋势，夏季和冬季呈轻微上升趋势。</span></p>
+                        <img src="../Projects/Undergraduate_Thesis/media/image4.jpg" alt="SPEI Time Series" class="img-fluid project-image">
+                        <p class="text-center text-muted small"><span lang="en">Figure 2: SPEI changes at different time scales (1958-2018).</span><span lang="zh">图2：1958-2018年不同时间尺度SPEI变化。</span></p>
+
+
+
+                        <h4><span lang="en">4.2 Abrupt Change Characteristics</span><span lang="zh">4.2 干旱的突变特征</span></h4>
+                        <p><span lang="en">The M-K test revealed no significant abrupt changes in interannual SPEI. However, significant abrupt changes were detected in spring and autumn seasonal SPEI, while summer and winter showed no significant mutations.</span><span lang="zh">M-K检验显示年际SPEI无明显突变。然而，在春季和秋季的季节SPEI中检测到显著突变，而夏季和冬季则无显著突变。</span></p>
+                        <img src="../Projects/Undergraduate_Thesis/media/image8.jpg" alt="Interannual SPEI Mutation" class="img-fluid project-image">
+                        <p class="text-center text-muted small"><span lang="en">Figure 3: Mutation characteristics of interannual SPEI.</span><span lang="zh">图3：年际尺度SPEI值突变特征。</span></p>
+                        <img src="../Projects/Undergraduate_Thesis/media/image9.jpg" alt="Seasonal SPEI Mutation" class="img-fluid project-image">
+                        <p class="text-center text-muted small"><span lang="en">Figure 4: Mutation characteristics of seasonal SPEI.</span><span lang="zh">图4：季节尺度SPEI值突变特征。</span></p>
+                        
+                        <h4><span lang="en">4.3 Periodicity Analysis</span><span lang="zh">4.3 干旱的周期性变化分析</span></h4>
+                        <p><span lang="en">Wavelet analysis identified significant periods for interannual SPEI (2-3a, 3-4a, 5-7a, 9-12a) and seasonal SPEI (mainly 2-3a). The most significant energy was concentrated at the 2-3 year scale.</span><span lang="zh">小波分析识别出年际SPEI的显著周期（2-3年、3-4年、5-7年、9-12年）和季节SPEI的显著周期（主要为2-3年）。最显著的能量集中在2-3年的时间尺度上。</span></p>
+
+                        <h4><span lang="en">4.4 Spatial Evolution of Drought</span><span lang="zh">4.4 干旱的空间演变特征</span></h4>
+                        <p><span lang="en">EOF analysis showed that the first mode of interannual SPEI indicated a consistent drought trend across the entire region. The second mode revealed a southwest-northeast inverse distribution pattern. Seasonal EOF analysis also showed consistent trends for the first mode in all seasons, with varying spatial patterns.</span><span lang="zh">EOF分析表明，年际SPEI的第一模态显示整个区域干旱趋势具有一致性。第二模态揭示了西南-东北的反向分布模式。季节性EOF分析也显示四季的第一模态趋势一致，但空间格局各异。</span></p>
+
+                        <h4><span lang="en">4.5 Drought Persistence Analysis</span><span lang="zh">4.5 干旱持续性分析</span></h4>
+                        <p><span lang="en">R/S analysis indicated that both interannual and seasonal SPEI changes have anti-persistence (Hurst index < 0.5), suggesting that past trends are likely to reverse.</span><span lang="zh">R/S分析表明，年际和季节SPEI变化均具有反持续性（Hurst指数 < 0.5），表明过去的趋势可能会逆转。</span></p>
+
+                        <h4><span lang="en">4.6 Response to ENSO</span><span lang="zh">4.6 对ENSO的响应</span></h4>
+                        <p><span lang="en">Cross-wavelet and wavelet coherence analysis revealed significant resonance periods (mainly 2-5 years) between SPEI (both interannual and seasonal) and the MEI (Multivariate ENSO Index), indicating a teleconnection between drought in the Jianghuai Watershed and ENSO events.</span><span lang="zh">交叉小波和小波相干分析揭示了SPEI（年际和季节）与MEI（多元ENSO指数）之间存在显著的共振周期（主要为2-5年），表明江淮流域的干旱与ENSO事件之间存在遥相关。</span></p>
+                    </section>
+
+                    <section id="conclusion" class="mt-4">
+                        <h3><span lang="en">5. Conclusion</span><span lang="zh">5. 结论</span></h3>
+                        <p><span lang="en">The Jianghuai Watershed experienced an overall drying trend from 1958 to 2018, with notable interannual and seasonal variations, abrupt changes, and periodicities. Drought patterns showed spatial consistency as well as regional differences. Future trends are likely to be anti-persistent. ENSO events significantly influence drought conditions in this region. These findings provide a scientific basis for drought monitoring, early warning, and water resource management in the Jianghuai Watershed.</span><span lang="zh">1958年至2018年，江淮分水岭地区总体呈现干旱化趋势，具有显著的年际和季节变化、突变特征和周期性。干旱格局在空间上表现出一致性及区域差异。未来趋势可能具有反持续性。ENSO事件显著影响该地区的干旱状况。这些研究结果为江淮分水岭地区的干旱监测、预警和水资源管理提供了科学依据。</span></p>
+                    </section>
+                    
+                    <hr class="mt-4">
+                    <a href="../projects.html" class="btn btn-outline-secondary mt-3">
+                        <i class="fas fa-arrow-left"></i> 
+                        <span lang="en">Back to Projects List</span>
+                        <span lang="zh">返回项目列表</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row my-3">
+                <div class="col-6">
+                    <div class="text-muted">
+                        <i>Last updated: June 2025</i>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text-right text-muted">
+                        <!-- Visit counter removed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const langToggle = document.getElementById('lang-toggle');
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentLang = localStorage.getItem('lang') || 'en';
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            document.documentElement.setAttribute('data-lang', currentLang);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                document.body.classList.remove('bg-light');
+                document.body.classList.add('bg-dark');
+                document.querySelectorAll('.navbar').forEach(nav => nav.classList.replace('navbar-light', 'navbar-dark'));
+                document.querySelectorAll('.navbar').forEach(nav => nav.classList.replace('bg-light', 'bg-dark'));
+                document.querySelectorAll('.card').forEach(card => card.classList.add('bg-dark', 'text-white'));
+            } else {
+                 document.body.classList.add('bg-light'); // Ensure light mode bg is set if not dark
+            }
+
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
+
+            themeToggle.addEventListener('click', function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                if (newTheme === 'dark') {
+                    document.body.classList.remove('bg-light');
+                    document.body.classList.add('bg-dark');
+                    document.querySelectorAll('.navbar').forEach(nav => nav.classList.replace('navbar-light', 'navbar-dark'));
+                    document.querySelectorAll('.navbar').forEach(nav => nav.classList.replace('bg-light', 'bg-dark'));
+                    document.querySelectorAll('.card').forEach(card => card.classList.add('bg-dark', 'text-white'));
+                } else {
+                    document.body.classList.remove('bg-dark');
+                    document.body.classList.add('bg-light');
+                    document.querySelectorAll('.navbar').forEach(nav => nav.classList.replace('navbar-dark', 'navbar-light'));
+                    document.querySelectorAll('.navbar').forEach(nav => nav.classList.replace('bg-dark', 'bg-light'));
+                    document.querySelectorAll('.card').forEach(card => card.classList.remove('bg-dark', 'text-white'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
