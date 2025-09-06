@@ -19,7 +19,10 @@ const countryCoordinates = {
     'AU': { country: 'Australia', lat: -25.27439, lng: 133.77513 },
     'BR': { country: 'Brazil', lat: -14.23500, lng: -51.92528 },
     'IN': { country: 'India', lat: 20.59368, lng: 78.96288 },
-    'RU': { country: 'Russia', lat: 61.52401, lng: 105.31875 }
+    'RU': { country: 'Russia', lat: 61.52401, lng: 105.31875 },
+    'SG': { country: 'Singapore', lat: 1.3521, lng: 103.8198 },
+    'KR': { country: 'South Korea', lat: 35.9078, lng: 127.7669 },
+    'NL': { country: 'Netherlands', lat: 52.1326, lng: 5.2913 }
 };
 
 // 国家名称别名，用于处理不同表示形式
@@ -36,7 +39,9 @@ const countryNameAlias = {
     'South Korea': 'KR',
     'Republic of Korea': 'KR',
     'North Korea': 'KP',
-    'Democratic People\'s Republic of Korea': 'KP'
+    'Democratic People\'s Republic of Korea': 'KP',
+    'Netherlands': 'NL',
+    'Holland': 'NL'
 };
 
 document.addEventListener('DOMContentLoaded', function() {
