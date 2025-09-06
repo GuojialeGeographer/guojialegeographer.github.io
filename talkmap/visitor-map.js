@@ -52,10 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
             { country: "France", lat: countryCoordinates['FR'].lat, lng: countryCoordinates['FR'].lng, visits: 2 },
             { country: "Canada", lat: countryCoordinates['CA'].lat, lng: countryCoordinates['CA'].lng, visits: 2 },
             { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 2 },
+            { country: "India", lat: countryCoordinates['IN'].lat, lng: countryCoordinates['IN'].lng, visits: 2 },
+            { country: "Singapore", lat: countryCoordinates['SG'].lat, lng: countryCoordinates['SG'].lng, visits: 2 },
             { country: "Australia", lat: countryCoordinates['AU'].lat, lng: countryCoordinates['AU'].lng, visits: 1 },
             { country: "Brazil", lat: countryCoordinates['BR'].lat, lng: countryCoordinates['BR'].lng, visits: 1 },
-            { country: "India", lat: countryCoordinates['IN'].lat, lng: countryCoordinates['IN'].lng, visits: 1 },
-            { country: "Russia", lat: countryCoordinates['RU'].lat, lng: countryCoordinates['RU'].lng, visits: 1 }
+            { country: "Russia", lat: countryCoordinates['RU'].lat, lng: countryCoordinates['RU'].lng, visits: 1 },
+            { country: "South Korea", lat: countryCoordinates['KR'].lat, lng: countryCoordinates['KR'].lng, visits: 1 },
+            { country: "Netherlands", lat: countryCoordinates['NL'].lat, lng: countryCoordinates['NL'].lng, visits: 1 },
+            { country: "Spain", lat: countryCoordinates['ES'].lat, lng: countryCoordinates['ES'].lng, visits: 1 }
         ];
         
         // 尝试从页面中查找Flag Counter图像
