@@ -43,12 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // 从Flag Counter获取访问数据
     async function extractVisitorDataFromFlagCounter() {
         let defaultVisitorData = [
-            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 26 },
-            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 5 },
-            { country: "China", lat: countryCoordinates['CN'].lat, lng: countryCoordinates['CN'].lng, visits: 2 },
-            { country: "Japan", lat: countryCoordinates['JP'].lat, lng: countryCoordinates['JP'].lng, visits: 1 },
-            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 },
-            { country: "Ireland", lat: countryCoordinates['IE'].lat, lng: countryCoordinates['IE'].lng, visits: 1 }
+            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 42 },
+            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 8 },
+            { country: "China", lat: countryCoordinates['CN'].lat, lng: countryCoordinates['CN'].lng, visits: 6 },
+            { country: "Germany", lat: countryCoordinates['DE'].lat, lng: countryCoordinates['DE'].lng, visits: 4 },
+            { country: "United Kingdom", lat: countryCoordinates['GB'].lat, lng: countryCoordinates['GB'].lng, visits: 3 },
+            { country: "Japan", lat: countryCoordinates['JP'].lat, lng: countryCoordinates['JP'].lng, visits: 3 },
+            { country: "France", lat: countryCoordinates['FR'].lat, lng: countryCoordinates['FR'].lng, visits: 2 },
+            { country: "Canada", lat: countryCoordinates['CA'].lat, lng: countryCoordinates['CA'].lng, visits: 2 },
+            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 2 },
+            { country: "Australia", lat: countryCoordinates['AU'].lat, lng: countryCoordinates['AU'].lng, visits: 1 },
+            { country: "Brazil", lat: countryCoordinates['BR'].lat, lng: countryCoordinates['BR'].lng, visits: 1 },
+            { country: "India", lat: countryCoordinates['IN'].lat, lng: countryCoordinates['IN'].lng, visits: 1 },
+            { country: "Russia", lat: countryCoordinates['RU'].lat, lng: countryCoordinates['RU'].lng, visits: 1 }
         ];
         
         // 尝试从页面中查找Flag Counter图像
