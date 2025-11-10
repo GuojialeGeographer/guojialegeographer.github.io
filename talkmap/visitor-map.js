@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 计算总访问量
         const totalVisits = visitorData.reduce((sum, visitor) => sum + (visitor.visits || 0), 0);
         
-        // 按访问量排序国家
+        // 按访问量排序国家和地区
         const sortedData = [...visitorData].sort((a, b) => (b.visits || 0) - (a.visits || 0));
         
         // 创建统计HTML
@@ -179,14 +179,14 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="stat-card">
                 <h4>${visitorData.length}</h4>
-                <p>Countries</p>
+                <p>Countries/Regions</p>
             </div>
         `;
         
-        // 添加排名前5的国家
+        // 添加排名前5的国家和地区
         statsHTML += `
             <div class="stat-card">
-                <h4>Top Countries</h4>
+                <h4>Top Countries/Regions</h4>
                 <ol class="country-list">
                     ${sortedData.slice(0, 5).map(v => `<li>${v.country} (${v.visits || 0})</li>`).join('')}
                 </ol>
