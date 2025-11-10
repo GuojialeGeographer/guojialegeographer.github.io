@@ -7,11 +7,15 @@
 const countryCoordinates = {
     'IT': { country: 'Italy', lat: 41.87194, lng: 12.56738 },
     'US': { country: 'United States', lat: 37.09024, lng: -95.71289 },
-    'CN': { country: 'China', lat: 35.86166, lng: 104.19539 },
+    'HK': { country: 'Hong Kong', lat: 22.3193, lng: 114.1694 },
     'JP': { country: 'Japan', lat: 36.20482, lng: 138.25292 },
-    'PH': { country: 'Philippines', lat: 12.87972, lng: 121.77401 },
-    'IE': { country: 'Ireland', lat: 53.41291, lng: -8.24389 },
+    'CN': { country: 'China', lat: 35.86166, lng: 104.19539 },
+    'SG': { country: 'Singapore', lat: 1.3521, lng: 103.8198 },
     'GB': { country: 'United Kingdom', lat: 55.37805, lng: -3.43597 },
+    'BO': { country: 'Bolivia', lat: -16.2902, lng: -63.5887 },
+    'TR': { country: 'Turkey', lat: 38.9637, lng: 35.2433 },
+    'IE': { country: 'Ireland', lat: 53.41291, lng: -8.24389 },
+    'PH': { country: 'Philippines', lat: 12.87972, lng: 121.77401 },
     'DE': { country: 'Germany', lat: 51.16569, lng: 10.45152 },
     'FR': { country: 'France', lat: 46.22763, lng: 2.21374 },
     'ES': { country: 'Spain', lat: 40.46366, lng: -3.74922 },
@@ -20,7 +24,6 @@ const countryCoordinates = {
     'BR': { country: 'Brazil', lat: -14.23500, lng: -51.92528 },
     'IN': { country: 'India', lat: 20.59368, lng: 78.96288 },
     'RU': { country: 'Russia', lat: 61.52401, lng: 105.31875 },
-    'SG': { country: 'Singapore', lat: 1.3521, lng: 103.8198 },
     'KR': { country: 'South Korea', lat: 35.9078, lng: 127.7669 },
     'NL': { country: 'Netherlands', lat: 52.1326, lng: 5.2913 }
 };
@@ -48,23 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // 从Flag Counter获取访问数据
     async function extractVisitorDataFromFlagCounter() {
         let defaultVisitorData = [
-            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 42 },
-            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 8 },
-            { country: "China", lat: countryCoordinates['CN'].lat, lng: countryCoordinates['CN'].lng, visits: 6 },
-            { country: "Germany", lat: countryCoordinates['DE'].lat, lng: countryCoordinates['DE'].lng, visits: 4 },
-            { country: "United Kingdom", lat: countryCoordinates['GB'].lat, lng: countryCoordinates['GB'].lng, visits: 3 },
-            { country: "Japan", lat: countryCoordinates['JP'].lat, lng: countryCoordinates['JP'].lng, visits: 3 },
-            { country: "France", lat: countryCoordinates['FR'].lat, lng: countryCoordinates['FR'].lng, visits: 2 },
-            { country: "Canada", lat: countryCoordinates['CA'].lat, lng: countryCoordinates['CA'].lng, visits: 2 },
-            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 2 },
-            { country: "India", lat: countryCoordinates['IN'].lat, lng: countryCoordinates['IN'].lng, visits: 2 },
-            { country: "Singapore", lat: countryCoordinates['SG'].lat, lng: countryCoordinates['SG'].lng, visits: 2 },
-            { country: "Australia", lat: countryCoordinates['AU'].lat, lng: countryCoordinates['AU'].lng, visits: 1 },
-            { country: "Brazil", lat: countryCoordinates['BR'].lat, lng: countryCoordinates['BR'].lng, visits: 1 },
-            { country: "Russia", lat: countryCoordinates['RU'].lat, lng: countryCoordinates['RU'].lng, visits: 1 },
-            { country: "South Korea", lat: countryCoordinates['KR'].lat, lng: countryCoordinates['KR'].lng, visits: 1 },
-            { country: "Netherlands", lat: countryCoordinates['NL'].lat, lng: countryCoordinates['NL'].lng, visits: 1 },
-            { country: "Spain", lat: countryCoordinates['ES'].lat, lng: countryCoordinates['ES'].lng, visits: 1 }
+            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 65 },
+            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 10 },
+            { country: "Hong Kong", lat: countryCoordinates['HK'].lat, lng: countryCoordinates['HK'].lng, visits: 9 },
+            { country: "Japan", lat: countryCoordinates['JP'].lat, lng: countryCoordinates['JP'].lng, visits: 6 },
+            { country: "China", lat: countryCoordinates['CN'].lat, lng: countryCoordinates['CN'].lng, visits: 5 },
+            { country: "Singapore", lat: countryCoordinates['SG'].lat, lng: countryCoordinates['SG'].lng, visits: 3 },
+            { country: "United Kingdom", lat: countryCoordinates['GB'].lat, lng: countryCoordinates['GB'].lng, visits: 2 },
+            { country: "Bolivia", lat: countryCoordinates['BO'].lat, lng: countryCoordinates['BO'].lng, visits: 1 },
+            { country: "Turkey", lat: countryCoordinates['TR'].lat, lng: countryCoordinates['TR'].lng, visits: 1 },
+            { country: "Ireland", lat: countryCoordinates['IE'].lat, lng: countryCoordinates['IE'].lng, visits: 1 },
+            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 }
         ];
         
         // 尝试从页面中查找Flag Counter图像
