@@ -51,6 +51,12 @@
             color: rgba(0, 0, 0, 0.75);
         }
         
+        /* 确保strong标签始终加粗，即使在small或text-muted中 */
+        .small strong, small strong, .text-muted strong,
+        [lang="zh"] strong, [lang="en"] strong {
+            font-weight: 700;
+        }
+        
         /* 增强标题文字 */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;

@@ -57,6 +57,11 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
+        /* 确保strong标签始终加粗 */
+        strong, [lang="zh"] strong, [lang="en"] strong {
+            font-weight: 700;
+        }
+        
         .paper-image {
             max-width: 100%;
             height: auto;
