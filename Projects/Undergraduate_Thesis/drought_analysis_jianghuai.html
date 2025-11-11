@@ -38,7 +38,20 @@
         html[data-theme="dark"] h1, html[data-theme="dark"] h2, html[data-theme="dark"] h3, html[data-theme="dark"] h4, html[data-theme="dark"] h5, html[data-theme="dark"] h6 { color: rgba(255, 255, 255, 0.95); }
         p { line-height: 1.6; color: rgba(0, 0, 0, 0.85); }
         html[data-theme="dark"] p { color: rgba(255, 255, 255, 0.9); }
-        .project-image { max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: .25rem; box-shadow: 0 1px 3px rgba(0,0,0,.1);}
+        .project-image { 
+            max-width: 100%; 
+            height: auto; 
+            margin: 0 auto 1rem auto; 
+            display: block;
+            border-radius: .25rem; 
+            box-shadow: 0 1px 3px rgba(0,0,0,.1);
+        }
+        /* Ensure all images are centered */
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body class="bg-light">
