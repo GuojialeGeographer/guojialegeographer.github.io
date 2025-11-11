@@ -125,6 +125,20 @@
             color: #007bff;
             text-decoration: none;
         }
+        
+        /* Paper image link styles */
+        .paper-image-link {
+            display: block;
+            transition: opacity 0.2s;
+        }
+        
+        .paper-image-link:hover {
+            opacity: 0.9;
+        }
+        
+        .paper-image-link img {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -631,9 +645,13 @@
                 <span lang="zh">发表文章</span>
             </h6>
             <div class="px-3 pb-1">
-                <div class="media py-2">
-                    <div class="mr-3 text-muted my-1" style="min-width: 60px;">2025</div>
-                    <div class="media-body">
+                <div class="row no-gutters py-2">
+                    <div class="col-md-3 col-xl-2 mb-md-0 pr-md-3">
+                        <a href="papers/paper-detail.html" class="paper-image-link">
+                            <img src="Images/papers/multimodal_urban_perception_framework.png" alt="基于多模态大模型的城市空间感知评价方法框架研究" class="w-100 rounded-sm">
+                        </a>
+                    </div>
+                    <div class="col-md-9 col-xl-10">
                         <div class="my-1">
                             <a href="papers/paper-detail.html" class="publication-title-link">
                                 <span lang="en">A Framework for Evaluating Urban Spatial Perception Based on Large Multimodal Models: From Prompt Engineering to Empirical Analysis</span>
@@ -644,12 +662,12 @@
                             <span lang="en">
                                 <a href="https://wanglei.studio/" target="_blank" class="text-muted">Lei Wang</a>, 
                                 <strong>Jiale Guo</strong>, 
-                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=en" target="_blank" class="text-muted">Jie He</a> <span style="background-color: #fffacd;">(# corresponding author)</span>
+                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=en" target="_blank" class="text-muted">Jie He</a><span style="background-color: #fffacd;">#</span> <span style="background-color: #fffacd;">(# corresponding author)</span>
                             </span>
                             <span lang="zh">
                                 <a href="https://wanglei.studio/" target="_blank" class="text-muted">王磊</a>， 
                                 <strong>郭家乐</strong>， 
-                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=zh" target="_blank" class="text-muted">何捷</a> <span style="background-color: #fffacd;">(# 通讯作者)</span>
+                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=zh" target="_blank" class="text-muted">何捷</a><span style="background-color: #fffacd;">#</span> <span style="background-color: #fffacd;">(# 通讯作者)</span>
                             </span>
                         </div>
                         <div class="my-1 small text-muted">
