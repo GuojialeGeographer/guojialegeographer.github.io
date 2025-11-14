@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>GIS 2025 Conference - Jiale Guo</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+        
+        /* 增强字体渲染 */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .conference-section {
+            margin-bottom: 2rem;
+        }
+        
+        .conference-section h5 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .conference-section ul {
+            padding-left: 1.5rem;
+        }
+        
+        .conference-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+        
+        .info-item {
+            margin-bottom: 1rem;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand"><strong>Geospatial Data Science</strong></a>
+            <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-map"></i> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <span lang="en">Home</span>
+                            <span lang="zh">首页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../news.html">
+                            <span lang="en">News</span>
+                            <span lang="zh">新闻</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col">
+                <div class="card border-0 shadow-sm bg-white">
+                    <div class="card-body p-4">
+                        <!-- Back button -->
+                        <div class="mb-3">
+                            <a href="../news.html" class="text-muted">
+                                <i class="fas fa-arrow-left"></i>
+                                <span lang="en">Back to News</span>
+                                <span lang="zh">返回新闻</span>
+                            </a>
+                        </div>
+
+                        <!-- Conference Title -->
+                        <h2 class="mb-4">
+                            <span lang="en">Notice on the 20th Annual Conference on Geographic Information Science Theory and Methods (Second Notice)</span>
+                            <span lang="zh">关于召开第二十届地理信息科学理论与方法学术年会的通知（第二号）</span>
+                        </h2>
+
+                        <!-- Brief Introduction -->
+                        <div class="conference-section">
+                            <p class="text-muted" style="line-height: 1.8; font-size: 1.1rem;">
+                                <span lang="en">The 20th Annual Conference on Geographic Information Science Theory and Methods will be held in Xiamen from November 21-23, 2025. This conference is guided by the China Association for Geographic Information Society, jointly organized by the Committee on Geographic Information Science Theory and Methods of CAGIS and Jimei University, and hosted by the School of Computer Science of Jimei University and the School of Computer and Information Engineering of Xiamen University of Technology. The conference will focus on theoretical methods, technical applications, and industrialization of geographic information science.</span>
+                                <span lang="zh">第二十届地理信息科学理论与方法学术年会定于2025年11月21-23日在厦门举办。本次大会由中国地理信息产业协会指导，中国地理信息产业协会地理信息科学理论与方法工作委员会和集美大学联合主办，集美大学计算机学院和厦门理工学院计算机与信息工程学院承办。本次会议将紧扣地理信息科学理论方法、技术应用及产业化等主题展开研讨。</span>
+                            </p>
+                        </div>
+
+                        <!-- Time and Location -->
+                        <div class="conference-section">
+                            <h5>
+                                <span lang="en">I. Time and Location</span>
+                                <span lang="zh">一、时间地点</span>
+                            </h5>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Time:</span>
+                                <span class="info-label" lang="zh">时间：</span>
+                                <span lang="en">November 21-23, 2025</span>
+                                <span lang="zh">2025年11月21-23日</span>
+                            </div>
+                            <ul>
+                                <li lang="en">Friday, November 21 (Registration)</li>
+                                <li lang="zh">11月21日星期五（报到）</li>
+                                <li lang="en">Saturday, November 22 (Conference)</li>
+                                <li lang="zh">11月22日星期六（会议）</li>
+                                <li lang="en">Sunday, November 23 (Conference)</li>
+                                <li lang="zh">11月23日星期日（会议）</li>
+                                <li lang="en">Monday, November 24 (Departure)</li>
+                                <li lang="zh">11月24日星期一（离会）</li>
+                            </ul>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Conference Venue:</span>
+                                <span class="info-label" lang="zh">会议地点：</span>
+                                <span lang="en">Jimei University, Xiamen, Fujian Province</span>
+                                <span lang="zh">福建省厦门市集美大学</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Registration Locations:</span>
+                                <span class="info-label" lang="zh">报到地点：</span>
+                            </div>
+                            <ol>
+                                <li lang="en">Jimei University Chengyi College Theater (No. 199 Jimei Avenue, Xiamen)</li>
+                                <li lang="zh">1. 集美大学诚毅学院影剧院（厦门市集美大道199号）</li>
+                                <li lang="en">Xiamen Beihaiwan Huilong Wanda Jiahua Hotel (No. 210 Jiyuan Road, Jimei District, Xiamen)</li>
+                                <li lang="zh">2. 厦门北海湾惠龙万达嘉华酒店（厦门市集美区集源路210号）</li>
+                                <li lang="en">Xiamen Huawen Education Training Center (No. 806 Jimei Avenue, Jimei District, Xiamen)</li>
+                                <li lang="zh">3. 厦门华文教育培训中心（厦门市集美区集美大道806号）</li>
+                            </ol>
+                            <p class="text-muted small">
+                                <span lang="en">(Note: Hotel registration points will provide shuttle bus service to and from the conference venue during the conference)</span>
+                                <span lang="zh">（备注：酒店报到点会议期间提供大巴车往返会场接驳）</span>
+                            </p>
+                        </div>
+
+                        <!-- Organization -->
+                        <div class="conference-section">
+                            <h5>
+                                <span lang="en">II. Organization</span>
+                                <span lang="zh">二、组织机构</span>
+                            </h5>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Guiding Unit:</span>
+                                <span class="info-label" lang="zh">指导单位：</span>
+                                <span lang="en">China Association for Geographic Information Society</span>
+                                <span lang="zh">中国地理信息产业协会</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Organizing Units:</span>
+                                <span class="info-label" lang="zh">主办单位：</span>
+                                <ul>
+                                    <li lang="en">Committee on Geographic Information Science Theory and Methods of CAGIS</li>
+                                    <li lang="zh">中国地理信息产业协会地理信息科学理论与方法工作委员会</li>
+                                    <li lang="en">Jimei University</li>
+                                    <li lang="zh">集美大学</li>
+                                </ul>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Hosting Units:</span>
+                                <span class="info-label" lang="zh">承办单位：</span>
+                                <ul>
+                                    <li lang="en">School of Computer Science, Jimei University</li>
+                                    <li lang="zh">集美大学计算机学院</li>
+                                    <li lang="en">School of Computer and Information Engineering, Xiamen University of Technology</li>
+                                    <li lang="zh">厦门理工学院计算机与信息工程学院</li>
+                                </ul>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Co-organizing Units:</span>
+                                <span class="info-label" lang="zh">协办单位：</span>
+                                <span lang="en">To be updated...</span>
+                                <span lang="zh">更新中……</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Supporting Units:</span>
+                                <span class="info-label" lang="zh">支持单位：</span>
+                                <ul>
+                                    <li lang="en">Xiamen Jingdao Information Technology Co., Ltd.</li>
+                                    <li lang="zh">厦门精导信息技术有限公司</li>
+                                    <li lang="en">To be updated...</li>
+                                    <li lang="zh">更新中……</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Conference Theme -->
+                        <div class="conference-section">
+                            <h5>
+                                <span lang="en">III. Conference Theme and Topics</span>
+                                <span lang="zh">三、会议主题及专题</span>
+                            </h5>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Conference Theme:</span>
+                                <span class="info-label" lang="zh">会议主题：</span>
+                                <span lang="en">Geospatial Information Empowering Smart Society</span>
+                                <span lang="zh">地理空间信息赋能智慧社会</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Conference Topics:</span>
+                                <span class="info-label" lang="zh">会议专题：</span>
+                            </div>
+                            <ol>
+                                <li lang="en">Intelligent Collection and Processing of Spatial Data</li>
+                                <li lang="zh">专题一：空间数据智能采集与处理</li>
+                                <li lang="en">Multi-source Remote Sensing Information Extraction and Fusion</li>
+                                <li lang="zh">专题二：多源遥感信息提取与融合</li>
+                                <li lang="en">Virtual Geographic Environment and Digital Twin</li>
+                                <li lang="zh">专题三：虚拟地理环境与数字孪生</li>
+                                <li lang="en">Trajectory Data Mining and Behavior Cognition</li>
+                                <li lang="zh">专题四：轨迹数据挖掘与行为认知</li>
+                                <li lang="en">Text Mining and Spatiotemporal Knowledge Graph</li>
+                                <li lang="zh">专题五：文本挖掘与时空知识图谱</li>
+                                <li lang="en">Geographic Spatiotemporal Modeling and Knowledge Discovery</li>
+                                <li lang="zh">专题六：地理时空建模与知识发现</li>
+                                <li lang="en">Geographic Spatial Artificial Intelligence Methods</li>
+                                <li lang="zh">专题七：地理空间人工智能方法</li>
+                                <li lang="en">Large Language Models and Geospatial Large Models</li>
+                                <li lang="zh">专题八：大语言模型与地理时空大模型</li>
+                                <li lang="en">Social Sensing and Spatial Comprehensive Social Science</li>
+                                <li lang="zh">专题九：社会感知与空间综合社会科学</li>
+                                <li lang="en">Pan-map Theory, Methods and Visualization</li>
+                                <li lang="zh">专题十：泛地图理论方法与可视化</li>
+                                <li lang="en">Geographic Spatial Optimization and Simulation Methods</li>
+                                <li lang="zh">专题十一：地理空间优化与模拟方法</li>
+                                <li lang="en">Geographic Spatial Intelligence Empowering Smart City Operations</li>
+                                <li lang="zh">专题十二：地理空间智能赋能智慧城市运维</li>
+                                <li lang="en">Urban Transportation Computing and Travel Services</li>
+                                <li lang="zh">专题十三：城市交通计算与出行服务</li>
+                                <li lang="en">UAV Route Planning and Low-altitude Economy</li>
+                                <li lang="zh">专题十四：无人机航路规划与低空经济形态</li>
+                                <li lang="en">Remote Sensing Geoscience Analysis and Applications</li>
+                                <li lang="zh">专题十五：遥感地学分析与应用</li>
+                                <li lang="en">Fine Characterization and Pattern Analysis of Natural System Elements</li>
+                                <li lang="zh">专题十六：自然系统要素精细刻画与格局分析</li>
+                                <li lang="en">Watershed Modeling and Process Simulation</li>
+                                <li lang="zh">专题十七：流域建模与过程模拟</li>
+                                <li lang="en">Spatial Intelligence Empowering Disaster Emergency Response</li>
+                                <li lang="zh">专题十八：空间智能赋能灾害应急响应</li>
+                            </ol>
+                            <p class="text-muted small">
+                                <span lang="en">Other topics are being solicited...</span>
+                                <span lang="zh">其他专题征集中……</span>
+                            </p>
+                        </div>
+
+                        <!-- Registration and Payment -->
+                        <div class="conference-section">
+                            <h5>
+                                <span lang="en">IV. Registration and Payment</span>
+                                <span lang="zh">四、会议注册缴费</span>
+                            </h5>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">1. Registration:</span>
+                                <span class="info-label" lang="zh">1. 报名注册：</span>
+                                <p lang="en">Please visit the conference website <a href="https://gis2025.xmzntech.com/" target="_blank">https://gis2025.xmzntech.com/</a> or scan the QR code to access the conference mini-program, enter the "Registration and Payment" channel, fill in the registration information, and upload the payment voucher in the "Personal Center".</p>
+                                <p lang="zh">请参会人员访问会议网站<a href="https://gis2025.xmzntech.com/" target="_blank">https://gis2025.xmzntech.com/</a>或扫描下方二维码访问会议小程序，进入"注册缴费"通道，填写注册相关信息，并在"个人中心"上传缴费凭证。</p>
+                                <p lang="en">Welcome to join the conference QQ group (Group number: 1055425116) to get the latest conference updates.</p>
+                                <p lang="zh">欢迎加入参会QQ群（群号：1055425116）以获取会议最新动态。</p>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">2. Payment Standards and Methods:</span>
+                                <span class="info-label" lang="zh">2. 缴费标准及缴费方式：</span>
+                                <p lang="en">Payment standards will be announced on the conference website. Participants need to pay the registration fee to the following account:</p>
+                                <p lang="zh">缴费标准如下：参会人员需缴纳注册费至以下账号：</p>
+                                <ul>
+                                    <li lang="en"><strong>Account Name:</strong> China Association for Geographic Information Society</li>
+                                    <li lang="zh"><strong>开户名称：</strong>中国地理信息产业协会</li>
+                                    <li lang="en"><strong>Bank:</strong> CITIC Bank Beijing Branch</li>
+                                    <li lang="zh"><strong>开户银行：</strong>中信银行北京分行营业部</li>
+                                    <li lang="en"><strong>Account Number:</strong> 7111010195700004701</li>
+                                    <li lang="zh"><strong>银行账号：</strong>7111010195700004701</li>
+                                    <li lang="en"><strong>Bank Code:</strong> 302100011106</li>
+                                    <li lang="zh"><strong>行号：</strong>302100011106</li>
+                                </ul>
+                                <p lang="en">When making the transfer, please note "Xiamen + Participant Name + Institution Name" and upload the transfer voucher to the website registration system. The file name should be "Participant Name + Institution Name".</p>
+                                <p lang="zh">汇款时请备注"厦门+参会代表姓名+单位名称"，并将汇款或转账凭证上传至网站注册系统，凭证文件名为"参会代表姓名+单位名称"。</p>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">3. Invoice:</span>
+                                <span class="info-label" lang="zh">3. 发票领取：</span>
+                                <p lang="en">The China Association for Geographic Information Society will issue "Conference Fee" invoices (VAT electronic ordinary invoices, VAT special invoices are not provided) based on the remittance amount and send them to the email address provided by participants.</p>
+                                <p lang="zh">中国地理信息产业协会将根据汇款金额开具"会议费"发票（增值税电子普通发票，不提供增值税专用发票），并发送至参会人员填写的发票接收邮箱。</p>
+                            </div>
+                        </div>
+
+                        <!-- Call for Papers -->
+                        <div class="conference-section">
+                            <h5>
+                                <span lang="en">V. Call for Special Sessions and Papers</span>
+                                <span lang="zh">五、专题报告会征集及论文征稿</span>
+                            </h5>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">1. Call for Special Sessions:</span>
+                                <span class="info-label" lang="zh">1. 专题报告会征集：</span>
+                                <p lang="en">Experts who intend to organize special sessions to promote team innovation achievements and major projects should propose the name of the special session and participating members (6-8 people), fill in the special session application form (available on the conference website, named as: Institution - Expert Name - Special Session Name.doc) and send it to the conference email: gis2025jmu@163.com before November 1, 2025.</p>
+                                <p lang="zh">有意向组织专题报告会宣传团队创新成果、重大项目等的专家，请拟定专题报告会名称及参与成员（6～8人），填写专题报告申请表（见会议网站，命名为：单位－专家姓名－专题报告会名称.doc）并于2025年11月1日前发送至大会邮箱：gis2025jmu@163.com。</p>
+                                <p lang="en">When the number of reports in a special session is less than 6, the organizing committee will merge topics or add free submissions that match the topic. Each scholar should in principle only report in one special session.</p>
+                                <p lang="zh">当专题报告会报告数少于6个时，组委会将视情况合并专题，或添加与专题契合的自由投稿报告。每位学者原则上仅应在一个专题进行报告。</p>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">2. Call for Papers:</span>
+                                <span class="info-label" lang="zh">2. 论文征稿：</span>
+                                <p lang="en">This conference will include oral presentations, flash presentations, and posters. Those who wish to submit should log in to the conference website and submit abstracts before November 1, 2025. There is no specific format requirement for abstracts, and the recommended length is 300-800 words.</p>
+                                <p lang="zh">本次会议将设置口头报告、快闪报告和海报，请有意投稿者于2025年11月1日前登录会议网站提交摘要。摘要格式不限，字数建议300-800字。</p>
+                                <p lang="en">The conference will also set up a Young Scholar Competition session and a Student Paper Competition session to select award-winning reports. Participants in the competition need to submit full papers. Competition papers must be unpublished papers. For paper format requirements, please refer to the submission channel on the conference website.</p>
+                                <p lang="zh">同时，本次会议将设置青年学者竞赛分会场和学生论文竞赛分会场，评选获奖报告。参加竞赛的参会者需提交论文全文，参赛论文须为未公开发表过的论文，论文格式要求详见会议网站投稿通道。</p>
+                                <p lang="en">Excellent reports from this conference will be invited by collaborating Chinese core journals to organize special columns for publication.</p>
+                                <p lang="zh">本次会议的优秀报告，将由会议协作中文核心期刊会后邀稿，组织专栏发表。</p>
+                            </div>
+                        </div>
+
+                        <!-- Accommodation -->
+                        <div class="conference-section">
+                            <h5>
+                                <span lang="en">VI. Accommodation</span>
+                                <span lang="zh">六、会议住宿</span>
+                            </h5>
+                            <p lang="en">Accommodation for this conference is self-arranged, and no unified pick-up service will be provided. Conference delegates should travel to the conference venue and hotels on their own. Conference agreement hotel information will be updated on the website. Delegates can choose and book independently by phone or QR code pre-registration (must indicate the conference name).</p>
+                            <p lang="zh">本次大会住宿自理，不统一安排接送服务。会议代表自行前往会议地点及酒店。会议协议酒店信息如下（部分酒店会有调整，详细信息请关注网站更新），参会代表可自主选择并通过电话或二维码预登记扫码方式（须告知或注明会议名称）预订。</p>
+                            <p class="text-warning" lang="en">The host city will have large-scale activities during this conference period, and hotel resources throughout the city are tight. First come, first served. Please book in advance.</p>
+                            <p class="text-warning" lang="zh">主办城市在本次会议期间将有大型活动，全市酒店资源紧张，先到先得，敬请提前预订，可扫以下二维码预报住宿信息，与各酒店负责人联络确认订房。</p>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="conference-section">
+                            <h5>
+                                <span lang="en">VII. Contact Information</span>
+                                <span lang="zh">七、联系方式</span>
+                            </h5>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Conference Website:</span>
+                                <span class="info-label" lang="zh">会议网站：</span>
+                                <a href="https://gis2025.xmzntech.com/" target="_blank">https://gis2025.xmzntech.com/</a>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">Conference Email:</span>
+                                <span class="info-label" lang="zh">会议邮箱：</span>
+                                <a href="mailto:gis2025jmu@163.com">gis2025jmu@163.com</a>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label" lang="en">QQ Group:</span>
+                                <span class="info-label" lang="zh">QQ群：</span>
+                                <span lang="en">1055425116</span>
+                                <span lang="zh">1055425116</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 语言切换功能
+            const langToggle = document.getElementById('lang-toggle');
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 切换语言按钮点击事件
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
+            
+            // 主题切换功能
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // 检查保存的主题偏好或使用默认值
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // 更新按钮图标基于当前主题
+            updateThemeIcon(currentTheme);
+            
+            // 切换主题点击事件
+            themeToggle.addEventListener('click', function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateThemeIcon(newTheme);
+            });
+            
+            // 更新图标函数
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
