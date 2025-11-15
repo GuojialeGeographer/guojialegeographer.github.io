@@ -468,9 +468,21 @@
   - ✅ 添加SEO meta标签（description, keywords, Open Graph, Twitter Card）
   - ✅ 更新所有路径引用为小写（images/ → images/, cv/ → cv/, presentations/ → presentations/）
   - ✅ 添加canonical URL
-  - 📝 注意：由于文件夹尚未重命名，路径更新为小写后，需要在文件夹重命名时确保一致性
+
+- **2025-11-15**: 完成文件夹重命名和路径修复
+  - ✅ 使用 `git mv` 将Git中的路径重命名为小写（125个文件）
+  - ✅ 修复logo显示问题（Git路径与代码路径现在一致）
+  - ✅ 所有路径引用已更新为小写
+
+- **2025-11-15**: 完成主要页面SEO优化
+  - ✅ `publications.html` - 添加SEO meta标签
+  - ✅ `projects.html` - 添加SEO meta标签
+  - ✅ `presentations.html` - 添加SEO meta标签
+  - ✅ `news.html` - 添加SEO meta标签
+  - ✅ `books.html` - 添加SEO meta标签
+  - ✅ 所有页面都包含：description, keywords, Open Graph, Twitter Card, canonical URL
 
 ---
 
-**下一步**: 继续优化 `publications.html` 页面
+**下一步**: 优化其他辅助页面（teaching.html, team.html, talks.html等）
 
