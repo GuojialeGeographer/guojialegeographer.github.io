@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram id="coordinate_system_diagram" name="坐标系演进的主要驱动因素">
+    <mxGraphModel dx="1426" dy="893" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="center_circle" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;坐标系演进的主要驱动因素&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="501" y="327" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_box" value="技术进步" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="350" y="254" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="political_box" value="政治与战略需求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="620" y="254" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_box" value="经济与社会发展" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="621" y="475" width="149" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="geoscience_box" value="地球科学认知与自然灾害应对" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="441" y="540" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cooperation_box" value="国际合作与标准化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="339" y="475" width="161" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_1" value="从传统大地测量到空间技术&#xa;(GNSS、VLBI、SLR、InSAR)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="200" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_2" value="计算技术与地球模型的精化" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="260" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tech_adv_3" value="精度需求的不断提升" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="320" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="political_1" value="国家主权与疆域测绘&#xa;(算清家底)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="801" y="200" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="political_2" value="国防与军事应用" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="801" y="260" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="political_3" value="国际合作与地缘政治&#xa;(冷战时期体系划分、区域一体化)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="801" y="320" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_1" value="大规模基础设施建设&#xa;(交通、能源、水利)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="800" y="388.07" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_2" value="资源勘探与可持续发展" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="800" y="434" width="149" height="37.87" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_3" value="城市化与精细化管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="800" y="479" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_4" value="土地权属与地籍管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="799" y="527" width="150" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="economic_5" value="全球化与国际贸易数据互操作性需求" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="799.5" y="573" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="geoscience_1" value="对地球形状、大小、重力场、&#xa;板块运动的认知深化" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="340" y="620" width="211" height="39.5" as="geometry" />
+        </mxCell>
+        <mxCell id="geoscience_2" value="地震、火山、地面沉降等引发的&#xa;地壳形变监测与坐标框架维护" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="568.5" y="620" width="211.5" height="39.75" as="geometry" />
+        </mxCell>
+        <mxCell id="cooperation_1" value="全球/区域参考框架的建立与推广&#xa;(如ITRF, ETRS89)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="99" y="447" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cooperation_2" value="数据共享与互操作的需求&#xa;(如欧盟INSPIRE指令)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="99" y="510" width="210" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="center_to_tech" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="tech_adv_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="638.573593128807" y="317.00359312880704" as="sourcePoint" />
+            <mxPoint x="316" y="199.43" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_political" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="political_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_economic" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="economic_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_geoscience" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="geoscience_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="center_to_cooperation" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="center_circle" target="cooperation_box" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="536" y="367" as="sourcePoint" />
+            <mxPoint x="586" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note_box" value="注：坐标系演进是多因素驱动的复杂过程，各因素相互影响、相互促进" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2" parent="1" vertex="1">
+          <mxGeometry x="359.63" y="670" width="400.25" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-9" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="771" y="200" width="20" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-10" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="771" y="387" width="20" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-11" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="330" y="200" width="20" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-12" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="320" y="440" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="dCNz2co90UsCRI41-XTs-14" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="549.75" y="431.25" width="20" height="337.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

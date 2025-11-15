@@ -1,7 +1,7 @@
 document.write("<table width=\"650\" border=\"0\" height=\"200\">");
 document.write("<tbody>");
 document.write("<tr>");
-document.write("<td> <img src=\"Images/guojiale1.jpg\" alt=\"Jiale Guo\"");
+document.write("<td> <img src=\"images/guojiale1.jpg\" alt=\"Jiale Guo\"");
 // document.write("width=\"200\" height=\"250\"> <\/td>");
 document.write("width=\"180\" height=\"225\"> <\/td>");
 document.write("<td>");

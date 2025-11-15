@@ -26,8 +26,8 @@
 #### 1. 会议整合到Presentations ✅
 - **完成时间**: 2025-11-15
 - **操作**: 
-  - ✅ 移动 `conferences/GIS2025/` → `Presentations/Conferences/GIS2025/`
-  - ✅ 移动 `conferences/GEOSUS2025/` → `Presentations/Conferences/GEOSUS2025/`
+  - ✅ 移动 `conferences/GIS2025/` → `presentations/Conferences/GIS2025/`
+  - ✅ 移动 `conferences/GEOSUS2025/` → `presentations/Conferences/GEOSUS2025/`
   - ✅ 更新所有链接引用（index.html, presentations.html等）
   - ✅ 在 `presentations.html` 中整合会议内容
   - ✅ 添加URL参数支持（`?tag=conference`）
@@ -35,9 +35,9 @@
   - ✅ 更新会议详情页的返回链接和导航栏
 - **当前状态**: 
   - 会议已正确显示在Presentations页面，可通过Tag筛选
-  - 会议文件夹位于 `Presentations/Conferences/` 下
+  - 会议文件夹位于 `presentations/Conferences/` 下
   - `conferences.html` 保留但已更新为指向presentations.html
-  - 所有链接已更新为使用 `Presentations/Conferences/` 路径
+  - 所有链接已更新为使用 `presentations/Conferences/` 路径
 
 #### 2. 内容分类优化 ✅
 - **完成**: GEOSUS 2025从workshop更正为conference
@@ -51,10 +51,10 @@
 #### 1. 文件夹命名不一致
 ```
 当前状态:
-- Presentations/ (大写) ❌ - 包含Conferences、Courses、Workshops、Seminars
-- Images/ (大写) ❌ - 包含books、papers、presentations、projects等子文件夹
-- Projects/ (大写) ❌ - 包含多个项目文件夹
-- CV/ (大写) ❌
+- presentations/ (大写) ❌ - 包含Conferences、Courses、Workshops、Seminars
+- images/ (大写) ❌ - 包含books、papers、presentations、projects等子文件夹
+- projects/ (大写) ❌ - 包含多个项目文件夹
+- cv/ (大写) ❌
 - conferences/ (小写) ✅ - 仅剩GISphere文件夹
 - books/ (小写) ✅
 - papers/ (小写) ✅
@@ -66,7 +66,7 @@
 问题:
 - conferences/GISphere/ 应该移动到news/（学术成果新闻，不是会议）
 - papers/ 和 publications.html 分离
-- Images/ 下包含内容特定图片（books、papers、presentations、projects），应移至各自文件夹
+- images/ 下包含内容特定图片（books、papers、presentations、projects），应移至各自文件夹
 - 未使用的文件夹: doc/, report/, tmp/, tutorial/, video/, poster/
 ```
 
@@ -82,11 +82,11 @@
 #### 4. 资源路径不统一
 ```
 当前:
-- Images/ (大写，根目录) - 包含books、papers、presentations、projects等子文件夹
-- Presentations/Courses/.../images/ (小写，子目录)
-- Projects/Air_Pollution_Exporsure/Images/ (大写，项目内)
-- Projects/30DayMapChallenge/images/ (小写，项目内)
-- 问题: Images/下的内容特定图片应移至各自内容文件夹
+- images/ (大写，根目录) - 包含books、papers、presentations、projects等子文件夹
+- presentations/Courses/.../images/ (小写，子目录)
+- projects/Air_Pollution_Exporsure/images/ (大写，项目内)
+- projects/30DayMapChallenge/images/ (小写，项目内)
+- 问题: images/下的内容特定图片应移至各自内容文件夹
 ```
 
 ---
@@ -122,7 +122,7 @@ guojialegeographer.github.io/
 │   ├── 30-day-map-challenge/          # 当前: 30DayMapChallenge/（待重命名）
 │   │   └── images/                    # 项目图片（放在各自文件夹下）
 │   ├── air-pollution-exposure/         # 当前: Air_Pollution_Exporsure/（待重命名+修正拼写）
-│   │   └── images/                    # 当前: Images/（大写，待重命名）
+│   │   └── images/                    # 当前: images/（大写，待重命名）
 │   ├── nlp-sentiment-analysis/         # 当前: NLP_Sentiment Analysis/（待重命名）
 │   │   └── images/                    # 项目图片
 │   ├── spatial-temporal-air-pollution/ # 当前: Spatial-temporal pattern mining of Air Pollution/（待重命名）
@@ -131,7 +131,7 @@ guojialegeographer.github.io/
 │   │   └── images/                    # 项目图片
 │   └── undergraduate-thesis/          # 当前: Undergraduate_Thesis/（待重命名）
 │       └── images/                    # 项目图片
-│   # 注意：当前文件夹名为 Projects/（大写），待Phase 2重命名
+│   # 注意：当前文件夹名为 projects/（大写），待Phase 2重命名
 │
 ├── books/                              # 书籍和笔记（已规范）
 │   ├── books.html                      # 或 index.html
@@ -156,7 +156,7 @@ guojialegeographer.github.io/
 │   └── seminars/                       # 研讨会
 │       └── [seminar-slug]/
 │           └── images/                # 研讨会图片
-│   # 注意：当前文件夹名为 Presentations/（大写），待Phase 2重命名
+│   # 注意：当前文件夹名为 presentations/（大写），待Phase 2重命名
 │
 │
 ├── news/                               # 新闻和动态（新建）
@@ -195,14 +195,14 @@ guojialegeographer.github.io/
 #### ✅ 1.1 Conferences整合到Presentations（已完成）
 - **状态**: ✅ 完成（2025-11-15）
 - **实际完成情况**: 
-  - ✅ GIS2025和GEOSUS2025已移动到 `Presentations/Conferences/`
+  - ✅ GIS2025和GEOSUS2025已移动到 `presentations/Conferences/`
   - ✅ 更新了index.html中的所有链接
   - ✅ 更新了presentations.html，添加了会议卡片
   - ✅ 更新了conferences.html，添加重定向提示
   - ✅ 更新了会议详情页的返回链接和导航栏
   - ✅ 添加了URL参数支持（`presentations.html?tag=conference`）
   - ✅ 优化了会议卡片显示（蓝色边框、图标、order排序）
-- **当前路径**: `Presentations/Conferences/GIS2025/` 和 `Presentations/Conferences/GEOSUS2025/`
+- **当前路径**: `presentations/Conferences/GIS2025/` 和 `presentations/Conferences/GEOSUS2025/`
 - **注意**: Presentations文件夹仍为大写，待Phase 2重命名为小写
 
 #### 🔄 1.2 GISphere移动到News（待执行）
@@ -231,7 +231,7 @@ guojialegeographer.github.io/
 ### Phase 2: 中优先级 - 命名规范化
 
 #### 🔄 2.1 Presentations文件夹重命名（待执行）
-- **当前**: `Presentations/` (大写)
+- **当前**: `presentations/` (大写)
 - **目标**: `presentations/` (小写)
 - **注意事项**: 
   - GitHub Pages在某些系统上对大小写敏感
@@ -239,26 +239,26 @@ guojialegeographer.github.io/
   - 建议在非工作时间执行，避免影响访问
 - **操作步骤**:
   1. 备份当前文件夹
-  2. 重命名 `Presentations/` → `presentations/`
+  2. 重命名 `presentations/` → `presentations/`
   3. 更新所有HTML文件中的路径引用
   4. 更新图片路径引用
   5. 测试所有链接
   6. 提交并推送更改
 
 #### 🔄 2.2 Images文件夹重命名（待执行）
-- **当前**: `Images/` (大写)
+- **当前**: `images/` (大写)
 - **目标**: `images/` (小写)
 - **操作步骤**:
-  1. 重命名 `Images/` → `images/`
+  1. 重命名 `images/` → `images/`
   2. 全局搜索并替换所有图片路径引用
   3. 更新CSS文件中的图片路径
   4. 验证所有图片正常显示
 
 #### 🔄 2.3 CV文件夹重命名（待执行）
-- **当前**: `CV/` (大写)
+- **当前**: `cv/` (大写)
 - **目标**: `cv/` (小写)
 - **操作步骤**:
-  1. 重命名 `CV/` → `cv/`
+  1. 重命名 `cv/` → `cv/`
   2. 更新所有引用链接
 
 #### 🔄 2.4 项目文件夹命名规范化（待执行）
@@ -305,7 +305,7 @@ guojialegeographer.github.io/
 #### 🔄 3.3 图片资源整合（待执行）
 - **目标**: 统一图片资源位置，按新规则重组
 - **当前问题**:
-  - `Images/` 文件夹下包含 `books/`, `papers/`, `presentations/`, `projects/` 等子文件夹
+  - `images/` 文件夹下包含 `books/`, `papers/`, `presentations/`, `projects/` 等子文件夹
   - 这些是内容特定图片，应移至各自内容文件夹下
 - **规则**:
   - **全局公用图片** → `images/` 根目录（重命名Images后）
@@ -313,14 +313,14 @@ guojialegeographer.github.io/
     - `images/institutions/` - 机构logo（网站公用）
     - `images/placeholders/` - 占位图（网站公用）
   - **内容特定图片** → 各内容文件夹下的 `images/` 子文件夹
-    - `Images/books/` → `books/[book-slug]/images/`
-    - `Images/papers/` → `publications/[paper-slug]/images/`
-    - `Images/projects/` → `projects/[project-name]/images/`
-    - `Images/presentations/` → `presentations/[category]/[item-slug]/images/`
+    - `images/books/` → `books/[book-slug]/images/`
+    - `images/papers/` → `publications/[paper-slug]/images/`
+    - `images/projects/` → `projects/[project-name]/images/`
+    - `images/presentations/` → `presentations/[category]/[item-slug]/images/`
     - 旅行照片 → `travel/[location-slug]/images/`（新建）
     - 新闻图片 → `news/[news-slug]/images/`（新建）
 - **操作步骤**:
-  1. 重命名 `Images/` → `images/`
+  1. 重命名 `images/` → `images/`
   2. 移动 `images/books/` 内容到各书籍文件夹的 `images/` 子文件夹
   3. 移动 `images/papers/` 内容到各论文文件夹的 `images/` 子文件夹
   4. 移动 `images/projects/` 内容到各项目文件夹的 `images/` 子文件夹
@@ -460,7 +460,7 @@ guojialegeographer.github.io/
 
 ### 第一阶段（1-2周）
 1. ✅ 完成会议整合（已完成 - 2025-11-15）
-   - ✅ GIS2025和GEOSUS2025已移至Presentations/Conferences/
+   - ✅ GIS2025和GEOSUS2025已移至presentations/Conferences/
    - ✅ 所有链接已更新
    - ✅ 会议已在presentations.html中显示
    - ✅ 添加了URL参数支持和样式优化
@@ -612,8 +612,8 @@ guojialegeographer.github.io/
 - books/ ✅ (小写，已规范)
 - conferences/ ⚠️ (仅剩GISphere，应移至news)
   - GISphere/ (待移至news/gisphere-research-achievements/)
-- CV/ ⚠️ (大写，应改为cv)
-- Images/ ⚠️ (大写，应改为images，且内容需重组)
+- cv/ ⚠️ (大写，应改为cv)
+- images/ ⚠️ (大写，应改为images，且内容需重组)
   - books/ (应移至各书籍文件夹)
   - papers/ (应移至各论文文件夹)
   - presentations/ (应移至各演示文稿文件夹)
@@ -621,7 +621,7 @@ guojialegeographer.github.io/
   - personal/ ✅ (全局公用)
   - institutions/ ✅ (全局公用)
 - papers/ ⚠️ (应整合到publications)
-- Presentations/ ⚠️ (大写，应改为presentations)
+- presentations/ ⚠️ (大写，应改为presentations)
   - Conferences/ ✅ (GIS2025, GEOSUS2025已整合)
     - GIS2025/ (待重命名为gis-2025)
     - GEOSUS2025/ (待重命名为geosus-2025)
@@ -631,7 +631,7 @@ guojialegeographer.github.io/
   - Workshops/ ✅
     - 20230725-Remote_Sensing_Applications/ (待重命名)
   - Seminars/ ✅
-- Projects/ ⚠️ (大写，应改为projects，且命名需规范化)
+- projects/ ⚠️ (大写，应改为projects，且命名需规范化)
   - 30DayMapChallenge/ (待重命名为30-day-map-challenge)
   - Air_Pollution_Exporsure/ (待重命名+修正拼写)
   - NLP_Sentiment Analysis/ (待重命名)
@@ -648,7 +648,7 @@ guojialegeographer.github.io/
 ```
 
 ### B. 关键文件列表
-- `index.html` - 主页（已更新会议链接指向Presentations/Conferences/）
+- `index.html` - 主页（已更新会议链接指向presentations/Conferences/）
 - `publications.html` - 出版物列表
 - `projects.html` - 项目列表
 - `books.html` - 书籍列表
@@ -656,8 +656,8 @@ guojialegeographer.github.io/
 - `news.html` - 新闻列表（已添加GISphere条目）
 - `conferences.html` - 会议页面（保留，已更新为指向presentations.html）
 - `conferences/GISphere/index.html` - GISphere详情页（待移至news）
-- `Presentations/Conferences/GIS2025/index.html` - GIS 2025会议详情页 ✅
-- `Presentations/Conferences/GEOSUS2025/index.html` - GEOSUS 2025会议详情页 ✅
+- `presentations/Conferences/GIS2025/index.html` - GIS 2025会议详情页 ✅
+- `presentations/Conferences/GEOSUS2025/index.html` - GEOSUS 2025会议详情页 ✅
 - `style.css` - 全局样式
 
 ### C. 参考文档

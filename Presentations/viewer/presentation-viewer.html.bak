@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Viewer - Jiale Guo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.2.0/github-markdown.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 56px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #fff;
+            border-right: 1px solid #e9ecef;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        .toc-item {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .toc-item:hover {
+            background-color: #f8f9fa;
+            border-left-color: #dee2e6;
+        }
+
+        .toc-item.active {
+            background-color: #f1f8ff;
+            border-left-color: #007bff;
+            font-weight: 500;
+        }
+
+        .toc-h1 { padding-left: 15px; font-weight: 600; }
+        .toc-h2 { padding-left: 30px; }
+        .toc-h3 { padding-left: 45px; }
+        .toc-h4 { padding-left: 60px; font-size: 0.85rem; }
+        .toc-h5 { padding-left: 75px; font-size: 0.8rem; }
+        .toc-h6 { padding-left: 90px; font-size: 0.75rem; }
+
+        .presentation-header {
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            background-color: #fff;
+        }
+
+        .presentation-title {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1030;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Markdown content styling */
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+
+        /* 工具栏 */
+        .presentation-toolbar {
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .presentation-toolbar .btn {
+            margin-left: 10px;
+        }
+
+        /* 增强阅读体验 */
+        .markdown-body {
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .markdown-body h1, 
+        .markdown-body h2, 
+        .markdown-body h3,
+        .markdown-body h4,
+        .markdown-body h5,
+        .markdown-body h6 {
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+            border-bottom: none;
+        }
+
+        .markdown-body h1 {
+            font-size: 2em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        .markdown-body img {
+            max-width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 1em 0;
+            border-radius: 4px;
+        }
+
+        .markdown-body blockquote {
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+
+        /* 幻灯片特定样式 */
+        .slide-image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .slide-image {
+            max-width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        .slide-description {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+
+        /* 幻灯片导航 */
+        .slide-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        /* 响应式设计优化 */
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                top: 56px;
+                bottom: 0;
+                z-index: 1020;
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .sidebar-toggle {
+                display: flex;
+            }
+        }
+
+        /* 暗黑模式 */
+        html[data-theme="dark"] body {
+            background-color: #212529;
+            color: #f8f9fa;
+        }
+
+        html[data-theme="dark"] .sidebar, 
+        html[data-theme="dark"] .main-content, 
+        html[data-theme="dark"] .presentation-header,
+        html[data-theme="dark"] .presentation-toolbar,
+        html[data-theme="dark"] .navbar {
+            background-color: #343a40;
+            color: #f8f9fa;
+            border-color: #495057;
+        }
+
+        html[data-theme="dark"] .navbar,
+        html[data-theme="dark"] .navbar-light .navbar-brand,
+        html[data-theme="dark"] .navbar-light .navbar-nav .nav-link {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+        html[data-theme="dark"] .toc-item:hover {
+            background-color: #2c3136;
+            border-left-color: #6c757d;
+        }
+
+        html[data-theme="dark"] .toc-item.active {
+            background-color: #2c3136;
+            border-left-color: #0d6efd;
+        }
+
+        html[data-theme="dark"] .markdown-body {
+            color: #f8f9fa;
+        }
+
+        html[data-theme="dark"] .slide-description {
+            background-color: #2c3136;
+            border-left-color: #0d6efd;
+        }
+
+        html[data-theme="dark"] .markdown-body blockquote {
+            background-color: #2c3136;
+            border-left-color: #0d6efd;
+        }
+
+        /* PPT下载按钮样式 */
+        .download-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .debug-info {
+            font-family: monospace;
+            font-size: 12px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        html[data-theme="dark"] .debug-info {
+            background-color: #2c3136;
+            border-color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/"><strong>Jiale Guo</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/presentations.html">
+                            <span lang="en">Back to Presentations</span>
+                            <span lang="zh">返回演示文稿</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="presentation-header">
+        <div class="container">
+            <h2 id="presentation-title" class="presentation-title">加载中...</h2>
+            <p id="presentation-meta" class="text-muted">加载中...</p>
+            <div class="download-buttons">
+                <a id="download-cn" class="btn btn-sm btn-outline-primary" href="#" target="_blank">
+                    <i class="fas fa-download"></i> 
+                    <span lang="en">Download Chinese Version</span>
+                    <span lang="zh">下载中文版</span>
+                </a>
+                <a id="download-en" class="btn btn-sm btn-outline-info" href="#" target="_blank">
+                    <i class="fas fa-download"></i> 
+                    <span lang="en">Download English Version</span>
+                    <span lang="zh">下载英文版</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="presentation-toolbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <button id="sidebar-toggle" class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-bars"></i> 
+                    <span lang="en">Toggle TOC</span>
+                    <span lang="zh">切换目录</span>
+                </button>
+            </div>
+            <div>
+                <button id="debug-toggle" class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-bug"></i>
+                    <span lang="en">Debug</span>
+                    <span lang="zh">调试</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="sidebar">
+            <div id="toc" class="toc"></div>
+        </div>
+        <div class="main-content">
+            <div id="loading" class="text-center p-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mt-3">
+                    <span lang="en">Loading presentation, please wait...</span>
+                    <span lang="zh">正在加载演示文稿，请稍候...</span>
+                </p>
+            </div>
+            <div id="content" class="markdown-body"></div>
+            <div id="debug-info" class="debug-info"></div>
+        </div>
+    </div>
+
+    <div class="sidebar-toggle" id="mobile-sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Get query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const file = urlParams.get('file');
+            const baseDir = urlParams.get('dir') || '';
+            
+            if (!file) {
+                showError("No file specified");
+                return;
+            }
+
+            // Set download links
+            const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            const cnPptUrl = `${basePath}${baseDir}/${file.replace('.md', '-CN.pptx')}`;
+            const enPptUrl = `${basePath}${baseDir}/${file.replace('.md', '-EN.pptx')}`;
+            
+            $('#download-cn').attr('href', cnPptUrl);
+            $('#download-en').attr('href', enPptUrl);
+            
+            // 尝试从查询参数中获取语言设置
+            const urlLang = urlParams.get('lang');
+            if (urlLang === 'zh' || urlLang === 'en') {
+                document.documentElement.setAttribute('data-lang', urlLang);
+                updateThemeToggleIcon();
+            }
+            
+            // 加载Markdown文件
+            $.ajax({
+                url: `${baseDir}/${file}`,
+                dataType: 'text',
+                success: function(data) {
+                    $('#loading').hide();
+                    
+                    // 解析Markdown内容
+                    const htmlContent = marked.parse(data);
+                    $('#content').html(htmlContent);
+                    
+                    // 提取标题和元信息
+                    const titleMatch = data.match(/^#*\s*(.+?)[\r\n]/);
+                    const title = titleMatch ? titleMatch[1] : file.replace('.md', '');
+                    $('#presentation-title').text(title);
+                    
+                    // 提取描述或设置默认描述
+                    const descMatch = data.match(/^\*\*(.+?)\*\*/m);
+                    let desc = descMatch ? descMatch[1] : '';
+                    if (!desc) {
+                        desc = `Presentation | ${new Date().toLocaleDateString()}`;
+                    }
+                    $('#presentation-meta').text(desc);
+                    
+                    // 设置页面标题
+                    document.title = `${title} - Jiale Guo`;
+                    
+                    // 生成目录
+                    generateTOC();
+                    
+                    // 增强图片显示
+                    enhanceImageDisplay(`${baseDir}/`);
+                    
+                    // 设置滚动事件以更新目录高亮
+                    $(window).scroll(updateTOCHighlight);
+                    
+                    // 调试信息
+                    updateDebugInfo({
+                        file,
+                        baseDir,
+                        cnPptUrl,
+                        enPptUrl,
+                        basePath
+                    });
+                },
+                error: function(xhr, status, error) {
+                    showError(`Error loading file: ${error}`);
+                    console.error(`Failed to load ${file}: ${error}`);
+                    updateDebugInfo({
+                        error,
+                        status,
+                        file,
+                        baseDir,
+                        attempt: `${baseDir}/${file}`
+                    });
+                }
+            });
+            
+            // 侧边栏切换
+            $('#sidebar-toggle, #mobile-sidebar-toggle').click(function() {
+                $('.sidebar').toggleClass('show');
+            });
+            
+            // 主题切换
+            $('#theme-toggle').click(function() {
+                const html = document.documentElement;
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeToggleIcon();
+            });
+            
+            // 语言切换
+            $('#lang-toggle').click(function() {
+                const html = document.documentElement;
+                const currentLang = html.getAttribute('data-lang');
+                const newLang = currentLang === 'zh' ? 'en' : 'zh';
+                html.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
+            
+            // 调试开关
+            $('#debug-toggle').click(function() {
+                $('#debug-info').toggle();
+            });
+            
+            // 初始化主题（从localStorage读取设置）
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                updateThemeToggleIcon();
+            }
+            
+            // 初始化语言（从localStorage读取设置）
+            const savedLang = localStorage.getItem('lang');
+            if (savedLang && !urlLang) {
+                document.documentElement.setAttribute('data-lang', savedLang);
+            }
+        });
+        
+        function updateThemeToggleIcon() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            $('#theme-toggle i').attr('class', theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun');
+        }
+        
+        function generateTOC() {
+            const headings = $('.markdown-body').find('h1, h2, h3, h4, h5, h6');
+            const toc = $('#toc');
+            toc.empty();
+            
+            headings.each(function(index) {
+                const heading = $(this);
+                const id = `heading-${index}`;
+                heading.attr('id', id);
+                
+                const level = parseInt(heading.prop('tagName').substring(1));
+                const tocItem = $('<div>')
+                    .addClass(`toc-item toc-h${level}`)
+                    .text(heading.text())
+                    .attr('data-target', `#${id}`)
+                    .click(function() {
+                        $('html, body').animate({
+                            scrollTop: $(`#${id}`).offset().top - 100
+                        }, 500);
+                    });
+                    
+                toc.append(tocItem);
+            });
+            
+            // 如果没有标题，显示一个提示
+            if (headings.length === 0) {
+                toc.html('<div class="p-3 text-muted"><small>No headings found</small></div>');
+            }
+        }
+        
+        function updateTOCHighlight() {
+            const scrollPosition = $(window).scrollTop() + 150;
+            
+            $('.toc-item').removeClass('active');
+            
+            // 找到当前可见的标题
+            $('.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6').each(function() {
+                const currentHeading = $(this);
+                const headingPosition = currentHeading.offset().top;
+                
+                if (headingPosition <= scrollPosition) {
+                    const id = currentHeading.attr('id');
+                    $('.toc-item').removeClass('active');
+                    $(`.toc-item[data-target="#${id}"]`).addClass('active');
+                }
+            });
+        }
+        
+        function enhanceImageDisplay(basePath) {
+            $('.markdown-body img').each(function() {
+                const img = $(this);
+                const src = img.attr('src');
+                
+                // 尝试修复相对路径
+                if (src && !src.startsWith('http') && !src.startsWith('/')) {
+                    // 尝试添加基础路径
+                    try {
+                        const newSrc = `${basePath}${src}`;
+                        img.attr('src', newSrc);
+                        img.attr('data-original-src', src);
+                        updateDebugInfo({imgFixed: true, from: src, to: newSrc});
+                    } catch (e) {
+                        console.error(`Error fixing image path: ${e}`);
+                    }
+                }
+                
+                // 将图片包装在容器中，以便添加额外样式
+                const container = $('<div>').addClass('slide-image-container');
+                img.wrap(container);
+                
+                // 添加加载事件以验证图片是否正确加载
+                img.on('load', function() {
+                    $(this).addClass('loaded');
+                }).on('error', function() {
+                    // 图片加载失败，添加错误提示
+                    const errorMsg = $('<div>').addClass('text-danger').html(`
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        Image failed to load: ${src}
+                    `);
+                    $(this).after(errorMsg);
+                    updateDebugInfo({imgError: true, src: src});
+                });
+            });
+        }
+        
+        function showError(message) {
+            $('#loading .spinner-border').hide();
+            $('#loading').html(`
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle"></i> ${message}
+                </div>
+                <a href="/presentations.html" class="btn btn-primary">
+                    <span lang="en">Back to Presentations</span>
+                    <span lang="zh">返回演示文稿</span>
+                </a>
+            `);
+        }
+        
+        function updateDebugInfo(data) {
+            const debugInfo = $('#debug-info');
+            const current = debugInfo.data('debug') || {};
+            const updated = {...current, ...data};
+            debugInfo.data('debug', updated);
+            debugInfo.html(JSON.stringify(updated, null, 2));
+        }
+    </script>
+</body>
+</html> 

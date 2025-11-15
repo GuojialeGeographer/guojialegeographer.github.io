@@ -46,15 +46,15 @@
 - ✅ 基本结构完整
 - ✅ 导航栏功能正常
 - ✅ 主题切换和语言切换正常
-- ⚠️ 部分路径使用大写（Images/, CV/, Presentations/）
+- ⚠️ 部分路径使用大写（images/, cv/, presentations/）
 - ⚠️ 会议链接已更新，但路径仍为大写
 
 #### 优化任务
 
 **1.1 路径规范化**
-- [ ] 更新 `Images/` → `images/` 的所有引用
-- [ ] 更新 `CV/` → `cv/` 的所有引用（待重命名后）
-- [ ] 更新 `Presentations/` → `presentations/` 的所有引用（待重命名后）
+- [ ] 更新 `images/` → `images/` 的所有引用
+- [ ] 更新 `cv/` → `cv/` 的所有引用（待重命名后）
+- [ ] 更新 `presentations/` → `presentations/` 的所有引用（待重命名后）
 - [ ] 检查所有相对路径是否正确
 
 **1.2 内容优化**
@@ -85,13 +85,13 @@
 
 #### 当前状态
 - ✅ 基本结构完整
-- ⚠️ 路径可能使用大写（Images/, papers/）
+- ⚠️ 路径可能使用大写（images/, papers/）
 - ⚠️ papers文件夹应整合到publications
 
 #### 优化任务
 
 **2.1 路径规范化**
-- [ ] 更新 `Images/` → `images/` 的所有引用
+- [ ] 更新 `images/` → `images/` 的所有引用
 - [ ] 更新 `papers/` → `publications/` 的所有引用（待整合后）
 - [ ] 检查所有论文详情页链接
 
@@ -118,13 +118,13 @@
 #### 当前状态
 - ✅ 基本结构完整
 - ⚠️ 项目文件夹命名不规范（Air_Pollution_Exporsure/, NLP_Sentiment Analysis/等）
-- ⚠️ 路径可能使用大写（Projects/, Images/）
+- ⚠️ 路径可能使用大写（projects/, images/）
 
 #### 优化任务
 
 **3.1 路径规范化**
-- [ ] 更新 `Projects/` → `projects/` 的所有引用（待重命名后）
-- [ ] 更新 `Images/` → `images/` 的所有引用
+- [ ] 更新 `projects/` → `projects/` 的所有引用（待重命名后）
+- [ ] 更新 `images/` → `images/` 的所有引用
 - [ ] 更新项目文件夹路径（待重命名后）
   - [ ] `30DayMapChallenge/` → `30-day-map-challenge/`
   - [ ] `Air_Pollution_Exporsure/` → `air-pollution-exposure/`
@@ -156,12 +156,12 @@
 - ✅ 已整合会议内容
 - ✅ Tag筛选功能正常
 - ✅ URL参数支持已实现
-- ⚠️ 路径使用大写（Presentations/）
+- ⚠️ 路径使用大写（presentations/）
 
 #### 优化任务
 
 **4.1 路径规范化**
-- [ ] 更新 `Presentations/` → `presentations/` 的所有引用（待重命名后）
+- [ ] 更新 `presentations/` → `presentations/` 的所有引用（待重命名后）
 - [ ] 更新会议详情页链接
 - [ ] 更新课程、工作坊、研讨会链接
 
@@ -213,12 +213,12 @@
 
 #### 当前状态
 - ✅ 基本结构完整
-- ⚠️ 路径可能使用大写（Images/）
+- ⚠️ 路径可能使用大写（images/）
 
 #### 优化任务
 
 **6.1 路径规范化**
-- [ ] 更新 `Images/` → `images/` 的所有引用
+- [ ] 更新 `images/` → `images/` 的所有引用
 - [ ] 检查书籍详情页链接
 
 **6.2 内容组织**
@@ -348,10 +348,10 @@
 - [ ] 统一主题切换和语言切换功能
 
 ### 路径引用检查
-- [ ] 全局搜索并替换 `Images/` → `images/`
-- [ ] 全局搜索并替换 `CV/` → `cv/`（待重命名后）
-- [ ] 全局搜索并替换 `Presentations/` → `presentations/`（待重命名后）
-- [ ] 全局搜索并替换 `Projects/` → `projects/`（待重命名后）
+- [ ] 全局搜索并替换 `images/` → `images/`
+- [ ] 全局搜索并替换 `cv/` → `cv/`（待重命名后）
+- [ ] 全局搜索并替换 `presentations/` → `presentations/`（待重命名后）
+- [ ] 全局搜索并替换 `projects/` → `projects/`（待重命名后）
 - [ ] 检查所有相对路径是否正确
 
 ### CSS样式统一
@@ -466,7 +466,7 @@
 - **2025-11-15**: 创建优化计划文档
 - **2025-11-15**: 完成 `index.html` 初步优化
   - ✅ 添加SEO meta标签（description, keywords, Open Graph, Twitter Card）
-  - ✅ 更新所有路径引用为小写（Images/ → images/, CV/ → cv/, Presentations/ → presentations/）
+  - ✅ 更新所有路径引用为小写（images/ → images/, cv/ → cv/, presentations/ → presentations/）
   - ✅ 添加canonical URL
   - 📝 注意：由于文件夹尚未重命名，路径更新为小写后，需要在文件夹重命名时确保一致性
 
