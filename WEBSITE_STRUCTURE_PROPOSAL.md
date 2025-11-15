@@ -92,9 +92,20 @@ guojialegeographer.github.io/
 
 ## 🔄 具体迁移计划
 
-### Phase 1: 内容重组
+### Phase 1: 内容重组 ✅ 已完成
 
-#### 1.1 News内容整理
+#### 1.1 Conferences整合到Presentations ✅
+```
+已完成: conferences/GIS2025/ 和 conferences/GEOSUS2025/
+当前: Presentations/Conferences/GIS2025/ 和 Presentations/Conferences/GEOSUS2025/
+操作: 
+  - ✅ 移动会议文件夹到 Presentations/Conferences/
+  - ✅ 更新所有链接引用
+  - ✅ 在presentations.html中整合会议内容
+  - ✅ 添加URL参数支持（?tag=conference）
+```
+
+#### 1.2 News内容整理（待执行）
 ```
 当前: conferences/GISphere/
 建议: news/gisphere-research-achievements/
@@ -103,16 +114,17 @@ guojialegeographer.github.io/
   - 更新所有链接引用
 ```
 
-#### 1.2 Presentations统一命名
+#### 1.3 Presentations统一命名（待执行）
 ```
 当前: Presentations/ (大写) 和 presentations.html
 建议: presentations/ (小写) 和 presentations.html
 操作:
   - 重命名 Presentations/ → presentations/
   - 更新所有链接引用
+  - 注意：GitHub Pages对大小写敏感，需要谨慎处理
 ```
 
-#### 1.3 Papers整合到Publications
+#### 1.4 Papers整合到Publications（待执行）
 ```
 当前: papers/ 和 publications.html
 建议: 统一使用 publications/
