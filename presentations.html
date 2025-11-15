@@ -95,6 +95,7 @@
         .presentation-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 2rem;
+            min-height: 200px;
         }
 
         .presentation-card:hover {
@@ -107,6 +108,19 @@
             object-fit: cover;
             object-position: center;
             border-radius: 4px 4px 0 0;
+        }
+        
+        /* 会议卡片特殊样式 */
+        .presentation-card:has(.tag:contains("Conference")) .card-body,
+        .presentation-card:has(.tag:contains("会议")) .card-body {
+            border-left: 4px solid #007bff;
+            padding-left: 1.25rem;
+        }
+        
+        .presentation-card:has(.tag:contains("Workshop")) .card-body,
+        .presentation-card:has(.tag:contains("工作坊")) .card-body {
+            border-left: 4px solid #28a745;
+            padding-left: 1.25rem;
         }
 
         .presentation-tags {
@@ -373,11 +387,12 @@
                             <!-- GIS 2025 Conference -->
                             <div class="col-md-10 col-lg-8 mx-auto presentation-item" data-tags="conference">
                                 <div class="card presentation-card">
-                                    <div class="card-body">
+                                    <div class="card-body" style="border-left: 4px solid #007bff; padding-left: 1.25rem;">
                                         <div class="presentation-tags">
-                                            <span class="tag">
-                                                <span lang="en">Conference</span>
-                                                <span lang="zh">会议</span>
+                                            <span class="tag" style="background-color: #007bff; color: white;">
+                                                <i class="fas fa-users"></i>
+                                                <span lang="en"> Conference</span>
+                                                <span lang="zh"> 会议</span>
                                             </span>
                                         </div>
                                         <h5 class="card-title">
@@ -387,18 +402,28 @@
                                             </a>
                                         </h5>
                                         <p class="card-text small text-muted">
-                                            <span lang="en">November 21-23, 2025 | Xiamen, China</span>
-                                            <span lang="zh">2025年11月21-23日 | 中国厦门</span>
+                                            <i class="fas fa-calendar"></i>
+                                            <span lang="en"> November 21-23, 2025</span>
+                                            <span lang="zh"> 2025年11月21-23日</span>
+                                            <span class="ml-2">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span lang="en"> Xiamen, China</span>
+                                                <span lang="zh"> 中国厦门</span>
+                                            </span>
                                         </p>
                                         <p class="card-text">
-                                            <span lang="en">Theme: Geospatial Information Empowering Smart Society</span>
-                                            <span lang="zh">主题：地理空间信息赋能智慧社会</span>
+                                            <strong>
+                                                <span lang="en">Theme:</span>
+                                                <span lang="zh">主题：</span>
+                                            </strong>
+                                            <span lang="en"> Geospatial Information Empowering Smart Society</span>
+                                            <span lang="zh"> 地理空间信息赋能智慧社会</span>
                                         </p>
                                         <div class="d-flex mt-3">
                                             <a href="Presentations/Conferences/GIS2025/" class="btn btn-sm btn-outline-primary">
                                                 <i class="fas fa-info-circle"></i>
-                                                <span lang="en">View Details</span>
-                                                <span lang="zh">查看详情</span>
+                                                <span lang="en"> View Details</span>
+                                                <span lang="zh"> 查看详情</span>
                                             </a>
                                         </div>
                                     </div>
@@ -408,11 +433,12 @@
                             <!-- GEOSUS 2025 Workshop -->
                             <div class="col-md-10 col-lg-8 mx-auto presentation-item" data-tags="workshop">
                                 <div class="card presentation-card">
-                                    <div class="card-body">
+                                    <div class="card-body" style="border-left: 4px solid #28a745; padding-left: 1.25rem;">
                                         <div class="presentation-tags">
-                                            <span class="tag">
-                                                <span lang="en">Workshop</span>
-                                                <span lang="zh">工作坊</span>
+                                            <span class="tag" style="background-color: #28a745; color: white;">
+                                                <i class="fas fa-handshake"></i>
+                                                <span lang="en"> Workshop</span>
+                                                <span lang="zh"> 工作坊</span>
                                             </span>
                                         </div>
                                         <h5 class="card-title">
@@ -422,18 +448,28 @@
                                             </a>
                                         </h5>
                                         <p class="card-text small text-muted">
-                                            <span lang="en">October 17-20, 2025 | Xi'an, China</span>
-                                            <span lang="zh">2025年10月17-20日 | 中国西安</span>
+                                            <i class="fas fa-calendar"></i>
+                                            <span lang="en"> October 17-20, 2025</span>
+                                            <span lang="zh"> 2025年10月17-20日</span>
+                                            <span class="ml-2">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span lang="en"> Xi'an, China</span>
+                                                <span lang="zh"> 中国西安</span>
+                                            </span>
                                         </p>
                                         <p class="card-text">
-                                            <span lang="en">Theme: Geography and Sustainable Development: From a Transdisciplinary Perspective</span>
-                                            <span lang="zh">主题：地理学与可持续发展：跨学科视角</span>
+                                            <strong>
+                                                <span lang="en">Theme:</span>
+                                                <span lang="zh">主题：</span>
+                                            </strong>
+                                            <span lang="en"> Geography and Sustainable Development: From a Transdisciplinary Perspective</span>
+                                            <span lang="zh"> 地理学与可持续发展：跨学科视角</span>
                                         </p>
                                         <div class="d-flex mt-3">
                                             <a href="Presentations/Conferences/GEOSUS2025/" class="btn btn-sm btn-outline-primary">
                                                 <i class="fas fa-info-circle"></i>
-                                                <span lang="en">View Details</span>
-                                                <span lang="zh">查看详情</span>
+                                                <span lang="en"> View Details</span>
+                                                <span lang="zh"> 查看详情</span>
                                             </a>
                                         </div>
                                     </div>
