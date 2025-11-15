@@ -24,38 +24,49 @@
 ### ✅ 已完成的工作
 
 #### 1. 会议整合到Presentations ✅
-- **完成时间**: 2025-01-XX
+- **完成时间**: 2025-11-15
 - **操作**: 
-  - 移动 `conferences/GIS2025/` → `Presentations/Conferences/GIS2025/`
-  - 移动 `conferences/GEOSUS2025/` → `Presentations/Conferences/GEOSUS2025/`
-  - 更新所有链接引用
-  - 在 `presentations.html` 中整合会议内容
-  - 添加URL参数支持（`?tag=conference`）
-  - 优化会议卡片显示样式
-- **当前状态**: 会议已正确显示在Presentations页面，可通过Tag筛选
+  - ✅ 移动 `conferences/GIS2025/` → `Presentations/Conferences/GIS2025/`
+  - ✅ 移动 `conferences/GEOSUS2025/` → `Presentations/Conferences/GEOSUS2025/`
+  - ✅ 更新所有链接引用（index.html, presentations.html等）
+  - ✅ 在 `presentations.html` 中整合会议内容
+  - ✅ 添加URL参数支持（`?tag=conference`）
+  - ✅ 优化会议卡片显示样式（蓝色边框、图标等）
+  - ✅ 更新会议详情页的返回链接和导航栏
+- **当前状态**: 
+  - 会议已正确显示在Presentations页面，可通过Tag筛选
+  - 会议文件夹位于 `Presentations/Conferences/` 下
+  - `conferences.html` 保留但已更新为指向presentations.html
+  - 所有链接已更新为使用 `Presentations/Conferences/` 路径
 
 #### 2. 内容分类优化 ✅
 - **完成**: GEOSUS 2025从workshop更正为conference
-- **完成**: GISphere从conferences移至news（逻辑上，但文件夹未移动）
+  - ✅ 更新了所有相关页面的标签和描述
+  - ✅ 更新了meta tags
+  - ✅ 统一使用蓝色会议样式
+- **待完成**: GISphere从conferences移至news（逻辑上已移至news.html，但文件夹仍在 `conferences/GISphere/`）
 
 ### ⚠️ 当前存在的问题
 
 #### 1. 文件夹命名不一致
 ```
 当前状态:
-- Presentations/ (大写) ❌
-- Images/ (大写) ❌
-- Projects/ (大写) ✅
+- Presentations/ (大写) ❌ - 包含Conferences、Courses、Workshops、Seminars
+- Images/ (大写) ❌ - 包含books、papers、presentations、projects等子文件夹
+- Projects/ (大写) ❌ - 包含多个项目文件夹
 - CV/ (大写) ❌
-- conferences/ (小写) ✅
+- conferences/ (小写) ✅ - 仅剩GISphere文件夹
 - books/ (小写) ✅
 - papers/ (小写) ✅
+- talkmap/ (小写) ✅
 ```
 
 #### 2. 内容分类混乱
 ```
 问题:
+- conferences/GISphere/ 应该移动到news/（学术成果新闻，不是会议）
 - papers/ 和 publications.html 分离
+- Images/ 下包含内容特定图片（books、papers、presentations、projects），应移至各自文件夹
 - 未使用的文件夹: doc/, report/, tmp/, tutorial/, video/, poster/
 ```
 
@@ -71,9 +82,11 @@
 #### 4. 资源路径不统一
 ```
 当前:
-- Images/ (大写，根目录)
+- Images/ (大写，根目录) - 包含books、papers、presentations、projects等子文件夹
 - Presentations/Courses/.../images/ (小写，子目录)
-- Projects/.../Images/ (大写，项目内)
+- Projects/Air_Pollution_Exporsure/Images/ (大写，项目内)
+- Projects/30DayMapChallenge/images/ (小写，项目内)
+- 问题: Images/下的内容特定图片应移至各自内容文件夹
 ```
 
 ---
