@@ -107,25 +107,40 @@ guojialegeographer.github.io/
 ├── projects/                           # 项目（统一小写）
 │   ├── projects.html                   # 或 index.html（主列表页）
 │   ├── 30-day-map-challenge/          # 统一命名
+│   │   └── images/                    # 项目图片（放在各自文件夹下）
 │   ├── air-pollution-exposure/         # 修正拼写和命名
+│   │   └── images/                    # 项目图片
 │   ├── nlp-sentiment-analysis/         # 统一命名
+│   │   └── images/                    # 项目图片
 │   ├── spatial-temporal-air-pollution/ # 统一命名
+│   │   └── images/                    # 项目图片
 │   ├── svi-data-processing/           # 统一命名
+│   │   └── images/                    # 项目图片
 │   └── undergraduate-thesis/          # 统一命名
+│       └── images/                    # 项目图片
 │
 ├── books/                              # 书籍和笔记（已规范）
 │   ├── books.html                      # 或 index.html
 │   ├── book-viewer.html
 │   └── [book-slug]/                   # 每本书一个文件夹
+│       └── images/                    # 书籍相关图片（放在各自文件夹下）
 │
 ├── presentations/                      # 演示文稿（统一小写）
 │   ├── presentations.html              # 或 index.html
 │   ├── conferences/                   # 会议（已整合）
 │   │   ├── gis-2025/
+│   │   │   └── images/                # 会议图片（放在各自文件夹下）
 │   │   ├── geosus-2025/
+│   │   │   └── images/                # 会议图片
 │   ├── courses/                        # 课程
+│   │   └── [course-slug]/
+│   │       └── images/                # 课程图片（放在各自文件夹下）
 │   ├── workshops/                      # 工作坊
-│   ├── seminars/                       # 研讨会
+│   │   └── [workshop-slug]/
+│   │       └── images/                # 工作坊图片
+│   └── seminars/                       # 研讨会
+│       └── [seminar-slug]/
+│           └── images/                # 研讨会图片
 │
 │
 ├── news/                               # 新闻和动态（新建）
@@ -269,9 +284,39 @@ guojialegeographer.github.io/
 #### 🔄 3.3 图片资源整合（待执行）
 - **目标**: 统一图片资源位置
 - **规则**:
-  - 全局共享图片 → `images/` 根目录
-  - 内容特定图片 → 各内容文件夹下的 `images/` 子文件夹
-  - 项目图片 → `projects/[project-name]/images/`
+  - **全局公用图片** → `images/` 根目录
+    - 个人头像、照片（网站公用）
+    - 机构logo（网站公用）
+    - 占位图（网站公用）
+  - **内容特定图片** → 各内容文件夹下的 `images/` 子文件夹
+    - 书籍图片 → `books/[book-slug]/images/`
+    - 论文图片 → `publications/[paper-slug]/images/`
+    - 项目图片 → `projects/[project-name]/images/`
+    - 演示文稿图片 → `presentations/[category]/[item-slug]/images/`
+    - 旅行照片 → `travel/[location-slug]/images/`
+    - 新闻图片 → `news/[news-slug]/images/`
+
+#### 🔄 3.4 新增旅行板块（待执行）
+- **目标**: 创建旅行板块，展示去过的地点，支持地图可视化
+- **功能需求**:
+  - 地点列表页面（`travel.html`）
+  - 地图展示页面（`travel/map.html`）
+  - 每个地点的详情页（`travel/[location-slug]/index.html`）
+  - 地点照片展示
+  - 地图标记和交互
+- **技术建议**:
+  - 使用Leaflet.js或Mapbox GL JS进行地图展示
+  - 地点信息存储为JSON格式（坐标、名称、描述、照片路径等）
+  - 支持筛选和搜索功能
+- **操作步骤**:
+  1. 创建 `travel/` 文件夹
+  2. 创建 `travel.html` 主列表页
+  3. 创建 `travel/map.html` 地图展示页
+  4. 为每个地点创建文件夹和详情页
+  5. 上传地点照片到各自的 `images/` 文件夹
+  6. 创建地点信息JSON文件
+  7. 实现地图标记和交互功能
+  8. 添加到导航栏
 
 ---
 
@@ -396,8 +441,16 @@ guojialegeographer.github.io/
 ### 第三阶段（3-4周）
 1. 🔄 清理未使用文件夹
 2. 🔄 统一资源结构
-3. 🔄 完善Tag系统
-4. 🔄 添加README文档
+3. 🔄 图片资源整合（按新规则）
+4. 🔄 完善Tag系统
+5. 🔄 添加README文档
+
+### 第四阶段（4-5周）- 新增功能
+1. 🔄 创建旅行板块结构
+2. 🔄 实现地图展示功能
+3. 🔄 添加地点详情页模板
+4. 🔄 上传和整理旅行照片
+5. 🔄 集成到导航栏
 
 ---
 
@@ -539,9 +592,86 @@ guojialegeographer.github.io/
 - `style.css` - 全局样式
 
 ### C. 参考文档
-- `WEBSITE_STRUCTURE_PROPOSAL.md` - 初始结构建议
 - `README.md` - 项目说明
 - Git提交历史 - 查看已完成的工作
+
+### D. 图片资源组织规则（重要更新）
+
+#### 根目录 images/ 文件夹
+**仅用于网站全局公用图片**：
+- `images/personal/` - 个人头像、照片（在多个页面使用）
+- `images/institutions/` - 机构logo（在多个页面使用）
+- `images/placeholders/` - 占位图（通用）
+
+#### 内容特定图片
+**所有内容相关的图片应放在各自文件夹下的 `images/` 子文件夹内**：
+- `books/[book-slug]/images/` - 书籍封面、内容图片
+- `publications/[paper-slug]/images/` - 论文图表、截图
+- `projects/[project-name]/images/` - 项目截图、结果图
+- `presentations/[category]/[item-slug]/images/` - 演示文稿相关图片
+- `travel/[location-slug]/images/` - 旅行地点照片
+- `news/[news-slug]/images/` - 新闻相关图片
+
+**原则**: 如果图片只属于某个特定内容项，就放在该内容项的 `images/` 文件夹下；如果图片在多个页面使用，才放在根目录的 `images/` 下。
+
+### E. 旅行板块详细规划
+
+#### 功能特性
+1. **地点列表页** (`travel.html`)
+   - 展示所有去过的地点
+   - 支持按国家/地区筛选
+   - 支持按时间排序
+   - 显示地点缩略图和基本信息
+
+2. **地图展示页** (`travel/map.html`)
+   - 交互式地图（Leaflet/Mapbox）
+   - 标记所有去过的地点
+   - 点击标记显示地点信息
+   - 支持筛选和搜索
+   - 可选的路线展示
+
+3. **地点详情页** (`travel/[location-slug]/index.html`)
+   - 地点名称和描述
+   - 照片画廊
+   - 访问时间
+   - 地理位置信息
+   - 相关链接（如需要）
+
+#### 数据结构建议
+```json
+// travel/locations.json 或各地点文件夹下的 location-info.json
+{
+  "locations": [
+    {
+      "slug": "beijing-china",
+      "name": {
+        "en": "Beijing, China",
+        "zh": "北京，中国"
+      },
+      "coordinates": {
+        "lat": 39.9042,
+        "lng": 116.4074
+      },
+      "visitDate": "2023-05-15",
+      "description": {
+        "en": "Capital city of China",
+        "zh": "中国首都"
+      },
+      "photos": [
+        "images/photo1.jpg",
+        "images/photo2.jpg"
+      ],
+      "tags": ["china", "capital", "2023"]
+    }
+  ]
+}
+```
+
+#### 技术实现建议
+- **地图库**: Leaflet.js（轻量级，免费）或 Mapbox GL JS（功能强大，需要API key）
+- **照片展示**: 使用现有的图片查看器或创建新的画廊组件
+- **数据存储**: JSON文件或Markdown front matter
+- **响应式设计**: 确保移动端地图体验良好
 
 ---
 
