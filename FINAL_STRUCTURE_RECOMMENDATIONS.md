@@ -1,6 +1,6 @@
 # 网站结构最终修改建议报告
 
-**生成日期**: 2025-01-XX  
+**生成日期**: 2025-11-15  
 **状态**: 待审核与实施  
 **版本**: 1.0
 
@@ -55,7 +55,6 @@
 #### 2. 内容分类混乱
 ```
 问题:
-- conferences/GISphere/ 应该属于news（学术成果新闻）
 - papers/ 和 publications.html 分离
 - 未使用的文件夹: doc/, report/, tmp/, tutorial/, video/, poster/
 ```
@@ -88,22 +87,15 @@ guojialegeographer.github.io/
 ├── index.html                          # 主页
 ├── style.css                           # 全局样式
 ├── README.md                           # 项目说明
-├── WEBSITE_STRUCTURE_PROPOSAL.md      # 结构建议文档
 ├── FINAL_STRUCTURE_RECOMMENDATIONS.md # 本报告
 │
-├── assets/                             # 全局资源（如需要）
-│   ├── css/
-│   ├── js/
-│   └── fonts/
 │
-├── images/                             # 全局图片资源（统一小写）
-│   ├── personal/                       # 个人照片
-│   ├── institutions/                   # 机构logo
-│   ├── books/                          # 书籍封面
-│   ├── papers/                         # 论文图片
-│   ├── presentations/                  # 演示文稿图片
-│   ├── projects/                       # 项目图片
-│   └── placeholders/                   # 占位图
+├── images/                             # 全局公用图片资源（统一小写）
+│   ├── personal/                       # 个人头像、照片（网站公用）
+│   ├── institutions/                   # 机构logo（网站公用）
+│   └── placeholders/                   # 占位图（网站公用）
+│   # 注意：其他图片（books、papers、presentations、projects等）
+│   # 应放在各自内容文件夹下的 images/ 子文件夹内
 │
 ├── publications/                       # 出版物（统一）
 │   ├── publications.html              # 或 index.html（主列表页）
@@ -131,11 +123,10 @@ guojialegeographer.github.io/
 │   ├── conferences/                   # 会议（已整合）
 │   │   ├── gis-2025/
 │   │   ├── geosus-2025/
-│   │   └── spatial-data-analysis-2023/
 │   ├── courses/                        # 课程
 │   ├── workshops/                      # 工作坊
 │   ├── seminars/                       # 研讨会
-│   └── projects/                       # 项目演示
+│
 │
 ├── news/                               # 新闻和动态（新建）
 │   ├── news.html                       # 或 index.html
@@ -147,6 +138,17 @@ guojialegeographer.github.io/
 │   ├── CV_JialeGuo.pdf
 │   ├── cv.tex
 │   └── 个人简历-郭家乐.pdf
+│
+├── travel/                             # 旅行板块（新增）
+│   ├── travel.html                     # 或 index.html（主列表页）
+│   ├── map.html                        # 地图展示页面
+│   └── [location-slug]/                # 每个地点一个文件夹
+│       ├── index.html                  # 地点详情页
+│       ├── images/                     # 该地点的照片
+│       │   ├── [photo1].jpg
+│       │   ├── [photo2].jpg
+│       │   └── ...
+│       └── location-info.json          # 地点信息（坐标、描述等，用于地图）
 │
 └── [工具文件夹]/
     ├── talkmap/                        # 访客地图（保留）
