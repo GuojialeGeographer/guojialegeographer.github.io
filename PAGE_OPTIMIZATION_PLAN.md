@@ -464,9 +464,13 @@
 ## 🔄 更新日志
 
 - **2025-11-15**: 创建优化计划文档
-- 待更新...
+- **2025-11-15**: 完成 `index.html` 初步优化
+  - ✅ 添加SEO meta标签（description, keywords, Open Graph, Twitter Card）
+  - ✅ 更新所有路径引用为小写（Images/ → images/, CV/ → cv/, Presentations/ → presentations/）
+  - ✅ 添加canonical URL
+  - 📝 注意：由于文件夹尚未重命名，路径更新为小写后，需要在文件夹重命名时确保一致性
 
 ---
 
-**下一步**: 开始优化 `index.html` 页面
+**下一步**: 继续优化 `publications.html` 页面
 
