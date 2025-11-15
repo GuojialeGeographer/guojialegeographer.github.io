@@ -370,6 +370,76 @@
                         </div>
                         
                         <div class="row" id="presentations-container">
+                            <!-- GIS 2025 Conference -->
+                            <div class="col-md-10 col-lg-8 mx-auto presentation-item" data-tags="conference">
+                                <div class="card presentation-card">
+                                    <div class="card-body">
+                                        <div class="presentation-tags">
+                                            <span class="tag">
+                                                <span lang="en">Conference</span>
+                                                <span lang="zh">会议</span>
+                                            </span>
+                                        </div>
+                                        <h5 class="card-title">
+                                            <a href="Presentations/Conferences/GIS2025/" class="text-dark">
+                                                <span lang="en">20th Annual Conference on Geographic Information Science Theory and Methods</span>
+                                                <span lang="zh">第二十届地理信息科学理论与方法学术年会</span>
+                                            </a>
+                                        </h5>
+                                        <p class="card-text small text-muted">
+                                            <span lang="en">November 21-23, 2025 | Xiamen, China</span>
+                                            <span lang="zh">2025年11月21-23日 | 中国厦门</span>
+                                        </p>
+                                        <p class="card-text">
+                                            <span lang="en">Theme: Geospatial Information Empowering Smart Society</span>
+                                            <span lang="zh">主题：地理空间信息赋能智慧社会</span>
+                                        </p>
+                                        <div class="d-flex mt-3">
+                                            <a href="Presentations/Conferences/GIS2025/" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span lang="en">View Details</span>
+                                                <span lang="zh">查看详情</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- GEOSUS 2025 Workshop -->
+                            <div class="col-md-10 col-lg-8 mx-auto presentation-item" data-tags="workshop">
+                                <div class="card presentation-card">
+                                    <div class="card-body">
+                                        <div class="presentation-tags">
+                                            <span class="tag">
+                                                <span lang="en">Workshop</span>
+                                                <span lang="zh">工作坊</span>
+                                            </span>
+                                        </div>
+                                        <h5 class="card-title">
+                                            <a href="Presentations/Conferences/GEOSUS2025/" class="text-dark">
+                                                <span lang="en">International Workshop on Geography and Sustainability 2025 (GEOSUS 2025)</span>
+                                                <span lang="zh">2025年地理学与可持续发展国际研讨会</span>
+                                            </a>
+                                        </h5>
+                                        <p class="card-text small text-muted">
+                                            <span lang="en">October 17-20, 2025 | Xi'an, China</span>
+                                            <span lang="zh">2025年10月17-20日 | 中国西安</span>
+                                        </p>
+                                        <p class="card-text">
+                                            <span lang="en">Theme: Geography and Sustainable Development: From a Transdisciplinary Perspective</span>
+                                            <span lang="zh">主题：地理学与可持续发展：跨学科视角</span>
+                                        </p>
+                                        <div class="d-flex mt-3">
+                                            <a href="Presentations/Conferences/GEOSUS2025/" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span lang="en">View Details</span>
+                                                <span lang="zh">查看详情</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- 全球坐标系统演进 -->
                             <div class="col-md-10 col-lg-8 mx-auto presentation-item" data-tags="course">
                                 <div class="card presentation-card">
@@ -647,13 +717,15 @@
         
         // 标签筛选功能
         $(document).ready(function() {
-            // 点击标签过滤项目
-            $('.tag-btn').on('click', function() {
-                const selectedTag = $(this).data('tag');
-                
+            // 从URL参数获取tag并自动筛选
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlTag = urlParams.get('tag');
+            
+            // 筛选函数
+            function filterByTag(selectedTag) {
                 // 更新激活的标签样式
                 $('.tag-btn').removeClass('active');
-                $(this).addClass('active');
+                $(`.tag-btn[data-tag="${selectedTag}"]`).addClass('active');
                 
                 // 显示/隐藏相应的项目
                 if (selectedTag === 'all') {
@@ -670,6 +742,24 @@
                     } else {
                         $('#empty-state').hide();
                     }
+                }
+            }
+            
+            // 如果有URL参数，自动筛选
+            if (urlTag) {
+                filterByTag(urlTag);
+            }
+            
+            // 点击标签过滤项目
+            $('.tag-btn').on('click', function() {
+                const selectedTag = $(this).data('tag');
+                filterByTag(selectedTag);
+                
+                // 更新URL参数（不刷新页面）
+                if (selectedTag === 'all') {
+                    window.history.pushState({}, '', 'presentations.html');
+                } else {
+                    window.history.pushState({}, '', `presentations.html?tag=${selectedTag}`);
                 }
             });
             
