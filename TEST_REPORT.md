@@ -8,7 +8,7 @@
 ## ✅ 测试结果总结
 
 ### 1. 路径规范化测试
-- ✅ **通过**: 所有HTML文件中没有发现大写文件夹引用（Images/, CV/, Presentations/, Projects/）
+- ✅ **通过**: 所有HTML文件中没有发现大写文件夹引用（Images/, CV/, Present/, Projects/）
 - ✅ **通过**: 所有路径引用已统一为小写（images/, cv/, presentations/, projects/）
 
 ### 2. 导航栏一致性测试
