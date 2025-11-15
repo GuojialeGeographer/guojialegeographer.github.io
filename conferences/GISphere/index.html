@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>GISphere Research Achievements - Jiale Guo</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* 语言切换按钮样式 */
+        .lang-toggle {
+            background: none;
+            border: none;
+            color: rgba(0,0,0,.5);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .lang-toggle:hover {
+            color: rgba(0,0,0,.7);
+        }
+        
+        /* 中文内容默认隐藏 */
+        [lang="zh"] {
+            display: none;
+        }
+        
+        /* 当网站语言为中文时显示中文内容 */
+        html[data-lang="zh"] [lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] [lang="zh"] {
+            display: block;
+        }
+        
+        /* 对于内联元素的处理 */
+        span[lang="zh"], a[lang="zh"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
+            display: none;
+        }
+        
+        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
+            display: inline;
+        }
+        
+        /* 增强字体渲染 */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .publication-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .publication-section:last-child {
+            border-bottom: none;
+        }
+        
+        .publication-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .publication-section h5 {
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .publication-section ul {
+            padding-left: 1.5rem;
+        }
+        
+        .publication-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+        
+        .publication-meta {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+        }
+        
+        .publication-meta a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand"><strong>Geospatial Data Science</strong></a>
+            <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-map"></i> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">
+                            <span lang="en">Home</span>
+                            <span lang="zh">首页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../news.html">
+                            <span lang="en">News</span>
+                            <span lang="zh">新闻</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                            <span lang="en">中文</span>
+                            <span lang="zh">English</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col">
+                <div class="card border-0 shadow-sm bg-white">
+                    <div class="card-body p-4">
+                        <!-- Back button -->
+                        <div class="mb-3">
+                            <a href="../../news.html" class="text-muted">
+                                <i class="fas fa-arrow-left"></i>
+                                <span lang="en">Back to News</span>
+                                <span lang="zh">返回新闻</span>
+                            </a>
+                        </div>
+
+                        <!-- Title -->
+                        <h2 class="mb-4">
+                            <span lang="en">GISphere Research Achievements</span>
+                            <span lang="zh">GISphere 学术成果</span>
+                        </h2>
+
+                        <!-- Introduction -->
+                        <div class="mb-4">
+                            <p class="text-muted" style="line-height: 1.8; font-size: 1.1rem;">
+                                <span lang="en">Congratulations to the GISphere community for successfully publishing three high-quality SCI papers. GISphere is a non-profit community dedicated to GIS education and research, providing resources and support for students and researchers worldwide.</span>
+                                <span lang="zh">恭喜GISphere公益社群运营至今，顺利发表三篇高水平SCI论文。GISphere是一个致力于GIS教育和研究的公益社群，为全球学生和研究人员提供资源和支持。</span>
+                            </p>
+                        </div>
+
+                        <!-- Publication 1 -->
+                        <div class="publication-section">
+                            <h4>
+                                <span lang="en">1. Mapping Global GIS Scholar Mobility: Where Do They Come From and Where Do They Go?</span>
+                                <span lang="zh">1. GIS人才流动"地图"：全球GIS学者从哪来，到哪去？</span>
+                            </h4>
+                            
+                            <div class="publication-meta">
+                                <p class="mb-1">
+                                    <span lang="en"><strong>Journal:</strong> <a href="https://doi.org/10.1080/15230406.2025.2567564" target="_blank">Cartography and Geographical Information Science (CaGIS)</a></span>
+                                    <span lang="zh"><strong>期刊：</strong> <a href="https://doi.org/10.1080/15230406.2025.2567564" target="_blank">Cartography and Geographical Information Science (CaGIS)</a></span>
+                                </p>
+                                <p class="mb-0">
+                                    <span lang="en"><strong>DOI:</strong> <a href="https://doi.org/10.1080/15230406.2025.2567564" target="_blank">10.1080/15230406.2025.2567564</a></span>
+                                    <span lang="zh"><strong>DOI：</strong> <a href="https://doi.org/10.1080/15230406.2025.2567564" target="_blank">10.1080/15230406.2025.2567564</a></span>
+                                </p>
+                            </div>
+
+                            <h5>
+                                <span lang="en">Research Overview</span>
+                                <span lang="zh">研究概述</span>
+                            </h5>
+                            <p class="text-muted" style="line-height: 1.8;">
+                                <span lang="en">This study maps the global mobility of GIS scholars by tracking their career paths from doctoral institutions to current academic positions. Using data from GISphere Guide covering nearly 2,000 GIS faculty members across 96 countries and regions, the research analyzes 946 tenure-track GIScience faculty members to understand global academic talent flows and knowledge distribution patterns.</span>
+                                <span lang="zh">本研究通过追踪GIS学者从博士母校到现任教职的职业路径，绘制了全球GIS学者流动图谱。研究利用GISphere Guide平台的数据，覆盖96个国家与地区、近2000位GIS教师，分析了946位专注于GIScience研究、处于tenure-track（终身教职轨道）上的教师，以理解全球学术人才流动和知识分布模式。</span>
+                            </p>
+
+                            <h5>
+                                <span lang="en">Key Findings</span>
+                                <span lang="zh">主要发现</span>
+                            </h5>
+                            <ul class="text-muted" style="line-height: 1.8;">
+                                <li lang="en">The United States plays a dual role as both a major producer of PhD graduates and a major employer, with approximately 40% of global GIS faculty holding US doctorates.</li>
+                                <li lang="zh">美国在全球GIS人才流动中承担着"双重角色"——既是博士培养大户，又是教职吸纳中心，全球约40%的GIS教职人员拥有来自美国的博士学位。</li>
+                                <li lang="en">Local retention is the norm globally, with scholars often returning to their home regions for academic positions.</li>
+                                <li lang="zh">"本地化留任"是全球GIS人才流动的常态，学者们往往最终回到与自己博士阶段同属的地理区域任教。</li>
+                                <li lang="en">GIS academic placement is more dispersed compared to other fields, with the top five PhD-granting institutions accounting for only 15% of global placements.</li>
+                                <li lang="zh">与计算机科学、经济学等高度集中的学科不同，GIS领域的教职安置更为分散，前五大博士培养高校仅占全球GIS教职安置总量的15%。</li>
+                                <li lang="en">Research themes have evolved significantly: from physical geography in the 1990s, to cartography and visualization in the 2000s, to urban intelligence and GeoAI in the 2010s.</li>
+                                <li lang="zh">研究主题随着学术代际发生了显著变化：90年代前以自然地理为主，00年前后地图制图与可视化快速发展，2010年后则明显转向城市智能、GeoAI等方向。</li>
+                            </ul>
+                        </div>
+
+                        <!-- Publication 2 -->
+                        <div class="publication-section">
+                            <h4>
+                                <span lang="en">2. Choosing GIS Graduate Programs from Afar: Chinese Students' Perspectives</span>
+                                <span lang="zh">2. GIS海外研究生项目择校因素：中国学生的视角</span>
+                            </h4>
+                            
+                            <div class="publication-meta">
+                                <p class="mb-1">
+                                    <span lang="en"><strong>Journal:</strong> <a href="https://doi.org/10.1111/tgis.13037" target="_blank">Transactions in GIS</a></span>
+                                    <span lang="zh"><strong>期刊：</strong> <a href="https://doi.org/10.1111/tgis.13037" target="_blank">Transactions in GIS</a></span>
+                                </p>
+                                <p class="mb-0">
+                                    <span lang="en"><strong>DOI:</strong> <a href="https://doi.org/10.1111/tgis.13037" target="_blank">10.1111/tgis.13037</a></span>
+                                    <span lang="zh"><strong>DOI：</strong> <a href="https://doi.org/10.1111/tgis.13037" target="_blank">10.1111/tgis.13037</a></span>
+                                </p>
+                            </div>
+
+                            <h5>
+                                <span lang="en">Research Overview</span>
+                                <span lang="zh">研究概述</span>
+                            </h5>
+                            <p class="text-muted" style="line-height: 1.8;">
+                                <span lang="en">This study investigates the factors influencing Chinese students' decisions when applying to overseas GIS graduate programs. Based on the push-pull model and three-stage model from educational theory, the research conducted an online survey of 84 Chinese students applying to GIS programs abroad in 2022, analyzing factors including program quality, destination environment, and career prospects.</span>
+                                <span lang="zh">本研究调查了影响中国学生申请海外GIS研究生项目决策的因素。基于教育学中的推-拉模型和三阶段模型，研究对2022年申请海外GIS项目的84位中国学生进行了在线调查，分析了包括项目质量、目的地环境和职业前景等因素。</span>
+                            </p>
+
+                            <h5>
+                                <span lang="en">Key Findings</span>
+                                <span lang="zh">主要发现</span>
+                            </h5>
+                            <ul class="text-muted" style="line-height: 1.8;">
+                                <li lang="en">The most important factors in program selection are overall university ranking and faculty strength, followed by program discipline ranking, curriculum design, and future career development.</li>
+                                <li lang="zh">选择入学院校时最重要的因素是学校的整体排名和师资力量，其次是项目的学科排名、课程设计和未来职业发展。</li>
+                                <li lang="en">Students pay more attention to course design and research opportunities in program quality, as well as university and discipline rankings in program reputation.</li>
+                                <li lang="zh">在项目教育质量方面，学生更关注课程设计和研究机会；在项目声誉方面，更关注学校排名和学科排名。</li>
+                                <li lang="en">Destination environment factors vary across national, city, and institutional levels, with students particularly concerned about political stability, safety, and cost of living.</li>
+                                <li lang="zh">目的地环境因素在国家、城市和院校三个层次上有不同的关注点，学生特别关注政局稳定、治安水平和生活开销。</li>
+                                <li lang="en">Most applicants (75%) applied to master's programs, with 23.5% planning to pursue academic careers.</li>
+                                <li lang="zh">大多数申请者（75%）申请硕士项目，23.5%的申请者计划从事学术职业。</li>
+                                <li lang="en">GISphere's online resources, including the university guide website and WeChat groups, played a significant role in applicants' decision-making.</li>
+                                <li lang="zh">GISphere的线上资源，包括院校指南网站和微信交流群，对申请者的决策起到了显著作用。</li>
+                            </ul>
+                        </div>
+
+                        <!-- Publication 3 -->
+                        <div class="publication-section">
+                            <h4>
+                                <span lang="en">3. GISphere Knowledge Graph for Geography Education: Recommending Graduate Geographic Information System/Science Programs</span>
+                                <span lang="zh">3. GISphere 知识图谱：大语言模型助力地理学教育</span>
+                            </h4>
+                            
+                            <div class="publication-meta">
+                                <p class="mb-1">
+                                    <span lang="en"><strong>Journal:</strong> <a href="https://doi.org/10.1111/tgis.13283" target="_blank">Transactions in GIS</a></span>
+                                    <span lang="zh"><strong>期刊：</strong> <a href="https://doi.org/10.1111/tgis.13283" target="_blank">Transactions in GIS</a></span>
+                                </p>
+                                <p class="mb-0">
+                                    <span lang="en"><strong>DOI:</strong> <a href="https://doi.org/10.1111/tgis.13283" target="_blank">10.1111/tgis.13283</a></span>
+                                    <span lang="zh"><strong>DOI：</strong> <a href="https://doi.org/10.1111/tgis.13283" target="_blank">10.1111/tgis.13283</a></span>
+                                </p>
+                            </div>
+
+                            <h5>
+                                <span lang="en">Research Overview</span>
+                                <span lang="zh">研究概述</span>
+                            </h5>
+                            <p class="text-muted" style="line-height: 1.8;">
+                                <span lang="en">This paper introduces GISphere-KG, an AI-powered platform that combines knowledge graph (KG) technology with large language models (LLMs) to provide intelligent search and recommendation services for GIS graduate program applicants. The platform integrates data from over 600 GIS programs and 2,000 professors across 97 countries and regions, offering personalized guidance based on research interests and career goals.</span>
+                                <span lang="zh">本文介绍了GISphere-KG，一个基于人工智能的平台，结合知识图谱（KG）和大型语言模型（LLM）技术，为GIS研究生申请者提供智能搜索和推荐服务。该平台整合了来自97个国家和地区、超过600个GIS项目和2000名教授的数据，根据研究兴趣和职业目标提供个性化指导。</span>
+                            </p>
+
+                            <h5>
+                                <span lang="en">Key Features</span>
+                                <span lang="zh">核心功能</span>
+                            </h5>
+                            <ul class="text-muted" style="line-height: 1.8;">
+                                <li lang="en"><strong>Explicit Graph Search:</strong> Direct queries for professors' research interests, university locations, and related information.</li>
+                                <li lang="zh"><strong>显式图搜索：</strong>直接查询教授的研究兴趣、大学地理位置等相关信息。</li>
+                                <li lang="en"><strong>Implicit Graph Search:</strong> Semantic similarity-based matching of research interests and related professors.</li>
+                                <li lang="zh"><strong>隐式图搜索：</strong>基于语义相似度的研究兴趣匹配和相关教授发现。</li>
+                                <li lang="en"><strong>Complex Query Processing:</strong> Natural language understanding of complex student needs and intelligent recommendations.</li>
+                                <li lang="zh"><strong>复杂检索场景：</strong>自然语言理解复杂的学生需求，提供智能推荐。</li>
+                                <li lang="en"><strong>Semantic Similarity Calculation:</strong> Using embedding models to calculate similarity between research interests and match students with suitable professors.</li>
+                                <li lang="zh"><strong>语义相似度计算：</strong>使用嵌入模型计算研究兴趣之间的相似性，为学生匹配合适的教授。</li>
+                            </ul>
+
+                            <h5>
+                                <span lang="en">Technical Innovation</span>
+                                <span lang="zh">技术创新</span>
+                            </h5>
+                            <p class="text-muted" style="line-height: 1.8;">
+                                <span lang="en">GISphere-KG addresses three main challenges: information overload (600+ programs and 2000+ professors), lack of personalized guidance, and difficulty understanding research field dynamics. The platform uses Neo4j for knowledge graph visualization and LLMs for natural language processing, enabling interactive dialogue and efficient information retrieval.</span>
+                                <span lang="zh">GISphere-KG解决了三个主要挑战：信息过载（600多个项目和2000多名教授）、缺乏个性化指导，以及难以理解研究领域动态。该平台使用Neo4j进行知识图谱可视化，使用LLM进行自然语言处理，实现交互式对话和高效信息检索。</span>
+                            </p>
+                        </div>
+
+                        <!-- Summary -->
+                        <div class="mt-4 p-3" style="background-color: var(--secondary-color); border-radius: 5px;">
+                            <h5 class="mb-3">
+                                <span lang="en">Impact and Significance</span>
+                                <span lang="zh">影响与意义</span>
+                            </h5>
+                            <p class="text-muted" style="line-height: 1.8;">
+                                <span lang="en">These three publications represent significant contributions to GIS education and research. They provide empirical insights into global academic mobility patterns, student decision-making processes, and innovative AI-powered tools for education. The work demonstrates GISphere's commitment to advancing GIS education through rigorous research and community-driven initiatives.</span>
+                                <span lang="zh">这三篇论文对GIS教育和研究做出了重要贡献。它们为全球学术流动模式、学生决策过程以及创新的AI教育工具提供了实证见解。这些工作展示了GISphere通过严谨研究和社区驱动倡议推进GIS教育的承诺。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 语言切换功能
+            const langToggle = document.getElementById('lang-toggle');
+            
+            // 检查保存的语言偏好或使用默认值
+            const currentLang = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-lang', currentLang);
+            
+            // 切换语言按钮点击事件
+            langToggle.addEventListener('click', function() {
+                let lang = document.documentElement.getAttribute('data-lang');
+                let newLang = lang === 'en' ? 'zh' : 'en';
+                
+                document.documentElement.setAttribute('data-lang', newLang);
+                localStorage.setItem('lang', newLang);
+            });
+            
+            // 主题切换功能
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // 检查保存的主题偏好或使用默认值
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // 更新按钮图标基于当前主题
+            updateThemeIcon(currentTheme);
+            
+            // 切换主题点击事件
+            themeToggle.addEventListener('click', function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateThemeIcon(newTheme);
+            });
+            
+            // 更新图标函数
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
