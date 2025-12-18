@@ -902,13 +902,19 @@
                             <div class="alert alert-info d-inline-block" role="alert" style="background-color: #fff3cd; border-color: #ffc107; padding: 15px 25px; border-radius: 8px;">
                                 <i class="fas fa-chart-line"></i>
                                 <span lang="en">
-                                    <span id="busuanzi_value_site_uv"></span> visitors since September 2024, 
-                                    Total pageviews: <span id="busuanzi_value_site_pv"></span>
+                                    <span id="busuanzi_value_site_uv_en"></span> visitors since September 2024, 
+                                    Total pageviews: <span id="busuanzi_value_site_pv_en"></span>
                                 </span>
                                 <span lang="zh">
-                                    自2024年9月以来，<span id="busuanzi_value_site_uv"></span> 位访客，
-                                    浏览量为 <span id="busuanzi_value_site_pv"></span> 次
+                                    自2024年9月以来，<span id="busuanzi_value_site_uv_zh"></span> 位访客，
+                                    浏览量为 <span id="busuanzi_value_site_pv_zh"></span> 次
                                 </span>
+                            </div>
+                            
+                            <!-- 不蒜子统计数据容器（隐藏，用于获取数据） -->
+                            <div style="display: none;">
+                                <span id="busuanzi_value_site_uv"></span>
+                                <span id="busuanzi_value_site_pv"></span>
                             </div>
                         </div>
                     </div>
@@ -979,6 +985,39 @@
     
     <!-- 不蒜子访问统计脚本 -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script>
+        // 不蒜子数据同步到中英文显示区域
+        function syncBusuanziData() {
+            const uvValue = document.getElementById('busuanzi_value_site_uv');
+            const pvValue = document.getElementById('busuanzi_value_site_pv');
+            
+            if (uvValue && pvValue && uvValue.textContent && pvValue.textContent) {
+                // 同步到英文区域
+                const uvEn = document.getElementById('busuanzi_value_site_uv_en');
+                const pvEn = document.getElementById('busuanzi_value_site_pv_en');
+                if (uvEn) uvEn.textContent = uvValue.textContent;
+                if (pvEn) pvEn.textContent = pvValue.textContent;
+                
+                // 同步到中文区域
+                const uvZh = document.getElementById('busuanzi_value_site_uv_zh');
+                const pvZh = document.getElementById('busuanzi_value_site_pv_zh');
+                if (uvZh) uvZh.textContent = uvValue.textContent;
+                if (pvZh) pvZh.textContent = pvValue.textContent;
+            } else {
+                // 如果数据还未加载，延迟重试
+                setTimeout(syncBusuanziData, 100);
+            }
+        }
+        
+        // 页面加载后同步数据
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(syncBusuanziData, 500);
+            });
+        } else {
+            setTimeout(syncBusuanziData, 500);
+        }
+    </script>
     
     <!-- Theme Toggle Script -->
     <script>
