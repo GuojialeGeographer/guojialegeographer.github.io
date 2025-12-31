@@ -3,24 +3,25 @@
  * This script handles the visualization of visitor locations on a world map
  */
 
-// 国家坐标数据
+// 国家坐标数据 (Updated: Dec 31, 2025)
 const countryCoordinates = {
-    'IT': { country: 'Italy', lat: 41.87194, lng: 12.56738 },
-    'US': { country: 'United States', lat: 37.09024, lng: -95.71289 },
-    'HK': { country: 'Hong Kong', lat: 22.3193, lng: 114.1694 },
-    'JP': { country: 'Japan', lat: 36.20482, lng: 138.25292 },
-    'CN': { country: 'China', lat: 35.86166, lng: 104.19539 },
+    'IT': { country: 'Italy', lat: 42.5, lng: 12.5 },
     'SG': { country: 'Singapore', lat: 1.3521, lng: 103.8198 },
+    'US': { country: 'United States', lat: 39.5, lng: -98.35 },
+    'HK': { country: 'Hong Kong', lat: 22.3193, lng: 114.1694 },
+    'CN': { country: 'China', lat: 35.8617, lng: 104.1954 },
+    'JP': { country: 'Japan', lat: 36.2048, lng: 138.2529 },
     'GB': { country: 'United Kingdom', lat: 55.37805, lng: -3.43597 },
+    'AU': { country: 'Australia', lat: -25.2744, lng: 133.7751 },
+    'MY': { country: 'Malaysia', lat: 4.2105, lng: 101.9758 },
     'BO': { country: 'Bolivia', lat: -16.2902, lng: -63.5887 },
     'TR': { country: 'Turkey', lat: 38.9637, lng: 35.2433 },
-    'IE': { country: 'Ireland', lat: 53.41291, lng: -8.24389 },
-    'PH': { country: 'Philippines', lat: 12.87972, lng: 121.77401 },
+    'IE': { country: 'Ireland', lat: 53.1424, lng: -7.6921 },
+    // Other countries for reference
     'DE': { country: 'Germany', lat: 51.16569, lng: 10.45152 },
     'FR': { country: 'France', lat: 46.22763, lng: 2.21374 },
     'ES': { country: 'Spain', lat: 40.46366, lng: -3.74922 },
     'CA': { country: 'Canada', lat: 56.13036, lng: -106.34677 },
-    'AU': { country: 'Australia', lat: -25.27439, lng: 133.77513 },
     'BR': { country: 'Brazil', lat: -14.23500, lng: -51.92528 },
     'IN': { country: 'India', lat: 20.59368, lng: 78.96288 },
     'RU': { country: 'Russia', lat: 61.52401, lng: 105.31875 },
@@ -51,17 +52,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // 从Flag Counter获取访问数据
     async function extractVisitorDataFromFlagCounter() {
         let defaultVisitorData = [
-            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 65 },
-            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 10 },
-            { country: "Hong Kong", lat: countryCoordinates['HK'].lat, lng: countryCoordinates['HK'].lng, visits: 9 },
-            { country: "Japan", lat: countryCoordinates['JP'].lat, lng: countryCoordinates['JP'].lng, visits: 6 },
-            { country: "China", lat: countryCoordinates['CN'].lat, lng: countryCoordinates['CN'].lng, visits: 5 },
-            { country: "Singapore", lat: countryCoordinates['SG'].lat, lng: countryCoordinates['SG'].lng, visits: 3 },
-            { country: "United Kingdom", lat: countryCoordinates['GB'].lat, lng: countryCoordinates['GB'].lng, visits: 2 },
+            { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 78 },
+            { country: "Singapore", lat: countryCoordinates['SG'].lat, lng: countryCoordinates['SG'].lng, visits: 24 },
+            { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 24 },
+            { country: "Hong Kong", lat: countryCoordinates['HK'].lat, lng: countryCoordinates['HK'].lng, visits: 14 },
+            { country: "China", lat: countryCoordinates['CN'].lat, lng: countryCoordinates['CN'].lng, visits: 11 },
+            { country: "Japan", lat: countryCoordinates['JP'].lat, lng: countryCoordinates['JP'].lng, visits: 11 },
+            { country: "United Kingdom", lat: countryCoordinates['GB'].lat, lng: countryCoordinates['GB'].lng, visits: 3 },
+            { country: "Australia", lat: countryCoordinates['AU'].lat, lng: countryCoordinates['AU'].lng, visits: 1 },
+            { country: "Malaysia", lat: countryCoordinates['MY'].lat, lng: countryCoordinates['MY'].lng, visits: 1 },
             { country: "Bolivia", lat: countryCoordinates['BO'].lat, lng: countryCoordinates['BO'].lng, visits: 1 },
             { country: "Turkey", lat: countryCoordinates['TR'].lat, lng: countryCoordinates['TR'].lng, visits: 1 },
-            { country: "Ireland", lat: countryCoordinates['IE'].lat, lng: countryCoordinates['IE'].lng, visits: 1 },
-            { country: "Philippines", lat: countryCoordinates['PH'].lat, lng: countryCoordinates['PH'].lng, visits: 1 }
+            { country: "Ireland", lat: countryCoordinates['IE'].lat, lng: countryCoordinates['IE'].lng, visits: 1 }
         ];
         
         // 尝试从页面中查找Flag Counter图像

@@ -1107,34 +1107,36 @@
     
     <!-- Homepage Map Script -->
     <script>
-    // 硬编码的国家坐标数据
+    // 硬编码的国家坐标数据 (Updated: Dec 31, 2025)
     const countryCoordinates = {
         'IT': { country: "Italy", lat: 42.5, lng: 12.5 },
+        'SG': { country: "Singapore", lat: 1.3521, lng: 103.8198 },
         'US': { country: "United States", lat: 39.5, lng: -98.35 },
         'HK': { country: "Hong Kong", lat: 22.3193, lng: 114.1694 },
-        'JP': { country: "Japan", lat: 36.2048, lng: 138.2529 },
         'CN': { country: "China", lat: 35.8617, lng: 104.1954 },
-        'SG': { country: "Singapore", lat: 1.3521, lng: 103.8198 },
+        'JP': { country: "Japan", lat: 36.2048, lng: 138.2529 },
         'GB': { country: "United Kingdom", lat: 55.37805, lng: -3.43597 },
+        'AU': { country: "Australia", lat: -25.2744, lng: 133.7751 },
+        'MY': { country: "Malaysia", lat: 4.2105, lng: 101.9758 },
         'BO': { country: "Bolivia", lat: -16.2902, lng: -63.5887 },
         'TR': { country: "Turkey", lat: 38.9637, lng: 35.2433 },
-        'IE': { country: "Ireland", lat: 53.1424, lng: -7.6921 },
-        'PH': { country: "Philippines", lat: 12.8797, lng: 121.7740 }
+        'IE': { country: "Ireland", lat: 53.1424, lng: -7.6921 }
     };
 
-    // 强制显示访客数据
+    // 强制显示访客数据 (Updated: Dec 31, 2025)
     const visitorData = [
-        { country: "Italy", code: "IT", visits: 65, lat: 42.5, lng: 12.5 },
-        { country: "United States", code: "US", visits: 10, lat: 39.5, lng: -98.35 },
-        { country: "Hong Kong", code: "HK", visits: 9, lat: 22.3193, lng: 114.1694 },
-        { country: "Japan", code: "JP", visits: 6, lat: 36.2048, lng: 138.2529 },
-        { country: "China", code: "CN", visits: 5, lat: 35.8617, lng: 104.1954 },
-        { country: "Singapore", code: "SG", visits: 3, lat: 1.3521, lng: 103.8198 },
-        { country: "United Kingdom", code: "GB", visits: 2, lat: 55.37805, lng: -3.43597 },
+        { country: "Italy", code: "IT", visits: 78, lat: 42.5, lng: 12.5 },
+        { country: "Singapore", code: "SG", visits: 24, lat: 1.3521, lng: 103.8198 },
+        { country: "United States", code: "US", visits: 24, lat: 39.5, lng: -98.35 },
+        { country: "Hong Kong", code: "HK", visits: 14, lat: 22.3193, lng: 114.1694 },
+        { country: "China", code: "CN", visits: 11, lat: 35.8617, lng: 104.1954 },
+        { country: "Japan", code: "JP", visits: 11, lat: 36.2048, lng: 138.2529 },
+        { country: "United Kingdom", code: "GB", visits: 3, lat: 55.37805, lng: -3.43597 },
+        { country: "Australia", code: "AU", visits: 1, lat: -25.2744, lng: 133.7751 },
+        { country: "Malaysia", code: "MY", visits: 1, lat: 4.2105, lng: 101.9758 },
         { country: "Bolivia", code: "BO", visits: 1, lat: -16.2902, lng: -63.5887 },
         { country: "Turkey", code: "TR", visits: 1, lat: 38.9637, lng: 35.2433 },
-        { country: "Ireland", code: "IE", visits: 1, lat: 53.1424, lng: -7.6921 },
-        { country: "Philippines", code: "PH", visits: 1, lat: 12.8797, lng: 121.7740 }
+        { country: "Ireland", code: "IE", visits: 1, lat: 53.1424, lng: -7.6921 }
     ];
 
     function latLngToPixel(lat, lng, mapWidth, mapHeight) {
