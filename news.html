@@ -594,24 +594,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 语言切换功能
-            const langToggle = document.getElementById('lang-toggle');
-            
-            // 检查保存的语言偏好或使用默认值
-            const currentLang = localStorage.getItem('lang') || 'en';
-            document.documentElement.setAttribute('data-lang', currentLang);
-            
-            // 切换语言按钮点击事件
-            langToggle.addEventListener('click', function() {
-                let lang = document.documentElement.getAttribute('data-lang');
-                let newLang = lang === 'en' ? 'zh' : 'en';
-                
-                document.documentElement.setAttribute('data-lang', newLang);
-                localStorage.setItem('lang', newLang);
-            });
-        });
-    </script>
+    <!-- Common JavaScript (Theme & Language Toggle) -->
+    <script src="js/common.js"></script>
 </body>
 </html>
