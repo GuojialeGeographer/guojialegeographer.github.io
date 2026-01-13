@@ -1069,93 +1069,57 @@
         }
     </script>
     
-    <!-- Theme Toggle Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = themeToggle.querySelector('i');
-            
-            // Check for saved theme preference or use default
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            
-            // Update button icon based on current theme
-            updateThemeIcon(currentTheme);
-            
-            // Toggle theme on button click
-            themeToggle.addEventListener('click', function() {
-                let theme = document.documentElement.getAttribute('data-theme');
-                let newTheme = theme === 'light' ? 'dark' : 'light';
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                
-                updateThemeIcon(newTheme);
-            });
-            
-            // Function to update the icon
-            function updateThemeIcon(theme) {
-                if (theme === 'dark') {
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                } else {
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                }
-            }
-            
-            // 语言切换功能
-            const langToggle = document.getElementById('lang-toggle');
-            
-            // 检查保存的语言偏好或使用默认值
-            const currentLang = localStorage.getItem('lang') || 'en';
-            document.documentElement.setAttribute('data-lang', currentLang);
-            
-            // 切换语言按钮点击事件
-            langToggle.addEventListener('click', function() {
-                let lang = document.documentElement.getAttribute('data-lang');
-                let newLang = lang === 'en' ? 'zh' : 'en';
-                
-                document.documentElement.setAttribute('data-lang', newLang);
-                localStorage.setItem('lang', newLang);
-            });
-        });
-    </script>
+    <!-- Common JavaScript (Theme & Language Toggle) -->
+    <script src="js/common.js"></script>
+    
+    <!-- Country Coordinates Data -->
+    <script src="js/data/country-coordinates.js"></script>
     
     <!-- Homepage Map Script -->
     <script>
-    // 硬编码的国家坐标数据 (Updated: Dec 31, 2025)
-    const countryCoordinates = {
-        'IT': { country: "Italy", lat: 42.5, lng: 12.5 },
-        'SG': { country: "Singapore", lat: 1.3521, lng: 103.8198 },
-        'US': { country: "United States", lat: 39.5, lng: -98.35 },
-        'HK': { country: "Hong Kong", lat: 22.3193, lng: 114.1694 },
-        'CN': { country: "China", lat: 35.8617, lng: 104.1954 },
-        'JP': { country: "Japan", lat: 36.2048, lng: 138.2529 },
-        'GB': { country: "United Kingdom", lat: 55.37805, lng: -3.43597 },
-        'AU': { country: "Australia", lat: -25.2744, lng: 133.7751 },
-        'MY': { country: "Malaysia", lat: 4.2105, lng: 101.9758 },
-        'BO': { country: "Bolivia", lat: -16.2902, lng: -63.5887 },
-        'TR': { country: "Turkey", lat: 38.9637, lng: 35.2433 },
-        'IE': { country: "Ireland", lat: 53.1424, lng: -7.6921 }
-    };
-
-    // 强制显示访客数据 (Updated: Dec 31, 2025)
-    const visitorData = [
-        { country: "Italy", code: "IT", visits: 78, lat: 42.5, lng: 12.5 },
-        { country: "Singapore", code: "SG", visits: 24, lat: 1.3521, lng: 103.8198 },
-        { country: "United States", code: "US", visits: 24, lat: 39.5, lng: -98.35 },
-        { country: "Hong Kong", code: "HK", visits: 14, lat: 22.3193, lng: 114.1694 },
-        { country: "China", code: "CN", visits: 11, lat: 35.8617, lng: 104.1954 },
-        { country: "Japan", code: "JP", visits: 11, lat: 36.2048, lng: 138.2529 },
-        { country: "United Kingdom", code: "GB", visits: 3, lat: 55.37805, lng: -3.43597 },
-        { country: "Australia", code: "AU", visits: 1, lat: -25.2744, lng: 133.7751 },
-        { country: "Malaysia", code: "MY", visits: 1, lat: 4.2105, lng: 101.9758 },
-        { country: "Bolivia", code: "BO", visits: 1, lat: -16.2902, lng: -63.5887 },
-        { country: "Turkey", code: "TR", visits: 1, lat: 38.9637, lng: 35.2433 },
-        { country: "Ireland", code: "IE", visits: 1, lat: 53.1424, lng: -7.6921 }
-    ];
-
+    // 从统一数据源加载访客统计数据
+    let visitorData = [];
+    
+    // 异步加载访客统计数据
+    fetch('data/visitor-stats.json')
+        .then(response => response.json())
+        .then(data => {
+            // 转换JSON数据为visitorData格式
+            visitorData = data.countries.map(item => ({
+                country: item.country,
+                code: item.code,
+                visits: item.visits,
+                lat: item.lat,
+                lng: item.lng
+            }));
+            
+            // 数据加载完成后，如果地图已准备好，更新标记
+            if (document.getElementById('homepage-map')) {
+                updateHomepageMap();
+            }
+        })
+        .catch(error => {
+            console.error('Error loading visitor stats:', error);
+            // 如果加载失败，使用默认数据
+            visitorData = [
+                { country: "Italy", code: "IT", visits: 78, lat: 42.5, lng: 12.5 },
+                { country: "Singapore", code: "SG", visits: 24, lat: 1.3521, lng: 103.8198 },
+                { country: "United States", code: "US", visits: 24, lat: 39.5, lng: -98.35 },
+                { country: "Hong Kong", code: "HK", visits: 14, lat: 22.3193, lng: 114.1694 },
+                { country: "China", code: "CN", visits: 11, lat: 35.8617, lng: 104.1954 },
+                { country: "Japan", code: "JP", visits: 11, lat: 36.2048, lng: 138.2529 },
+                { country: "United Kingdom", code: "GB", visits: 3, lat: 55.37805, lng: -3.43597 },
+                { country: "Australia", code: "AU", visits: 1, lat: -25.2744, lng: 133.7751 },
+                { country: "Malaysia", code: "MY", visits: 1, lat: 4.2105, lng: 101.9758 },
+                { country: "Bolivia", code: "BO", visits: 1, lat: -16.2902, lng: -63.5887 },
+                { country: "Turkey", code: "TR", visits: 1, lat: 38.9637, lng: 35.2433 },
+                { country: "Ireland", code: "IE", visits: 1, lat: 53.1424, lng: -7.6921 }
+            ];
+            if (document.getElementById('homepage-map')) {
+                updateHomepageMap();
+            }
+        });
+    
     function latLngToPixel(lat, lng, mapWidth, mapHeight) {
         let adjustedLng = lng;
         if (adjustedLng > 180) adjustedLng -= 360;
@@ -1169,52 +1133,60 @@
         return { x: Math.round(x), y: Math.round(y) };
     }
 
-    // 等待DOM加载完成
-    document.addEventListener('DOMContentLoaded', function() {
+    // 更新首页地图标记
+    function updateHomepageMap() {
         const homepageMap = document.getElementById('homepage-map');
-        if (homepageMap) {
-            const mapImage = homepageMap.querySelector('img');
-            if (mapImage) {
-                // 如果图片已经加载完成
-                if (mapImage.complete) {
-                    addMarkersToMap();
-                } else {
-                    // 如果图片尚未加载完成，等待加载
-                    mapImage.onload = addMarkersToMap;
-                }
+        if (!homepageMap || visitorData.length === 0) return;
+        
+        const mapImage = homepageMap.querySelector('img');
+        if (!mapImage) return;
+        
+        function addMarkersToMap() {
+            // 清除现有标记
+            const existingMarkers = homepageMap.querySelectorAll('.visitor-marker');
+            existingMarkers.forEach(marker => marker.remove());
 
-                function addMarkersToMap() {
-                    // 清除现有标记
-                    const existingMarkers = homepageMap.querySelectorAll('.visitor-marker');
-                    existingMarkers.forEach(marker => marker.remove());
+            const mapWidth = mapImage.clientWidth;
+            const mapHeight = mapImage.clientHeight;
 
-                    const mapWidth = mapImage.clientWidth;
-                    const mapHeight = mapImage.clientHeight;
-
-                    // 添加访客标记
-                    for (const visitor of visitorData) {
-                        const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
-                        const marker = document.createElement('div');
-                        marker.className = 'visitor-marker';
-                        marker.title = `${visitor.country}: ${visitor.visits} visits`;
-                        
-                        // 根据访问量调整标记大小
-                        const size = Math.max(8, Math.min(20, 8 + visitor.visits / 3));
-                        marker.style.width = `${size}px`;
-                        marker.style.height = `${size}px`;
-                        marker.style.position = 'absolute';
-                        marker.style.borderRadius = '50%';
-                        marker.style.backgroundColor = '#ff3b30';
-                        marker.style.border = '2px solid #fff';
-                        marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
-                        marker.style.left = `${position.x - size/2}px`;
-                        marker.style.top = `${position.y - size/2}px`;
-                        marker.style.zIndex = '100';
-                        marker.style.animation = 'pulse 2s infinite';
-                        homepageMap.appendChild(marker);
-                    }
-                }
+            // 添加访客标记
+            for (const visitor of visitorData) {
+                const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
+                const marker = document.createElement('div');
+                marker.className = 'visitor-marker';
+                marker.title = `${visitor.country}: ${visitor.visits} visits`;
+                
+                // 根据访问量调整标记大小
+                const size = Math.max(8, Math.min(20, 8 + visitor.visits / 3));
+                marker.style.width = `${size}px`;
+                marker.style.height = `${size}px`;
+                marker.style.position = 'absolute';
+                marker.style.borderRadius = '50%';
+                marker.style.backgroundColor = '#ff3b30';
+                marker.style.border = '2px solid #fff';
+                marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
+                marker.style.left = `${position.x - size/2}px`;
+                marker.style.top = `${position.y - size/2}px`;
+                marker.style.zIndex = '100';
+                marker.style.animation = 'pulse 2s infinite';
+                homepageMap.appendChild(marker);
             }
+        }
+        
+        // 如果图片已经加载完成
+        if (mapImage.complete) {
+            addMarkersToMap();
+        } else {
+            // 如果图片尚未加载完成，等待加载
+            mapImage.onload = addMarkersToMap;
+        }
+    }
+    
+    // 等待DOM加载完成后尝试更新地图
+    document.addEventListener('DOMContentLoaded', function() {
+        // 如果数据已经加载，立即更新
+        if (visitorData.length > 0) {
+            updateHomepageMap();
         }
     });
     </script>

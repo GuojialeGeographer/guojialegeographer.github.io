@@ -1,0 +1,98 @@
+{
+  "lastUpdated": "2026-01-01",
+  "source": "Flag Counter",
+  "description": "Visitor statistics by country/region from Flag Counter",
+  "countries": [
+    {
+      "code": "IT",
+      "country": "Italy",
+      "visits": 78,
+      "lat": 42.5,
+      "lng": 12.5
+    },
+    {
+      "code": "SG",
+      "country": "Singapore",
+      "visits": 24,
+      "lat": 1.3521,
+      "lng": 103.8198
+    },
+    {
+      "code": "US",
+      "country": "United States",
+      "visits": 24,
+      "lat": 39.5,
+      "lng": -98.35
+    },
+    {
+      "code": "HK",
+      "country": "Hong Kong",
+      "visits": 14,
+      "lat": 22.3193,
+      "lng": 114.1694
+    },
+    {
+      "code": "CN",
+      "country": "China",
+      "visits": 11,
+      "lat": 35.8617,
+      "lng": 104.1954
+    },
+    {
+      "code": "JP",
+      "country": "Japan",
+      "visits": 11,
+      "lat": 36.2048,
+      "lng": 138.2529
+    },
+    {
+      "code": "GB",
+      "country": "United Kingdom",
+      "visits": 3,
+      "lat": 55.37805,
+      "lng": -3.43597
+    },
+    {
+      "code": "AU",
+      "country": "Australia",
+      "visits": 1,
+      "lat": -25.2744,
+      "lng": 133.7751
+    },
+    {
+      "code": "MY",
+      "country": "Malaysia",
+      "visits": 1,
+      "lat": 4.2105,
+      "lng": 101.9758
+    },
+    {
+      "code": "BO",
+      "country": "Bolivia",
+      "visits": 1,
+      "lat": -16.2902,
+      "lng": -63.5887
+    },
+    {
+      "code": "TR",
+      "country": "Turkey",
+      "visits": 1,
+      "lat": 38.9637,
+      "lng": 35.2433
+    },
+    {
+      "code": "IE",
+      "country": "Ireland",
+      "visits": 1,
+      "lat": 53.1424,
+      "lng": -7.6921
+    },
+    {
+      "code": "PH",
+      "country": "Philippines",
+      "visits": 1,
+      "lat": 12.8797,
+      "lng": 121.7740
+    }
+  ]
+}

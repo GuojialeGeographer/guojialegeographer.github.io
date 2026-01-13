@@ -1,57 +1,54 @@
 /**
  * Visitor Map Visualization
  * This script handles the visualization of visitor locations on a world map
+ * 
+ * 使用统一的数据源：
+ * - js/data/country-coordinates.js (国家坐标)
+ * - data/visitor-stats.json (访客统计数据)
  */
 
-// 国家坐标数据 (Updated: Dec 31, 2025)
-const countryCoordinates = {
-    'IT': { country: 'Italy', lat: 42.5, lng: 12.5 },
-    'SG': { country: 'Singapore', lat: 1.3521, lng: 103.8198 },
-    'US': { country: 'United States', lat: 39.5, lng: -98.35 },
-    'HK': { country: 'Hong Kong', lat: 22.3193, lng: 114.1694 },
-    'CN': { country: 'China', lat: 35.8617, lng: 104.1954 },
-    'JP': { country: 'Japan', lat: 36.2048, lng: 138.2529 },
-    'GB': { country: 'United Kingdom', lat: 55.37805, lng: -3.43597 },
-    'AU': { country: 'Australia', lat: -25.2744, lng: 133.7751 },
-    'MY': { country: 'Malaysia', lat: 4.2105, lng: 101.9758 },
-    'BO': { country: 'Bolivia', lat: -16.2902, lng: -63.5887 },
-    'TR': { country: 'Turkey', lat: 38.9637, lng: 35.2433 },
-    'IE': { country: 'Ireland', lat: 53.1424, lng: -7.6921 },
-    // Other countries for reference
-    'DE': { country: 'Germany', lat: 51.16569, lng: 10.45152 },
-    'FR': { country: 'France', lat: 46.22763, lng: 2.21374 },
-    'ES': { country: 'Spain', lat: 40.46366, lng: -3.74922 },
-    'CA': { country: 'Canada', lat: 56.13036, lng: -106.34677 },
-    'BR': { country: 'Brazil', lat: -14.23500, lng: -51.92528 },
-    'IN': { country: 'India', lat: 20.59368, lng: 78.96288 },
-    'RU': { country: 'Russia', lat: 61.52401, lng: 105.31875 },
-    'KR': { country: 'South Korea', lat: 35.9078, lng: 127.7669 },
-    'NL': { country: 'Netherlands', lat: 52.1326, lng: 5.2913 }
-};
-
-// 国家名称别名，用于处理不同表示形式
-const countryNameAlias = {
-    'USA': 'US',
-    'United States of America': 'US',
-    'UK': 'GB',
-    'Great Britain': 'GB',
-    'England': 'GB',
-    'People\'s Republic of China': 'CN',
-    'Republic of China': 'TW',
-    'Taiwan': 'TW',
-    'Hong Kong': 'HK',
-    'South Korea': 'KR',
-    'Republic of Korea': 'KR',
-    'North Korea': 'KP',
-    'Democratic People\'s Republic of Korea': 'KP',
-    'Netherlands': 'NL',
-    'Holland': 'NL'
-};
+// 注意：countryCoordinates 应该从 js/data/country-coordinates.js 加载
+// 如果该文件未加载，则使用默认值（向后兼容）
+if (typeof countryCoordinates === 'undefined') {
+    console.warn('countryCoordinates not loaded, using fallback');
+    var countryCoordinates = {
+        'IT': { country: 'Italy', lat: 42.5, lng: 12.5 },
+        'SG': { country: 'Singapore', lat: 1.3521, lng: 103.8198 },
+        'US': { country: 'United States', lat: 39.5, lng: -98.35 },
+        'HK': { country: 'Hong Kong', lat: 22.3193, lng: 114.1694 },
+        'CN': { country: 'China', lat: 35.8617, lng: 104.1954 },
+        'JP': { country: 'Japan', lat: 36.2048, lng: 138.2529 },
+        'GB': { country: 'United Kingdom', lat: 55.37805, lng: -3.43597 },
+        'AU': { country: 'Australia', lat: -25.2744, lng: 133.7751 },
+        'MY': { country: 'Malaysia', lat: 4.2105, lng: 101.9758 },
+        'BO': { country: 'Bolivia', lat: -16.2902, lng: -63.5887 },
+        'TR': { country: 'Turkey', lat: 38.9637, lng: 35.2433 },
+        'IE': { country: 'Ireland', lat: 53.1424, lng: -7.6921 }
+    };
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 从Flag Counter获取访问数据
-    async function extractVisitorDataFromFlagCounter() {
-        let defaultVisitorData = [
+    // 从统一数据源加载访客数据
+    async function loadVisitorData() {
+        try {
+            // 尝试从data/visitor-stats.json加载数据
+            const response = await fetch('../data/visitor-stats.json');
+            if (response.ok) {
+                const data = await response.json();
+                // 转换JSON数据格式
+                return data.countries.map(item => ({
+                    country: item.country,
+                    lat: item.lat,
+                    lng: item.lng,
+                    visits: item.visits
+                }));
+            }
+        } catch (error) {
+            console.warn("Failed to load visitor stats from JSON, using fallback data:", error);
+        }
+        
+        // 如果加载失败，使用默认数据（向后兼容）
+        return [
             { country: "Italy", lat: countryCoordinates['IT'].lat, lng: countryCoordinates['IT'].lng, visits: 78 },
             { country: "Singapore", lat: countryCoordinates['SG'].lat, lng: countryCoordinates['SG'].lng, visits: 24 },
             { country: "United States", lat: countryCoordinates['US'].lat, lng: countryCoordinates['US'].lng, visits: 24 },
@@ -65,27 +62,13 @@ document.addEventListener('DOMContentLoaded', function() {
             { country: "Turkey", lat: countryCoordinates['TR'].lat, lng: countryCoordinates['TR'].lng, visits: 1 },
             { country: "Ireland", lat: countryCoordinates['IE'].lat, lng: countryCoordinates['IE'].lng, visits: 1 }
         ];
-        
-        // 尝试从页面中查找Flag Counter图像
-        const flagCounterImgs = document.querySelectorAll('img[src*="flagcounter.com"]');
-        if (flagCounterImgs.length === 0) {
-            console.log("Flag Counter image not found on page, using default data");
-            return defaultVisitorData;
-        }
-        
-        // 从Flag Counter图像中提取国家信息
-        try {
-            // 解析Flag Counter图像URL中的国家代码和访问量
-            const flagCounterImg = flagCounterImgs[0];
-            const imgSrc = flagCounterImg.getAttribute('src');
-            
-            // 直接使用默认数据，因为我们无法直接从图像URL解析出国家信息
-            // 这些数据是从Flag Counter图像上看到的
-            return defaultVisitorData;
-        } catch (error) {
-            console.error("Error extracting visitor data from Flag Counter:", error);
-            return defaultVisitorData;
-        }
+    }
+    
+    // 从Flag Counter获取访问数据（保留向后兼容）
+    async function extractVisitorDataFromFlagCounter() {
+        // 优先使用统一数据源
+        const data = await loadVisitorData();
+        return data;
     }
 
     // 经纬度转换为地图上的像素坐标
