@@ -1,6 +1,14 @@
 # macOS
 .DS_Store
 
+# 未使用的空文件夹（如果重新创建，将被忽略）
+doc/
+report/
+tmp/
+tutorial/
+video/
+poster/
+
 # Optional: Ignore all files in Presentations/Courses/20250529-GIS_Pre/Figure-Chinese/
 # if they are not meant to be tracked. You can uncomment the line below if needed.
 # Presentations/Courses/20250529-GIS_Pre/Figure-Chinese/*
