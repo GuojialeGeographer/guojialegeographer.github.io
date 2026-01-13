@@ -807,49 +807,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPnEqKkBo3RlhLU7tEwMOeOUI5qQCGhIyr5dQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
     
+    <!-- Common JavaScript (Theme & Language Toggle) -->
+    <script src="js/common.js"></script>
+    
     <script>
-        // 主题切换
-        document.getElementById('theme-toggle').addEventListener('click', function() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            
-            // 更新主题图标
-            const themeIcon = this.querySelector('i');
-            if (newTheme === 'dark') {
-                themeIcon.className = 'fas fa-moon';
-            } else {
-                themeIcon.className = 'fas fa-sun';
-            }
-            
-            // 保存到本地存储
-            localStorage.setItem('theme', newTheme);
-        });
-        
-        // 语言切换
-        document.getElementById('lang-toggle').addEventListener('click', function() {
-            const html = document.documentElement;
-            const currentLang = html.getAttribute('data-lang');
-            const newLang = currentLang === 'en' ? 'zh' : 'en';
-            html.setAttribute('data-lang', newLang);
-            
-            // 保存到本地存储
-            localStorage.setItem('lang', newLang);
-        });
-        
-        // 初始化主题（从localStorage读取设置）
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            const themeIcon = document.querySelector('#theme-toggle i');
-            if (savedTheme === 'dark') {
-                themeIcon.className = 'fas fa-moon';
-            } else {
-                themeIcon.className = 'fas fa-sun';
-            }
-        }
-        
         // 初始化语言（从localStorage读取设置）
         const savedLang = localStorage.getItem('lang');
         if (savedLang) {
