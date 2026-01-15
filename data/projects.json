@@ -1,0 +1,192 @@
+{
+  "lastUpdated": "2026-01-01",
+  "description": "Research projects and portfolio",
+  "projects": [
+    {
+      "id": "air-pollution-exposure",
+      "title": {
+        "en": "Air Pollution and Population Exposure",
+        "zh": "空气污染与人口暴露"
+      },
+      "timeline": {
+        "start": "05.2025",
+        "end": "06.2025"
+      },
+      "description": {
+        "en": "This WebGIS-based project provides a comprehensive analysis and visualization of air pollution (NO₂, PM2.5, PM10) across Greece. It features an interactive map built with OpenLayers, multi-page presentation, and detailed data analysis.",
+        "zh": "这是一个基于WebGIS的希腊空气质量分析与监测项目，对希腊全境的空气污染（NO₂、PM2.5、PM10）进行综合分析与可视化。项目包含一个使用OpenLayers构建的交互式地图、多页面展示以及详细的数据分析。"
+      },
+      "image": {
+        "src": "projects/Air_Pollution_Exporsure/images/pm10/Greece_LC_reclassified_2022.png",
+        "alt": {
+          "en": "Air Pollution and Population Exposure",
+          "zh": "空气污染与人口暴露"
+        }
+      },
+      "links": [
+        {
+          "type": "project",
+          "url": "https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html",
+          "text": {
+            "en": "View Project",
+            "zh": "查看项目"
+          }
+        }
+      ]
+    },
+    {
+      "id": "street-view-analysis",
+      "title": {
+        "en": "Urban Environment Analysis Using Street View Imagery",
+        "zh": "基于街景图像的城市环境分析"
+      },
+      "timeline": {
+        "start": "04.2025",
+        "end": "Present"
+      },
+      "description": {
+        "en": "This project leverages computer vision and deep learning techniques to analyze urban environments through street view imagery. By processing thousands of street-level images, we developed models to automatically identify and quantify urban features such as greenery coverage, building facades, and pedestrian infrastructure. The results provide valuable insights for urban planning, environmental assessment, and quality of life studies in metropolitan areas.",
+        "zh": "该项目利用计算机视觉和深度学习技术通过街景图像分析城市环境。通过处理数千张街道级图像，我们开发了模型来自动识别和量化城市特征，如绿化覆盖率、建筑立面和行人基础设施。研究结果为城市规划、环境评估和大都市地区生活质量研究提供了宝贵的见解。"
+      },
+      "image": {
+        "src": "projects/SVI_Data_Processing/SVIDP_cover.jpg",
+        "alt": {
+          "en": "Street View Data Analysis",
+          "zh": "街景数据分析"
+        }
+      },
+      "links": [
+        {
+          "type": "notes",
+          "url": "books/book-viewer.html?file=SVI/街景地理大数据分析笔记框架.md",
+          "text": {
+            "en": "Study Notes",
+            "zh": "学习笔记"
+          },
+          "icon": "fas fa-book-open"
+        }
+      ]
+    },
+    {
+      "id": "nlp-geographic-text",
+      "title": {
+        "en": "Geographic Text Mining and Analysis with NLP",
+        "zh": "基于自然语言处理的地理文本挖掘与分析"
+      },
+      "timeline": {
+        "start": "02.2025",
+        "end": "Present"
+      },
+      "description": {
+        "en": "This ongoing research explores the application of Natural Language Processing techniques to extract geographic information from unstructured text data. The project combines transformer-based language models with geographic information systems to identify spatial patterns and relationships in large text corpora. Applications include place name recognition, sentiment analysis of location descriptions, and automated extraction of geographic relationships from news articles and social media.",
+        "zh": "这项正在进行的研究探索了将自然语言处理技术应用于从非结构化文本数据中提取地理信息。该项目将基于transformer的语言模型与地理信息系统相结合，以识别大型文本语料库中的空间模式和关系。应用包括地名识别、位置描述的情感分析以及从新闻文章和社交媒体中自动提取地理关系。"
+      },
+      "image": {
+        "src": "projects/NLP_Sentiment Analysis/sentiment analysis_cover.jpg",
+        "alt": {
+          "en": "NLP Research",
+          "zh": "自然语言处理研究"
+        }
+      },
+      "links": []
+    },
+    {
+      "id": "30daymapchallenge",
+      "title": {
+        "en": "30DayMapChallenge Featured Map Creation - Chinese Ink Painting Series",
+        "zh": "30DayMapChallenge精选地图创作 - 水墨丹青系列"
+      },
+      "timeline": {
+        "start": "11.2022",
+        "end": "11.2022"
+      },
+      "description": {
+        "en": "My \"Chinese Ink Painting Series\" stood out in the global 30DayMapChallenge competition, receiving 132 likes and ranking 5th in the Day 30 - Remix category. This series integrates traditional Chinese ink painting styles with modern cartographic techniques, focusing on China's Five Great Mountains to showcase the perfect blend of Chinese culture and geographic information science.",
+        "zh": "我的\"水墨丹青系列\"作品在全球30DayMapChallenge比赛中脱颖而出，Day 30 - Remix主题下获得了132个赞，名列第5位。这一系列作品融合了中国传统水墨画风格与现代地图制图技术，以中国五岳为主题，展现了中华文化与地理信息科学的完美结合。"
+      },
+      "image": {
+        "src": "projects/30DayMapChallenge/images/水墨丹青系列/落霞与孤鹜齐飞，秋水共长天一色.jpg",
+        "alt": {
+          "en": "30DayMapChallenge",
+          "zh": "30DayMapChallenge"
+        }
+      },
+      "links": [
+        {
+          "type": "gallery",
+          "url": "projects/30DayMapChallenge/gallery.html",
+          "text": {
+            "en": "View Gallery",
+            "zh": "查看画廊"
+          },
+          "icon": "fas fa-images"
+        },
+        {
+          "type": "competition",
+          "url": "https://30daymapchallenge.com/2022/day30_Remix/",
+          "text": {
+            "en": "Competition Results",
+            "zh": "比赛成果"
+          },
+          "icon": "fas fa-trophy"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate-thesis",
+      "title": {
+        "en": "Analysis of the Spatial and Temporal Evolution of Drought Disasters and their Trends in the Jianghuai Watershed",
+        "zh": "江淮流域干旱灾害时空演变及趋势分析"
+      },
+      "timeline": {
+        "start": "01.2021",
+        "end": "05.2021"
+      },
+      "description": {
+        "en": "This study investigated the spatial-temporal evolution and trends of drought in the Jianghuai Watershed region (1958-2018) using multi-scale Standardized Precipitation Evapotranspiration Index (SPEI). Key methods included M-K tests, wavelet analysis, EOF, and R/S analysis, revealing patterns in interannual/seasonal SPEI, mutation characteristics, periodicity, and future trends.",
+        "zh": "本研究利用多尺度标准化降水蒸散指数(SPEI)研究了江淮流域地区(1958-2018年)干旱的时空演变和趋势。主要方法包括M-K检验、小波分析、EOF和R/S分析，揭示了年际/季节SPEI的变化模式、突变特征、周期性和未来趋势。"
+      },
+      "image": {
+        "src": "projects/Undergraduate_Thesis/media/image1.jpg",
+        "alt": {
+          "en": "Drought Analysis in Jianghuai Watershed",
+          "zh": "江淮流域干旱分析"
+        }
+      },
+      "links": [
+        {
+          "type": "thesis",
+          "url": "projects/Undergraduate_Thesis/drought_analysis_jianghuai.html",
+          "text": {
+            "en": "View Details",
+            "zh": "查看详情"
+          },
+          "icon": "fas fa-info-circle"
+        }
+      ]
+    },
+    {
+      "id": "pm25-spatial-temporal",
+      "title": {
+        "en": "Spatial-temporal pattern mining of PM2.5 pollution in China and analysis of its driving mechanisms",
+        "zh": "中国PM2.5污染时空模式挖掘及驱动机制分析"
+      },
+      "timeline": {
+        "start": "12.2020",
+        "end": "05.2021"
+      },
+      "description": {
+        "en": "Research conducted at the Geoinformation Lab of Chuzhou University, utilizing 3D GIS technology and the space-time cube model. The project employed spatial-temporal hotspot data analysis methods to examine the evolution trends and distribution patterns of PM2.5 in China, and analyzed impacts of natural and socio-economic factors using Geodetector and Geographically Weighted Regression models.",
+        "zh": "研究在滁州学院地理信息实验室进行，利用三维GIS技术和时空立方体模型。该项目采用时空热点数据分析方法，研究了中国PM2.5的演化趋势和分布模式，并使用地理探测器和地理加权回归模型分析了自然和社会经济因素的影响。"
+      },
+      "image": {
+        "src": "projects/Spatial-temporal pattern mining of Air Pollution/spatial_cover.png",
+        "alt": {
+          "en": "PM2.5 Analysis Project",
+          "zh": "PM2.5分析项目"
+        }
+      },
+      "links": []
+    }
+  ]
+}

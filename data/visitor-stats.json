@@ -6,21 +6,21 @@
     {
       "code": "IT",
       "country": "Italy",
-      "visits": 78,
+      "visits": 86,
       "lat": 42.5,
       "lng": 12.5
     },
     {
       "code": "SG",
       "country": "Singapore",
-      "visits": 24,
+      "visits": 28,
       "lat": 1.3521,
       "lng": 103.8198
     },
     {
       "code": "US",
       "country": "United States",
-      "visits": 24,
+      "visits": 27,
       "lat": 39.5,
       "lng": -98.35
     },
@@ -34,7 +34,7 @@
     {
       "code": "CN",
       "country": "China",
-      "visits": 11,
+      "visits": 13,
       "lat": 35.8617,
       "lng": 104.1954
     },
@@ -86,13 +86,6 @@
       "visits": 1,
       "lat": 53.1424,
       "lng": -7.6921
-    },
-    {
-      "code": "PH",
-      "country": "Philippines",
-      "visits": 1,
-      "lat": 12.8797,
-      "lng": 121.7740
     }
   ]
 }

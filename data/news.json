@@ -1,0 +1,69 @@
+{
+  "lastUpdated": "2026-01-01",
+  "description": "News and updates",
+  "news": [
+    {
+      "id": "abmind-gsoc-2026",
+      "year": 2026,
+      "month": 1,
+      "content": {
+        "en": "Delivered a seminar on \"AI-Driven Research Programming: From Vibe Coding to Specification-Driven Practice\" for the <a href=\"presentations.html\">ABMind GSoC 2026 Mesa Training Program</a>. The training aims to prepare Chinese developers for Google Summer of Code 2026 with Mesa framework.",
+        "zh": "为<a href=\"presentations.html\">ABMind GSoC 2026 Mesa培训项目</a>主讲\"AI驱动科研编程：从Vibe Coding到规范驱动的实战指南\"研讨会。该培训项目旨在帮助中国开发者准备2026年谷歌编程之夏（GSoC）Mesa框架相关提案。"
+      }
+    },
+    {
+      "id": "cpgis-membership",
+      "year": 2025,
+      "month": 12,
+      "content": {
+        "en": "Joined the <a href=\"https://www.cpgis.org\" target=\"_blank\">CPGIS</a> (International Association of Chinese Professionals in Geographic Information Science) as a student member and participated in the organization's election voting.",
+        "zh": "加入<a href=\"https://www.cpgis.org\" target=\"_blank\">国际华人地理信息科学协会（CPGIS）</a>成为学生会员，并参与了组织换届选举投票。"
+      }
+    },
+    {
+      "id": "gisphere-papers",
+      "year": 2025,
+      "month": null,
+      "content": {
+        "en": "<a href=\"conferences/GISphere/\">Congratulations to GISphere, a non-profit community, for successfully publishing three high-quality SCI papers on GIS education and research.</a>",
+        "zh": "<a href=\"conferences/GISphere/\">恭喜GISphere公益社群运营至今，顺利发表三篇高水平SCI论文，涉及GIS教育和研究领域。</a>"
+      }
+    },
+    {
+      "id": "polimi-master",
+      "year": 2024,
+      "month": 9,
+      "content": {
+        "en": "Started Master's program in Geoinformatics Engineering at <a href=\"https://www.polimi.it\" target=\"_blank\">Politecnico di Milano</a>, Italy.",
+        "zh": "开始在意大利<a href=\"https://www.polimi.it\" target=\"_blank\">米兰理工大学</a>攻读地理信息工程硕士学位。"
+      }
+    },
+    {
+      "id": "webgis-class",
+      "year": 2024,
+      "month": 5,
+      "content": {
+        "en": "Completed WebGIS course project on air pollution analysis in Greece, featuring interactive maps and comprehensive data visualization.",
+        "zh": "完成WebGIS课程项目，对希腊空气污染进行分析，包含交互式地图和综合数据可视化。"
+      }
+    },
+    {
+      "id": "gis-course-presentation",
+      "year": 2024,
+      "month": 3,
+      "content": {
+        "en": "Delivered presentation on \"Spatial Data Analysis\" at the GIS course, sharing insights on geospatial data processing and visualization techniques.",
+        "zh": "在GIS课程中发表\"空间数据分析\"报告，分享地理空间数据处理和可视化技术的见解。"
+      }
+    },
+    {
+      "id": "remote-sensing-workshop",
+      "year": 2023,
+      "month": 7,
+      "content": {
+        "en": "Participated in Remote Sensing Applications workshop, focusing on satellite image processing and environmental monitoring.",
+        "zh": "参加遥感应用研讨会，专注于卫星图像处理和环境监测。"
+      }
+    }
+  ]
+}

@@ -988,29 +988,6 @@
                         </div>
                     </div>
                     
-                    <!-- 不蒜子访问统计 -->
-                    <div class="row mt-4">
-                        <div class="col-12 text-center">
-                            <div class="alert alert-info d-inline-block" role="alert" style="background-color: #fff3cd; border-color: #ffc107; padding: 15px 25px; border-radius: 8px;">
-                                <i class="fas fa-chart-line"></i>
-                                <span lang="en">
-                                    Total Site Visits: <span id="busuanzi_value_site_uv_en"></span> visitors, 
-                                    <span id="busuanzi_value_site_pv_en"></span> pageviews
-                                </span>
-                                <span lang="zh">
-                                    本站累计访问：<span id="busuanzi_value_site_uv_zh"></span> 位访客，
-                                    浏览量 <span id="busuanzi_value_site_pv_zh"></span> 次
-                                </span>
-                            </div>
-                            
-                            <!-- 不蒜子统计数据容器（隐藏，用于获取数据） -->
-                            <div style="display: none;">
-                                <span id="busuanzi_value_site_uv"></span>
-                                <span id="busuanzi_value_site_pv"></span>
-                            </div>
-                        </div>
-                    </div>
-                    
                     <div class="row mt-3">
                         <div class="col-12">
                             <div class="text-muted text-center">
@@ -1032,42 +1009,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-    
-    <!-- 不蒜子访问统计脚本 -->
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <script>
-        // 不蒜子数据同步到中英文显示区域
-        function syncBusuanziData() {
-            const uvValue = document.getElementById('busuanzi_value_site_uv');
-            const pvValue = document.getElementById('busuanzi_value_site_pv');
-            
-            if (uvValue && pvValue && uvValue.textContent && pvValue.textContent) {
-                // 同步到英文区域
-                const uvEn = document.getElementById('busuanzi_value_site_uv_en');
-                const pvEn = document.getElementById('busuanzi_value_site_pv_en');
-                if (uvEn) uvEn.textContent = uvValue.textContent;
-                if (pvEn) pvEn.textContent = pvValue.textContent;
-                
-                // 同步到中文区域
-                const uvZh = document.getElementById('busuanzi_value_site_uv_zh');
-                const pvZh = document.getElementById('busuanzi_value_site_pv_zh');
-                if (uvZh) uvZh.textContent = uvValue.textContent;
-                if (pvZh) pvZh.textContent = pvValue.textContent;
-            } else {
-                // 如果数据还未加载，延迟重试
-                setTimeout(syncBusuanziData, 100);
-            }
-        }
-        
-        // 页面加载后同步数据
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(syncBusuanziData, 500);
-            });
-        } else {
-            setTimeout(syncBusuanziData, 500);
-        }
-    </script>
     
     <!-- Common JavaScript (Theme & Language Toggle) -->
     <script src="js/common.js"></script>

@@ -1,0 +1,54 @@
+{
+  "lastUpdated": "2026-01-01",
+  "description": "Academic publications and research papers",
+  "publications": [
+    {
+      "id": "multimodal-urban-perception",
+      "year": 2025,
+      "title": {
+        "en": "A Framework for Evaluating Urban Spatial Perception Based on Large Multimodal Models: From Prompt Engineering to Empirical Analysis",
+        "zh": "基于多模态大模型的城市空间感知评价方法框架研究—从提示词工程到实证分析"
+      },
+      "authors": [
+        {
+          "name": "Lei Wang",
+          "nameZh": "王磊",
+          "link": "https://wanglei.studio/",
+          "isMe": false
+        },
+        {
+          "name": "Jiale Guo",
+          "nameZh": "郭家乐",
+          "link": null,
+          "isMe": true
+        },
+        {
+          "name": "Jie He",
+          "nameZh": "何捷",
+          "link": "https://homepage.hit.edu.cn/hejie2021",
+          "isMe": false,
+          "corresponding": true
+        }
+      ],
+      "venue": {
+        "name": {
+          "en": "Landscape Architecture",
+          "zh": "风景园林《Landscape Architecture》"
+        },
+        "link": "http://www.lalavision.com"
+      },
+      "status": {
+        "en": "Minor revision",
+        "zh": "小修"
+      },
+      "image": {
+        "src": "images/papers/multimodal_urban_perception_framework.png",
+        "alt": {
+          "en": "Multimodal Urban Perception Framework",
+          "zh": "基于多模态大模型的城市空间感知评价方法框架研究"
+        }
+      },
+      "detailPage": "papers/paper-detail.html"
+    }
+  ]
+}

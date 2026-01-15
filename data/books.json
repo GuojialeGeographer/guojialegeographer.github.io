@@ -1,0 +1,245 @@
+{
+  "lastUpdated": "2026-01-01",
+  "description": "Books and study notes by Jiale Guo",
+  "books": [
+    {
+      "id": "svi-notes",
+      "title": {
+        "en": "Street View Geographic Big Data Analysis Note Framework",
+        "zh": "街景地理大数据分析笔记框架"
+      },
+      "description": {
+        "en": "A framework for notes on street view geographic big data analysis. Linked with the SVI project.",
+        "zh": "关于街景地理大数据分析的笔记框架。已关联 SVI 项目。"
+      },
+      "category": {
+        "en": "Geographic Big Data Analysis",
+        "zh": "地理大数据分析"
+      },
+      "year": 2024,
+      "image": {
+        "src": "books/SVI/SVIDP_cover.jpg",
+        "alt": {
+          "en": "Street View Geographic Big Data Analysis Note Framework",
+          "zh": "街景地理大数据分析笔记框架封面"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=SVI/街景地理大数据分析笔记框架.md",
+          "text": {
+            "en": "Read Online",
+            "zh": "在线阅读"
+          }
+        }
+      ]
+    },
+    {
+      "id": "geods-manual",
+      "title": {
+        "en": "Geospatial Data Science Manual: A Self-Cultivation Guide",
+        "zh": "地理空间数据科学自我修炼手册"
+      },
+      "description": {
+        "en": "A comprehensive guide documenting my journey in geospatial data science, including knowledge points, lectures, and projects I've participated in.",
+        "zh": "记录我在地理空间数据科学领域的旅程，包括学习的知识点、参加的讲座以及参与的项目。"
+      },
+      "category": {
+        "en": "Geospatial Data Science",
+        "zh": "地理空间数据科学"
+      },
+      "year": 2024,
+      "image": {
+        "src": "images/books/GeoAI.png",
+        "alt": {
+          "en": "Geospatial Data Science Manual",
+          "zh": "地理空间数据科学自我修炼手册封面"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=Geospatial_Data_Science_Manual/Geospatial_Data_Science_Manual_ZH.md",
+          "text": {
+            "en": "Read Online",
+            "zh": "在线阅读"
+          }
+        }
+      ]
+    },
+    {
+      "id": "shud-notes",
+      "title": {
+        "en": "SHUD Training Camp Notes",
+        "zh": "SHUD训练营笔记"
+      },
+      "description": {
+        "en": "Notes from the SHUD (Simulator for Hydrological Unstructured Domains) training camp, covering theoretical foundations and practical applications.",
+        "zh": "SHUD（水文非结构域模拟器）训练营的学习笔记，涵盖理论基础和实际应用。"
+      },
+      "category": {
+        "en": "Hydrology Modeling",
+        "zh": "水文模拟"
+      },
+      "year": 2025,
+      "image": {
+        "src": "images/books/shud_cover.png",
+        "alt": {
+          "en": "SHUD Training Camp Notes",
+          "zh": "SHUD训练营笔记封面"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=Hydrology_Model/SHUD_Simulation_Notes_ZH.md",
+          "text": {
+            "en": "Read Online",
+            "zh": "在线阅读"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gis-notes",
+      "title": {
+        "en": "GIS Learning Notes & Knowledge Framework",
+        "zh": "地理信息系统(GIS)学习笔记与知识框架"
+      },
+      "description": {
+        "en": "Comprehensive notes from the GIS course at Politecnico di Milano (2024-2025).",
+        "zh": "米兰理工大学GIS课程的系统学习笔记。"
+      },
+      "category": {
+        "en": "Geographic Information Systems",
+        "zh": "地理信息系统"
+      },
+      "year": 2024,
+      "image": {
+        "src": "images/books/GIS.png",
+        "alt": {
+          "en": "GIS Learning Notes & Knowledge Framework",
+          "zh": "GIS学习笔记封面"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=Geography_Information_System/GIS_Notes_ZH.md",
+          "text": {
+            "en": "Read Online",
+            "zh": "在线阅读"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sentiment-analysis-notes",
+      "title": {
+        "en": "Urban Perception Computing Based on Social Media Data",
+        "zh": "基于社交媒体数据的城市感知计算"
+      },
+      "description": {
+        "en": "Notes on urban perception computing through social media text data mining and analysis.",
+        "zh": "关于基于社交媒体文本数据挖掘与分析的城市感知计算工作坊笔记。"
+      },
+      "category": {
+        "en": "NLP & Urban Computing",
+        "zh": "自然语言处理与城市计算"
+      },
+      "year": 2025,
+      "image": {
+        "src": "books/Sentiment_Analysis/sentiment analysis_cover.jpg",
+        "alt": {
+          "en": "Urban Perception Computing Notes",
+          "zh": "城市感知计算笔记封面"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=Sentiment_Analysis/基于社交媒体数据的城市感知计算.md",
+          "text": {
+            "en": "Read Online",
+            "zh": "在线阅读"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pea-notes",
+      "title": {
+        "en": "Performance Evaluation & Applications",
+        "zh": "性能评估与应用"
+      },
+      "description": {
+        "en": "Course notes covering performance evaluation theory and applications.",
+        "zh": "关于性能评估理论与应用的课程笔记。"
+      },
+      "category": {
+        "en": "Performance Evaluation",
+        "zh": "性能评估"
+      },
+      "year": 2025,
+      "image": {
+        "src": "images/books/PEA_cover.png",
+        "alt": {
+          "en": "Performance Evaluation & Applications",
+          "zh": "性能评估与应用封面"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=PEA/《性能评估与应用》.md",
+          "text": {
+            "en": "Read Online",
+            "zh": "在线阅读"
+          }
+        }
+      ]
+    },
+    {
+      "id": "geods4eh-notes",
+      "title": {
+        "en": "Geospatial Data Science for Environmental Health",
+        "zh": "地理空间数据科学与环境健康"
+      },
+      "description": {
+        "en": "Course notes on geospatial data science applied to environmental health.",
+        "zh": "关于地理空间数据科学在环境健康中应用的课程笔记。"
+      },
+      "category": {
+        "en": "Geospatial Data Science",
+        "zh": "地理空间数据科学"
+      },
+      "year": 2025,
+      "image": {
+        "src": "images/books/GeoAI.png",
+        "alt": {
+          "en": "Geospatial Data Science for Environmental Health",
+          "zh": "地理空间数据科学与环境健康封面"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=GeospatialDS4EH/GeoDS4EH_EN.md",
+          "text": {
+            "en": "Read Online (EN)",
+            "zh": "在线阅读（英文）"
+          }
+        },
+        {
+          "type": "viewer",
+          "url": "books/book-viewer.html?file=GeospatialDS4EH/GeoDS4EH.md",
+          "text": {
+            "en": "Read Online (ZH)",
+            "zh": "在线阅读（中文）"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "lastUpdated": "2026-01-01",
+  "description": "Presentations, courses, conferences, workshops, and seminars",
+  "presentations": [
+    {
+      "id": "gis2025",
+      "type": "conference",
+      "order": 1,
+      "title": {
+        "en": "20th Annual Conference on Geographic Information Science Theory and Methods",
+        "zh": "第二十届地理信息科学理论与方法学术年会"
+      },
+      "date": {
+        "en": "November 21-23, 2025",
+        "zh": "2025年11月21-23日"
+      },
+      "location": {
+        "en": "Xiamen, China",
+        "zh": "中国厦门"
+      },
+      "theme": {
+        "en": "Geospatial Information Empowering Smart Society",
+        "zh": "地理空间信息赋能智慧社会"
+      },
+      "description": null,
+      "image": null,
+      "links": [
+        {
+          "type": "details",
+          "url": "presentations/Conferences/GIS2025/",
+          "text": {
+            "en": "View Details",
+            "zh": "查看详情"
+          },
+          "icon": "fas fa-info-circle"
+        }
+      ],
+      "tagColor": "#007bff"
+    },
+    {
+      "id": "geosus2025",
+      "type": "conference",
+      "order": 2,
+      "title": {
+        "en": "International Conference on Geography and Sustainability 2025 (GEOSUS 2025)",
+        "zh": "2025年地理学与可持续发展国际会议"
+      },
+      "date": {
+        "en": "October 17-20, 2025",
+        "zh": "2025年10月17-20日"
+      },
+      "location": {
+        "en": "Xi'an, China",
+        "zh": "中国西安"
+      },
+      "theme": {
+        "en": "Geography and Sustainable Development: From a Transdisciplinary Perspective",
+        "zh": "地理学与可持续发展：跨学科视角"
+      },
+      "description": null,
+      "image": null,
+      "links": [
+        {
+          "type": "details",
+          "url": "presentations/Conferences/GEOSUS2025/",
+          "text": {
+            "en": "View Details",
+            "zh": "查看详情"
+          },
+          "icon": "fas fa-info-circle"
+        }
+      ],
+      "tagColor": "#007bff"
+    },
+    {
+      "id": "gis-coordinate-evolution",
+      "type": "course",
+      "order": 3,
+      "title": {
+        "en": "Global Coordinate Systems Evolution",
+        "zh": "全球坐标系统演进：驱动因素与国家案例研究"
+      },
+      "date": {
+        "en": "2025-05-29",
+        "zh": "2025年5月29日"
+      },
+      "location": null,
+      "theme": null,
+      "description": null,
+      "image": {
+        "src": "presentations/Courses/20250529-GIS-Pre/PPT_Screenshots_EN/jiale.guo1_01.png",
+        "alt": {
+          "en": "Global Coordinate System Evolution",
+          "zh": "全球坐标系统演进"
+        }
+      },
+      "links": [
+        {
+          "type": "viewer",
+          "url": "presentations/Courses/20250529-GIS-Pre/PPT_Screenshots_EN/jiale.guo.pdf",
+          "text": {
+            "en": "View Online",
+            "zh": "在线查看"
+          },
+          "icon": "fas fa-book-reader"
+        }
+      ],
+      "tagColor": null
+    },
+    {
+      "id": "geospatial-processing",
+      "type": "course",
+      "order": 4,
+      "title": {
+        "en": "Geospatial Processing (GP) Course",
+        "zh": "地理空间处理 (GP) 课程"
+      },
+      "date": {
+        "en": "2025-12-15",
+        "zh": "2025年12月15日"
+      },
+      "location": null,
+      "theme": null,
+      "description": null,
+      "image": {
+        "src": "presentations/Courses/20251215-GP-Pre/PPT-EN/Pre-1215-11045365_01.png",
+        "alt": {
+          "en": "Geospatial Processing Course",
+          "zh": "地理空间处理课程"
+        }
+      },
+      "links": [
+        {
+          "type": "pdf",
+          "url": "presentations/Courses/20251215-GP-Pre/PPT-EN/Pre-1215-11045365.pdf",
+          "text": {
+            "en": "View PDF",
+            "zh": "查看PDF"
+          },
+          "icon": "fas fa-file-pdf"
+        },
+        {
+          "type": "paper",
+          "url": "presentations/Courses/20251215-GP-Pre/Paper/ijgi-12-00284.pdf",
+          "text": {
+            "en": "Related Paper",
+            "zh": "相关论文"
+          },
+          "icon": "fas fa-book"
+        }
+      ],
+      "tagColor": null
+    },
+    {
+      "id": "abmind-gsoc-seminar",
+      "type": "seminar",
+      "order": 5,
+      "title": {
+        "en": "AI-Driven Research Programming: From Vibe Coding to Specification-Driven Practice",
+        "zh": "AI驱动科研编程：从Vibe Coding到规范驱动的实战指南"
+      },
+      "date": {
+        "en": "2025-12-28",
+        "zh": "2025年12月28日"
+      },
+      "location": {
+        "en": "Training Program",
+        "zh": "培训项目"
+      },
+      "theme": null,
+      "description": {
+        "en": "This seminar is part of the GSoC 2026 Mesa Chinese Developer Training Program, which aims to prepare Chinese developers for Google Summer of Code 2026 with the Mesa framework. The training covers AI-assisted research methodology, including the evolution from traditional programming to AI-driven coding, Vibe Coding principles, and specification-driven development practices.",
+        "zh": "本次研讨会是GSoC 2026 Mesa中国开发者培训项目的一部分，旨在帮助中国开发者准备2026年谷歌编程之夏（GSoC）Mesa框架相关提案。培训涵盖AI辅助科研方法论，包括从传统编程到AI驱动编程的演进、Vibe Coding原理以及规范驱动开发实践。"
+      },
+      "subtitle": {
+        "en": "ABMind GSoC 2026 Mesa Training Program - Part 1",
+        "zh": "ABMind GSoC 2026 Mesa培训项目 - 第一部分"
+      },
+      "image": null,
+      "links": [
+        {
+          "type": "pdf",
+          "url": "presentations/Seminars/ABMind-GSOC/part_1_vibe_coding_Cn.pdf",
+          "text": {
+            "en": "Chinese PDF",
+            "zh": "中文版 PDF"
+          },
+          "icon": "fas fa-file-pdf",
+          "lang": "zh"
+        },
+        {
+          "type": "pdf",
+          "url": "presentations/Seminars/ABMind-GSOC/part_1_vibe_coding_En.pdf",
+          "text": {
+            "en": "English PDF",
+            "zh": "English PDF"
+          },
+          "icon": "fas fa-file-pdf",
+          "lang": "en"
+        }
+      ],
+      "tagColor": "#ffc107"
+    }
+  ]
+}

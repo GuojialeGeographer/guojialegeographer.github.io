@@ -217,71 +217,18 @@
                             <span lang="zh">发表文章</span>
                         </h5>
                         
-                        <!-- 2025 Publications -->
-                        <div class="mb-4">
-                            <h6 class="text-muted mb-3">2025</h6>
-                            
-                            <!-- Paper 1: Multimodal LLM for Urban Perception -->
-                            <div class="row no-gutters border-bottom border-gray mb-3 pb-3">
-                                <div class="col-md-4 col-xl-3 mb-md-0 p-md-3">
-                                    <a href="papers/paper-detail.html" class="paper-image-link">
-                                        <img src="images/papers/multimodal_urban_perception_framework.png" alt="基于多模态大模型的城市空间感知评价方法框架研究" class="w-100 rounded-sm">
-                                    </a>
-                                </div>
-                                <div class="col-md-8 col-xl-9 p-3 pl-md-0">
-                                    <h5 class="mt-0 mb-1 font-weight-normal">
-                                        <a href="papers/paper-detail.html" class="paper-link">
-                                            <span lang="en">A Framework for Evaluating Urban Spatial Perception Based on Large Multimodal Models: From Prompt Engineering to Empirical Analysis</span>
-                                            <span lang="zh">基于多模态大模型的城市空间感知评价方法框架研究—从提示词工程到实证分析</span>
-                                        </a>
-                                    </h5>
-                                    <p class="mt-0 mb-0 small">
-                                        <span lang="en">
-                                            <a href="https://wanglei.studio/" target="_blank" class="text-dark">Lei Wang</a>, 
-                                            <strong>Jiale Guo</strong>, 
-                                            <a href="https://homepage.hit.edu.cn/hejie2021?lang=en" target="_blank" class="text-dark">Jie He</a><span style="background-color: #fffacd;">#</span> <span style="background-color: #fffacd;">(# corresponding author)</span>
-                                        </span>
-                                        <span lang="zh">
-                                            <a href="https://wanglei.studio/" target="_blank" class="text-dark">王磊</a>， 
-                                            <strong>郭家乐</strong>， 
-                                            <a href="https://homepage.hit.edu.cn/hejie2021?lang=zh" target="_blank" class="text-dark">何捷</a><span style="background-color: #fffacd;">#</span> <span style="background-color: #fffacd;">(# 通讯作者)</span>
-                                        </span>
-                                    </p>
-                                    <p class="mt-2 mb-0 small">
-                                        <span lang="en">
-                                            <i>Minor revision, </i>
-                                            <a href="http://www.lalavision.com" target="_blank" class="text-primary">
-                                                <i>Landscape Architecture</i>
-                                            </a>
-                                        </span>
-                                        <span lang="zh">
-                                            <i>小修，</i>
-                                            <a href="http://www.lalavision.com" target="_blank" class="text-primary">
-                                                <i>风景园林《Landscape Architecture》</i>
-                                            </a>
-                                        </span>
-                                    </p>
+                        <!-- Publications Container (Dynamically Rendered) -->
+                        <div id="publications-container">
+                            <!-- Loading indicator -->
+                            <div class="text-center py-4">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="sr-only">
+                                        <span lang="en">Loading...</span>
+                                        <span lang="zh">加载中...</span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Coming Soon Section (Hidden when publications are added) -->
-                        <!--
-                        <div class="row no-gutters mb-4">
-                            <div class="col p-4 text-center">
-                                <div class="alert alert-info">
-                                    <h4 class="alert-heading">
-                                        <span lang="en">Publications Coming Soon</span>
-                                        <span lang="zh">出版物即将上线</span>
-                                    </h4>
-                                    <p>
-                                        <span lang="en">This section is currently being updated with new publications. Please check back later.</span>
-                                        <span lang="zh">此部分正在更新新的出版物。请稍后再查看。</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
             </div>
@@ -314,5 +261,12 @@
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <!-- Common JavaScript (Theme & Language Toggle) -->
     <script src="js/common.js"></script>
+    <!-- Utility Scripts -->
+    <script src="js/utils/data-loader.js"></script>
+    <script src="js/utils/loading-state.js"></script>
+    <script src="js/utils/lazy-load.js"></script>
+    <script src="js/utils/seo.js"></script>
+    <!-- Publications Renderer -->
+    <script src="js/render-publications.js"></script>
 </body>
 </html>
