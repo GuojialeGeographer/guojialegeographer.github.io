@@ -4,6 +4,8 @@
  */
 
 const LazyLoad = {
+    observer: null, // 全局observer实例
+    
     /**
      * 初始化懒加载
      * 使用Intersection Observer API实现图片懒加载
@@ -16,13 +18,19 @@ const LazyLoad = {
             return;
         }
         
-        // 创建IntersectionObserver
-        const observer = new IntersectionObserver((entries) => {
+        // 如果observer已存在，先观察新添加的图片
+        if (this.observer) {
+            this.observeNewImages();
+            return;
+        }
+        
+        // 创建IntersectionObserver（只创建一次）
+        this.observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
                     this.loadImage(img);
-                    observer.unobserve(img);
+                    this.observer.unobserve(img);
                 }
             });
         }, {
@@ -30,8 +38,22 @@ const LazyLoad = {
         });
         
         // 观察所有带data-src属性的图片
+        this.observeNewImages();
+    },
+    
+    /**
+     * 观察新添加的图片
+     */
+    observeNewImages() {
+        if (!this.observer) return;
+        
+        // 观察所有带data-src属性但尚未被观察的图片
         document.querySelectorAll('img[data-src]').forEach(img => {
-            observer.observe(img);
+            // 检查是否已经被观察（通过检查是否有特定的标记）
+            if (!img.dataset.observed) {
+                this.observer.observe(img);
+                img.dataset.observed = 'true';
+            }
         });
     },
     
@@ -66,13 +88,23 @@ const LazyLoad = {
      */
     setupImage(img, src, alt, placeholder = 'images/placeholder.svg') {
         img.setAttribute('data-src', src);
-        img.src = placeholder; // 先加载占位图
         img.alt = alt || '';
         img.loading = 'lazy'; // 浏览器原生懒加载（作为后备）
         
-        // 错误处理
+        // 设置占位图
+        img.src = placeholder;
+        
+        // 错误处理：如果占位图加载失败，直接加载真实图片
         img.onerror = function() {
-            this.src = placeholder;
+            const dataSrc = this.getAttribute('data-src');
+            if (dataSrc && this.src === placeholder) {
+                // 占位图加载失败，直接加载真实图片
+                this.src = dataSrc;
+                this.removeAttribute('data-src');
+            } else if (dataSrc) {
+                // 真实图片加载失败，保持占位图
+                this.src = placeholder;
+            }
         };
     }
 };

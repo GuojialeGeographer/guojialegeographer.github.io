@@ -260,7 +260,26 @@
             width: 100%;
             height: auto;
             transition: transform 0.3s ease;
-            cursor: zoom-in;
+            cursor: pointer;
+        }
+        
+        /* 思维导图卡片链接样式 */
+        .card a {
+            text-decoration: none;
+            display: block;
+        }
+        
+        .card a .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card a:hover .card {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card a:hover .card-img-top {
+            transform: scale(1.02);
         }
         
         /* 图片放大查看 */
@@ -439,44 +458,54 @@
                                     </h5>
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/1.坐标系演进的主要驱动因素.png" class="card-img-top" alt="坐标系演进的主要驱动因素">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">坐标系演进的主要驱动因素</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/1.坐标系演进的主要驱动因素.png" class="card-img-top" alt="坐标系演进的主要驱动因素">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">坐标系演进的主要驱动因素</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/2.Case1:中国的坐标演进之路.png" class="card-img-top" alt="中国的坐标演进之路">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">中国的坐标演进之路</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/2.Case1:中国的坐标演进之路.png" class="card-img-top" alt="中国的坐标演进之路">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">中国的坐标演进之路</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/3.case2:美国的坐标演进之路.png" class="card-img-top" alt="美国的坐标演进之路">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">美国的坐标演进之路</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/3.case2:美国的坐标演进之路.png" class="card-img-top" alt="美国的坐标演进之路">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">美国的坐标演进之路</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/4.Case3:欧洲的坐标演变.png" class="card-img-top" alt="欧洲的坐标演变">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">欧洲的坐标演变</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/4.Case3:欧洲的坐标演变.png" class="card-img-top" alt="欧洲的坐标演变">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">欧洲的坐标演变</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/5.Case4:日本的坐标演变.png" class="card-img-top" alt="日本的坐标演变">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">日本的坐标演变</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_CN/5.Case4:日本的坐标演变.png" class="card-img-top" alt="日本的坐标演变">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">日本的坐标演变</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -489,44 +518,54 @@
                                     </h5>
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/1.1Circle_Radiation_Framework_English.drawio.png" class="card-img-top" alt="Circle Radiation Framework">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Circle Radiation Framework</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/1.1Circle_Radiation_Framework_English.drawio.png" class="card-img-top" alt="Circle Radiation Framework">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">Circle Radiation Framework</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/2.1Case1:China_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="China Coordinate System Evolution">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">China Coordinate System Evolution</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/2.1Case1:China_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="China Coordinate System Evolution">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">China Coordinate System Evolution</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/3.1Case2:USA_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="USA Coordinate System Evolution">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">USA Coordinate System Evolution</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/3.1Case2:USA_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="USA Coordinate System Evolution">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">USA Coordinate System Evolution</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/4.1Case3:Europe_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="Europe Coordinate System Evolution">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Europe Coordinate System Evolution</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/4.1Case3:Europe_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="Europe Coordinate System Evolution">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">Europe Coordinate System Evolution</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-6 mb-4">
-                                            <div class="card">
-                                                <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/5.1Case4:Japan_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="Japan Coordinate System Evolution">
-                                                <div class="card-body">
-                                                    <h6 class="card-title">Japan Coordinate System Evolution</h6>
+                                            <a href="presentations/Courses/20250529-GIS-Pre/presentation-viewer.html" class="text-decoration-none">
+                                                <div class="card">
+                                                    <img src="presentations/Courses/20250529-GIS-Pre/Mindmaps_EN/5.1Case4:Japan_Coordinate_System_Evolution_English.drawio.png" class="card-img-top" alt="Japan Coordinate System Evolution">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title text-dark">Japan Coordinate System Evolution</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@
         "zh": "这是一个基于WebGIS的希腊空气质量分析与监测项目，对希腊全境的空气污染（NO₂、PM2.5、PM10）进行综合分析与可视化。项目包含一个使用OpenLayers构建的交互式地图、多页面展示以及详细的数据分析。"
       },
       "image": {
-        "src": "projects/Air_Pollution_Exporsure/images/pm10/Greece_LC_reclassified_2022.png",
+        "src": "projects/Air_Pollution_Exporsure/Images/pm10/Greece_LC_reclassified_2022.png",
         "alt": {
           "en": "Air Pollution and Population Exposure",
           "zh": "空气污染与人口暴露"

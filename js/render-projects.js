@@ -81,9 +81,11 @@ async function renderProjects() {
             container.appendChild(projectCard);
         });
         
-        // 初始化懒加载
+        // 初始化懒加载（使用setTimeout确保DOM已更新）
         if (typeof LazyLoad !== 'undefined') {
-            LazyLoad.init();
+            setTimeout(() => {
+                LazyLoad.init();
+            }, 0);
         }
         
         // 添加SEO结构化数据
