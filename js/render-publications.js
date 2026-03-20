@@ -176,17 +176,30 @@ function createPublicationCard(pub) {
     
     const venueEn = document.createElement('span');
     venueEn.setAttribute('lang', 'en');
-    venueEn.innerHTML = `<i>${pub.status.en}, </i><a href="${pub.venue.link}" target="_blank" class="text-primary"><i>${pub.venue.name.en}</i></a>`;
+    const idxEn = pub.venue.indexed
+        ? ` <span class="text-muted">(${pub.venue.indexed.en})</span>`
+        : '';
+    venueEn.innerHTML = `<i>${pub.status.en}, </i><a href="${pub.venue.link}" target="_blank" class="text-primary"><i>${pub.venue.name.en}</i></a>${idxEn}`;
     
     const venueZh = document.createElement('span');
     venueZh.setAttribute('lang', 'zh');
-    venueZh.innerHTML = `<i>${pub.status.zh}，</i><a href="${pub.venue.link}" target="_blank" class="text-primary"><i>${pub.venue.name.zh}</i></a>`;
+    const idxZh = pub.venue.indexed
+        ? ` <span class="text-muted">（${pub.venue.indexed.zh}）</span>`
+        : '';
+    venueZh.innerHTML = `<i>${pub.status.zh}，</i><a href="${pub.venue.link}" target="_blank" class="text-primary"><i>${pub.venue.name.zh}</i></a>${idxZh}`;
     
     venue.appendChild(venueEn);
     venue.appendChild(venueZh);
     
     contentCol.appendChild(title);
     contentCol.appendChild(authors);
+    
+    // 作者单位脚注（与正文脚注序号一致）
+    const affBlock = buildAuthorAffiliationsBlock(pub.authors);
+    if (affBlock) {
+        contentCol.appendChild(affBlock);
+    }
+    
     contentCol.appendChild(venue);
     
     // 可选：PDF / 知网等外链（便于国际读者与无法访问 CNKI 的用户）
@@ -247,6 +260,30 @@ function createPublicationCard(pub) {
     return card;
 }
 
+function buildAuthorAffiliationsBlock(authors) {
+    const lines = authors
+        .filter((a) => a.orgIndex && (a.affiliationEn || a.affiliationZh))
+        .sort((a, b) => (a.orgIndex || 0) - (b.orgIndex || 0));
+    if (!lines.length) {
+        return null;
+    }
+    const wrap = document.createElement('p');
+    wrap.className = 'mb-2 small text-muted';
+    const en = document.createElement('span');
+    en.setAttribute('lang', 'en');
+    en.innerHTML = lines
+        .map((a) => `<span class="text-nowrap">${a.orgIndex}. ${a.affiliationEn || ''}</span>`)
+        .join('<br>');
+    const zh = document.createElement('span');
+    zh.setAttribute('lang', 'zh');
+    zh.innerHTML = lines
+        .map((a) => `<span class="text-nowrap">${a.orgIndex}. ${a.affiliationZh || ''}</span>`)
+        .join('<br>');
+    wrap.appendChild(en);
+    wrap.appendChild(zh);
+    return wrap;
+}
+
 function formatAuthors(authors, lang) {
     return authors.map((author, index) => {
         const name = lang === 'zh' ? (author.nameZh || author.name) : author.name;
@@ -258,6 +295,10 @@ function formatAuthors(authors, lang) {
             html = `<a href="${author.link}" target="_blank" class="text-dark">${name}</a>`;
         } else {
             html = name;
+        }
+        
+        if (author.orgIndex) {
+            html += `<sup>${author.orgIndex}</sup>`;
         }
         
         if (author.isMe) {

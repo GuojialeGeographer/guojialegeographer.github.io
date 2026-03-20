@@ -14,18 +14,36 @@
           "name": "Lei Wang",
           "nameZh": "王磊",
           "link": "https://wanglei.studio/",
+          "orgIndex": 1,
+          "affiliationEn": "School of Earth and Space Sciences, Peking University",
+          "affiliationZh": "北京大学地球与空间科学学院",
           "isMe": false
         },
         {
           "name": "Jiale Guo",
           "nameZh": "郭家乐",
           "link": null,
+          "orgIndex": 2,
+          "affiliationEn": "Department of Civil and Environmental Engineering, Politecnico di Milano",
+          "affiliationZh": "米兰理工大学土木与环境工程系",
           "isMe": true
+        },
+        {
+          "name": "Zhaocheng Bai",
+          "nameZh": "白钊成",
+          "link": null,
+          "orgIndex": 3,
+          "affiliationEn": "College of Architecture and Urban Planning, Tongji University",
+          "affiliationZh": "同济大学建筑与城市规划学院",
+          "isMe": false
         },
         {
           "name": "Jie He",
           "nameZh": "何捷",
           "link": "https://homepage.hit.edu.cn/hejie2021",
+          "orgIndex": 4,
+          "affiliationEn": "School of Architecture, Harbin Institute of Technology (Shenzhen)",
+          "affiliationZh": "哈尔滨工业大学（深圳）建筑学院",
           "isMe": false,
           "corresponding": true
         }
@@ -35,7 +53,11 @@
           "en": "Landscape Architecture",
           "zh": "风景园林《Landscape Architecture》"
         },
-        "link": "http://www.lalavision.com"
+        "link": "http://www.lalavision.com",
+        "indexed": {
+          "en": "Chinese Core Journal (PKU)",
+          "zh": "北大中文核心期刊"
+        }
       },
       "status": {
         "en": "Published online (CNKI)",
