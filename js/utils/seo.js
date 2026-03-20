@@ -33,22 +33,28 @@ const SEO = {
             }
         };
         
-        const articles = publications.map(pub => ({
-            "@context": "https://schema.org",
-            "@type": "ScholarlyArticle",
-            "headline": pub.title.en,
-            "alternateHeadline": pub.title.zh,
-            "author": pub.authors.map(author => ({
-                "@type": "Person",
-                "name": author.name
-            })),
-            "datePublished": `${pub.year}-01-01`,
-            "publisher": {
-                "@type": "Organization",
-                "name": pub.venue.name.en
-            },
-            "inLanguage": ["en", "zh"]
-        }));
+        const articles = publications.map(pub => {
+            const article = {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": pub.title.en,
+                "alternateHeadline": pub.title.zh,
+                "author": pub.authors.map(author => ({
+                    "@type": "Person",
+                    "name": author.name
+                })),
+                "datePublished": `${pub.year}-01-01`,
+                "publisher": {
+                    "@type": "Organization",
+                    "name": pub.venue.name.en
+                },
+                "inLanguage": ["en", "zh"]
+            };
+            if (pub.links && pub.links.pdf) {
+                article.url = new URL(pub.links.pdf, "https://guojialegeographer.github.io/").href;
+            }
+            return article;
+        });
         
         // 添加Person数据
         this.addStructuredData(person);

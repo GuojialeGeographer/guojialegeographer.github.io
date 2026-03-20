@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-01-01",
+  "lastUpdated": "2026-02-04",
   "description": "Academic publications and research papers",
   "publications": [
     {
       "id": "multimodal-urban-perception",
-      "year": 2025,
+      "year": 2026,
       "title": {
         "en": "A Framework for Evaluating Urban Spatial Perception Based on Large Multimodal Models: From Prompt Engineering to Empirical Analysis",
-        "zh": "基于多模态大模型的城市空间感知评价方法框架研究—从提示词工程到实证分析"
+        "zh": "基于多模态大模型的城市空间感知评估框架构建与实证研究"
       },
       "authors": [
         {
@@ -38,17 +38,21 @@
         "link": "http://www.lalavision.com"
       },
       "status": {
-        "en": "Minor revision",
-        "zh": "小修"
+        "en": "Published online (CNKI)",
+        "zh": "知网网络首发"
       },
       "image": {
         "src": "images/papers/multimodal_urban_perception_framework.png",
         "alt": {
           "en": "Multimodal Urban Perception Framework",
-          "zh": "基于多模态大模型的城市空间感知评价方法框架研究"
+          "zh": "基于多模态大模型的城市空间感知评估研究"
         }
       },
-      "detailPage": "papers/paper-detail.html"
+      "detailPage": "papers/paper-detail.html",
+      "links": {
+        "pdf": "papers/multimodal-urban-spatial-perception-landscape-architecture-cnki.pdf",
+        "cnki": "https://kns.cnki.net/kcms2/article/abstract?v=mDcNmAOuO1MnhCeuc2GI_umuR9IaIB2HIA_UKngcRkrBW1C0UHtvc-rfU8_OU2vezg5pmpcR2EQLBKwHwkLAYmQqX_Z-2h72EqrFo5HAg84KfwHoMNg98XN-m3N9e4BYu8zXp37Capn7dAbS_xX9ICA6cB5QPJeUSkS1Vua7pfs=&uniplatform=NZKPT"
+      }
     }
   ]
 }

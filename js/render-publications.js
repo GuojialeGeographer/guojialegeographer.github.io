@@ -189,6 +189,58 @@ function createPublicationCard(pub) {
     contentCol.appendChild(authors);
     contentCol.appendChild(venue);
     
+    // 可选：PDF / 知网等外链（便于国际读者与无法访问 CNKI 的用户）
+    if (pub.links && (pub.links.pdf || pub.links.cnki)) {
+        const actions = document.createElement('p');
+        actions.className = 'mt-2 mb-0';
+        
+        if (pub.links.pdf) {
+            const pdfBtn = document.createElement('a');
+            pdfBtn.href = pub.links.pdf;
+            pdfBtn.target = '_blank';
+            pdfBtn.rel = 'noopener noreferrer';
+            pdfBtn.className = 'btn btn-sm btn-outline-primary mr-2 mb-1';
+            pdfBtn.setAttribute('aria-label', 'Open PDF');
+            const pdfIcon = document.createElement('i');
+            pdfIcon.className = 'fas fa-file-pdf';
+            pdfBtn.appendChild(pdfIcon);
+            pdfBtn.appendChild(document.createTextNode(' '));
+            const pdfEn = document.createElement('span');
+            pdfEn.setAttribute('lang', 'en');
+            pdfEn.textContent = 'PDF';
+            const pdfZh = document.createElement('span');
+            pdfZh.setAttribute('lang', 'zh');
+            pdfZh.textContent = 'PDF 全文';
+            pdfBtn.appendChild(pdfEn);
+            pdfBtn.appendChild(pdfZh);
+            actions.appendChild(pdfBtn);
+        }
+        
+        if (pub.links.cnki) {
+            const cnkiBtn = document.createElement('a');
+            cnkiBtn.href = pub.links.cnki;
+            cnkiBtn.target = '_blank';
+            cnkiBtn.rel = 'noopener noreferrer';
+            cnkiBtn.className = 'btn btn-sm btn-outline-secondary mr-2 mb-1';
+            cnkiBtn.setAttribute('aria-label', 'Open CNKI');
+            const cnkiIcon = document.createElement('i');
+            cnkiIcon.className = 'fas fa-external-link-alt';
+            cnkiBtn.appendChild(cnkiIcon);
+            cnkiBtn.appendChild(document.createTextNode(' '));
+            const cnkiEn = document.createElement('span');
+            cnkiEn.setAttribute('lang', 'en');
+            cnkiEn.textContent = 'CNKI';
+            const cnkiZh = document.createElement('span');
+            cnkiZh.setAttribute('lang', 'zh');
+            cnkiZh.textContent = '中国知网';
+            cnkiBtn.appendChild(cnkiEn);
+            cnkiBtn.appendChild(cnkiZh);
+            actions.appendChild(cnkiBtn);
+        }
+        
+        contentCol.appendChild(actions);
+    }
+    
     card.appendChild(imageCol);
     card.appendChild(contentCol);
     
