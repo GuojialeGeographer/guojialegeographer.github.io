@@ -429,13 +429,25 @@
         }
 
         /* 增强强调样式 */
-        .markdown-body strong {
-            font-weight: 600;
-            color: #24292e;
+        .markdown-body strong,
+        .markdown-body b {
+            font-weight: 700 !important;
+            color: #1a1a1a;
+            background-color: rgba(255, 235, 59, 0.15);
+            padding: 0 2px;
+            border-radius: 2px;
         }
 
-        .markdown-body em {
+        .markdown-body em,
+        .markdown-body i {
             font-style: italic;
+            color: #333;
+        }
+
+        /* 确保 github-markdown-css 不覆盖强调样式 */
+        .markdown-body .highlight pre,
+        .markdown-body pre {
+            background-color: #f6f8fa;
         }
 
         /* KaTeX 数学公式样式 */
@@ -510,6 +522,33 @@
         html[data-theme="dark"] .markdown-body blockquote {
             background-color: #2c3136;
             border-left-color: #58a6ff;
+        }
+
+        /* 暗黑模式下的加粗样式 */
+        html[data-theme="dark"] .markdown-body strong,
+        html[data-theme="dark"] .markdown-body b {
+            color: #fff;
+            background-color: rgba(255, 235, 59, 0.2);
+            font-weight: 700 !important;
+        }
+
+        html[data-theme="dark"] .markdown-body em,
+        html[data-theme="dark"] .markdown-body i {
+            color: #e6e6e6;
+        }
+
+        /* 确保高对比度 */
+        html[data-theme="dark"] .markdown-body {
+            color: #e6e6e6;
+        }
+
+        html[data-theme="dark"] .markdown-body h1,
+        html[data-theme="dark"] .markdown-body h2,
+        html[data-theme="dark"] .markdown-body h3,
+        html[data-theme="dark"] .markdown-body h4,
+        html[data-theme="dark"] .markdown-body h5,
+        html[data-theme="dark"] .markdown-body h6 {
+            color: #fff;
         }
     </style>
 </head>
