@@ -299,6 +299,218 @@
             z-index: 1040;
             transition: width 0.1s ease;
         }
+
+        /* 增强表格样式 */
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            font-size: 0.95em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .markdown-body table th,
+        .markdown-body table td {
+            border: 1px solid #dfe2e5;
+            padding: 12px 16px;
+            text-align: left;
+        }
+
+        .markdown-body table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+            color: #24292e;
+            border-bottom: 2px solid #e1e4e8;
+        }
+
+        .markdown-body table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .markdown-body table tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        /* 增强代码样式 */
+        .markdown-body code {
+            background-color: rgba(27, 31, 35, 0.05);
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            color: #e83e8c;
+        }
+
+        .markdown-body pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            border: 1px solid #e1e4e8;
+        }
+
+        .markdown-body pre code {
+            background-color: transparent;
+            border-radius: 0;
+            font-size: 100%;
+            margin: 0;
+            padding: 0;
+            color: #24292e;
+        }
+
+        /* 增强标题样式 */
+        .markdown-body h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            color: #24292e;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+            color: #24292e;
+        }
+
+        .markdown-body h3 {
+            font-size: 1.25em;
+            margin-top: 1.5em;
+            margin-bottom: 0.6em;
+            color: #24292e;
+        }
+
+        .markdown-body h4 {
+            font-size: 1em;
+            margin-top: 1.25em;
+            margin-bottom: 0.5em;
+            color: #24292e;
+        }
+
+        /* 增强列表样式 */
+        .markdown-body ul,
+        .markdown-body ol {
+            padding-left: 2em;
+            margin-bottom: 1em;
+        }
+
+        .markdown-body li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-body li > ul,
+        .markdown-body li > ol {
+            margin-top: 0.25em;
+            margin-bottom: 0.25em;
+        }
+
+        /* 增强引用样式 */
+        .markdown-body blockquote {
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+            padding: 1em 1.5em;
+            margin: 1.5em 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .markdown-body blockquote p:first-child {
+            margin-top: 0;
+        }
+
+        .markdown-body blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 增强强调样式 */
+        .markdown-body strong {
+            font-weight: 600;
+            color: #24292e;
+        }
+
+        .markdown-body em {
+            font-style: italic;
+        }
+
+        /* KaTeX 数学公式样式 */
+        .markdown-body .katex {
+            font-size: 1.1em;
+        }
+
+        .markdown-body .katex-display {
+            margin: 1.5em 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        /* 段落间距 */
+        .markdown-body p {
+            margin-bottom: 1em;
+            line-height: 1.8;
+        }
+
+        /* 水平线样式 */
+        .markdown-body hr {
+            height: 0.25em;
+            padding: 0;
+            margin: 2em 0;
+            background-color: #e1e4e8;
+            border: 0;
+        }
+
+        /* 链接样式 */
+        .markdown-body a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-body a:hover {
+            text-decoration: underline;
+        }
+
+        /* 暗黑模式下的表格和代码样式 */
+        html[data-theme="dark"] .markdown-body table th {
+            background-color: #2c3136;
+            color: #f8f9fa;
+            border-color: #495057;
+        }
+
+        html[data-theme="dark"] .markdown-body table td {
+            border-color: #495057;
+        }
+
+        html[data-theme="dark"] .markdown-body table tr:nth-child(even) {
+            background-color: #343a40;
+        }
+
+        html[data-theme="dark"] .markdown-body table tr:hover {
+            background-color: #3f474e;
+        }
+
+        html[data-theme="dark"] .markdown-body pre {
+            background-color: #2c3136;
+            border-color: #495057;
+        }
+
+        html[data-theme="dark"] .markdown-body code {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ff7b72;
+        }
+
+        html[data-theme="dark"] .markdown-body pre code {
+            color: #f8f9fa;
+        }
+
+        html[data-theme="dark"] .markdown-body blockquote {
+            background-color: #2c3136;
+            border-left-color: #58a6ff;
+        }
     </style>
 </head>
 <body>
@@ -431,6 +643,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     <script>
         $(document).ready(function() {
             // 初始化Mermaid配置
@@ -483,6 +699,19 @@
             document.documentElement.setAttribute('data-theme', currentTheme);
             updateThemeIcon(currentTheme);
             
+            // 配置 marked.js 选项
+            marked.setOptions({
+                gfm: true,
+                tables: true,
+                breaks: false,
+                pedantic: false,
+                sanitize: false,
+                smartLists: true,
+                smartypants: true,
+                headerIds: true,
+                mangle: false
+            });
+            
             // 加载Markdown内容
             $.ajax({
                 url: fileName,
@@ -494,6 +723,17 @@
                     // 显示Markdown内容
                     $('#content-loading').hide();
                     $('#markdown-content').html(marked.parse(data)).show();
+                    
+                    // 渲染数学公式
+                    renderMathInElement(document.getElementById('markdown-content'), {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false},
+                            {left: '\\[', right: '\\]', display: true},
+                            {left: '\\(', right: '\\)', display: false}
+                        ],
+                        throwOnError: false
+                    });
                     
                     // 初始化Mermaid图表
                     initializeMermaid();
