@@ -1,188 +1,566 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" data-lang="en">
-<!-- Inspired by Zongrong(Jasper) Li's Homepage Template -->
+<!-- Academic Homepage of Jiale Guo (郭家乐) - Politecnico di Milano -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Jiale Guo - Homepage</title>
+    <title>Jiale Guo - Homepage | Politecnico di Milano</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Jiale Guo - Geospatial Data Science Researcher. Interdisciplinary researcher exploring GIScience, Computer Science, and Data Science. Currently pursuing MSc in Geoinformatics Engineering at Politecnico di Milano.">
-    <meta name="keywords" content="Jiale Guo, Geospatial Data Science, GIScience, GeoAI, Spatial Analysis, Urban Science, Environmental Modeling">
+    <meta name="description" content="Jiale Guo - Graduate student at Politecnico di Milano, incoming CSC Ph.D. student in Data Analytics and Decision Sciences (DADS). Research: Geospatial Big Data, Health Geography, Environmental & Heat Exposure, Human Mobility, Geospatial Foundation Models.">
+    <meta name="keywords" content="Jiale Guo, 郭家乐, Politecnico di Milano, DADS, CSC, Geoinformatics, GeoAI, Spatial Analysis, Health Geography, Environmental Exposure, Human Mobility, SHUD">
     <meta name="author" content="Jiale Guo">
     
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Canonical -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://guojialegeographer.github.io/">
-    <meta property="og:title" content="Jiale Guo - Geospatial Data Science Researcher">
-    <meta property="og:description" content="Interdisciplinary researcher exploring GIScience, Computer Science, and Data Science. Currently pursuing MSc in Geoinformatics Engineering at Politecnico di Milano.">
+    <meta property="og:title" content="Jiale Guo - Homepage | Politecnico di Milano">
+    <meta property="og:description" content="Graduate student at Politecnico di Milano, incoming CSC Ph.D. in Data Analytics and Decision Sciences (DADS). Exploring Geospatial Big Data, Health Geography, and GeoAI.">
     <meta property="og:image" content="https://guojialegeographer.github.io/images/personal/labixiaoxing.jpg">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://guojialegeographer.github.io/">
-    <meta name="twitter:title" content="Jiale Guo - Geospatial Data Science Researcher">
-    <meta name="twitter:description" content="Interdisciplinary researcher exploring GIScience, Computer Science, and Data Science.">
-    <meta name="twitter:image" content="https://guojialegeographer.github.io/images/personal/labixiaoxing.jpg">
-    
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://guojialegeographer.github.io/">
+    <link rel="icon" href="data:,">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+    <!-- Stylesheets & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
+    <link rel="stylesheet" href="js/vendor/leaflet.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Self-hosted Local Leaflet & Spatial Data (Offline & Zero-CORS) -->
+    <script src="js/vendor/leaflet.min.js"></script>
+    <script src="js/data/globe-places-data.js"></script>
+
     <style>
-        /* Main CSS styles */
-        /* 保留原有样式 */
-        
-        /* Visitor map marker animation for homepage */
-        @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
-            }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 6px rgba(255, 59, 48, 0);
-            }
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
-            }
+        :root {
+            --brand-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --code-font: 'JetBrains Mono', monospace;
+            --accent-blue: #0284c7;
+            --card-subtle-border: rgba(0, 0, 0, 0.08);
+            --card-bg-elevated: #ffffff;
+            --phd-gold: #d97706;
         }
-        
-        .visitor-marker {
-            animation: pulse 2s infinite;
+
+        html[data-theme="dark"] {
+            --accent-blue: #38bdf8;
+            --card-subtle-border: rgba(255, 255, 255, 0.1);
+            --card-bg-elevated: #1e2433;
+            --phd-gold: #f59e0b;
         }
-        
-        /* 增强字体渲染 */
+
         body {
+            font-family: var(--brand-font);
+            line-height: 1.65;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
-        
-        /* 提高小字体的清晰度和对比度 */
-        .small, small, .text-muted {
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.75);
+
+        /* Language Toggle Visibility */
+        [lang="zh"] { display: none; }
+        [lang="en"] { display: block; }
+        span[lang="zh"], a[lang="zh"], em[lang="zh"], strong[lang="zh"], small[lang="zh"] { display: none; }
+        span[lang="en"], a[lang="en"], em[lang="en"], strong[lang="en"], small[lang="en"] { display: inline; }
+
+        html[data-lang="zh"] [lang="en"] { display: none !important; }
+        html[data-lang="zh"] [lang="zh"] { display: block !important; }
+        html[data-lang="zh"] span[lang="en"], 
+        html[data-lang="zh"] a[lang="en"], 
+        html[data-lang="zh"] em[lang="en"], 
+        html[data-lang="zh"] strong[lang="en"],
+        html[data-lang="zh"] small[lang="en"] { display: none !important; }
+        html[data-lang="zh"] span[lang="zh"], 
+        html[data-lang="zh"] a[lang="zh"], 
+        html[data-lang="zh"] em[lang="zh"], 
+        html[data-lang="zh"] strong[lang="zh"],
+        html[data-lang="zh"] small[lang="zh"] { display: inline !important; }
+
+        /* Navbar */
+        .navbar-custom {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--card-subtle-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-        
-        /* 确保strong标签始终加粗，即使在small或text-muted中 */
-        .small strong, small strong, .text-muted strong,
-        [lang="zh"] strong, [lang="en"] strong {
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Profile & Cards */
+        .card-custom {
+            border: 1px solid var(--card-subtle-border);
+            border-radius: 10px;
+            background-color: var(--card-bg-elevated);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .avatar-frame {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--card-subtle-border);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: rgba(2, 132, 199, 0.08);
+            color: var(--accent-blue);
+            border: 1px solid rgba(2, 132, 199, 0.2);
+        }
+
+        .status-pill-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: rgba(217, 119, 6, 0.1);
+            color: var(--phd-gold);
+            border: 1px solid rgba(217, 119, 6, 0.3);
+        }
+
+        .research-tag {
+            display: inline-block;
+            font-size: 0.76rem;
+            font-weight: 500;
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin: 2px 3px 2px 0;
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--card-subtle-border);
+        }
+        html[data-theme="dark"] .research-tag {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+        }
+
+        /* Education Highlight Cards */
+        .edu-card-highlight {
+            border-left: 4px solid var(--phd-gold);
+            background: rgba(217, 119, 6, 0.03);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.85rem;
+            border-top: 1px solid var(--card-subtle-border);
+            border-right: 1px solid var(--card-subtle-border);
+            border-bottom: 1px solid var(--card-subtle-border);
+        }
+
+        .edu-card-standard {
+            border-left: 4px solid var(--accent-blue);
+            background: rgba(2, 132, 199, 0.02);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.85rem;
+            border-top: 1px solid var(--card-subtle-border);
+            border-right: 1px solid var(--card-subtle-border);
+            border-bottom: 1px solid var(--card-subtle-border);
+        }
+
+        /* ========================================================
+           Jin Rui Inspired: Research Interests Visual Grid
+           ======================================================== */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 992px) {
+            .research-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .research-card {
+            background: var(--card-bg-elevated);
+            border: 1px solid var(--card-subtle-border);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .research-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-blue);
+        }
+
+        .research-card-media {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #0b1120;
+            overflow: hidden;
+            border-bottom: 1px solid var(--card-subtle-border);
+        }
+
+        .research-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .research-card:hover .research-card-media img {
+            transform: scale(1.03);
+        }
+
+        .research-card-badge {
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #38bdf8;
+            font-size: 0.68rem;
+            font-family: var(--code-font);
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .research-card-body {
+            padding: 1.25rem 1.35rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .research-card-title {
+            font-size: 1.05rem;
             font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 0.55rem;
+            color: inherit;
         }
-        
-        /* 增强标题文字 */
-        h1, h2, h3, h4, h5, h6 {
+
+        .research-card-desc {
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: #64748b;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        html[data-theme="dark"] .research-card-desc {
+            color: #94a3b8;
+        }
+
+        .research-card-keywords {
+            font-size: 0.76rem;
+            border-top: 1px dashed var(--card-subtle-border);
+            padding-top: 0.65rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .research-card-keywords .kw-label {
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-right: 4px;
+            font-size: 0.74rem;
+        }
+
+        .research-kw-tag {
+            background: rgba(2, 132, 199, 0.08);
+            color: var(--accent-blue);
+            border: 1px solid rgba(2, 132, 199, 0.15);
+            padding: 1px 7px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-family: var(--code-font);
+        }
+
+        html[data-theme="dark"] .research-kw-tag {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.25);
+        }
+
+        /* ========================================================
+           Jin Rui Inspired: Academic Journey Map & Trajectories
+           ======================================================== */
+        .academic-journey-wrapper {
+            background: var(--card-bg-elevated);
+            border: 1px solid var(--card-subtle-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .academic-journey-figure {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--card-subtle-border);
+            background: #f8fbfe;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+            margin-bottom: 1rem;
+        }
+
+        .academic-journey-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .journey-map-legend-grid {
+            display: block;
+        }
+
+        .journey-legend {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        .journey-legend-title {
+            grid-column: 1 / -1;
+            margin: 0 0 0.1rem;
+            color: var(--text-color);
+            font-size: 0.86rem;
+            font-weight: 750;
+        }
+
+        .journey-legend-item {
+            display: grid;
+            grid-template-columns: 28px 40px minmax(0, 1fr);
+            gap: 0.55rem;
+            align-items: center;
+            padding: 0.65rem 0.7rem;
+            border: 1px solid var(--card-subtle-border);
+            border-radius: 10px;
+            background: var(--card-bg-elevated);
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+        }
+
+        .journey-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .journey-logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border: 1px solid var(--card-subtle-border);
+            border-radius: 7px;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .journey-item-title {
+            margin: 0;
+            font-size: 0.79rem;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .journey-item-sub {
+            margin: 1px 0 0;
+            color: var(--light-text);
+            font-family: var(--code-font);
+            font-size: 0.64rem;
+        }
+
+        @media (max-width: 900px) {
+            .journey-map-legend-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-legend {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .journey-legend {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .journey-trajectories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .trajectory-card {
+            background: rgba(2, 132, 199, 0.03);
+            border: 1px solid var(--card-subtle-border);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 1rem 1.15rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trajectory-card.gold {
+            border-left-color: var(--phd-gold);
+            background: rgba(217, 119, 6, 0.03);
+        }
+
+        .trajectory-card.green {
+            border-left-color: #10b981;
+            background: rgba(16, 185, 129, 0.03);
+        }
+
+        .trajectory-card-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trajectory-card-body {
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: #475569;
+        }
+
+        html[data-theme="dark"] .trajectory-card-body {
+            color: #cbd5e1;
+        }
+
+        .leaflet-drawer-card {
+            display: none;
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--card-subtle-border);
+            background: var(--card-bg-elevated);
+        }
+
+        #leafletMapContainer {
+            width: 100%;
+            height: 380px;
+        }
+
+        /* Timeline Box */
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 1px solid var(--card-subtle-border);
+            margin-bottom: 1.25rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Action Buttons */
+        .btn-academic {
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            transition: all 0.15s ease;
+        }
+
+        /* Section Title Styling */
+        .section-header {
+            font-size: 1.05rem;
             font-weight: 700;
             letter-spacing: -0.01em;
-            color: rgba(0, 0, 0, 0.9);
-        }
-        
-        /* 暗黑模式下的文本颜色增强 */
-        html[data-theme="dark"] .small, 
-        html[data-theme="dark"] small, 
-        html[data-theme="dark"] .text-muted {
-            color: rgba(255, 255, 255, 0.85);
-        }
-        
-        html[data-theme="dark"] h1,
-        html[data-theme="dark"] h2,
-        html[data-theme="dark"] h3,
-        html[data-theme="dark"] h4,
-        html[data-theme="dark"] h5,
-        html[data-theme="dark"] h6 {
-            color: rgba(255, 255, 255, 0.95);
-        }
-        
-        /* 语言切换按钮样式 */
-        .lang-toggle {
-            background: none;
-            border: none;
-            color: rgba(0,0,0,.5);
-            cursor: pointer;
-            padding: 0.5rem 0.75rem;
-        }
-        
-        .lang-toggle:hover {
-            color: rgba(0,0,0,.7);
-        }
-        
-        /* 中文内容默认隐藏 */
-        [lang="zh"] {
-            display: none;
-        }
-        
-        /* 当网站语言为中文时显示中文内容 */
-        html[data-lang="zh"] [lang="en"] {
-            display: none;
-        }
-        
-        html[data-lang="zh"] [lang="zh"] {
-            display: block;
-        }
-        
-        /* 对于内联元素的处理 */
-        span[lang="zh"], a[lang="zh"] {
-            display: none;
-        }
-        
-        html[data-lang="zh"] span[lang="en"], html[data-lang="zh"] a[lang="en"] {
-            display: none;
-        }
-        
-        html[data-lang="zh"] span[lang="zh"], html[data-lang="zh"] a[lang="zh"] {
-            display: inline;
-        }
-        
-        /* Publication link hover effect */
-        .publication-title-link {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.2s;
-        }
-        
-        .publication-title-link:hover {
-            color: #007bff;
-            text-decoration: none;
-        }
-        
-        /* Paper image link styles */
-        .paper-image-link {
-            display: block;
-            transition: opacity 0.2s;
-        }
-        
-        .paper-image-link:hover {
-            opacity: 0.9;
-        }
-        
-        .paper-image-link img {
-            cursor: pointer;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--card-subtle-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top shadow-sm navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><strong>Geospatial Insights Lab</strong></a>
-            <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-map"></i> Menu
+            <a class="navbar-brand" href="index.html">
+                <strong>Jiale Guo (郭家乐)</strong>
+                <span class="text-muted font-weight-normal small d-none d-sm-inline">| Politecnico di Milano</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto align-items-center">
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">
                             <span lang="en">Home</span>
                             <span lang="zh">首页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">
+                            <span lang="en">Education</span>
+                            <span lang="zh">教育经历</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#research-interests">
+                            <span lang="en">Research</span>
+                            <span lang="zh">研究方向</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#academic-map">
+                            <span lang="en">Map</span>
+                            <span lang="zh">学术地图</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -194,34 +572,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="projects.html">
                             <span lang="en">Projects</span>
-                            <span lang="zh">项目</span>
+                            <span lang="zh">研究项目</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">
+                            <span lang="en">Experience</span>
+                            <span lang="zh">经历与荣誉</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="news.html">
                             <span lang="en">News</span>
-                            <span lang="zh">新闻</span>
+                            <span lang="zh">动态</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="books.html">
-                            <span lang="en">Books</span>
-                            <span lang="zh">书籍</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="presentations.html">
-                            <span lang="en">Presentations</span>
-                            <span lang="zh">演示文稿</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                    <li class="nav-item ml-1">
+                        <button id="theme-toggle" class="btn btn-sm btn-outline-secondary py-1 px-2" aria-label="Toggle Dark Mode">
                             <i class="fas fa-sun"></i>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                    <li class="nav-item ml-1">
+                        <button id="lang-toggle" class="btn btn-sm btn-outline-secondary py-1 px-2" aria-label="Toggle Language">
                             <span lang="en">中文</span>
                             <span lang="zh">English</span>
                         </button>
@@ -231,932 +603,1243 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 70px;">
-        <div class="row">
-            <div class="col">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-5">
-                        <div class="row">
-                            <div class="col">
-                                <!-- Profile image floated right on larger screens -->
-                                <div class="figure float-right ml-4 mb-4 d-none d-md-block">
-                                    <img 
-                                        src="images/personal/labixiaoxing.jpg" 
-                                        class="figure-img img-fluid img-thumbnail" 
-                                        style="height: 160px; object-fit: cover; border-radius: 5px;"
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="Jiale Guo">
-                                </div>
+    <!-- Main Content Container -->
+    <div class="container" style="margin-top: 80px;">
 
-                                <!-- Profile header with responsive layout -->
-                                <div class="d-flex flex-wrap align-items-center mb-3">
-                                    <div class="h1 font-weight-normal mr-3 mb-2">
-                                        <span lang="en">Jiale <small>Guo</small></span>
-                                        <span lang="zh">郭家乐</span>
-                                    </div>
-                                    
-                                    <div class="mr-auto mb-2">
-                                        <div class="text-profile-position text-muted">
-                                            <span lang="en">
-                                                M.S. in Geoinformatics Engineering<br/>
-                                                Politecnico di Milano, Italy
-                                            </span>
-                                            <span lang="zh">
-                                                地理信息工程硕士<br/>
-                                                意大利米兰理工大学
-                                            </span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="d-md-none">
-                                                                    <a target="_blank" href="images/personal/labixiaoxing.jpg">
-                                <img src="images/personal/labixiaoxing.jpg" class="rounded-circle" style="height: 48px;" alt="Portrait">
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                <div class="text-profile-bio">
-                                    <p>
-                                      <span lang="en">I am an interdisciplinary researcher exploring the theoretical and methodological intersections of Geographic Information Science, Computer Science, and Data Science. My research agenda focuses on advancing computational geographic paradigms that transcend traditional disciplinary boundaries to address complex spatial phenomena.</span>
-                                      <span lang="zh">我是一名跨学科研究者，致力于探索地理信息科学、计算机科学与数据科学的理论与方法交叉。我的研究议程专注于发展超越传统学科界限的计算地理学范式，以解决复杂的空间现象。</span>
-                                    </p>
-                                    <p>
-                                      <span lang="en">Currently, I am pursuing a Master of Science in Geoinformatics Engineering at the 
-                                      <a href="https://www.polimi.it/en" target="_blank">Politecnico di Milano</a>, Italy, 
-                                      with an expected graduation in 2026. Prior to this, I obtained a Bachelor degree in Geography from 
-                                      <a href="https://www.chzu.edu.cn/" target="_blank">Chuzhou University</a>, China, where I conducted research on spatial-temporal pattern mining of PM2.5 pollution using 3D GIS technology.</span>
-                                      <span lang="zh">目前，我正在意大利<a href="https://www.polimi.it/en" target="_blank">米兰理工大学</a>攻读地理信息工程硕士学位，预计2026年毕业。在此之前，我在中国<a href="https://www.chzu.edu.cn/" target="_blank">滁州学院</a>获得了地理学学士学位，期间我使用3D GIS技术进行了PM2.5污染时空模式挖掘研究。</span>
-                                    </p>
-                                    <p>
-                                      <span lang="en">My research focuses on integrating GIScience with data-driven approaches to address geospatial challenges in the era of AI and big data. I examine human-environment interactions through spatial analytics, developing computational methods that bridge theoretical knowledge with practical applications for urban planning and sustainable development. My professional experience includes environmental modeling at the <a href="https://english.cas.cn/" target="_blank">Chinese Academy of Sciences</a>, where I applied the SHUD model to study land use impacts on the Qinghai Lake watershed.</span>
-                                      <span lang="zh">我的研究融合地理信息科学与数据驱动方法，应对人工智能和大数据时代的地理空间挑战。通过空间分析技术，我研究人类与环境的交互关系，开发创新计算方法将理论知识与实际应用相结合，为城市规划和可持续发展提供决策支持。我曾在<a href="https://www.cas.cn/" target="_blank">中国科学院</a>运用SHUD模型研究土地利用对青海湖流域的影响，积累了环境建模的专业经验。</span>
-                                    </p>
-                                    <p>
-                                      <span lang="en"><strong>Research Interests:</strong> Human mobility, Environmental exposure (heatwave, pollution compound exposure), Geo Foundation Model, Geographic representation learning, Geospatial data science, Novel datasets.</span>
-                                      <span lang="zh"><strong>研究兴趣：</strong> 人类移动性、环境暴露（热浪、复合污染暴露）、地理基础模型、地理表征学习、地理空间数据科学、新型数据集。</span>
-                                    </p>
-                                    <p>
-                                      <i class="fa-solid fa-rectangle-ad" style="color: #d60000;"></i> 
-                                      <span style="color: #d60000;" lang="en">I am looking for collaborators</span>
-                                      <span style="color: #d60000;" lang="zh">我正在寻找合作伙伴</span>
-                                      <span lang="en">interested in GeoAI, Spatial Analysis, and their applications in urban science and environmental interactions. My goal is to develop tools and methodologies to empower researchers in exploring geospatial data science. If you are interested in collaborating, please feel free to reach out via email.</span>
-                                      <span lang="zh">对地理人工智能、空间分析及其在城市科学和环境交互中的应用感兴趣的合作者。我的目标是开发工具和方法，帮助研究人员探索地理空间数据科学。如果您有兴趣合作，请随时通过电子邮件联系我。</span>
-                                    </p>
-                                </div>
-                                
-                                <a target="_blank" href="cv/CV_JialeGuo.pdf" lang="en"><i class="fas fa-file-alt"></i> Curriculum Vitae</a>
-                                <a target="_blank" href="cv/个人简历-郭家乐.pdf" lang="zh"><i class="fas fa-file-alt"></i> 个人简历</a> <br/>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col">
-                                <a class="pr-3 no-break" href="mailto:jiale.guo@mail.polimi.it">
-                                    <i class="fas fa-at"></i> <span class="email-text">jiale.guo@mail.polimi.it</span>
-                                </a>
-
-                                <!-- Google Scholar链接暂时隐藏
-                                <a class="pr-3 no-break" target="_blank" href="#">
-                                    <i class="fab fa-google-scholar"></i> Google Scholar
-                                </a>
-                                -->
-                                
-                                <a class="pr-3 no-break" target="_blank" href="https://github.com/GuojialeGeographer">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                                
-                                <!-- LinkedIn链接暂时隐藏
-                                <a class="pr-3 no-break" target="_blank" href="#">
-                                    <i class="fab fa-linkedin"></i> LinkedIn
-                                </a>
-                                -->
-                                
-                                <!-- ORCID链接暂时隐藏
-                                <a class="pr-3 no-break" target="_blank" href="#">
-                                    <i class="fab fa-orcid"></i> ORCID
-                                </a>
-                                -->
-                            </div>
+        <!-- 1. Profile / Hero Card -->
+        <div class="card card-custom border-0 shadow-sm mb-4">
+            <div class="card-body p-4 p-md-5">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center mb-4 mb-md-0">
+                        <img src="images/personal/labixiaoxing.jpg" alt="Jiale Guo" class="avatar-frame shadow-sm mb-2">
+                        <div>
+                            <span class="status-pill-gold">
+                                <i class="fas fa-user-graduate"></i>
+                                <span lang="en">CSC Ph.D. Fellow</span>
+                                <span lang="zh">公派留学博士 (CSC)</span>
+                            </span>
                         </div>
                     </div>
-                </div>        
-            </div>
-        </div>
 
-        <div class="row mt-3">
-            <div class="col">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-4">
-                        <div class="row" data-masonry='{"percentPosition": true }'>
+                    <div class="col-md-9">
+                        <div class="d-flex flex-wrap align-items-baseline mb-2">
+                            <h1 class="h3 font-weight-bold mr-3 mb-1">
+                                <span lang="en">Jiale Guo</span>
+                                <span lang="zh">郭家乐</span>
+                            </h1>
+                            <span class="text-muted small" style="font-family: var(--code-font);">/ˈdʒjɑːleɪ ɡwoʊ/</span>
+                        </div>
 
-                            <!-- Left column: Education + Honors & Awards -->
-                            <div class="col-md-6">
-                                <div class="mx-2 my-1 section-container">
-                                    <h6>
-                                        <span lang="en">Education</span>
-                                        <span lang="zh">教育经历</span>
-                                    </h6>
-                                    <ul class="list-unstyled mb-1">
-                                        <li class="media mb-3">
-                                            <img src="images/institutions/polimi.png" alt="Politecnico di Milano" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en">Politecnico di Milano</span>
-                                                            <span lang="zh">米兰理工大学</span>
-                                                        </strong>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <span lang="en">Milan, Italy</span>
-                                                        <span lang="zh">意大利，米兰</span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">M.S. in Geoinformatics Engineering</span>
-                                                        <span lang="zh">地理信息工程硕士</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>09.2024 - Present</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li class="media mb-3">
-                                            <img src="images/institutions/chuzhou university.png" alt="Chuzhou University" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en">Chuzhou University</span>
-                                                            <span lang="zh">滁州学院</span>
-                                                        </strong>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <span lang="en">Chuzhou, China</span>
-                                                        <span lang="zh">中国，滁州</span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">B.A. in Geography</span>
-                                                        <span lang="zh">地理科学学士</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>09.2017 - 06.2021</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <!-- Current & Incoming Positions -->
+                        <div class="text-muted font-weight-500 mb-2" style="font-size: 0.95rem;">
+                            <span lang="en">
+                                <strong>Incoming Ph.D. Student</strong>, Data Analytics and Decision Sciences (DADS) (2027 - 2031)<br/>
+                                <span class="text-primary font-weight-600">Sponsored by China Scholarship Council (CSC)</span><br/>
+                                <strong>M.S. in Geoinformatics Engineering</strong>, <a href="https://www.polimi.it/en" target="_blank">Politecnico di Milano</a>, Italy (2024 - 2026)
+                            </span>
+                            <span lang="zh">
+                                <strong>公派留学博士生</strong>，数据分析与决策科学 (DADS) 项目 (2027 - 2031)<br/>
+                                <span class="text-primary font-weight-600">国家留学基金委（CSC）全额资助</span><br/>
+                                <strong>地理信息工程硕士</strong>，意大利<a href="https://www.polimi.it/en" target="_blank">米兰理工大学</a> (2024 - 2026)
+                            </span>
+                        </div>
 
-                                <div class="mx-2 my-3 section-container">
-                                    <h6>
-                                        <span lang="en">Honors & Awards</span>
-                                        <span lang="zh">荣誉与奖励</span>
-                                    </h6>
-                                    <ul class="awards-list small mb-1">
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">Outstanding New Employee at Suzhou Industry Park Geographic Information Mapping Co., Ltd. (Top 5%)</span>
-                                                    <span lang="zh">苏州工业园区测绘地理信息有限公司优秀新员工 (前5%)</span>
-                                                </div>
-                                                <div><em>2023</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">"Esri" College Students GIS Software Development Competition, Third Prize</span>
-                                                    <span lang="zh">"Esri"大学生GIS软件开发竞赛三等奖</span>
-                                                </div>
-                                                <div><em>2022</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">Excellent Graduation Thesis of Chuzhou University (Top 3%)</span>
-                                                    <span lang="zh">滁州学院优秀毕业论文 (前3%)</span>
-                                                </div>
-                                                <div><em>2021</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">Excellent Graduates of Universities in Anhui Province (Top 2%)</span>
-                                                    <span lang="zh">安徽省普通高校优秀毕业生 (前2%)</span>
-                                                </div>
-                                                <div><em>2021</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">National Encouragement Scholarship, Anhui Province (Top 3%)</span>
-                                                    <span lang="zh">国家励志奖学金，安徽省 (前3%)</span>
-                                                </div>
-                                                <div><em>2020</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">GIS Skills Competition, Anhui Province, Second Prize (Two consecutive years)</span>
-                                                    <span lang="zh">安徽省GIS技能竞赛二等奖 (连续两年)</span>
-                                                </div>
-                                                <div><em>2019-2020</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">China University Geography Science Exhibition Competition, Third Prize</span>
-                                                    <span lang="zh">中国大学生地理科学展示竞赛三等奖</span>
-                                                </div>
-                                                <div><em>2019</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">Excellent Interns & Internship Works (Top 10%)</span>
-                                                    <span lang="zh">优秀实习生及实习作品 (前10%)</span>
-                                                </div>
-                                                <div><em>2019</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">Academic Excellence Scholarship (Three consecutive years)</span>
-                                                    <span lang="zh">学业优秀奖学金 (连续三年)</span>
-                                                </div>
-                                                <div><em>2017-2020</em></div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <span lang="en">Outstanding Student Cadres (Three consecutive years)</span>
-                                                    <span lang="zh">优秀学生干部 (连续三年)</span>
-                                                </div>
-                                                <div><em>2017-2020</em></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <p class="text-secondary mb-3" style="font-size: 0.92rem;">
+                            <span lang="en">
+                                I am an interdisciplinary researcher bridging <strong>Geographic Information Science (GIScience)</strong>, <strong>Computer Science</strong>, and <strong>Data Science</strong>. My research investigates computational geographic paradigms to understand complex human-environment interactions. Core research areas include <strong>Geospatial Big Data</strong>, <strong>Health Geography</strong>, <strong>Environmental & Heat Exposure</strong>, <strong>Human Mobility Analytics</strong>, <strong>Geospatial Foundation Models (GeoAI)</strong>, and <strong>Watershed Eco-Hydrological Modeling</strong>.
+                            </span>
+                            <span lang="zh">
+                                我是一名跨学科研究者，专注于探索<strong>地理信息科学（GIScience）</strong>、<strong>计算机科学</strong>与<strong>数据科学</strong>的理论与方法交叉。聚焦计算地理学前沿范式，运用空间大数据与智能算法研究复杂人地系统交互。核心方向涵盖<strong>地理时空大数据</strong>、<strong>健康地理</strong>、<strong>环境暴露与热暴露</strong>、<strong>人类移动性</strong>、<strong>地理空间基础大模型（GeoAI）</strong>与<strong>流域水文生态模拟</strong>。
+                            </span>
+                        </p>
 
-                            <!-- Right column: Research Experience & Skills -->
-                            <div class="col-md-6">
-                                <div class="mx-2 my-1 section-container">
-                                    <h6>
-                                        <span lang="en">Research Experience</span>
-                                        <span lang="zh">研究经历</span>
-                                    </h6>
-                                    <ul class="list-unstyled mb-1">
-                                        <li class="media mb-3">
-                                            <img src="images/institutions/CAS.png" alt="Chinese Academy of Sciences" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en">Chinese Academy of Sciences</span>
-                                                            <span lang="zh">中国科学院</span>
-                                                        </strong>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <span lang="en">Lanzhou, China</span>
-                                                        <span lang="zh">中国，兰州</span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">Research Assistant - <a href="https://www.shud.xyz/en/" target="_blank">SHUD Lab</a></span>
-                                                        <span lang="zh">研究助理 - <a href="https://www.shud.xyz/zh/" target="_blank">SHUD实验室</a></span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>10.2021 - 06.2022</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media mb-3">
-                                            <img src="images/institutions/chuzhou university.png" alt="Chuzhou University" style="width: 40px; height: 40px;" class="mr-2 align-self-start mt-1 org-logo">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en">Chuzhou University</span>
-                                                            <span lang="zh">滁州学院</span>
-                                                        </strong>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <span lang="en">Chuzhou, China</span>
-                                                        <span lang="zh">中国，滁州</span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">Research Assistant - Geographic Big Data Lab</span>
-                                                        <span lang="zh">研究助理 - 地理大数据实验室</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>01.2020 - 06.2021</em></div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">Research Assistant - Remote Sensing Lab</span>
-                                                        <span lang="zh">研究助理 - 遥感实验室</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>06.2018 - 12.2019</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="mx-2 my-3 section-container">
-                                    <h6>
-                                        <span lang="en">Work Experience</span>
-                                        <span lang="zh">工作经历</span>
-                                    </h6>
-                                    <ul class="list-unstyled mb-1">
-                                        <li class="media mb-3">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en">Suzhou Industry Park Geographic Information Mapping Co., Ltd.</span>
-                                                            <span lang="zh">苏州工业园区测绘地理信息有限公司</span>
-                                                        </strong>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <span lang="en">Suzhou</span>
-                                                        <span lang="zh">苏州</span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">Geographic Information Data Engineer</span>
-                                                        <span lang="zh">地理数据分析师-项目经理</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>01.2023 - 07.2024</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media mb-3">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en">Municipal Water Affairs Engineering Co., Ltd.</span>
-                                                            <span lang="zh">滁州市水务工程有限公司</span>
-                                                        </strong>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <span lang="en">Chuzhou</span>
-                                                        <span lang="zh">滁州</span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">Graduation Internship</span>
-                                                        <span lang="zh">毕业实习</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>03.2021 - 05.2021</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media mb-3">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en">Anhui Province Key Laboratory of Physical Geographic Environment</span>
-                                                            <span lang="zh">安徽省实景地理环境重点实验室</span>
-                                                        </strong>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <span lang="en">Chuzhou</span>
-                                                        <span lang="zh">滁州</span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">Internship</span>
-                                                        <span lang="zh">实习</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>05.2019 - 12.2019</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="mx-2 my-3 section-container">
-                                    <h6>
-                                        <span lang="en">Professional Memberships</span>
-                                        <span lang="zh">专业组织会员</span>
-                                    </h6>
-                                    <ul class="list-unstyled mb-1">
-                                        <li class="media mb-3">
-                                            <div class="media-body">
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div>
-                                                        <strong>
-                                                            <span lang="en"><a href="https://www.cpgis.org" target="_blank">CPGIS</a> - The International Association of Chinese Professionals in Geographic Information Science</span>
-                                                            <span lang="zh"><a href="https://www.cpgis.org" target="_blank">CPGIS</a> - 国际华人地理信息科学协会</span>
-                                                        </strong>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-between w-100 small">
-                                                    <div>
-                                                        <span lang="en">Student Member</span>
-                                                        <span lang="zh">学生会员</span>
-                                                    </div>
-                                                    <div class="text-right no-break"><em>Dec 2025</em></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <!-- Research Keywords -->
+                        <div class="mb-3">
+                            <span class="research-tag">Geospatial Big Data</span>
+                            <span class="research-tag">Health Geography</span>
+                            <span class="research-tag">Environmental & Heat Exposure</span>
+                            <span class="research-tag">Human Mobility</span>
+                            <span class="research-tag">Geospatial Foundation Models</span>
+                            <span class="research-tag">Eco-Hydrology (SHUD)</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex flex-wrap">
+                            <a href="mailto:jiale.guo@mail.polimi.it" class="btn btn-academic btn-primary">
+                                <i class="fas fa-envelope"></i> <span>Email</span>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=rN2eTr4AAAAJ&hl=zh-CN" target="_blank" class="btn btn-academic btn-outline-secondary">
+                                <i class="ai ai-google-scholar"></i> <span>Google Scholar</span>
+                            </a>
+                            <a href="https://github.com/GuojialeGeographer" target="_blank" class="btn btn-academic btn-outline-secondary">
+                                <i class="fab fa-github"></i> <span>GitHub</span>
+                            </a>
+                            <a href="cv/CV_JialeGuo.pdf" target="_blank" class="btn btn-academic btn-outline-secondary" lang="en">
+                                <i class="fas fa-file-pdf"></i> Curriculum Vitae
+                            </a>
+                            <a href="cv/个人简历-郭家乐.pdf" target="_blank" class="btn btn-academic btn-outline-secondary" lang="zh">
+                                <i class="fas fa-file-pdf"></i> 个人简历 (PDF)
+                            </a>
+                            <a href="https://www.cpgis.org" target="_blank" class="btn btn-academic btn-outline-secondary">
+                                <i class="fas fa-users"></i> <span>CPGIS Member</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Publications Section -->
-        <div class="my-3 bg-white shadow-sm rounded-sm">
-            <h6 class="p-3 mb-0 border-bottom border-gray">
-                <i class="fas fa-book"></i> 
-                <span lang="en">Publications</span>
-                <span lang="zh">发表文章</span>
-            </h6>
-            <div class="px-3 pb-1">
-                <div class="row no-gutters py-2">
-                    <div class="col-md-4 col-xl-3 mb-md-0 pr-md-3">
-                        <a href="papers/paper-detail.html" class="paper-image-link">
-                            <img src="images/papers/multimodal_urban_perception_framework.png" alt="基于多模态大模型的城市空间感知评价方法框架研究" class="w-100 rounded-sm">
+        <!-- 2. Education Section (置顶核心区) -->
+        <div class="card card-custom border-0 shadow-sm mb-4" id="education">
+            <div class="card-body p-4">
+                <h2 class="section-header">
+                    <i class="fas fa-graduation-cap text-primary"></i>
+                    <span lang="en">Education</span>
+                    <span lang="zh">教育经历</span>
+                </h2>
+
+                <!-- Ph.D. Stage (2027-2031) -->
+                <div class="edu-card-highlight">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 pr-3" style="min-width: 0;">
+                            <div class="d-flex align-items-center flex-wrap gap-2 mb-1">
+                                <span class="badge badge-warning text-dark font-weight-bold px-2 py-1 mr-2" style="background-color: var(--phd-gold); color: #fff !important;">
+                                    <span lang="en">Incoming Ph.D.</span>
+                                    <span lang="zh">公派留学博士</span>
+                                </span>
+                                <h3 class="h6 font-weight-bold mb-0 d-inline">
+                                    <span lang="en">Data Analytics and Decision Sciences (DADS)</span>
+                                    <span lang="zh">数据分析与决策科学博士项目 (DADS)</span>
+                                </h3>
+                            </div>
+                            <div class="small text-muted font-weight-600 mb-1">
+                                <span lang="en">Sponsored by China Scholarship Council (CSC / 国家留学基金委)</span>
+                                <span lang="zh">国家留学基金委（CSC）全额奖学金资助</span>
+                            </div>
+                            <div class="small text-secondary">
+                                <span lang="en"><strong>Focus:</strong> Geospatial Big Data, Health Geography, Environmental & Heat Exposure, Human Mobility, Geospatial Foundation Models.</span>
+                                <span lang="zh"><strong>研究重点：</strong> 地理时空大数据、健康地理、环境暴露、热暴露、人类移动性、地理空间基础大模型。</span>
+                            </div>
+                        </div>
+                        <div class="text-right text-nowrap flex-shrink-0 text-muted small" style="font-family: var(--code-font);">
+                            <div><em>2027 - 2031 (Expected)</em></div>
+                            <span class="badge badge-light border mt-1">Milan, Italy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Master's Stage (2024-2026) -->
+                <div class="edu-card-standard">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="media flex-grow-1 pr-3" style="min-width: 0;">
+                            <img src="images/institutions/polimi.png" alt="Politecnico di Milano" style="width: 42px; height: 42px;" class="mr-3 align-self-start mt-1">
+                            <div class="media-body">
+                                <h3 class="h6 font-weight-bold mb-1">
+                                    <span lang="en">Politecnico di Milano</span>
+                                    <span lang="zh">米兰理工大学</span>
+                                </h3>
+                                <div class="small text-muted mb-1">
+                                    <span lang="en">M.S. in Geoinformatics Engineering · Department of Civil and Environmental Engineering</span>
+                                    <span lang="zh">地理信息工程硕士 · 土木与环境工程系</span>
+                                </div>
+                                <div class="small text-secondary">
+                                    <span lang="en"><strong>Focus:</strong> GeoAI, Spatial Analysis, Multimodal Urban Perception, WebGIS.</span>
+                                    <span lang="zh"><strong>方向：</strong> 空间人工智能、空间分析、多模态城市感知、WebGIS。</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right text-nowrap flex-shrink-0 text-muted small" style="font-family: var(--code-font);">
+                            <div><em>09.2024 - 2026</em></div>
+                            <span class="badge badge-light border mt-1">Milan, Italy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bachelor's Stage (2017-2021) -->
+                <div class="edu-card-standard mb-0">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="media flex-grow-1 pr-3" style="min-width: 0;">
+                            <img src="images/institutions/chuzhou university.png" alt="Chuzhou University" style="width: 42px; height: 42px;" class="mr-3 align-self-start mt-1">
+                            <div class="media-body">
+                                <h3 class="h6 font-weight-bold mb-1">
+                                    <span lang="en">Chuzhou University</span>
+                                    <span lang="zh">滁州学院</span>
+                                </h3>
+                                <div class="small text-muted mb-1">
+                                    <span lang="en">B.A. in Geography · School of Geographic Information and Tourism</span>
+                                    <span lang="zh">地理科学学士 · 地理信息与旅游学院</span>
+                                </div>
+                                <div class="small text-secondary">
+                                    <span lang="en"><strong>Thesis:</strong> Spatio-temporal pattern mining of PM2.5 in China based on 3D GIS & drought dynamics in Jianghuai Watershed (Top 3% Excellent Thesis).</span>
+                                    <span lang="zh"><strong>毕业论文：</strong> 基于 3D GIS 的全国 PM2.5 时空模式挖掘及江淮分水岭干旱特征分析 (校级前3%优秀毕业论文)。</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right text-nowrap flex-shrink-0 text-muted small" style="font-family: var(--code-font);">
+                            <div><em>09.2017 - 06.2021</em></div>
+                            <span class="badge badge-light border mt-1">Chuzhou, China</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 3. Research Interests (High-Precision Academic Framework Diagrams) -->
+        <div class="mb-4" id="research-interests">
+            <h2 class="section-header">
+                <i class="fas fa-compass text-primary"></i>
+                <span lang="en">Research Interests</span>
+                <span lang="zh">主要研究方向</span>
+            </h2>
+            <p class="small text-muted mb-3">
+                <span lang="en">Methodological frameworks at the nexus of GeoAI, spatiotemporal big data, urban microclimate, and spatial decision sciences.</span>
+                <span lang="zh">聚焦空间人工智能（GeoAI）、时空大数据、街道微气候与空间决策科学的交叉研究范式。</span>
+            </p>
+
+            <div class="research-pillars-list">
+                <!-- Pillar 1: Geospatial Big Data & Foundation Models -->
+                <div class="card card-custom border-0 shadow-sm mb-4">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="mb-3">
+                            <img src="images/research/pillar1_geoai_foundation_models.svg" alt="Pillar 1: Spatiotemporal Big Data & Geospatial Foundation Models" class="img-fluid w-100 rounded border" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-baseline flex-wrap mb-2">
+                            <h3 class="h6 font-weight-bold mb-1 text-primary">
+                                <span lang="en">1. Spatiotemporal Big Data &amp; Geospatial Foundation Models (GeoAI)</span>
+                                <span lang="zh">1. 地理时空大数据与空间基础模型 (GeoAI)</span>
+                            </h3>
+                            <span class="badge badge-primary px-2 py-1 small">Multimodal LLMs · Spatiotemporal GNNs · Mobility</span>
+                        </div>
+                        <p class="small text-muted mb-2" style="line-height: 1.6;">
+                            <span lang="en">Developing geospatial artificial intelligence (GeoAI) frameworks integrating multi-source urban sensing (billion-scale mobile phone trajectories, panoramic street view imagery, remote sensing grids). Leveraging Vision-Language Models (e.g., Qwen2-VL, ViT), Spatiotemporal Graph Neural Networks (ST-GNN), and domain-specific pre-trained foundation models to decode complex human mobility dynamics, urban spatial semantics, and collective cognitive perceptions.</span>
+                            <span lang="zh">构建面向多源城市感知数据（亿级手机信令轨迹、全景街景图像、高分辨率遥感网格）的地理空间人工智能（GeoAI）计算框架。结合多模态大语言模型（如 Qwen2-VL、ViT）、时空图神经网络（ST-GNN）与地理空间预训练基础模型，实现对城市人群移动动态、微观空间语义和宏观空间认知体验的高精度测度与表征学习。</span>
+                        </p>
+                        <div class="research-card-keywords small">
+                            <span class="font-weight-bold text-secondary mr-1">Keywords:</span>
+                            <span class="badge badge-light border text-muted mr-1">GeoAI</span>
+                            <span class="badge badge-light border text-muted mr-1">Multimodal LLMs (Qwen2-VL)</span>
+                            <span class="badge badge-light border text-muted mr-1">ST-GNN</span>
+                            <span class="badge badge-light border text-muted mr-1">Spatial Representation</span>
+                            <span class="badge badge-light border text-muted mr-1">Urban Perception Atlas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Environmental Health & Microclimate Exposure -->
+                <div class="card card-custom border-0 shadow-sm mb-4">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="mb-3">
+                            <img src="images/research/pillar2_environmental_health_exposure.svg" alt="Pillar 2: Environmental Health & Microclimate Heat Exposure" class="img-fluid w-100 rounded border" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-baseline flex-wrap mb-2">
+                            <h3 class="h6 font-weight-bold mb-1 text-primary">
+                                <span lang="en">2. Environmental Health &amp; Microclimate Exposure</span>
+                                <span lang="zh">2. 环境健康、微气候与极端热暴露</span>
+                            </h3>
+                            <span class="badge badge-warning text-dark px-2 py-1 small">Street Canyons · Thermal Stress · Health Equity</span>
+                        </div>
+                        <p class="small text-muted mb-2" style="line-height: 1.6;">
+                            <span lang="en">Quantifying hyperlocal urban street canyon microclimate and compound environmental health risks. Combining hemispherical fisheye projections, DeepLabV3+ semantic segmentation (sky view factor, tree canopy, building facades), and ray-tracing solar radiation flux modeling. Investigating mobility-weighted dynamic thermal exposure, Universal Thermal Climate Index (UTCI), spatial accessibility overlays, and environmental justice disparities among vulnerable populations.</span>
+                            <span lang="zh">量化微观尺度街道峡谷微气候与复合环境健康风险。融合半球鱼眼投影转换、深度学习语义分割（天空开阔度 SVF、树冠遮蔽度、建筑界面）及光线追踪太阳辐射通量模拟。深入研究人类移动性加权下的动态热暴露、通用热气候指数（UTCI）、空间句法可达性叠加机制，揭示极端气候情景下弱势群体的环境正义与健康不平等。</span>
+                        </p>
+                        <div class="research-card-keywords small">
+                            <span class="font-weight-bold text-secondary mr-1">Keywords:</span>
+                            <span class="badge badge-light border text-muted mr-1">Street Canyon SVF</span>
+                            <span class="badge badge-light border text-muted mr-1">Solar Radiation Flux</span>
+                            <span class="badge badge-light border text-muted mr-1">UTCI Heat Stress</span>
+                            <span class="badge badge-light border text-muted mr-1">Dynamic Mobility Exposure</span>
+                            <span class="badge badge-light border text-muted mr-1">Environmental Justice</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Sustainable Urban Systems & Spatial Optimization -->
+                <div class="card card-custom border-0 shadow-sm mb-4">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="mb-3">
+                            <img src="images/research/pillar3_sustainable_urban_systems.svg" alt="Pillar 3: Sustainable Urban Systems & Spatial Optimization" class="img-fluid w-100 rounded border" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-baseline flex-wrap mb-2">
+                            <h3 class="h6 font-weight-bold mb-1 text-primary">
+                                <span lang="en">3. Sustainable Urban Systems &amp; Spatial Optimization</span>
+                                <span lang="zh">3. 可持续城市系统、空间优化与人居健康</span>
+                            </h3>
+                            <span class="badge badge-success px-2 py-1 small">Spatial Syntax · Agent-Based Models · 15-Min City</span>
+                        </div>
+                        <p class="small text-muted mb-2" style="line-height: 1.6;">
+                            <span lang="en">Advancing computational urban planning and decarbonization strategies through spatial syntax (angular segment Choice &amp; Integration), multi-agent human behavioral simulation (ABM), and multi-objective spatial optimization. Evaluating 15-minute city accessibility isochrones, public health resource allocation, transit-oriented development (TOD), and carbon emission mitigation in support of climate-resilient cities.</span>
+                            <span lang="zh">通过空间句法（角线段 Choice 与 Integration 指标）、多智能体人群行为仿真（ABM）及多目标空间优化算法，推动计算城市规划与双碳减排实践。深入评估15分钟城市生活圈等时线、公共医疗服务均等化配置、公共交通导向开发（TOD）及交通碳排放减缓，为气候韧性城市规划提供科学决策支持。</span>
+                        </p>
+                        <div class="research-card-keywords small">
+                            <span class="font-weight-bold text-secondary mr-1">Keywords:</span>
+                            <span class="badge badge-light border text-muted mr-1">Spatial Syntax (NACH/NAIN)</span>
+                            <span class="badge badge-light border text-muted mr-1">Agent-Based Modeling (ABM)</span>
+                            <span class="badge badge-light border text-muted mr-1">15-Minute City</span>
+                            <span class="badge badge-light border text-muted mr-1">Multi-Objective Optimization</span>
+                            <span class="badge badge-light border text-muted mr-1">Decarbonized Cities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Academic Journey (Exact Jin Rui Cartographic & Narrative Layout) -->
+        <div class="academic-journey-wrapper mb-4" id="academic-map">
+            <a id="academic-journey" style="position: relative; top: -80px; display: block; visibility: hidden;"></a>
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                <div>
+                    <h2 class="h5 font-weight-bold mb-1">
+                        <i class="fas fa-route mr-2 text-primary"></i>
+                        <span lang="en">Academic Journey</span>
+                        <span lang="zh">学术历程</span>
+                    </h2>
+                    <p class="small text-muted mb-0">
+                        <span lang="en">An international academic path across China, Hong Kong and Italy.</span>
+                        <span lang="zh">跨越中国大陆、中国香港与意大利的学术深造轨迹。</span>
+                    </p>
+                </div>
+                <div class="mt-2 mt-md-0">
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="toggleWebGISBtn">
+                        <i class="fas fa-layer-group mr-1"></i>
+                        <span lang="en">Toggle Interactive WebGIS</span>
+                        <span lang="zh">展开交互式 WebGIS 底图</span>
+                        <i class="fas fa-chevron-down ml-1" id="webgisChevron"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Calibrated WGS84 Academic Journey Map + Numbered Legend -->
+            <div class="journey-map-legend-grid mb-3">
+                <div class="academic-journey-figure">
+                    <img src="images/academic_journey_eurasia.svg" alt="Academic journey map across Asia and Europe" class="img-fluid w-100" loading="lazy">
+                </div>
+                <aside class="journey-legend" aria-label="Academic journey legend">
+                    <h3 class="journey-legend-title">
+                        <span lang="en">Milestones</span>
+                        <span lang="zh">历程节点</span>
+                    </h3>
+                    <div class="journey-legend-item">
+                        <span class="journey-number" style="background:#e5646c;">1</span>
+                        <img class="journey-logo" src="images/institutions/chuzhou university.png" alt="Chuzhou University logo">
+                        <div>
+                            <p class="journey-item-title"><span lang="en">Chuzhou University</span><span lang="zh">滁州学院</span></p>
+                            <p class="journey-item-sub">32.30°N, 118.32°E · 2017–2021</p>
+                        </div>
+                    </div>
+                    <div class="journey-legend-item">
+                        <span class="journey-number" style="background:#57b6f2;">2</span>
+                        <img class="journey-logo" src="images/institutions/CAS.png" alt="Chinese Academy of Sciences logo">
+                        <div>
+                            <p class="journey-item-title"><span lang="en">CAS · NWIEER</span><span lang="zh">中科院西北研究院</span></p>
+                            <p class="journey-item-sub">36.06°N, 103.83°E · 2021–2022</p>
+                        </div>
+                    </div>
+                    <div class="journey-legend-item">
+                        <span class="journey-number" style="background:#f0a75d;">3</span>
+                        <img class="journey-logo" src="images/institutions/sipsg_logo.png" alt="SIPSG / SIP Surveying official logo">
+                        <div>
+                            <p class="journey-item-title"><span lang="en">SIPSG · SIP Surveying &amp; Mapping</span><span lang="zh">园测信息 · 园区测绘</span></p>
+                            <p class="journey-item-sub">31.30°N, 120.67°E · 2023–2024</p>
+                        </div>
+                    </div>
+                    <div class="journey-legend-item">
+                        <span class="journey-number" style="background:#66c793;">4</span>
+                        <img class="journey-logo" src="images/institutions/cuhk.png" alt="The Chinese University of Hong Kong logo">
+                        <div>
+                            <p class="journey-item-title"><span lang="en">CUHK</span><span lang="zh">香港中文大学</span></p>
+                            <p class="journey-item-sub">22.42°N, 114.21°E · Collaboration</p>
+                        </div>
+                    </div>
+                    <div class="journey-legend-item">
+                        <span class="journey-number" style="background:#d8b25f;">5</span>
+                        <img class="journey-logo" src="images/institutions/polimi.png" alt="Politecnico di Milano logo">
+                        <div>
+                            <p class="journey-item-title"><span lang="en">Politecnico di Milano · M.S.</span><span lang="zh">米兰理工大学 · 硕士</span></p>
+                            <p class="journey-item-sub">45.48°N, 9.23°E · 2024–2026</p>
+                        </div>
+                    </div>
+                    <div class="journey-legend-item">
+                        <span class="journey-number" style="background:#d8b25f;">6</span>
+                        <img class="journey-logo" src="images/institutions/polimi.png" alt="Politecnico di Milano logo">
+                        <div>
+                            <p class="journey-item-title"><span lang="en">Polimi · DADS Ph.D.</span><span lang="zh">米兰理工 · DADS博士</span></p>
+                            <p class="journey-item-sub">45.48°N, 9.23°E · 2027–2031</p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Clean 2-Line Trajectory Narrative (Exact Jin Rui Design) -->
+            <div class="card card-custom border-0 shadow-sm p-3 mb-3">
+                <div lang="en">
+                    <p class="mb-2 small" style="line-height: 1.6;">
+                        <strong>Geographical trajectory:</strong> Chuzhou, China → Lanzhou, China → Suzhou, China → Hong Kong, China → Milan, Italy.
+                    </p>
+                    <p class="mb-0 small" style="line-height: 1.6;">
+                        <strong>Institutional trajectory:</strong> 
+                        <a href="https://www.chzu.edu.cn/" target="_blank" class="text-primary font-weight-500">Chuzhou University</a> → 
+                        <a href="http://www.nieer.cas.cn/" target="_blank" class="text-primary font-weight-500">Chinese Academy of Sciences (UCAS)</a> → 
+                        <a href="https://www.dpark.com.cn/" target="_blank" class="text-primary font-weight-500">Suzhou Industrial Park Surveying &amp; Mapping</a> → 
+                        <a href="https://www.cuhk.edu.hk/" target="_blank" class="text-primary font-weight-500">The Chinese University of Hong Kong (CUHK)</a> → 
+                        <a href="https://www.polimi.it/" target="_blank" class="text-primary font-weight-500">Politecnico di Milano (Master's)</a> → 
+                        <a href="https://www.polimi.it/" target="_blank" class="text-primary font-weight-500">Politecnico di Milano (DADS Ph.D.)</a>.
+                    </p>
+                    <p class="mb-0 small" style="line-height: 1.6;">
+                        <strong>Subject trajectory:</strong>
+                        Geography &amp; GIS — Eco-Hydrological Modeling (SHUD) — Geospatial Data Engineering — GeoAI &amp; Multimodal Urban Perception — Environmental Health &amp; Heat Exposure — Spatial Decision Sciences.
+                    </p>
+                </div>
+                <div lang="zh">
+                    <p class="mb-2 small" style="line-height: 1.6;">
+                        <strong>地理空间轨迹：</strong> 中国滁州 → 中国兰州 → 中国苏州 → 中国香港 → 意大利米兰。
+                    </p>
+                    <p class="mb-2 small" style="line-height: 1.6;">
+                        <strong>学术机构轨迹：</strong> 
+                        <a href="https://www.chzu.edu.cn/" target="_blank" class="text-primary font-weight-500">滁州学院</a> → 
+                        <a href="http://www.nieer.cas.cn/" target="_blank" class="text-primary font-weight-500">中国科学院西北生态环境资源研究院 (UCAS)</a> → 
+                        <a href="https://www.dpark.com.cn/" target="_blank" class="text-primary font-weight-500">苏州工业园区测绘地理信息有限公司</a> → 
+                        <a href="https://www.cuhk.edu.hk/" target="_blank" class="text-primary font-weight-500">香港中文大学 (CUHK)</a> → 
+                        <a href="https://www.polimi.it/" target="_blank" class="text-primary font-weight-500">米兰理工大学 (硕士)</a> → 
+                        <a href="https://www.polimi.it/" target="_blank" class="text-primary font-weight-500">米兰理工大学 (CSC公派DADS博士)</a>。
+                    </p>
+                    <p class="mb-0 small" style="line-height: 1.6;">
+                        <strong>学术主题轨迹：</strong>
+                        地理学与GIS — 生态水文模拟（SHUD） — 地理空间数据工程 — GeoAI与多模态城市感知 — 环境健康与热暴露 — 空间决策科学。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Expandable 2D Interactive WebGIS Container -->
+            <div class="leaflet-drawer-card mt-3" id="leafletDrawer">
+                <div class="d-flex justify-content-between align-items-center px-3 py-2 bg-light border-bottom">
+                    <div class="small font-weight-bold text-secondary">
+                        <i class="fas fa-globe mr-1 text-primary"></i>
+                        <span lang="en">Interactive WebGIS (Leaflet · Esri)</span>
+                        <span lang="zh">交互式时空底图 (Leaflet · Esri)</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-sm btn-outline-secondary py-0 px-2 active mr-1" id="filterAllBtn" style="font-size: 0.72rem;">All</button>
+                        <button class="btn btn-sm btn-outline-primary py-0 px-2 mr-1" id="filterEduBtn" style="font-size: 0.72rem;">Education</button>
+                        <button class="btn btn-sm btn-outline-success py-0 px-2" id="filterFieldBtn" style="font-size: 0.72rem;">Fieldwork</button>
+                    </div>
+                </div>
+                <div id="leafletMapContainer" style="height: 380px; width: 100%;"></div>
+            </div>
+        </div>
+
+        <!-- 4.5 Honors & Awards (Elevated directly beneath Academic Journey) -->
+        <div class="card card-custom border-0 shadow-sm mb-4" id="honors">
+            <div class="card-body p-4">
+                <h2 class="h5 font-weight-bold mb-3 border-bottom pb-2">
+                    <i class="fas fa-award text-primary mr-2"></i>
+                    <span lang="en">Honors &amp; Awards</span>
+                    <span lang="zh">荣誉与奖励</span>
+                </h2>
+                <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <ul class="list-unstyled small mb-0 text-muted">
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-medal text-warning mr-1"></i>
+                                    <span lang="en"><strong>CSC Ph.D. Fellowship</strong> (State Scholarship Fund)</span>
+                                    <span lang="zh"><strong>国家留学基金委（CSC）公派全额博士奖学金</strong></span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2026</span>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-star text-warning mr-1"></i>
+                                    <span lang="en">Outstanding New Employee, SIP Surveying &amp; Mapping (Top 5%)</span>
+                                    <span lang="zh">苏州工业园区测绘地理信息有限公司优秀新员工 (前5%)</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2023</span>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-trophy text-primary mr-1"></i>
+                                    <span lang="en">"Esri Cup" College GIS Software Development Competition, 3rd Prize</span>
+                                    <span lang="zh">"Esri杯" 中国大学生GIS软件开发竞赛全国三等奖</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2022</span>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-certificate text-success mr-1"></i>
+                                    <span lang="en">Excellent Graduation Thesis of Chuzhou University (Top 3%)</span>
+                                    <span lang="zh">滁州学院校级优秀毕业论文 (前3%)</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2021</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled small mb-0 text-muted">
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-award text-warning mr-1"></i>
+                                    <span lang="en">Excellent Graduate of Higher Education, Anhui Province (Top 2%)</span>
+                                    <span lang="zh">安徽省普通高校优秀毕业生 (前2%)</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2021</span>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-medal text-danger mr-1"></i>
+                                    <span lang="en">National Encouragement Scholarship, Ministry of Education (Top 3%)</span>
+                                    <span lang="zh">中华人民共和国教育部国家励志奖学金 (前3%)</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2020</span>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-trophy text-info mr-1"></i>
+                                    <span lang="en">Anhui Province GIS Skills Competition, 2nd Prize (Two consecutive years)</span>
+                                    <span lang="zh">安徽省大学生GIS技能竞赛二等奖 (连续两年)</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2019–2020</span>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-trophy text-secondary mr-1"></i>
+                                    <span lang="en">China University Geography Science Exhibition Competition, 3rd Prize</span>
+                                    <span lang="zh">中国大学生地理科学展示竞赛全国三等奖</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2019</span>
+                            </li>
+                            <li class="mb-0 d-flex justify-content-between align-items-start">
+                                <span>
+                                    <i class="fas fa-award text-primary mr-1"></i>
+                                    <span lang="en">Academic Excellence Scholarship (Three consecutive years)</span>
+                                    <span lang="zh">学业优秀一等奖学金 (连续三年)</span>
+                                </span>
+                                <span class="badge badge-light border ml-2">2017–2020</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Selected Publications -->
+        <div class="card card-custom border-0 shadow-sm mb-4" id="publications">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                    <h2 class="h5 font-weight-bold mb-0">
+                        <i class="fas fa-book mr-2 text-primary"></i>
+                        <span lang="en">Selected Publications</span>
+                        <span lang="zh">学术论文</span>
+                    </h2>
+                    <a href="publications.html" class="small font-weight-bold text-primary">
+                        <span lang="en">View All Papers <i class="fas fa-angle-right"></i></span>
+                        <span lang="zh">查看全部发表 <i class="fas fa-angle-right"></i></span>
+                    </a>
+                </div>
+
+                <!-- Featured Publication 2026: SAGE Solar Radiation Exposure -->
+                <div class="row no-gutters py-2 align-items-center mb-3 border-bottom pb-3">
+                    <div class="col-md-3 pr-md-3 mb-3 mb-md-0">
+                        <a href="https://journals.sagepub.com/doi/abs/10.1177/27541231261453699" target="_blank">
+                            <img src="images/papers/fig_solar_canyon_panoramas.png" alt="Solar Radiation Street Canyon Panoramas" class="w-100 rounded border shadow-sm" style="max-height: 190px; object-fit: cover;">
                         </a>
                     </div>
-                    <div class="col-md-8 col-xl-9">
-                        <div class="my-1">
-                            <a href="papers/paper-detail.html" class="publication-title-link">
+                    <div class="col-md-9">
+                        <div class="mb-1">
+                            <span class="badge badge-success font-weight-bold px-2 py-1 mr-1">Published (2026)</span>
+                            <span class="badge badge-info font-weight-bold px-2 py-1">SAGE Publications</span>
+                        </div>
+                        <h3 class="h6 font-weight-bold mb-1">
+                            <a href="https://journals.sagepub.com/doi/abs/10.1177/27541231261453699" target="_blank" class="text-dark text-decoration-none">
+                                <span lang="en">Mapping the exposure to solar radiation on urban street canyon using street view images, deep learning, and spatial syntax</span>
+                                <span lang="zh">结合街景影像、深度学习与空间句法的城市街道峡谷太阳辐射暴露评估</span>
+                            </a>
+                        </h3>
+
+                        <div class="small text-muted mb-1">
+                            <span lang="en">
+                                Tianlin Zhang, Heng Xu, <strong>Jiale Guo</strong>, <a href="https://wanglei.studio/" target="_blank" class="text-muted">Lei Wang</a>, Yike Hu<sup>#</sup> (# Corresponding author)
+                            </span>
+                            <span lang="zh">
+                                张天霖，徐亨，<strong>郭家乐</strong>，<a href="https://wanglei.studio/" target="_blank" class="text-muted">王磊</a>，胡一可<sup>#</sup>（# 通讯作者）
+                            </span>
+                        </div>
+
+                        <div class="small text-muted mb-2">
+                            <span lang="en">
+                                <i>Transactions in Urban Data, Science, and Technology</i>, SAGE Publications, 2026. DOI: 10.1177/27541231261453699
+                            </span>
+                            <span lang="zh">
+                                《Transactions in Urban Data, Science, and Technology》，SAGE 出版社，2026。DOI: 10.1177/27541231261453699
+                            </span>
+                        </div>
+
+                        <div>
+                            <a href="https://journals.sagepub.com/doi/abs/10.1177/27541231261453699" target="_blank" class="btn btn-sm btn-academic btn-outline-primary py-1 px-2">
+                                <i class="fas fa-external-link-alt"></i> Publisher / DOI
+                            </a>
+                            <a href="https://scholar.google.com/scholar?oi=bibs&cluster=6409135880199090543&btnI=1&hl=zh-CN" target="_blank" class="btn btn-sm btn-academic btn-outline-secondary py-1 px-2">
+                                <i class="ai ai-google-scholar"></i> Google Scholar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Publication 2026: Multimodal Urban Perception -->
+                <div class="row no-gutters py-2 align-items-center mb-3">
+                    <div class="col-md-3 pr-md-3 mb-3 mb-md-0">
+                        <a href="papers/paper-detail.html">
+                            <img src="images/papers/fig_multimodal_framework.png" alt="Multimodal Spatial Perception Framework" class="w-100 rounded border shadow-sm" style="max-height: 190px; object-fit: cover;">
+                        </a>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="mb-1">
+                            <span class="badge badge-warning text-dark font-weight-bold px-2 py-1 mr-1">Online First (知网首发)</span>
+                            <span class="badge badge-info font-weight-bold px-2 py-1">PKU Core (北大中文核心)</span>
+                        </div>
+                        <h3 class="h6 font-weight-bold mb-1">
+                            <a href="papers/paper-detail.html" class="text-dark text-decoration-none">
                                 <span lang="en">A Framework for Evaluating Urban Spatial Perception Based on Large Multimodal Models: From Prompt Engineering to Empirical Analysis</span>
                                 <span lang="zh">基于多模态大模型的城市空间感知评估框架构建与实证研究</span>
                             </a>
-                        </div>
-                        <div class="my-1 small text-muted">
+                        </h3>
+
+                        <div class="small text-muted mb-1">
                             <span lang="en">
                                 <a href="https://wanglei.studio/" target="_blank" class="text-muted">Lei Wang</a><sup>1</sup>, 
                                 <strong>Jiale Guo</strong><sup>2</sup>, 
                                 Zhaocheng Bai<sup>3</sup>, 
-                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=en" target="_blank" class="text-muted">Jie He</a><sup>4</sup><span style="background-color: #fffacd;">#</span> <span style="background-color: #fffacd;">(# corresponding author)</span>
+                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=en" target="_blank" class="text-muted">Jie He</a><sup>4#</sup> (# Corresponding author)
                             </span>
                             <span lang="zh">
                                 <a href="https://wanglei.studio/" target="_blank" class="text-muted">王磊</a><sup>1</sup>， 
                                 <strong>郭家乐</strong><sup>2</sup>， 
                                 白钊成<sup>3</sup>， 
-                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=zh" target="_blank" class="text-muted">何捷</a><sup>4</sup><span style="background-color: #fffacd;">#</span> <span style="background-color: #fffacd;">(# 通讯作者)</span>
+                                <a href="https://homepage.hit.edu.cn/hejie2021?lang=zh" target="_blank" class="text-muted">何捷</a><sup>4#</sup>（# 通讯作者）
                             </span>
                         </div>
-                        <div class="my-1 small text-muted">
+
+                        <div class="small text-muted mb-2">
                             <span lang="en">
-                                <sup>1</sup> School of Earth and Space Sciences, Peking University; 
-                                <sup>2</sup> Dept. of Civil and Environmental Engineering, Politecnico di Milano; 
-                                <sup>3</sup> College of Architecture and Urban Planning, Tongji University; 
-                                <sup>4</sup> School of Architecture, HIT (Shenzhen)
+                                <sup>1</sup> Peking University; <sup>2</sup> Politecnico di Milano; <sup>3</sup> Tongji University; <sup>4</sup> Harbin Institute of Technology (Shenzhen)<br/>
+                                <i>Landscape Architecture</i> (《风景园林》), Published online (CNKI), 2026.
                             </span>
                             <span lang="zh">
-                                <sup>1</sup> 北京大学地球与空间科学学院；<sup>2</sup> 米兰理工大学土木与环境工程系；<sup>3</sup> 同济大学建筑与城市规划学院；<sup>4</sup> 哈尔滨工业大学（深圳）建筑学院
+                                <sup>1</sup> 北京大学；<sup>2</sup> 米兰理工大学；<sup>3</sup> 同济大学；<sup>4</sup> 哈尔滨工业大学（深圳）<br/>
+                                《风景园林》，知网网络首发，2026。
                             </span>
                         </div>
-                        <div class="my-1 small text-muted">
-                            <span lang="en">
-                                <i>Published online (CNKI), </i>
-                                <a href="http://www.lalavision.com" target="_blank" class="text-primary">
-                                    <i>Landscape Architecture</i>
-                                </a>
-                                <span class="text-muted"> (Chinese Core Journal, PKU)</span>
-                            </span>
-                            <span lang="zh">
-                                <i>知网网络首发，</i>
-                                <a href="http://www.lalavision.com" target="_blank" class="text-primary">
-                                    <i>风景园林《Landscape Architecture》</i>
-                                </a>
-                                <span class="text-muted">（北大中文核心期刊）</span>
-                            </span>
-                        </div>
-                        <div class="my-2">
-                            <a href="papers/multimodal-urban-spatial-perception-landscape-architecture-cnki.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary mr-2 mb-1">
-                                <i class="fas fa-file-pdf"></i>
-                                <span lang="en"> PDF</span>
-                                <span lang="zh"> PDF 全文</span>
+
+                        <div>
+                            <a href="papers/multimodal-urban-spatial-perception-landscape-architecture-cnki.pdf" target="_blank" class="btn btn-sm btn-academic btn-outline-primary py-1 px-2">
+                                <i class="fas fa-file-pdf"></i> PDF
                             </a>
-                            <a href="https://kns.cnki.net/kcms2/article/abstract?v=mDcNmAOuO1MnhCeuc2GI_umuR9IaIB2HIA_UKngcRkrBW1C0UHtvc-rfU8_OU2vezg5pmpcR2EQLBKwHwkLAYmQqX_Z-2h72EqrFo5HAg84KfwHoMNg98XN-m3N9e4BYu8zXp37Capn7dAbS_xX9ICA6cB5QPJeUSkS1Vua7pfs=&uniplatform=NZKPT" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary mb-1">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span lang="en"> CNKI</span>
-                                <span lang="zh"> 中国知网</span>
+                            <a href="https://kns.cnki.net/kcms2/article/abstract?v=mDcNmAOuO1MnhCeuc2GI_umuR9IaIB2HIA_UKngcRkrBW1C0UHtvc-rfU8_OU2vezg5pmpcR2EQLBKwHwkLAYmQqX_Z-2h72EqrFo5HAg84KfwHoMNg98XN-m3N9e4BYu8zXp37Capn7dAbS_xX9ICA6cB5QPJeUSkS1Vua7pfs=&uniplatform=NZKPT" target="_blank" class="btn btn-sm btn-academic btn-outline-secondary py-1 px-2">
+                                <i class="fas fa-external-link-alt"></i> CNKI
+                            </a>
+                            <a href="papers/paper-detail.html" class="btn btn-sm btn-academic btn-outline-secondary py-1 px-2">
+                                <i class="fas fa-info-circle"></i> Details
                             </a>
                         </div>
                     </div>
                 </div>
+
+
             </div>
-            <h6 class="d-block p-3 mt-0 text-right">
-                <a href="publications.html">
-                    <span lang="en">More publications <i class="fas fa-angle-double-right"></i></span>
-                    <span lang="zh">更多发表文章 <i class="fas fa-angle-double-right"></i></span>
-                </a>
-            </h6>
         </div>
 
-        <!-- News Section -->
-        <div class="my-3 bg-white shadow-sm rounded-sm">
-            <h6 class="p-3 mb-0 border-bottom border-gray">
-                <i class="fas fa-rss"></i> 
-                <span lang="en">News</span>
-                <span lang="zh">新闻</span>
-            </h6>
-            <div class="px-3 pb-1">
-                <!-- 2026年1月 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2026</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Delivered a seminar on "AI-Driven Research Programming: From Vibe Coding to Specification-Driven Practice" for the <a href="presentations.html">ABMind GSoC 2026 Mesa Training Program</a>.</span>
-                                <span lang="zh">为<a href="presentations.html">ABMind GSoC 2026 Mesa培训项目</a>主讲"AI驱动科研编程：从Vibe Coding到规范驱动的实战指南"研讨会。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>Jan 2026</i></span>
-                                <span lang="zh"><i>2026年1月</i></span>
-                            </div>
-                        </div>
+        <!-- 6. Research Projects & Tools -->
+        <div class="mb-4" id="projects">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h2 class="h5 font-weight-bold mb-0">
+                    <i class="fas fa-code mr-2 text-primary"></i>
+                    <span lang="en">Research Projects & Tools</span>
+                    <span lang="zh">研究项目与工具</span>
+                </h2>
+                <a href="projects.html" class="small font-weight-bold text-primary">
+                    <span lang="en">All Projects <i class="fas fa-angle-right"></i></span>
+                    <span lang="zh">所有项目 <i class="fas fa-angle-right"></i></span>
+                </a>
+            </div>
+
+            <div class="row">
+                <!-- Greece WebGIS -->
+                <div class="col-md-6 mb-3">
+                    <div class="card card-custom border-0 shadow-sm p-3 h-100">
+                        <img src="projects/Air_Pollution_Exporsure/Images/pm10/Greece_LC_reclassified_2022.png" class="img-fluid rounded mb-2" style="height: 160px; width: 100%; object-fit: cover;">
+                        <h3 class="h6 font-weight-bold mb-1">
+                            <span lang="en">Air Pollution & Population Exposure in Greece</span>
+                            <span lang="zh">希腊空气污染与人口暴露分析 (WebGIS)</span>
+                        </h3>
+                        <p class="small text-muted mb-2">
+                            <span lang="en">Interactive WebGIS application built with OpenLayers analyzing NO2, PM2.5, and PM10 distributions across Greece.</span>
+                            <span lang="zh">基于 OpenLayers 构建的 WebGIS 平台，综合分析希腊全境多源大气污染物时空分布及人口暴露情况。</span>
+                        </p>
+                        <a href="https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html" target="_blank" class="btn btn-sm btn-academic btn-outline-primary py-1 px-2">
+                            <i class="fas fa-external-link-alt"></i> <span lang="en">Live Demo</span><span lang="zh">在线演示</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- 2025年 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2025</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en"><a href="conferences/GISphere/">Congratulations to GISphere, a non-profit community, for successfully publishing three high-quality SCI papers on GIS education and research.</a></span>
-                                <span lang="zh"><a href="conferences/GISphere/">恭喜GISphere公益社群运营至今，顺利发表三篇高水平SCI论文，涉及GIS教育和研究领域。</a></span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>2025</i></span>
-                                <span lang="zh"><i>2025年</i></span>
-                            </div>
-                        </div>
+                <!-- 30DayMapChallenge -->
+                <div class="col-md-6 mb-3">
+                    <div class="card card-custom border-0 shadow-sm p-3 h-100">
+                        <img src="Projects/30DayMapChallenge/images/水墨丹青系列/落霞与孤鹜齐飞，秋水共长天一色.jpg" class="img-fluid rounded mb-2" style="height: 160px; width: 100%; object-fit: cover;">
+                        <h3 class="h6 font-weight-bold mb-1">
+                            <span lang="en">30DayMapChallenge - Cartographic Experiments</span>
+                            <span lang="zh">30DayMapChallenge 地图制图实验</span>
+                        </h3>
+                        <p class="small text-muted mb-2">
+                            <span lang="en">Chinese Ink Painting Series for the 30DayMapChallenge (Day 30 Remix). Ranked 5th with 132 likes. Blends DEM terrain data with classical painting styles.</span>
+                            <span lang="zh">30DayMapChallenge 制图作品（第5名），将高程与地形数据与中国传统水墨画意境相结合的制图实验。</span>
+                        </p>
+                        <a href="projects/30DayMapChallenge/gallery.html" target="_blank" class="btn btn-sm btn-academic btn-outline-secondary py-1 px-2">
+                            <i class="fas fa-images"></i> <span lang="en">View Gallery</span><span lang="zh">作品画廊</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- 2024年9月 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2024</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Started my Master's degree at Politecnico di Milano.</span>
-                                <span lang="zh">开始在米兰理工大学攻读硕士学位。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>Sep 2024</i></span>
-                                <span lang="zh"><i>2024年9月</i></span>
-                            </div>
-                        </div>
+                <!-- SVI Street View -->
+                <div class="col-md-6 mb-3">
+                    <div class="card card-custom border-0 shadow-sm p-3 h-100">
+                        <img src="projects/SVI_Data_Processing/SVIDP_cover.jpg" class="img-fluid rounded mb-2" style="height: 160px; width: 100%; object-fit: cover;">
+                        <h3 class="h6 font-weight-bold mb-1">
+                            <span lang="en">Urban Environment Analysis via Street View Imagery</span>
+                            <span lang="zh">基于街景图像的城市环境与多模态感知分析</span>
+                        </h3>
+                        <p class="small text-muted mb-2">
+                            <span lang="en">Computer vision and large multimodal models processing street-level imagery to evaluate greenery coverage, urban facades, and pedestrian infrastructure.</span>
+                            <span lang="zh">结合计算机视觉与多模态模型处理街道级图像，自动化量化城市绿化率、立面形态及公共感知评价。</span>
+                        </p>
+                        <a href="books/book-viewer.html?file=SVI/街景地理大数据分析笔记框架.md" target="_blank" class="btn btn-sm btn-academic btn-outline-secondary py-1 px-2">
+                            <i class="fas fa-book-open"></i> <span lang="en">Study Notes</span><span lang="zh">分析笔记</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- 2024年1月 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2024</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">Outstanding New Employee at Suzhou Industry Park Geographic Information Mapping Co., Ltd. (Top 5%).</span>
-                                <span lang="zh">苏州工业园区测绘地理信息有限公司优秀新员工 (前5%)。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>Jan 2024</i></span>
-                                <span lang="zh"><i>2024年1月</i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2022年12月 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2022</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">"Esri" College Students GIS Software Development Competition, Third Prize.</span>
-                                <span lang="zh">"Esri"大学生GIS软件开发竞赛三等奖。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>Dec 2022</i></span>
-                                <span lang="zh"><i>2022年12月</i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2022年11月 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2022</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">My <a href="projects/30DayMapChallenge/gallery.html" target="_blank">Chinese Ink Painting Series</a> received 132 likes and ranked 5th in the Day 30 - Remix category of the 30DayMapChallenge.</span>
-                                <span lang="zh">我的<a href="projects/30DayMapChallenge/gallery.html" target="_blank">水墨丹青系列</a>作品在30DayMapChallenge的Day 30 - Remix类别中获得了132个赞，排名第5位。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>Nov 2022</i></span>
-                                <span lang="zh"><i>2022年11月</i></span>
-                            </div>
-                        </div>
+                <!-- SHUD Hydrology -->
+                <div class="col-md-6 mb-3">
+                    <div class="card card-custom border-0 shadow-sm p-3 h-100">
+                        <img src="images/books/shud_cover.png" class="img-fluid rounded mb-2" style="height: 160px; width: 100%; object-fit: cover;">
+                        <h3 class="h6 font-weight-bold mb-1">
+                            <span lang="en">Runoff Simulation in Qinghai Lake Watershed (SHUD)</span>
+                            <span lang="zh">青海湖流域产汇流模拟与水文生态建模 (SHUD)</span>
+                        </h3>
+                        <p class="small text-muted mb-2">
+                            <span lang="en">Hydrological simulation using the Simulator for Hydrologic Unstructured Domains (SHUD) model to evaluate land use impacts on watershed water resources.</span>
+                            <span lang="zh">运用非结构网格水文模拟系统（SHUD）模拟高原流域水循环过程与土地利用响应规律。</span>
+                        </p>
+                        <a href="https://www.shud.xyz" target="_blank" class="btn btn-sm btn-academic btn-outline-secondary py-1 px-2">
+                            <i class="fas fa-globe"></i> <span lang="en">SHUD Lab</span><span lang="zh">SHUD实验室</span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <h6 class="d-block p-3 mt-0 text-right">
-                <a href="news.html">
-                    <span lang="en">More news <i class="fas fa-angle-double-right"></i></span>
-                    <span lang="zh">更多新闻 <i class="fas fa-angle-double-right"></i></span>
-                </a>
-            </h6>
         </div>
 
-        <!-- Conferences Section -->
-        <div class="my-3 bg-white shadow-sm rounded-sm">
-            <h6 class="p-3 mb-0 border-bottom border-gray">
-                <i class="fas fa-users"></i> 
-                <span lang="en">Conferences & Academic Activities</span>
-                <span lang="zh">会议与学术活动</span>
-                <small class="text-muted ml-2">
-                    <span lang="en">(See <a href="presentations.html">Presentations</a>)</span>
-                    <span lang="zh">(见<a href="presentations.html">演示文稿</a>)</span>
-                </small>
-            </h6>
-            <div class="px-3 pb-1">
-                <!-- GIS 2025 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2025</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">I will participate in the <a href="presentations/conferences/GIS2025/">20th Annual Conference on Geographic Information Science Theory and Methods</a> in Xiamen, November 21-23, 2025.</span>
-                                <span lang="zh">我将参与<a href="presentations/conferences/GIS2025/">第二十届地理信息科学理论与方法学术年会</a>，会议将于2025年11月21-23日在厦门举办。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>Nov 2025</i></span>
-                                <span lang="zh"><i>2025年11月</i></span>
-                            </div>
+        <!-- 7. Research & Professional Experience -->
+        <div class="card card-custom border-0 shadow-sm mb-4" id="experience">
+            <div class="card-body p-4">
+                <div class="row">
+                    <!-- Left: Research & Industry Experience -->
+                    <div class="col-md-7 mb-4 mb-md-0">
+                        <h2 class="section-header">
+                            <i class="fas fa-briefcase text-primary"></i>
+                            <span lang="en">Research & Work Experience</span>
+                            <span lang="zh">研究与工作经历</span>
+                        </h2>
+                        <ul class="list-unstyled mb-0">
+                            <li class="media mb-3 pb-3 border-bottom">
+                                <img src="images/institutions/CAS.png" alt="CAS" style="width: 40px; height: 40px;" class="mr-3 align-self-start mt-1 rounded border">
+                                <div class="media-body">
+                                    <div class="d-flex justify-content-between w-100 flex-wrap">
+                                        <strong class="text-dark">
+                                            <span lang="en">Chinese Academy of Sciences (UCAS)</span>
+                                            <span lang="zh">中国科学院西北生态环境资源研究院</span>
+                                        </strong>
+                                        <span class="small badge badge-light border">10.2021 – 06.2022</span>
+                                    </div>
+                                    <div class="small text-primary font-weight-500 mb-1">
+                                        <span lang="en">Research Assistant · SHUD Hydrological Modeling Lab</span>
+                                        <span lang="zh">研究助理 · SHUD水文过程建模实验室</span>
+                                    </div>
+                                    <p class="small text-muted mb-0" style="line-height: 1.5;">
+                                        <span lang="en">Conducted distributed eco-hydrological simulations in alpine watersheds (Qinghai Lake Basin). Evaluated climate/land-use change impacts on runoff and spatial water balance.</span>
+                                        <span lang="zh">从事高原寒区水文生态模拟（青海湖流域），应用非结构网格水文模型开展土地利用与气候变化对产汇流过程的响应评估。</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="media mb-3 pb-3 border-bottom">
+                                <img src="images/institutions/sipsg_logo.png" alt="SIPSG / SIP Surveying" style="width: 42px; height: 42px; object-fit: contain; background: #fff; padding: 2px;" class="mr-3 align-self-start mt-1 rounded border">
+                                <div class="media-body">
+                                    <div class="d-flex justify-content-between w-100 flex-wrap">
+                                        <strong class="text-dark">
+                                            <span lang="en">Suzhou Industrial Park Surveying &amp; Mapping Co., Ltd.</span>
+                                            <span lang="zh">苏州工业园区测绘地理信息有限公司</span>
+                                        </strong>
+                                        <span class="small badge badge-light border">01.2023 – 07.2024</span>
+                                    </div>
+                                    <div class="small text-primary font-weight-500 mb-1">
+                                        <span lang="en">Project Manager &amp; Geospatial Data Engineer</span>
+                                        <span lang="zh">项目经理 &amp; 地理空间数据工程师</span>
+                                    </div>
+                                    <p class="small text-muted mb-0" style="line-height: 1.5;">
+                                        <span lang="en">Managed spatial database infrastructure, automated geospatial ETL workflows, and delivered urban digital twin spatial analytics. Awarded Outstanding New Employee (Top 5%).</span>
+                                        <span lang="zh">负责城市空间数据库底座运维、时空数据自动化处理管线开发与数字孪生空间分析项目管理，荣获公司年度“优秀新员工”（前5%）。</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="media mb-0">
+                                <img src="images/institutions/chuzhou university.png" alt="Chuzhou Univ" style="width: 40px; height: 40px;" class="mr-3 align-self-start mt-1 rounded border">
+                                <div class="media-body">
+                                    <div class="d-flex justify-content-between w-100 flex-wrap">
+                                        <strong class="text-dark">
+                                            <span lang="en">Geographic Big Data Lab, Chuzhou University</span>
+                                            <span lang="zh">滁州学院 地理大数据实验室</span>
+                                        </strong>
+                                        <span class="small badge badge-light border">01.2020 – 06.2021</span>
+                                    </div>
+                                    <div class="small text-primary font-weight-500 mb-1">
+                                        <span lang="en">Undergraduate Research Assistant</span>
+                                        <span lang="zh">本科生科研助理</span>
+                                    </div>
+                                    <p class="small text-muted mb-0" style="line-height: 1.5;">
+                                        <span lang="en">Undergraduate research in spatiotemporal drought dynamics across the Jianghuai Watershed. Completed university-level top thesis (Top 3%).</span>
+                                        <span lang="zh">开展江淮分水岭干旱灾害时空演化与趋势分析研究，完成校级优秀毕业论文（前3%）。</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right: Professional Memberships & Academic Service -->
+                    <div class="col-md-5">
+                        <div class="mb-4">
+                            <h2 class="section-header">
+                                <i class="fas fa-users text-primary"></i>
+                                <span lang="en">Professional Memberships</span>
+                                <span lang="zh">学术组织与兼职</span>
+                            </h2>
+                            <ul class="list-unstyled mb-0 small text-muted">
+                                <li class="mb-2">
+                                    <strong class="text-dark"><a href="https://www.cpgis.org" target="_blank">CPGIS</a></strong> - The International Association of Chinese Professionals in GIS (Student Member, 2025)
+                                </li>
+                                <li class="mb-2">
+                                    <strong class="text-dark">AAG</strong> - American Association of Geographers (Member, 2025)
+                                </li>
+                                <li class="mb-2">
+                                    <strong class="text-dark">GAMA</strong> - GIS and Agent-based Modeling Association
+                                </li>
+                                <li class="mb-0">
+                                    <strong class="text-dark">CSGPC</strong> - Chinese Society for Geodesy, Photogrammetry and Cartography
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-
-                <!-- GEOSUS 2025 -->
-                <div class="media py-1">
-                    <div class="mr-3 text-muted my-1">2025</div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex">
-                            <div>
-                                <span lang="en">I participated in the <a href="presentations/conferences/GEOSUS2025/">International Conference on Geography and Sustainability 2025 (GEOSUS 2025)</a> in Xi'an, October 17-20, 2025.</span>
-                                <span lang="zh">我参与了<a href="presentations/conferences/GEOSUS2025/">2025年地理学与可持续发展国际会议（GEOSUS 2025）</a>，会议于2025年10月17-20日在西安举办。</span>
-                            </div>
-                            <div class="ml-auto mt-auto text-muted no-break">
-                                <span lang="en"><i>Oct 2025</i></span>
-                                <span lang="zh"><i>2025年10月</i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <h6 class="d-block p-3 mt-0 text-right">
-                <a href="presentations.html">
-                    <span lang="en">More presentations <i class="fas fa-angle-double-right"></i></span>
-                    <span lang="zh">更多演示文稿 <i class="fas fa-angle-double-right"></i></span>
-                </a>
-            </h6>
         </div>
 
-        <!-- Footer -->
-        <footer class="mt-5 mb-3">
-            <div class="card border-0 shadow-sm bg-white">
-                <div class="card-body p-4">
+        <!-- 8. News & Conferences -->
+        <div class="row mb-4" id="news">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <div class="card card-custom border-0 shadow-sm p-4 h-100">
+                    <h2 class="section-header">
+                        <i class="fas fa-bell text-warning"></i>
+                        <span lang="en">News & Updates</span>
+                        <span lang="zh">新闻动态</span>
+                    </h2>
+
+                    <div class="timeline-item">
+                        <div class="small text-muted font-weight-bold">Jan 2026</div>
+                        <div class="small">
+                            <span lang="en">Delivered an invited seminar on "AI-Driven Research Programming" for ABMind GSoC 2026 Mesa Training Program.</span>
+                            <span lang="zh">为 ABMind GSoC 2026 Mesa 培训项目作"AI驱动科研编程：从规范驱动到工程实践"研讨报告。</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="small text-muted font-weight-bold">Dec 2025</div>
+                        <div class="small">
+                            <span lang="en">Joined the International Association of Chinese Professionals in GIS (CPGIS) as a Student Member.</span>
+                            <span lang="zh">加入国际华人地理信息科学协会（CPGIS）成为学生会员。</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="small text-muted font-weight-bold">2025</div>
+                        <div class="small">
+                            <span lang="en">Congratulated GISphere non-profit community for publishing three high-quality SCI papers on GIS education and research.</span>
+                            <span lang="zh">祝贺 GISphere 公益社群发表三篇关于 GIS 教育与学术研究的高水平 SCI 论文。</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item mb-0">
+                        <div class="small text-muted font-weight-bold">Sep 2024</div>
+                        <div class="small">
+                            <span lang="en">Started Master's program in Geoinformatics Engineering at Politecnico di Milano, Italy.</span>
+                            <span lang="zh">开始在意大利米兰理工大学攻读地理信息工程硕士学位。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card card-custom border-0 shadow-sm p-4 h-100">
+                    <h2 class="section-header">
+                        <i class="fas fa-microphone-alt text-primary"></i>
+                        <span lang="en">Conferences & Talks</span>
+                        <span lang="zh">学术会议与报告</span>
+                    </h2>
+
+                    <div class="timeline-item">
+                        <div class="small text-muted font-weight-bold">Nov 2025 · Xiamen, China</div>
+                        <div class="font-weight-bold small">
+                            <span lang="en">20th Annual Conf. on GIS Theory and Methods</span>
+                            <span lang="zh">第二十届地理信息科学理论与方法学术年会</span>
+                        </div>
+                        <div class="small text-muted">
+                            <span lang="en">Participated and engaged with GIS scholars across China.</span>
+                            <span lang="zh">参加第二十届地理信息科学理论与方法学术年会交流。</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item mb-0">
+                        <div class="small text-muted font-weight-bold">Oct 2025 · Xi'an, China</div>
+                        <div class="font-weight-bold small">
+                            <span lang="en">Intl. Conf. on Geography and Sustainability (GEOSUS 2025)</span>
+                            <span lang="zh">2025年地理学与可持续发展国际会议</span>
+                        </div>
+                        <div class="small text-muted">
+                            <span lang="en">Exchanged research on human-nature coupled systems and sustainability.</span>
+                            <span lang="zh">参与人地耦合系统韧性与地理可持续发展研讨。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Footer & Visitor Statistics -->
+        <footer class="mt-4 mb-4">
+            <div class="card card-custom border-0 shadow-sm">
+                <div class="card-body p-4 text-center">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <h5>
+                            <h3 class="h5 font-weight-bold mb-1">
+                                <i class="fas fa-chart-line text-primary mr-1"></i>
                                 <span lang="en">Visitor Statistics</span>
                                 <span lang="zh">访客统计</span>
-                            </h5>
-                            <p class="small text-muted">
+                            </h3>
+                            <p class="small text-muted mb-3">
                                 <span lang="en">Real-time visitor tracking from around the world</span>
-                                <span lang="zh">全球实时访客追踪统计</span>
+                                <span lang="zh">全球实时访客追踪与空间分布统计</span>
                             </p>
                         </div>
                     </div>
+
+                    <!-- Country/Region Visit Statistics -->
                     <div class="row">
-                        <div class="col-12 mt-3">
-                            <!-- Country/Region Visit Statistics -->
-                            <div class="text-center">
-                                <h6>
-                                    <span lang="en">Visitors by Country/Region</span>
-                                    <span lang="zh">按国家和地区统计访客</span>
-                                </h6>
-                                <a href="https://info.flagcounter.com/RXMK" target="_blank">
-                                    <img src="https://s11.flagcounter.com/count2/RXMK/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_1/percent_0/" alt="Flag Counter" border="0">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 mt-4">
-                            <!-- Interactive World Map (Local Version) -->
-                            <div class="text-center">
-                                <h6>
-                                    <span lang="en">Global Visitor Map</span>
-                                    <span lang="zh">全球访客地图</span>
-                                </h6>
-                                <a href="talkmap/map.html" target="_blank">
-                                    <div id="homepage-map" style="position: relative; margin: 0 auto; max-width: 800px;">
-                                        <img src="talkmap/images/world_map.jpg" width="100%" height="auto" alt="World Map" style="border-radius: 5px; max-width: 100%;">
-                                        <!-- Visitor markers will be added by JavaScript -->
-                                    </div>
-                                </a>
-                                <p class="small text-muted mt-1">
-                                    <span lang="en">Click to view detailed visitor statistics</span>
-                                    <span lang="zh">点击查看详细访客统计</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <a href="talkmap/map.html" class="btn btn-sm btn-outline-primary">
+                            <h6 class="font-weight-bold mb-2">
+                                <span lang="en">Visitors by Country/Region</span>
+                                <span lang="zh">按国家和地区统计访客</span>
+                            </h6>
+                            <a href="https://info.flagcounter.com/RXMK" target="_blank">
+                                <img src="https://s11.flagcounter.com/count2/RXMK/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_1/percent_0/" alt="Flag Counter" border="0" class="img-fluid" style="border-radius: 4px;" onerror="this.parentElement.style.display='none'">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Interactive World Map (Local Version with Animated Visitor Markers) -->
+                    <div class="row mt-4">
+                        <div class="col-12 text-center">
+                            <h6 class="font-weight-bold mb-2">
+                                <span lang="en">Global Visitor Map</span>
+                                <span lang="zh">全球访客地图</span>
+                            </h6>
+                            <a href="talkmap/map.html" target="_blank" class="d-inline-block text-decoration-none">
+                                <div id="homepage-map" style="position: relative; margin: 0 auto; max-width: 800px; overflow: hidden; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+                                    <img src="talkmap/images/world_map.jpg" width="100%" height="auto" alt="World Map" style="display: block; width: 100%; border-radius: 6px;">
+                                    <!-- Visitor markers added dynamically by JS -->
+                                </div>
+                            </a>
+                            <p class="small text-muted mt-2 mb-2">
+                                <span lang="en">Click map to view interactive world tracking and live city coordinates</span>
+                                <span lang="zh">点击地图查看交互式全球访客分布与详细城市坐标</span>
+                            </p>
+                            <a href="talkmap/map.html" class="btn btn-sm btn-outline-primary mt-1">
+                                <i class="fas fa-globe-americas mr-1"></i>
                                 <span lang="en">View Detailed Visitor Map</span>
                                 <span lang="zh">查看详细访客地图</span>
                             </a>
                         </div>
                     </div>
                     
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <div class="text-muted text-center">
-                                <i>
-                                    <span lang="en">Last updated: January 2026</span>
-                                    <span lang="zh">最后更新：2026年1月</span>
-                                </i>
-                            </div>
-                        </div>
+                    <hr class="my-4"/>
+
+                    <div class="small text-muted">
+                        <span>© 2026 Jiale Guo (郭家乐) · Politecnico di Milano · Updated October 2026</span>
+                    </div>
+                    <div class="small text-muted mt-1" style="font-family: var(--code-font);">
+                        <span>45.4781° N, 9.2275° E (Milan, Italy)</span>
                     </div>
                 </div>
             </div>
         </footer>
+
     </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-    
-    <!-- Common JavaScript (Theme & Language Toggle) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+    <!-- Common JavaScript (Handles Theme & Language Toggle via localStorage) -->
     <script src="js/common.js"></script>
-    
-    <!-- Country Coordinates Data -->
-    <script src="js/data/country-coordinates.js"></script>
-    
-    <!-- Homepage Map Script -->
+
+    <!-- Map Drawer Engine Script (100% Reliable Leaflet WebGIS, Zero WebGL / CORS Errors) -->
     <script>
-    // 从统一数据源加载访客统计数据
-    let visitorData = [];
-    
-    // 异步加载访客统计数据
-    fetch('data/visitor-stats.json')
-        .then(response => response.json())
-        .then(data => {
-            // 转换JSON数据为visitorData格式
-            visitorData = data.countries.map(item => ({
-                country: item.country,
-                code: item.code,
-                visits: item.visits,
-                lat: item.lat,
-                lng: item.lng
-            }));
-            
-            // 数据加载完成后，如果地图已准备好，更新标记
-            if (document.getElementById('homepage-map')) {
-                updateHomepageMap();
+    (function() {
+        let placesData = (window.GLOBE_PLACES_DATA && window.GLOBE_PLACES_DATA.places) ? window.GLOBE_PLACES_DATA.places : [];
+        let trajectoriesData = (window.GLOBE_PLACES_DATA && window.GLOBE_PLACES_DATA.trajectories) ? window.GLOBE_PLACES_DATA.trajectories : [];
+
+        let leafletMap = null;
+        let leafletMarkers = [];
+        let leafletLines = [];
+        let isDrawerOpen = false;
+
+        const toggleBtn = document.getElementById('toggleWebGISBtn');
+        const chevron = document.getElementById('webgisChevron');
+        const drawer = document.getElementById('leafletDrawer');
+
+        function getCurrentLang() {
+            return document.documentElement.getAttribute('data-lang') || 'en';
+        }
+
+        function initLeafletWebGIS() {
+            if (leafletMap || typeof L === 'undefined') return;
+
+            leafletMap = L.map('leafletMapContainer', {
+                center: [36.0, 48.0],
+                zoom: 3,
+                minZoom: 2,
+                maxZoom: 12
+            });
+
+            // Professional Esri Canvas Light Gray Basemap (Fast, CORS-free, no API key watermarks)
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                attribution: '&copy; <a href="https://www.esri.com/">Esri</a>, DeLorme, NAVTEQ',
+                maxZoom: 16
+            }).addTo(leafletMap);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+                attribution: '',
+                maxZoom: 16
+            }).addTo(leafletMap);
+
+            // Draw flight paths / trajectory connections
+            const placeMap = {};
+            placesData.forEach(p => placeMap[p.id] = p);
+
+            trajectoriesData.forEach(t => {
+                const src = placeMap[t.from];
+                const dst = placeMap[t.to];
+                if (src && dst) {
+                    const line = L.polyline([
+                        [src.lat, src.lng],
+                        [dst.lat, dst.lng]
+                    ], {
+                        color: t.color || '#0284c7',
+                        weight: 2,
+                        dashArray: '5, 7',
+                        opacity: 0.75
+                    }).addTo(leafletMap);
+                    leafletLines.push(line);
+                }
+            });
+
+            // Render Markers
+            renderMarkers('all');
+            leafletMap.fitBounds(placesData.map(p => [p.lat, p.lng]), { padding: [25, 25] });
+        }
+
+        function renderMarkers(categoryFilter) {
+            if (!leafletMap) return;
+
+            // Remove existing markers
+            leafletMarkers.forEach(m => leafletMap.removeLayer(m));
+            leafletMarkers = [];
+
+            const isZh = getCurrentLang() === 'zh';
+            let filtered = placesData;
+            if (categoryFilter && categoryFilter !== 'all') {
+                filtered = placesData.filter(p => p.category === categoryFilter);
             }
-        })
-        .catch(error => {
-            console.error('Error loading visitor stats:', error);
-            // 如果加载失败，使用默认数据
-            visitorData = [
-                { country: "Italy", code: "IT", visits: 78, lat: 42.5, lng: 12.5 },
-                { country: "Singapore", code: "SG", visits: 24, lat: 1.3521, lng: 103.8198 },
-                { country: "United States", code: "US", visits: 24, lat: 39.5, lng: -98.35 },
-                { country: "Hong Kong", code: "HK", visits: 14, lat: 22.3193, lng: 114.1694 },
-                { country: "China", code: "CN", visits: 11, lat: 35.8617, lng: 104.1954 },
-                { country: "Japan", code: "JP", visits: 11, lat: 36.2048, lng: 138.2529 },
-                { country: "United Kingdom", code: "GB", visits: 3, lat: 55.37805, lng: -3.43597 },
-                { country: "Australia", code: "AU", visits: 1, lat: -25.2744, lng: 133.7751 },
-                { country: "Malaysia", code: "MY", visits: 1, lat: 4.2105, lng: 101.9758 },
-                { country: "Bolivia", code: "BO", visits: 1, lat: -16.2902, lng: -63.5887 },
-                { country: "Turkey", code: "TR", visits: 1, lat: 38.9637, lng: 35.2433 },
-                { country: "Ireland", code: "IE", visits: 1, lat: 53.1424, lng: -7.6921 }
-            ];
-            if (document.getElementById('homepage-map')) {
-                updateHomepageMap();
+
+            filtered.forEach(p => {
+                const isHub = p.isHub;
+                const markerColor = isHub ? '#d97706' : (p.category === 'academic' ? '#0284c7' : (p.category === 'fieldwork' ? '#10b981' : '#ec4899'));
+
+                const marker = L.circleMarker([p.lat, p.lng], {
+                    radius: isHub ? 9 : 6,
+                    fillColor: markerColor,
+                    color: '#ffffff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.9
+                }).addTo(leafletMap);
+
+                const title = isZh ? (p.institutionZh || p.nameZh) : (p.institution || p.name);
+                const sub = isZh ? p.titleZh : p.titleEn;
+                const desc = isZh ? p.descriptionZh : p.descriptionEn;
+                const badge = p.badge || (isHub ? 'CORE HUB' : 'LOCATION');
+
+                const popupHtml = `
+                    <div style="font-family: var(--brand-font); min-width: 220px; line-height: 1.45;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 0.68rem; font-weight: 700; color: ${markerColor}; border: 1px solid ${markerColor}; padding: 1px 6px; border-radius: 3px; font-family: var(--code-font);">${badge}</span>
+                            <span style="font-size: 0.68rem; color: #64748b; font-family: var(--code-font);">${p.lat.toFixed(2)}°N, ${p.lng.toFixed(2)}°E</span>
+                        </div>
+                        <div style="font-weight: 700; font-size: 0.88rem; color: #0f172a; margin-bottom: 2px;">${title}</div>
+                        <div style="font-size: 0.76rem; font-weight: 600; color: #0284c7; margin-bottom: 6px;">${sub}</div>
+                        <div style="font-size: 0.78rem; color: #475569;">${desc}</div>
+                    </div>
+                `;
+
+                marker.bindPopup(popupHtml);
+                leafletMarkers.push(marker);
+            });
+        }
+
+        // Toggle Drawer
+        if (toggleBtn && drawer) {
+            toggleBtn.addEventListener('click', () => {
+                isDrawerOpen = !isDrawerOpen;
+                if (isDrawerOpen) {
+                    drawer.style.display = 'block';
+                    if (chevron) chevron.className = 'fas fa-chevron-up ml-1';
+                    if (!leafletMap) {
+                        initLeafletWebGIS();
+                    }
+                    setTimeout(() => {
+                        if (leafletMap) leafletMap.invalidateSize();
+                    }, 100);
+                } else {
+                    drawer.style.display = 'none';
+                    if (chevron) chevron.className = 'fas fa-chevron-down ml-1';
+                }
+            });
+        }
+
+        // Filter Buttons
+        document.getElementById('filterAllBtn')?.addEventListener('click', function() {
+            setFilterActive(this);
+            renderMarkers('all');
+        });
+        document.getElementById('filterEduBtn')?.addEventListener('click', function() {
+            setFilterActive(this);
+            renderMarkers('academic');
+        });
+        document.getElementById('filterFieldBtn')?.addEventListener('click', function() {
+            setFilterActive(this);
+            renderMarkers('fieldwork');
+        });
+
+        function setFilterActive(activeBtn) {
+            ['filterAllBtn', 'filterEduBtn', 'filterFieldBtn'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.classList.remove('active');
+            });
+            activeBtn.classList.add('active');
+        }
+
+        // Re-bind popups when language changes
+        const langObserver = new MutationObserver(() => {
+            if (leafletMap) {
+                const activeBtn = document.querySelector('.leaflet-drawer-card .btn.active');
+                const cat = activeBtn ? (activeBtn.id === 'filterEduBtn' ? 'academic' : (activeBtn.id === 'filterFieldBtn' ? 'fieldwork' : 'all')) : 'all';
+                renderMarkers(cat);
             }
         });
-    
-    function latLngToPixel(lat, lng, mapWidth, mapHeight) {
-        let adjustedLng = lng;
-        if (adjustedLng > 180) adjustedLng -= 360;
-        if (adjustedLng < -180) adjustedLng += 360;
-        const xFactor = 0.996;
-        const xOffset = 0;
-        const x = ((adjustedLng + 180) / 360) * mapWidth * xFactor + xOffset;
-        const yFactor = 1.02;
-        const yOffset = -mapHeight * 0.01;
-        const y = ((90 - lat) / 180) * mapHeight * yFactor + yOffset;
-        return { x: Math.round(x), y: Math.round(y) };
-    }
+        langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
+    })();
+    </script>
 
-    // 更新首页地图标记
-    function updateHomepageMap() {
-        const homepageMap = document.getElementById('homepage-map');
-        if (!homepageMap || visitorData.length === 0) return;
-        
-        const mapImage = homepageMap.querySelector('img');
-        if (!mapImage) return;
-        
-        function addMarkersToMap() {
-            // 清除现有标记
-            const existingMarkers = homepageMap.querySelectorAll('.visitor-marker');
-            existingMarkers.forEach(marker => marker.remove());
+    <!-- Homepage Visitor Map Markers Script -->
+    <script>
+    (function() {
+        const visitorData = [
+            { country: "Italy", code: "IT", visits: 88, lat: 45.4642, lng: 9.1900 },
+            { country: "China", code: "CN", visits: 64, lat: 31.2304, lng: 121.4737 },
+            { country: "Hong Kong", code: "HK", visits: 32, lat: 22.3193, lng: 114.1694 },
+            { country: "United States", code: "US", visits: 28, lat: 37.7749, lng: -122.4194 },
+            { country: "Singapore", code: "SG", visits: 24, lat: 1.3521, lng: 103.8198 },
+            { country: "United Kingdom", code: "GB", visits: 18, lat: 51.5074, lng: -0.1278 },
+            { country: "Germany", code: "DE", visits: 15, lat: 52.5200, lng: 13.4050 },
+            { country: "Japan", code: "JP", visits: 12, lat: 35.6762, lng: 139.6503 },
+            { country: "Australia", code: "AU", visits: 8, lat: -33.8688, lng: 151.2093 },
+            { country: "Canada", code: "CA", visits: 7, lat: 43.6532, lng: -79.3832 },
+            { country: "Switzerland", code: "CH", visits: 5, lat: 47.3769, lng: 8.5417 },
+            { country: "Netherlands", code: "NL", visits: 5, lat: 52.3676, lng: 4.9041 }
+        ];
 
-            const mapWidth = mapImage.clientWidth;
-            const mapHeight = mapImage.clientHeight;
+        function latLngToPixel(lat, lng, mapWidth, mapHeight) {
+            let adjustedLng = lng;
+            if (adjustedLng > 180) adjustedLng -= 360;
+            if (adjustedLng < -180) adjustedLng += 360;
+            const xFactor = 0.996;
+            const xOffset = 0;
+            const x = ((adjustedLng + 180) / 360) * mapWidth * xFactor + xOffset;
+            const yFactor = 1.02;
+            const yOffset = -mapHeight * 0.01;
+            const y = ((90 - lat) / 180) * mapHeight * yFactor + yOffset;
+            return { x: Math.round(x), y: Math.round(y) };
+        }
 
-            // 添加访客标记
-            for (const visitor of visitorData) {
-                const position = latLngToPixel(visitor.lat, visitor.lng, mapWidth, mapHeight);
-                const marker = document.createElement('div');
-                marker.className = 'visitor-marker';
-                marker.title = `${visitor.country}: ${visitor.visits} visits`;
-                
-                // 根据访问量调整标记大小
-                const size = Math.max(8, Math.min(20, 8 + visitor.visits / 3));
-                marker.style.width = `${size}px`;
-                marker.style.height = `${size}px`;
-                marker.style.position = 'absolute';
-                marker.style.borderRadius = '50%';
-                marker.style.backgroundColor = '#ff3b30';
-                marker.style.border = '2px solid #fff';
-                marker.style.boxShadow = '0 0 8px rgba(255, 59, 48, 0.8)';
-                marker.style.left = `${position.x - size/2}px`;
-                marker.style.top = `${position.y - size/2}px`;
-                marker.style.zIndex = '100';
-                marker.style.animation = 'pulse 2s infinite';
-                homepageMap.appendChild(marker);
+        function updateHomepageMap() {
+            const homepageMap = document.getElementById('homepage-map');
+            if (!homepageMap || visitorData.length === 0) return;
+            const mapImage = homepageMap.querySelector('img');
+            if (!mapImage) return;
+
+            function addMarkers() {
+                const existing = homepageMap.querySelectorAll('.visitor-marker');
+                existing.forEach(m => m.remove());
+
+                const mapWidth = mapImage.clientWidth || mapImage.offsetWidth || 800;
+                const mapHeight = mapImage.clientHeight || mapImage.offsetHeight || 400;
+
+                visitorData.forEach(v => {
+                    const pos = latLngToPixel(v.lat, v.lng, mapWidth, mapHeight);
+                    const size = Math.max(9, Math.min(20, 8 + v.visits / 5));
+                    const dot = document.createElement('div');
+                    dot.className = 'visitor-marker';
+                    dot.title = `${v.country}: ${v.visits} visits`;
+                    dot.style.width = `${size}px`;
+                    dot.style.height = `${size}px`;
+                    dot.style.position = 'absolute';
+                    dot.style.borderRadius = '50%';
+                    dot.style.backgroundColor = '#ef4444';
+                    dot.style.border = '2px solid #ffffff';
+                    dot.style.boxShadow = '0 0 8px rgba(239, 68, 68, 0.85)';
+                    dot.style.left = `${pos.x - size / 2}px`;
+                    dot.style.top = `${pos.y - size / 2}px`;
+                    dot.style.zIndex = '10';
+                    dot.style.pointerEvents = 'auto';
+                    dot.style.cursor = 'pointer';
+                    homepageMap.appendChild(dot);
+                });
             }
+
+            if (mapImage.complete) {
+                addMarkers();
+            } else {
+                mapImage.onload = addMarkers;
+            }
+            window.addEventListener('resize', addMarkers);
         }
-        
-        // 如果图片已经加载完成
-        if (mapImage.complete) {
-            addMarkersToMap();
-        } else {
-            // 如果图片尚未加载完成，等待加载
-            mapImage.onload = addMarkersToMap;
-        }
-    }
-    
-    // 等待DOM加载完成后尝试更新地图
-    document.addEventListener('DOMContentLoaded', function() {
-        // 如果数据已经加载，立即更新
-        if (visitorData.length > 0) {
-            updateHomepageMap();
-        }
-    });
+
+        document.addEventListener('DOMContentLoaded', updateHomepageMap);
+        window.addEventListener('load', updateHomepageMap);
+    })();
     </script>
 </body>
 </html>

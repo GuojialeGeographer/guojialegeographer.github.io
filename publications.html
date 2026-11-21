@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         /* 语言切换按钮样式 */
@@ -146,19 +146,41 @@
     </style>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+    <!-- Unified Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><strong>Geospatial Data Science</strong></a>
-            <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-map"></i> Menu
+            <a class="navbar-brand font-weight-bold" href="index.html">
+                Jiale Guo (郭家乐)
+                <span class="font-weight-normal text-muted" style="font-size: 0.88rem;">| Politecnico di Milano</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">
                             <span lang="en">Home</span>
                             <span lang="zh">首页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#education">
+                            <span lang="en">Education</span>
+                            <span lang="zh">教育经历</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#research-interests">
+                            <span lang="en">Research</span>
+                            <span lang="zh">研究方向</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#academic-map">
+                            <span lang="en">Map</span>
+                            <span lang="zh">学术地图</span>
                         </a>
                     </li>
                     <li class="nav-item active">
@@ -170,34 +192,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="projects.html">
                             <span lang="en">Projects</span>
-                            <span lang="zh">项目</span>
+                            <span lang="zh">研究项目</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#experience">
+                            <span lang="en">Experience</span>
+                            <span lang="zh">经历与荣誉</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="news.html">
                             <span lang="en">News</span>
-                            <span lang="zh">新闻</span>
+                            <span lang="zh">动态</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="books.html">
-                            <span lang="en">Books</span>
-                            <span lang="zh">书籍</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="presentations.html">
-                            <span lang="en">Presentations</span>
-                            <span lang="zh">演示文稿</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle Dark Mode">
+                    <li class="nav-item ml-1">
+                        <button id="theme-toggle" class="btn btn-sm btn-outline-secondary py-1 px-2" aria-label="Toggle Dark Mode">
                             <i class="fas fa-sun"></i>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button id="lang-toggle" class="lang-toggle nav-link" aria-label="Toggle Language">
+                    <li class="nav-item ml-1">
+                        <button id="lang-toggle" class="btn btn-sm btn-outline-secondary py-1 px-2" aria-label="Toggle Language">
                             <span lang="en">中文</span>
                             <span lang="zh">English</span>
                         </button>
@@ -240,7 +256,7 @@
                 <div class="row my-3">
                     <div class="col-6">
                         <div class="text-muted">
-                            <i>Last updated: January 2026</i>
+                            <i>Last updated: October 2026</i>
                         </div>
                     </div>
                     <div class="col-6">
@@ -266,6 +282,8 @@
     <script src="js/utils/loading-state.js"></script>
     <script src="js/utils/lazy-load.js"></script>
     <script src="js/utils/seo.js"></script>
+    <!-- Publications Data (Zero-CORS Fallback) -->
+    <script src="js/data/publications-data.js"></script>
     <!-- Publications Renderer -->
     <script src="js/render-publications.js"></script>
 </body>

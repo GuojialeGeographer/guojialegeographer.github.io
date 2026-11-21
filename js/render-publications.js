@@ -3,14 +3,25 @@
  * 动态渲染论文列表（优化版：支持缓存、懒加载、错误处理）
  */
 
-// 加载工具函数（如果已加载）
-const loadData = typeof DataLoader !== 'undefined' 
-    ? (url) => DataLoader.loadJSON(url)
-    : async (url) => {
+// 加载工具函数（支持 DataLoader、Fetch 以及本地 window.PUBLICATIONS_DATA 备选）
+const loadData = async (url) => {
+    if (typeof DataLoader !== 'undefined') {
+        try {
+            return await DataLoader.loadJSON(url);
+        } catch (e) {
+            if (typeof window !== 'undefined' && window.PUBLICATIONS_DATA) return window.PUBLICATIONS_DATA;
+            throw e;
+        }
+    }
+    try {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return await response.json();
-    };
+    } catch (e) {
+        if (typeof window !== 'undefined' && window.PUBLICATIONS_DATA) return window.PUBLICATIONS_DATA;
+        throw e;
+    }
+};
 
 async function renderPublications() {
     const container = document.getElementById('publications-container');
@@ -202,11 +213,33 @@ function createPublicationCard(pub) {
     
     contentCol.appendChild(venue);
     
-    // 可选：PDF / 知网等外链（便于国际读者与无法访问 CNKI 的用户）
-    if (pub.links && (pub.links.pdf || pub.links.cnki)) {
+    // 可选：PDF / 知网 / DOI / 谷歌学术等外链
+    if (pub.links && (pub.links.pdf || pub.links.cnki || pub.links.doi || pub.links.scholar)) {
         const actions = document.createElement('p');
         actions.className = 'mt-2 mb-0';
         
+        if (pub.links.doi) {
+            const doiBtn = document.createElement('a');
+            doiBtn.href = pub.links.doi;
+            doiBtn.target = '_blank';
+            doiBtn.rel = 'noopener noreferrer';
+            doiBtn.className = 'btn btn-sm btn-outline-primary mr-2 mb-1';
+            doiBtn.setAttribute('aria-label', 'Publisher / DOI');
+            const doiIcon = document.createElement('i');
+            doiIcon.className = 'fas fa-external-link-alt';
+            doiBtn.appendChild(doiIcon);
+            doiBtn.appendChild(document.createTextNode(' '));
+            const doiEn = document.createElement('span');
+            doiEn.setAttribute('lang', 'en');
+            doiEn.textContent = 'Publisher / DOI';
+            const doiZh = document.createElement('span');
+            doiZh.setAttribute('lang', 'zh');
+            doiZh.textContent = '期刊全文 / DOI';
+            doiBtn.appendChild(doiEn);
+            doiBtn.appendChild(doiZh);
+            actions.appendChild(doiBtn);
+        }
+
         if (pub.links.pdf) {
             const pdfBtn = document.createElement('a');
             pdfBtn.href = pub.links.pdf;
@@ -250,6 +283,28 @@ function createPublicationCard(pub) {
             cnkiBtn.appendChild(cnkiZh);
             actions.appendChild(cnkiBtn);
         }
+
+        if (pub.links.scholar) {
+            const scholarBtn = document.createElement('a');
+            scholarBtn.href = pub.links.scholar;
+            scholarBtn.target = '_blank';
+            scholarBtn.rel = 'noopener noreferrer';
+            scholarBtn.className = 'btn btn-sm btn-outline-secondary mr-2 mb-1';
+            scholarBtn.setAttribute('aria-label', 'Google Scholar');
+            const scholarIcon = document.createElement('i');
+            scholarIcon.className = 'ai ai-google-scholar';
+            scholarBtn.appendChild(scholarIcon);
+            scholarBtn.appendChild(document.createTextNode(' '));
+            const scholarEn = document.createElement('span');
+            scholarEn.setAttribute('lang', 'en');
+            scholarEn.textContent = 'Google Scholar';
+            const scholarZh = document.createElement('span');
+            scholarZh.setAttribute('lang', 'zh');
+            scholarZh.textContent = '谷歌学术';
+            scholarBtn.appendChild(scholarEn);
+            scholarBtn.appendChild(scholarZh);
+            actions.appendChild(scholarBtn);
+        }
         
         contentCol.appendChild(actions);
     }
@@ -261,8 +316,13 @@ function createPublicationCard(pub) {
 }
 
 function buildAuthorAffiliationsBlock(authors) {
-    const lines = authors
-        .filter((a) => a.orgIndex && (a.affiliationEn || a.affiliationZh))
+    const uniqueAffiliations = new Map();
+    authors.forEach((author) => {
+        if (!author.orgIndex || (!author.affiliationEn && !author.affiliationZh)) return;
+        const key = `${author.orgIndex}|${author.affiliationEn || ''}|${author.affiliationZh || ''}`;
+        if (!uniqueAffiliations.has(key)) uniqueAffiliations.set(key, author);
+    });
+    const lines = Array.from(uniqueAffiliations.values())
         .sort((a, b) => (a.orgIndex || 0) - (b.orgIndex || 0));
     if (!lines.length) {
         return null;

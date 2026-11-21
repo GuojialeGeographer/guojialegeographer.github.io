@@ -1,6 +1,17 @@
 # macOS
 .DS_Store
 
+# Python cache
+__pycache__/
+
+# 外部参考仓库克隆（仅本地参考，不发布）
+acad-homepage.github.io/
+rayford295.github.io/
+
+# 本地临时截图 / 预览产物
+preview_*.png
+screenshot_*.png
+
 # 未使用的空文件夹（如果重新创建，将被忽略）
 doc/
 report/
